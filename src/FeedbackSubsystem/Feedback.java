@@ -26,8 +26,6 @@ public class Feedback {
 	}
 	public int getDate() {
 		return date;
-	}
-	
-	
+	}	
 	
 }
