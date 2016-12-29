@@ -15,6 +15,7 @@ public class Feedback {
 		this.sender = sender;
 		this.message = message;
 		this.date = date;
+		
 	}
 	
 	public int getId() {
