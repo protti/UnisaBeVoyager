@@ -11,6 +11,25 @@ public class Notification {
 	private boolean read;
 	private String sendDate;
 
+	
+	public Notification(int id, RegisteredUser sender, RegisteredUser recipient, String body, boolean read,
+			String sendDate) {
+		this.id = id;
+		this.sender = sender;
+		this.recipient = recipient;
+		this.body = body;
+		this.read = read;
+		this.sendDate = sendDate;
+	}
+
+	public Notification(RegisteredUser sender, RegisteredUser recipient, String body, boolean read, String sendDate) {
+		this.sender = sender;
+		this.recipient = recipient;
+		this.body = body;
+		this.read = read;
+		this.sendDate = sendDate;
+	}
+	
 	public int getId() {
 		return this.id;
 	}
