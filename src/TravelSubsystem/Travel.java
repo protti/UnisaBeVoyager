@@ -10,8 +10,8 @@ import RouteSubsystem.Route;
 public class Travel {
 
 	private RegisteredUser creatoreViaggio;
-	private Collection<RegisteredUser> partecipantiViaggio;
-	private Collection<Poll> pollList;
+	private ArrayList<RegisteredUser> partecipantiViaggio;
+	private ArrayList<Poll> pollList;
 	private Route route;
 	private int id;
 	private String startDate;
@@ -36,19 +36,18 @@ public class Travel {
 		return creatoreViaggio;
 	}
 
-	public Collection<RegisteredUser> getPartecipantiViaggio() {
+	public ArrayList<RegisteredUser> getPartecipantiViaggio() {
 		return partecipantiViaggio;
 	}
 
-	public void setPartecipantiViaggio(Collection<RegisteredUser> partecipantiViaggio) {
+	public void setPartecipantiViaggio(ArrayList<RegisteredUser> partecipantiViaggio) {
 		this.partecipantiViaggio = partecipantiViaggio;
 	}
-
-	public Collection<Poll> getPollList() {
+	public ArrayList<Poll> getPollList() {
 		return pollList;
 	}
 
-	public void setPollList(Collection<Poll> pollList) {
+	public void setPollList(ArrayList<Poll> pollList) {
 		this.pollList = pollList;
 	}
 
@@ -100,7 +99,7 @@ public class Travel {
 	}
 
 	/**
-	 * Imposta a false se il viaggio non è modificabile, oppure a true se è modificabile
+	 * Imposta a false se il viaggio non è modificabile, oppure a true se è modificabile.
 	 * @param type
 	 */
 	public void setType(boolean type) {
