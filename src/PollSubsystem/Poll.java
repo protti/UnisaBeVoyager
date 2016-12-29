@@ -15,6 +15,19 @@ public class Poll {
 		return this.endDate;
 	}
 
+	
+	
+	public Poll(int id, String description, int vnegative, int vpositive, GregorianCalendar startDate, GregorianCalendar endDate) {
+		super();
+		this.id = id;
+		this.description = description;
+		this.vnegative = vnegative;
+		this.vpositive = vpositive;
+		this.startDate = startDate;
+		this.endDate = endDate;
+	}
+
+
 	/**
 	 * 
 	 * @param endDate
