@@ -5,14 +5,25 @@ import java.util.*;
 import LocationSubsystem.Location;
 import TravelSubsystem.Travel;
 
+/*
+ * 
+ * Classe dedicata agli itinerari
+ * 
+ * 
+ * 
+ * 
+ * */
+
+
+
 public class Route {
 
-	private Travel route;
+	
 	private ArrayList<Location> locations;
 	private int id;
 	private String description;
 	private String name;
-	
+	private Travel route;
 	
 	
 	public Route(Travel route, ArrayList<Location> locations, int id, String description, String name) {
