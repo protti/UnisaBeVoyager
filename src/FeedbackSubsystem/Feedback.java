@@ -1,13 +1,15 @@
 package FeedbackSubsystem;
 
+import java.util.GregorianCalendar;
+
 public class Feedback {
 
 	private int id;
 	private String sender;
 	private String message;
-	private int date;
+	private GregorianCalendar date;
 	
-		public Feedback(int id, String sender, String message, int date) {
+		public Feedback(int id, String sender, String message, GregorianCalendar date) {
 		super();
 		this.id = id;
 		this.sender = sender;
@@ -24,7 +26,7 @@ public class Feedback {
 	public String getMessage() {
 		return message;
 	}
-	public int getDate() {
+	public GregorianCalendar getDate() {
 		return date;
 	}	
 	

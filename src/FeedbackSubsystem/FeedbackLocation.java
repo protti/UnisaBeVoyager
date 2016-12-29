@@ -1,5 +1,7 @@
 package FeedbackSubsystem;
 
+import java.util.GregorianCalendar;
+
 import LocationSubsystem.Location;
 
 public class FeedbackLocation extends Feedback {
@@ -8,7 +10,7 @@ public class FeedbackLocation extends Feedback {
 
 	
 	
-	public FeedbackLocation(int id, String sender, String message, int date, int locationID) {
+	public FeedbackLocation(int id, String sender, String message, GregorianCalendar date, int locationID) {
 		super(id, sender, message, date);
 		this.locationID = locationID;
 	}
