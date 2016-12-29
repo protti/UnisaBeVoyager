@@ -8,14 +8,14 @@ import TravelSubsystem.Travel;
 public class Route {
 
 	private Travel route;
-	private Collection<Location> locations;
+	private ArrayList<Location> locations;
 	private int id;
 	private String description;
 	private String name;
 	
 	
 	
-	public Route(Travel route, Collection<Location> locations, int id, String description, String name) {
+	public Route(Travel route, ArrayList<Location> locations, int id, String description, String name) {
 		super();
 		this.route = route;
 		this.locations = locations;
@@ -29,10 +29,10 @@ public class Route {
 	public void setRoute(Travel route) {
 		this.route = route;
 	}
-	public Collection<Location> getLocations() {
+	public ArrayList<Location> getLocations() {
 		return locations;
 	}
-	public void setLocations(Collection<Location> locations) {
+	public void setLocations(ArrayList<Location> locations) {
 		this.locations = locations;
 	}
 	public int getId() {
@@ -53,7 +53,14 @@ public class Route {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	public void addLocation(Location location)
+	{
+		this.locations.add(location);
+	}
+	public void removeLocation(Location location)
+	{
+		this.locations.remove(location);
+	}
 	
 	
 }

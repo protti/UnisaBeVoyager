@@ -100,7 +100,7 @@ public class Travel {
 	}
 
 	/**
-	 * 
+	 * Imposta a false se il viaggio non è modificabile, oppure a true se è modificabile
 	 * @param type
 	 */
 	public void setType(boolean type) {
@@ -113,7 +113,10 @@ public class Travel {
 		return this.route;
 	}
 
-
+	public void closeTravel()
+	{
+		this.type = false;
+	}
 
 
 }
