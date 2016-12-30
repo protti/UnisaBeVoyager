@@ -313,7 +313,9 @@ public class TravelManager {
 					+ "from Route "
 					+ "where id IN (select routeID "
 					+ "from RouteLocationMatch "
-					+ "where locationID = " + locationId + "))");
+					+ "where locationID = " + locationId + ""
+					+ "order by locationID)"
+					+ "order by id)");
 			DriverManagerConnection.releaseConnection(con);
 			
 			while(rs.next()){
