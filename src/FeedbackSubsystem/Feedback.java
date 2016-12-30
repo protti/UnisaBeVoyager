@@ -6,16 +6,18 @@ public class Feedback {
 
 	private int id;
 	private String sender;
+
+	private String message;
+	private GregorianCalendar date;
+	
 	public Feedback(String sender, String message, GregorianCalendar date) {
 		super();
 		this.sender = sender;
 		this.message = message;
 		this.date = date;
 	}
-	private String message;
-	private GregorianCalendar date;
 	
-		public Feedback(int id, String sender, String message, GregorianCalendar date) {
+	public Feedback(int id, String sender, String message, GregorianCalendar date) {
 		super();
 		this.id = id;
 		this.sender = sender;

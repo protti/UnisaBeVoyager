@@ -8,8 +8,6 @@ public class FeedbackLocation extends Feedback {
 
 	private int locationID;
 
-	
-	
 	public FeedbackLocation(int id, String sender, String message, GregorianCalendar date, int locationID) {
 		super(id, sender, message, date);
 		this.locationID = locationID;

@@ -3,3 +3,4 @@
 # Eclipse
 .classpath
 .settings/
+/bin/
