@@ -15,7 +15,6 @@ import TravelSubsystem.Travel;
  * */
 
 
-
 public class Route {
 
 	
@@ -25,15 +24,21 @@ public class Route {
 	private String name;
 	private Travel route;
 	
+	public Route(Travel route, ArrayList<Location> locations, String description, String name) {
+		this.route = route;
+		this.locations = locations;
+		this.description = description;
+		this.name = name;
+	}
 	
 	public Route(Travel route, ArrayList<Location> locations, int id, String description, String name) {
-		super();
 		this.route = route;
 		this.locations = locations;
 		this.id = id;
 		this.description = description;
 		this.name = name;
 	}
+	
 	public Travel getRoute() {
 		return route;
 	}

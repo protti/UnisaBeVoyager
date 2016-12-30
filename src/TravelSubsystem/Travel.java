@@ -16,8 +16,8 @@ public class Travel {
 	private int id;
 	private GregorianCalendar startDate;
 	private GregorianCalendar endDate;
+	
 	public Travel(RegisteredUser creatoreViaggio, int id, GregorianCalendar startDate, GregorianCalendar endDate, boolean type) {
-
 		this.creatoreViaggio = creatoreViaggio;
 		this.id = id;
 		this.startDate = startDate;

@@ -9,8 +9,33 @@ public class RegisteredUser extends User {
 	private String password;
 	private String nome;
 	private String cognome;
-	private int birthDate;
+	private GregorianCalendar birthDate;
 	private int age;
+
+	public RegisteredUser(String email, String username, String password, String nome, String cognome,
+			GregorianCalendar birthDate, int age) {
+		super();
+		this.email = email;
+		this.username = username;
+		this.password = password;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.birthDate = birthDate;
+		this.age = age;
+	}
+
+
+	public RegisteredUser(int id, String email, String username, String password, String nome, String cognome,
+			GregorianCalendar birthDate, int age) {
+		super(id);
+		this.email = email;
+		this.username = username;
+		this.password = password;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.birthDate = birthDate;
+		this.age = age;
+	}
 
 	public String getUsername() {
 		return this.username;
@@ -60,7 +85,7 @@ public class RegisteredUser extends User {
 		this.cognome = cognome;
 	}
 
-	public void getBirthDate() {
+	public GregorianCalendar getBirthDate() {
 		// TODO - implement {class}.{operation}
 		throw new UnsupportedOperationException();
 	}
@@ -69,8 +94,8 @@ public class RegisteredUser extends User {
 	 * 
 	 * @param bithDate
 	 */
-	public void setBirthDate(int bithDate) {
-		this.birthDate = bithDate;
+	public void setBirthDate(GregorianCalendar birthDate) {
+		this.birthDate = birthDate;
 	}
 
 	public int getAge() {

@@ -6,6 +6,23 @@ public class SystemAdmin extends User {
 	private String password;
 	private String nome;
 	private String cognome;
+	
+	public SystemAdmin(String email, String password, String nome, String cognome) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.nome = nome;
+		this.cognome = cognome;
+	}
+
+	public SystemAdmin(int id, String email, String password, String nome, String cognome) {
+		super(id);
+		this.email = email;
+		this.password = password;
+		this.nome = nome;
+		this.cognome = cognome;	
+	}
+
 
 	public String getEmail() {
 		// TODO - implement {class}.{operation}
