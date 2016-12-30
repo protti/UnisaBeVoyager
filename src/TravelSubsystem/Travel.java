@@ -8,7 +8,17 @@ import PollSubsystem.Poll;
 import RouteSubsystem.Route;
 
 public class Travel {
-
+	/**
+	*Classe che rappresenta un viaggio che viene creato da un utente registrato.
+	*@param creatoreViaggio = utente registrato che crea il viaggio
+	*@param partecipantiViaggio = arraylist rappresentante gli utenti regitrati partecipanti al viaggio
+	*@param pollList = arraylist contenente i sondaggi su tale viaggio
+	*@param route = itinerario del viaggio
+	*@param id = identificativo del viaggio
+	*@param startDate = data di inizio
+	*@param endDate = data di fine
+	*@param type= tipo di viaggio
+	*/
 	private RegisteredUser creatoreViaggio;
 	private ArrayList<RegisteredUser> partecipantiViaggio;
 	private ArrayList<Poll> pollList;
@@ -31,69 +41,113 @@ public class Travel {
 		this.endDate = endDate;
 		this.type = type;
 	}
-
+	/**
+	*Metodo che restituisce l'utente creatore del viaggio.
+	*@return creatoreViaggio
+	*
+	*/
 	public RegisteredUser getCreatoreViaggio() {
 		return creatoreViaggio;
 	}
-
+	/**
+	*Metodo che restituisce l'arraylist dei partecipanti al viaggio.
+	*@return partecipantiViaggio
+	*
+	*/
 	public ArrayList<RegisteredUser> getPartecipantiViaggio() {
 		return partecipantiViaggio;
 	}
-
+	/**
+	*Metodo che setta i componenti dell'arraylist dei partecipanti al viaggio.
+	*@param partecipantiViaggio
+	*
+	*/
 	public void setPartecipantiViaggio(ArrayList<RegisteredUser> partecipantiViaggio) {
 		this.partecipantiViaggio = partecipantiViaggio;
 	}
+	/**
+	*Metodo che restituisce l'arraylist dei sondaggi del viaggio.
+	*@return pollList
+	*
+	*/
 	public ArrayList<Poll> getPollList() {
 		return pollList;
 	}
-
+	/**
+	*Metodo che setta i sondaggi sul del viaggio in arraylist.
+	*@param pollList
+	*
+	*/
 	public void setPollList(ArrayList<Poll> pollList) {
 		this.pollList = pollList;
 	}
-
+	/**
+	*Metodo che setta l'itinerario del viaggio.
+	*@param route
+	*
+	*/
 	public void setRoute(Route route) {
 		this.route = route;
 	}
 
 
 	private boolean type;
-
+	/**
+	*Metodo che restituisce l'identificativo del viaggio.
+	*@return id
+	*
+	*/
 	public int getId() {
 		return this.id;
 	}
 
 	/**
-	 * 
-	 * @param id
-	 */
+	*Metodo che setta l'identificativo del viaggio.
+	*@param id
+	*
+	*/
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	/**
+	*Metodo che restituisce la data d'inizio.
+	*@return startDate
+	*
+	*/
 	public GregorianCalendar getStartDate() {
 		return this.startDate;
 	}
 
 	/**
-	 * 
-	 * @param startDate
-	 */
+	*Metodo che setta la data d'inizio.
+	*@param startDate
+	*
+	*/
 	public void setStartDate(GregorianCalendar startDate) {
 		this.startDate = startDate;
 	}
-
+	/**
+	*Metodo che restituisce la data di fine.
+	*@return endDate
+	*
+	*/
 	public GregorianCalendar getEndDate() {
 		return this.endDate;
 	}
 
 	/**
-	 * 
-	 * @param endDate
-	 */
+	*Metodo che setta la data di fine.
+	*@param endDate
+	*
+	*/
 	public void GregorianCalendar(GregorianCalendar endDate) {
 		this.endDate = endDate;
 	}
-
+	/**
+	*Metodo che restituisce il tipo del viaggio.
+	*@return type
+	*
+	*/
 	public boolean getType() {
 		return this.type;
 	}
@@ -106,12 +160,19 @@ public class Travel {
 		this.type = type;
 	}
 
-
+	/**
+	*Metodo che restituisce l'itinerario del viaggio.
+	*@return route
+	*
+	*/
 	public Route getRoute()
 	{
 		return this.route;
 	}
-
+	/**
+	*Metodo che rende un viaggio non più disponibile.
+	*
+	*/
 	public void closeTravel()
 	{
 		this.type = false;
