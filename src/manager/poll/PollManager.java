@@ -109,6 +109,4 @@ public class PollManager {
 		return poll;
 	}
 	
-	
-	
 }

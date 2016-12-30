@@ -352,6 +352,5 @@ public class TravelManager {
 		
 		return polls;
 	}
-	
-	
+
 }
