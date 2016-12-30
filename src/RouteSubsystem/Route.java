@@ -39,6 +39,13 @@ public class Route {
 		this.name = name;
 	}
 	
+	public Route(ArrayList<Location> locations, int id, String description, String name) {
+		this.locations = locations;
+		this.id = id;
+		this.description = description;
+		this.name = name;
+	}
+	
 	public Travel getRoute() {
 		return route;
 	}

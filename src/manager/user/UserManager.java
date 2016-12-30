@@ -70,7 +70,7 @@ public class UserManager {
 	}
 	
 	public static List<RegisteredUser> searchUsers(String username)
-		throws SQLException,DBException{
+		throws SQLException{
 		
 		List<RegisteredUser> listUsers = new ArrayList<RegisteredUser>();
 		Connection con = DriverManagerConnection.getConnection();
@@ -93,8 +93,6 @@ public class UserManager {
 				listUsers.add(user);
 			}
 		}
-		
-		if(listUsers.size() == 0) throw new DBException();
 		
 		return listUsers;
 	}
