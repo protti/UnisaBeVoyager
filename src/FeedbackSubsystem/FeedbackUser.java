@@ -1,7 +1,10 @@
 package FeedbackSubsystem;
 
 import java.util.GregorianCalendar;
-
+/**
+*Classe che rappresenta un feedback ad un utente. Estende la classe feedback.
+*@param userID = identificativo dell'utente
+*/
 public class FeedbackUser extends Feedback {
 
 	
@@ -17,7 +20,10 @@ public class FeedbackUser extends Feedback {
 		super(id, sender, message, date);
 		this.userID = userID;
 	}
-	
+	/**
+	*Metodo che restituisce l'identificativo dell'utente.
+	*@return userID
+	*/
 	public int getRecipientID() {
 		return this.userID;
 	}

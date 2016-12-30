@@ -3,7 +3,10 @@ package FeedbackSubsystem;
 import java.util.GregorianCalendar;
 
 import LocationSubsystem.Location;
-
+/**
+*Classe che rappresenta un feedback ad un luogo. Estende la classe feedback.
+*@param locationID = identificativo del luogo
+*/
 public class FeedbackLocation extends Feedback {
 
 	private int locationID;
@@ -21,7 +24,10 @@ public class FeedbackLocation extends Feedback {
 	}
 
 
-
+	/**
+	*Metodo che restituisce l'identificativo del luogo.
+	*@return locationID
+	*/
 	public int getLocationID() {
 		return this.locationID;
 	}
