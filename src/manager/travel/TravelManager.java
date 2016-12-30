@@ -323,7 +323,33 @@ public class TravelManager {
 				travels.add(travel);
 			}
 		}
-		
 		return travels;
+	}
+	
+	public static List<Poll> getPollTravel(int travelId)
+		throws SQLException{
+		List<Poll> polls = new ArrayList<Poll>();
+		Connection con = DriverManagerConnection.getConnection();
+		if(con != null){
+			
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery("select * "
+					+ "from Poll "
+					+ "where travelID = " + travelId + "");
+			DriverManagerConnection.releaseConnection(con);
+			
+			while(rs.next()){
+				GregorianCalendar gc1 = new GregorianCalendar();
+				GregorianCalendar gc2 = new GregorianCalendar();
+				gc1.setGregorianChange(rs.getDate(6));
+				gc2.setGregorianChange(rs.getDate(7));
+				Poll poll = new Poll(rs.getString(3),rs.getInt(5),rs.getInt(4),
+						gc1,gc2);
+				poll.setId(rs.getInt(1));
+				polls.add(poll);
+			}
+		}
+		
+		return polls;
 	}
 }
