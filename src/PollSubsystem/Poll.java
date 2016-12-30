@@ -28,6 +28,18 @@ public class Poll {
 	}
 
 
+	public Poll(String description, int vnegative, int vpositive, GregorianCalendar startDate,
+			GregorianCalendar endDate) {
+		super();
+		this.description = description;
+		this.vnegative = vnegative;
+		this.vpositive = vpositive;
+		this.startDate = startDate;
+		this.endDate = endDate;
+	}
+
+
+
 	/**
 	 * 
 	 * @param endDate

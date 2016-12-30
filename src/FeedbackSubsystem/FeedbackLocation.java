@@ -17,6 +17,13 @@ public class FeedbackLocation extends Feedback {
 
 
 
+	public FeedbackLocation(String sender, String message, GregorianCalendar date, int locationID) {
+		super(sender, message, date);
+		this.locationID = locationID;
+	}
+
+
+
 	public int getLocationID() {
 		return this.locationID;
 	}

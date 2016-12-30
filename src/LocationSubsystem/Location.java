@@ -6,7 +6,7 @@ public class Location {
 	private int id;
 	private String descrizione;
 	
-	public Location(String name, int id, String descrizione) {
+	public Location(int id,String name, String descrizione) {
 		super();
 		this.name = name;
 		this.id = id;

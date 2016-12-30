@@ -6,6 +6,12 @@ public class Feedback {
 
 	private int id;
 	private String sender;
+	public Feedback(String sender, String message, GregorianCalendar date) {
+		super();
+		this.sender = sender;
+		this.message = message;
+		this.date = date;
+	}
 	private String message;
 	private GregorianCalendar date;
 	
@@ -16,6 +22,7 @@ public class Feedback {
 		this.message = message;
 		this.date = date;
 	}
+	
 	
 	public int getId() {
 		return id;

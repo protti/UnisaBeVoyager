@@ -11,6 +11,11 @@ public class FeedbackRoute extends Feedback {
 		this.routeID = routeID;
 	}
 	
+	public FeedbackRoute(String sender, String message, GregorianCalendar date, int routeID) {
+		super(sender, message, date);
+		this.routeID = routeID; 
+	}
+
 	public int getRouteID() {
 		return this.routeID;
 	}
