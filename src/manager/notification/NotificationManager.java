@@ -13,7 +13,7 @@ import DBConnection.DriverManagerConnection;
 import NotificationSubsystem.Notification;
 import TravelSubsystem.TravelManager;
 import UserSubsystem.RegisteredUser;
-import manager.user.UserManager;
+import UserSubsystem.UserManager;
 
 public class NotificationManager {
 	
