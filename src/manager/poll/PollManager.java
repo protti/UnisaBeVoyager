@@ -127,6 +127,8 @@ public class PollManager {
 		if(result != 1) throw new DBException();
 	}
 	
+	
+	
 	public static boolean checkUserPoll(int pollId,int userId)
 		throws SQLException{
 		
