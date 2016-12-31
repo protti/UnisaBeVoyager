@@ -193,6 +193,33 @@ LOCK TABLES `poll` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `pollusermatch`
+--
+
+DROP TABLE IF EXISTS `pollusermatch`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `pollusermatch` (
+  `userID` bigint(20) NOT NULL,
+  `pollID` bigint(20) NOT NULL,
+  `confirmDate` date NOT NULL,
+  PRIMARY KEY (`userID`,`pollID`),
+  KEY `pollID` (`pollID`),
+  CONSTRAINT `pollusermatch_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `registereduser` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `pollusermatch_ibfk_2` FOREIGN KEY (`pollID`) REFERENCES `poll` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pollusermatch`
+--
+
+LOCK TABLES `pollusermatch` WRITE;
+/*!40000 ALTER TABLE `pollusermatch` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pollusermatch` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `registereduser`
 --
 
@@ -371,4 +398,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-12-31  0:18:32
+-- Dump completed on 2016-12-31 11:53:52
