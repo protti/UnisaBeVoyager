@@ -28,7 +28,7 @@ public class FeedbackLocation extends Feedback {
 	*Metodo che restituisce l'identificativo del luogo.
 	*@return locationID
 	*/
-	public int getLocationID() {
+	public int getFeedbackOwner() {
 		return this.locationID;
 	}
 

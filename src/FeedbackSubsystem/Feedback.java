@@ -8,11 +8,10 @@ import java.util.GregorianCalendar;
 *@param message = messaggio di feedback
 *@param date = data del feedback
 */
-public class Feedback {
+public abstract class Feedback {
 
 	private int id;
 	private String sender;
-
 	private String message;
 	private GregorianCalendar date;
 	
@@ -60,4 +59,6 @@ public class Feedback {
 		return date;
 	}	
 	
+	public abstract int getFeedbackOwner();
+		
 }

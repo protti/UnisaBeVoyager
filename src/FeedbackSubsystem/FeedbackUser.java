@@ -7,8 +7,6 @@ import java.util.GregorianCalendar;
 */
 public class FeedbackUser extends Feedback {
 
-	
-
 	private int userID;
 
 	public FeedbackUser(String sender, String message, GregorianCalendar date, int userID) {
@@ -24,7 +22,7 @@ public class FeedbackUser extends Feedback {
 	*Metodo che restituisce l'identificativo dell'utente.
 	*@return userID
 	*/
-	public int getRecipientID() {
+	public int getFeedbackOwner() {
 		return this.userID;
 	}
 

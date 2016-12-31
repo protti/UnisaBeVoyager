@@ -22,7 +22,7 @@ public class FeedbackRoute extends Feedback {
 	*Metodo che restituisce l'identificativo dell'itinerario.
 	*@return routeID
 	*/
-	public int getRouteID() {
+	public int getFeedbackOwner() {
 		return this.routeID;
 	}
 
