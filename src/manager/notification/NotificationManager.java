@@ -11,8 +11,8 @@ import java.util.List;
 import DBConnection.DBException;
 import DBConnection.DriverManagerConnection;
 import NotificationSubsystem.Notification;
+import TravelSubsystem.TravelManager;
 import UserSubsystem.RegisteredUser;
-import manager.travel.TravelManager;
 import manager.user.UserManager;
 
 public class NotificationManager {
