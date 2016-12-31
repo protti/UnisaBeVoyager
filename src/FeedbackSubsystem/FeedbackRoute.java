@@ -1,6 +1,8 @@
 package FeedbackSubsystem;
 
 import java.util.GregorianCalendar;
+
+import UserSubsystem.RegisteredUser;
 /**
 *Classe che rappresenta un feedback all'itinerario. Estende la classe feedback.
 *@param routeID = identificativo del luogo
@@ -9,12 +11,12 @@ public class FeedbackRoute extends Feedback {
 
 	private int routeID;
 
-	public FeedbackRoute(int id, String sender, String message, GregorianCalendar date, int routeID) {
+	public FeedbackRoute(int id, RegisteredUser sender, String message, GregorianCalendar date, int routeID) {
 		super(id, sender, message, date);
 		this.routeID = routeID;
 	}
 	
-	public FeedbackRoute(String sender, String message, GregorianCalendar date, int routeID) {
+	public FeedbackRoute(RegisteredUser sender, String message, GregorianCalendar date, int routeID) {
 		super(sender, message, date);
 		this.routeID = routeID; 
 	}

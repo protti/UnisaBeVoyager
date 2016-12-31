@@ -1,6 +1,8 @@
 package FeedbackSubsystem;
 
 import java.util.GregorianCalendar;
+
+import UserSubsystem.RegisteredUser;
 /**
 *Classe che rappresenta un feedback.
 *@param id = identificativo del feedback
@@ -11,18 +13,18 @@ import java.util.GregorianCalendar;
 public abstract class Feedback {
 
 	private int id;
-	private String sender;
+	private RegisteredUser sender;
 	private String message;
 	private GregorianCalendar date;
 	
-	public Feedback(String sender, String message, GregorianCalendar date) {
+	public Feedback(RegisteredUser sender, String message, GregorianCalendar date) {
 		super();
 		this.sender = sender;
 		this.message = message;
 		this.date = date;
 	}
 	
-	public Feedback(int id, String sender, String message, GregorianCalendar date) {
+	public Feedback(int id, RegisteredUser sender, String message, GregorianCalendar date) {
 		super();
 		this.id = id;
 		this.sender = sender;
@@ -41,7 +43,7 @@ public abstract class Feedback {
 	*Metodo che restituisce il mittente del feedback.
 	*@return sender
 	*/
-	public String getSender() {
+	public RegisteredUser getSender() {
 		return sender;
 	}
 	/**
