@@ -126,17 +126,6 @@ public class TravelManager {
 					+ "from UserTravelMatch "
 					+ "where travelID = " + id + ")");
 			
-			ArrayList<RegisteredUser> users = new ArrayList<RegisteredUser>();
-			
-			while(rs3.next()){
-				GregorianCalendar gc = new GregorianCalendar();
-				gc.setGregorianChange(rs3.getDate(7));
-				RegisteredUser user = new RegisteredUser(rs3.getInt(1),rs3.getString(5),
-						rs3.getString(2),rs3.getString(6),rs3.getString(3),
-						rs3.getString(4),gc,rs3.getInt(8));
-				users.add(ru);
-			}
-			
 			Statement st5 = con.createStatement();
 			ResultSet rs5 = st5.executeQuery("select * "
 					+ "from Poll "
@@ -167,7 +156,6 @@ public class TravelManager {
 				
 				travel = new Travel(ru,rs.getInt(1),gc1,gc2,rs.getBoolean(6));
 				travel.setRoute(route);
-				travel.setPartecipantiViaggio(users);
 				travel.setPollList(polls);
 				if(route != null) route.setRoute(travel);
 			}			
@@ -195,7 +183,7 @@ public class TravelManager {
 		return false;
 	}
 	
-	public static void updateTravel(Travel travel, int id)
+	public static void updateTravel(Travel travel)
 		throws SQLException,DBException{
 		
 		int result = 0;
@@ -209,14 +197,48 @@ public class TravelManager {
 					.getGregorianChange().toString() + "',"
 					+ "routeID = " + travel.getRoute().getId() + ""
 					+ "where id = " + travel.getId());
+			
+			Statement st1 = con.createStatement();
+			ResultSet rs = st1.executeQuery("select * "
+					+ "from UserTravelMatch "
+					+ "where travelID = " + travel.getId() + "");
+			
 			DriverManagerConnection.releaseConnection(con);
+			
+			ArrayList<Integer> usersId = new ArrayList<Integer>();
+			
+			while(rs.next()){
+				usersId.add(rs.getInt("partecipantID"));
+			}
+			
+			
+			
+			for(RegisteredUser user: travel.getPartecipantiViaggio()){
+				boolean type = false;
+				for(int i = 0; i < usersId.size(); i++){
+					if(user.getId() == usersId.get(i)) type = true;
+				}
+				
+				if(!type){
+					TravelManager.addUserToTravel(user.getId(), travel.getId());
+				}
+			}
+			
+			for(int i = 0; i < usersId.size(); i++){
+				boolean type = false;
+				for(RegisteredUser user: travel.getPartecipantiViaggio()){
+					if(user.getId() == usersId.get(i)) type = true;
+				}		
+				if(!type){
+					TravelManager.removeUserByTravel(travel.getId(), usersId.get(i));
+				}
+			}
+			
 		}
-		
 		if(result != 1) throw new DBException();
-		
 	}
 	
-	public static void addUserToTravel(int userId,int travelId)
+	private static void addUserToTravel(int userId,int travelId)
 		throws SQLException,DBException{
 		
 		int result = 0;
@@ -261,7 +283,7 @@ public class TravelManager {
 		return users;
 	}
 	
-	public static void removeUserByTravel(int travelId,int userId)
+	private static void removeUserByTravel(int travelId,int userId)
 		throws SQLException,DBException{
 		
 		int result = 0;
@@ -350,5 +372,27 @@ public class TravelManager {
 		}
 		
 		return polls;
+	}
+	
+	public static List<Travel> searchTravelByLocation(int locationId)
+		throws SQLException,DBException{
+		
+		ArrayList<Travel> travels = new ArrayList<Travel>();
+		Connection con = DriverManagerConnection.getConnection();
+		if(con != null){
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery("select id "
+					+ "from Travel "
+					+ "where routeID IN (select routeID "
+					+ "from RouteLocationMatch "
+					+ "where locationID = " + locationId + ")");
+			DriverManagerConnection.releaseConnection(con);
+			
+			while(rs.next()){
+				travels.add(TravelManager.searchTravelById(rs.getInt(1)));
+			}
+		}
+		
+		return travels;
 	}
 }
