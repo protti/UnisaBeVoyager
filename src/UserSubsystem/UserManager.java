@@ -87,7 +87,7 @@ public class UserManager {
 				RegisteredUser user = new RegisteredUser(rs.getString(5),
 						rs.getString(2),rs.getString(6),rs.getString(3),
 						rs.getString(4),gc,rs.getInt(8));
-				
+				user.setAuthorization(rs.getShort(9));
 				user.setId(rs.getInt(1));
 				listUsers.add(user);
 			}
@@ -116,7 +116,7 @@ public class UserManager {
 				user = new RegisteredUser(rs.getString(5),
 						rs.getString(2),rs.getString(6),rs.getString(3),
 						rs.getString(4),gc,rs.getInt(8));
-				
+				user.setAuthorization(rs.getShort(9));
 				user.setId(rs.getInt(1));
 			}
 		}
@@ -139,7 +139,8 @@ public class UserManager {
 					+ "lastName = '" + user.getCognome() + "',"
 					+ "email = '" + user.getEmail() + "',"
 					+ "birthDate = '" + user.getBirthDate().getGregorianChange() + "',"
-					+ "age = " + user.getAge() + " "
+					+ "age = " + user.getAge() + ","
+					+ "authorization = " + user.getAuthorization() + " "
 					+ "where id = " + user.getId() + "");
 			DriverManagerConnection.releaseConnection(con);
 		}

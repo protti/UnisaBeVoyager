@@ -48,7 +48,6 @@ UNLOCK TABLES;
 --
 -- Table structure for table `feedbackroute`
 --
---
 
 DROP TABLE IF EXISTS `feedbackroute`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -236,6 +235,7 @@ CREATE TABLE `registereduser` (
   `password` varchar(30) NOT NULL,
   `birthDate` date NOT NULL,
   `age` smallint(6) NOT NULL,
+  `authorization` smallint(6) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
@@ -247,7 +247,7 @@ CREATE TABLE `registereduser` (
 
 LOCK TABLES `registereduser` WRITE;
 /*!40000 ALTER TABLE `registereduser` DISABLE KEYS */;
-INSERT INTO `registereduser` VALUES (1,'alexlon','Alessandro','Longobardi','alexlon994@gmail.com','ciao','1994-08-29',22),(4,'protti','Donato','Tiano','protti@gmail.com','camicia','1995-04-17',21),(5,'bestZirpolone','Paolo','Zirpoli','zirpoli.paolo@gmail.com','amoreamaro','1995-05-12',21),(6,'theZirpolone','Francesco','Zirpoli','zirpoli.francesco@gmail.com','amaro','1995-11-10',21);
+INSERT INTO `registereduser` VALUES (1,'alexlon','Alessandro','Longobardi','alexlon994@gmail.com','ciao','1994-08-29',22,0),(4,'protti','Donato','Tiano','protti@gmail.com','camicia','1995-04-17',21,0),(5,'bestZirpolone','Paolo','Zirpoli','zirpoli.paolo@gmail.com','amoreamaro','1995-05-12',21,0),(6,'theZirpolone','Francesco','Zirpoli','zirpoli.francesco@gmail.com','amaro','1995-11-10',21,0);
 /*!40000 ALTER TABLE `registereduser` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -399,4 +399,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-12-31 11:53:52
+-- Dump completed on 2017-01-01 20:30:58

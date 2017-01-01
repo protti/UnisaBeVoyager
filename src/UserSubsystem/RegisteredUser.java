@@ -21,7 +21,8 @@ public class RegisteredUser extends User {
 	private String cognome;
 	private GregorianCalendar birthDate;
 	private int age;
-
+	private int authorization;
+	
 	public RegisteredUser(String email, String username, String password, String nome, String cognome,
 			GregorianCalendar birthDate, int age) {
 		super();
@@ -145,4 +146,11 @@ public class RegisteredUser extends User {
 		this.age = age;
 	}
 
+	public void setAuthorization(int autor){
+		authorization = autor;
+	}
+	
+	public int getAuthorization(){
+		return this.authorization;
+	}
 }
