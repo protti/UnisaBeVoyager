@@ -30,7 +30,6 @@ public class TravelController {
 		
 		return true;
 	}
-
 	
 	public static boolean deleteTravel(int idTravel) {
 		try {
