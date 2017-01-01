@@ -156,6 +156,8 @@ public class RouteManager {
 		if(result != 1) throw new DBException();
 	}
 	
+	
+	
 	public static List<Location> getLocations(int routeId)
 		throws SQLException{
 		List<Location> locations = new ArrayList<Location>();

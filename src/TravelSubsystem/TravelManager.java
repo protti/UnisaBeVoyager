@@ -256,6 +256,8 @@ public class TravelManager {
 		if(result != 1) throw new DBException();
 	}
 	
+	
+	
 	public static List<RegisteredUser> getPartecipatingUsers(int travelId)
 		throws SQLException{
 		
