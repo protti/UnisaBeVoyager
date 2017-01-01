@@ -121,7 +121,7 @@ public class RouteManager {
 		return routes;
 	}
 	
-	public static void updateRoute(Route route)
+	/*public static void updateRoute(Route route)
 		throws SQLException,DBException{
 		
 		int result = 0;
@@ -136,7 +136,7 @@ public class RouteManager {
 		}
 		
 		if(result != 1) throw new DBException();
-	}
+	} PROBABILMENTE RIDONDANTE*/
 	
 	public static void addLocationToRoute(int routeId,int locationId)
 		throws SQLException,DBException{

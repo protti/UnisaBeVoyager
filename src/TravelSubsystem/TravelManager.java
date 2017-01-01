@@ -246,7 +246,7 @@ public class TravelManager {
 		if(con != null){
 			Date date = new Date();
 			Statement st = con.createStatement();
-			result = st.executeUpdate("insert into UserTravel "
+			result = st.executeUpdate("insert into UserTravelMatch "
 					+ "values('" + userId + "',"
 							+ "'" + travelId + "',"
 							+ "'" + date + "')");
