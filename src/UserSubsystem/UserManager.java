@@ -16,7 +16,7 @@ import DBConnection.DriverManagerConnection;
 */
 public class UserManager {
 	/**
-	*Metodo che gestisce il salvatoggio di un utente sul database del sistema.
+	*Metodo che gestisce il salvataggio di un utente sul database del sistema.
 	*@param user
 	*@param password
 	*/
