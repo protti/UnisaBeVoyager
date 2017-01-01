@@ -193,7 +193,7 @@ public class Travel {
 		return this.route;
 	}
 	/**
-	*Metodo che rende un viaggio non più disponibile.
+	*Metodo che chiude un viaggio.
 	*
 	*/
 	public void closeTravel()
