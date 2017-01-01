@@ -3,14 +3,18 @@ package TravelSubsystem;
 import java.util.GregorianCalendar;
 
 import UserSubsystem.RegisteredUser;
+import TravelSubsystem.TravelManager;
 
 public class TravelController {
 
-	public static boolean addUserInTravel(int idUtente, int idTravel) {
 
+	public static boolean addUserInTravel(RegisteredUser usedr, Travel travel) {
+		
+		TravelManager.updateTravel(travel);
 		return true;
 	}
 
+	
 	public static boolean deleteTravel(int idTravel) {
 
 		return true;

@@ -8,6 +8,7 @@ import PollSubsystem.Poll;
 import RouteSubsystem.Route;
 
 public class Travel {
+	private static final String TravelMananger = null;
 	/**
 	*Classe che rappresenta un viaggio che viene creato da un utente registrato.
 	*@param creatoreViaggio = utente registrato che crea il viaggio
@@ -19,6 +20,7 @@ public class Travel {
 	*@param endDate = data di fine
 	*@param type= tipo di viaggio
 	*/
+	
 	private RegisteredUser creatoreViaggio;
 	private ArrayList<RegisteredUser> partecipantiViaggio;
 	private ArrayList<Poll> pollList;
@@ -62,14 +64,25 @@ public class Travel {
 	*@param partecipantiViaggio
 	*
 	*/
-	public void setPartecipantiViaggio(ArrayList<RegisteredUser> partecipantiViaggio) {
-		this.partecipantiViaggio = partecipantiViaggio;
+	
+	/* Mi sembra inutile avere un metodo che prende tutta un'arraylist, meglio passargli l'utente e farlo aggiungere. Rinominiamo il metodo "aggiungiPartecipante" magari*/
+	
+	public boolean addUserToTravel(RegisteredUser user) { 
+		
+		if (isUserInTravel(user.getId())) {
+			return false;
+		}
+		
+		this.partecipantiViaggio.add(user);
+		return true;
+		
 	}
+
 	/**
 	*Metodo che restituisce l'arraylist dei sondaggi del viaggio.
 	*@return pollList
-	*
 	*/
+	
 	public ArrayList<Poll> getPollList() {
 		return pollList;
 	}
@@ -90,7 +103,16 @@ public class Travel {
 		this.route = route;
 	}
 
-
+	private boolean isUserInTravel(int idUtente) {
+		for (int i = 0; i < this.partecipantiViaggio.size(); i++) {
+			if (idUtente == partecipantiViaggio.get(i).getId()) {
+				return false;
+			}
+		}
+		return true;
+	}
+		
+	
 	private boolean type;
 	/**
 	*Metodo che restituisce l'identificativo del viaggio.
