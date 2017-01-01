@@ -78,6 +78,15 @@ public class Travel {
 		
 	}
 
+	private boolean isUserInTravel(int idUtente) {
+		for (int i = 0; i < this.partecipantiViaggio.size(); i++) {
+			if (idUtente == partecipantiViaggio.get(i).getId()) {
+				return false;
+			}
+		}
+		return true;
+	}
+			
 	/**
 	*Metodo che restituisce l'arraylist dei sondaggi del viaggio.
 	*@return pollList
@@ -103,15 +112,7 @@ public class Travel {
 		this.route = route;
 	}
 
-	private boolean isUserInTravel(int idUtente) {
-		for (int i = 0; i < this.partecipantiViaggio.size(); i++) {
-			if (idUtente == partecipantiViaggio.get(i).getId()) {
-				return false;
-			}
-		}
-		return true;
-	}
-		
+
 	
 	private boolean type;
 	/**
