@@ -11,9 +11,15 @@ import java.util.List;
 
 import DBConnection.DBException;
 import DBConnection.DriverManagerConnection;
-
+/**
+*Classe che gestisce le operazioni richeste da un utente.
+*/
 public class UserManager {
-	
+	/**
+	*Metodo che gestisce il salvatoggio di un utente sul database del sistema.
+	*@param user
+	*@param password
+	*/
 	public static void saveUserToDB(RegisteredUser user,String password)
 		throws SQLException,DBException{
 		int result = 0;
@@ -37,7 +43,11 @@ public class UserManager {
 		
 		if(result != 1) throw new DBException();
 	}
-	
+	/**
+	*Metodo booleano che vede se un utente è all'interno del database tramite id.
+	*@param userId
+	*@return rs.next() se, stabilita la connessione trova l'user oppure false.
+	*/
 	public static boolean checkUser(int userId) 
 			throws SQLException{
 		
@@ -54,7 +64,10 @@ public class UserManager {
 		return false;
 		
 	}
-	
+	/**
+	*Metodo che gestisce l'eliminazione di un utente dal database.
+	*@param userId
+	*/
 	public static void deleteUser(int userId)
 		throws SQLException,DBException{
 		int result = 0;
@@ -67,7 +80,11 @@ public class UserManager {
 		}
 		if(result != 1) throw new DBException();
 	}
-	
+	/**
+	*Metodo che ricerca utente tramite username.
+	*@param username
+	*@return listUsers
+	*/
 	public static List<RegisteredUser> searchUsers(String username)
 		throws SQLException{
 		
@@ -95,7 +112,11 @@ public class UserManager {
 		
 		return listUsers;
 	}
-	
+	/**
+	*Metodo che, stabilita connessione al database, va a prendere un utente tramite il suo id.
+	*@param id
+	*@return user
+	*/
 	public static RegisteredUser fetchUser(int id)
 		throws SQLException,DBException{
 		
@@ -123,7 +144,10 @@ public class UserManager {
 		if(user == null) throw new DBException();
 		return user;
 	}
-	
+	/**
+	*Metodo che aggiorna i dati di un utente nel database.
+	*@param user
+	*/
 	public static void updateUser(RegisteredUser user)
 		throws SQLException,DBException{
 		
@@ -147,7 +171,11 @@ public class UserManager {
 		
 		if(result != 1) throw new DBException();
 	}
-	
+	/**
+	*Metodo che permette ad un utente di cambiare password.
+	*@param userId
+	*@param password
+	*/
 	public static void changePassword(int userId, String password)
 			throws SQLException,DBException{
 			
@@ -165,7 +193,11 @@ public class UserManager {
 			
 			if(result != 1) throw new DBException();
 		}
-	
+	/**
+	*Metodo che controlla l'email inserita.
+	*@param email
+	*@return rs.next() se email nel database, false altrimenti
+	*/
 	public static boolean controlEmail(String email)
 			throws SQLException,DBException{
 		
@@ -182,7 +214,11 @@ public class UserManager {
 		}
 		return false;
 	}
-	
+	/**
+	*
+	*@param 
+	*@return
+	*/
 	public static boolean checkUserVisit(int userId,
 			int locationId) throws SQLException, DBException{
 		
@@ -209,7 +245,11 @@ public class UserManager {
 		}
 		return false;
 	}
-	
+	/**
+	*
+	*@param 
+	*@return
+	*/
 	public static boolean checkUserTravel(int userId,
 			int travelId) throws SQLException,DBException{
 		
