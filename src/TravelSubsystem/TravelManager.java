@@ -128,14 +128,14 @@ public class TravelManager {
 						+ "where id IN(select locationID "
 						+ "from RouteLocationMatch "
 						+ "where routeID = " + rs2.getLong(1) + "");
-				//ArrayList<Location> locations = new ArrayList<Location>();
-				Map<Integer, Location> locations = new HashMap<>();
+				ArrayList<Location> locations = new ArrayList<Location>();
+				
 				
 				while(rs4.next()){
 					Location location = new Location(rs4.getInt(1),
 							rs4.getString(3),rs4.getString(2));
-					//locations.add(location);
-					locations.put(location.getId(),location);
+					locations.add(location);
+					
 				}
 				
 				route = new Route(locations,rs2.getInt(1),
@@ -449,7 +449,7 @@ public class TravelManager {
 					+ "from Travel "
 					+ "where routeID IN (select routeID "
 					+ "from RouteLocationMatch "
-					+ "where locationID = " + locationId + ")");
+					+ "where name = " + location + ")");
 			DriverManagerConnection.releaseConnection(con);
 			
 			while(rs.next()){
