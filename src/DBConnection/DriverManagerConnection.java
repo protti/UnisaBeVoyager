@@ -6,7 +6,11 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Logger;
-
+/**
+*Classe che gestisce la connessione al database.
+*@param freeDbConnections = lista di connessioni al database
+*@param Log = registra eventi quando l'applicazione è in funzione
+*/
 public class DriverManagerConnection {
 	private static List<Connection> freeDbConnections;
 	private static Logger log = Logger.getLogger("global");
@@ -19,7 +23,10 @@ public class DriverManagerConnection {
 			log.severe("DB driver not found: " + e.getMessage());	
 		}
 	}	
-	
+	/**
+	*Metodo che crea una connessione al database.
+	*@return newConnection
+	*/
 	private	static Connection createDBConnection() throws SQLException {	
 		Connection newConnection = null;	
 		String db = "bevoyager";	
@@ -31,7 +38,10 @@ public class DriverManagerConnection {
 		newConnection.setAutoCommit(false);	
 		return newConnection;	
 	}	
-	
+	/**
+	*Metodo sincronizzato che restituisce una connessione al database.
+	*@return cnnection
+	*/
 	public	static synchronized Connection	getConnection()	throws SQLException	{	
 		Connection	connection;	
 		if	(!freeDbConnections.isEmpty())	{	
@@ -46,7 +56,10 @@ public class DriverManagerConnection {
 		}	else		connection	=	DriverManagerConnection.createDBConnection();
 		return	connection;	
 	}
-	
+	/**
+	*Metodo che aggiunge una connessione alla lista delle connessioni.
+	*@param connection
+	*/
 	public	static synchronized void releaseConnection(Connection connection){	
 		DriverManagerConnection.freeDbConnections.add(connection);	
 	}	
