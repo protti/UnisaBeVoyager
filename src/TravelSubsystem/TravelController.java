@@ -121,9 +121,6 @@ public class TravelController {
 		
 		try {
 			results = TravelManager.searchTravelByLocation(location);
-			if (results.isEmpty()) {
-				results = TravelManager.searchTravelById(location);
-			}
 		}
 		catch (DBException e) {
 			return null;

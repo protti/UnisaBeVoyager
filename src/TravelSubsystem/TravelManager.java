@@ -90,7 +90,7 @@ public class TravelManager {
 	*@param idTravel
 	*@return travel
 	*/
-	public static Travel searchTravelById(int id)
+	public static Travel fetchTravel(int id)
 		throws SQLException,DBException{
 		Travel travel = null;
 		Connection con = DriverManagerConnection.getConnection();
@@ -362,7 +362,7 @@ public class TravelManager {
 			DriverManagerConnection.releaseConnection(con);
 			
 			while(rs.next()){
-				Travel travel = TravelManager.searchTravelById(rs.getInt(1));
+				Travel travel = TravelManager.fetchTravel(rs.getInt(1));
 				travels.add(travel);
 			}
 		}
@@ -393,7 +393,7 @@ public class TravelManager {
 			DriverManagerConnection.releaseConnection(con);
 			
 			while(rs.next()){
-				Travel travel = TravelManager.searchTravelById(rs.getInt(1));
+				Travel travel = TravelManager.fetchTravel(rs.getInt(1));
 				travels.add(travel);
 			}
 		}
@@ -438,7 +438,7 @@ public class TravelManager {
 	*@param locationId
 	*@return travels
 	*/
-	public static List<Travel> searchTravelByLocation(int locationId)
+	public static List<Travel> searchTravelByLocation(String location)
 		throws SQLException,DBException{
 		
 		ArrayList<Travel> travels = new ArrayList<Travel>();
@@ -453,7 +453,7 @@ public class TravelManager {
 			DriverManagerConnection.releaseConnection(con);
 			
 			while(rs.next()){
-				travels.add(TravelManager.searchTravelById(rs.getInt(1)));
+				travels.add(TravelManager.fetchTravel(rs.getInt(1)));
 			}
 		}
 		
