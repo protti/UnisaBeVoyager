@@ -17,20 +17,20 @@ import TravelSubsystem.Travel;
 public class Route {
 
 	
-	private Map<Integer, Location> locations;
+	private ArrayList<Location> locations;
 	private int id;
 	private String description;
 	private String name;
 	private Travel route; //noooooooooooo
 	
-	public Route(Travel route, Map<Integer, Location> locations, String description, String name) {
+	public Route(Travel route, ArrayList<Location> locations, String description, String name) {
 		this.route = route;
 		this.locations = locations;
 		this.description = description;
 		this.name = name;
 	}
 	
-	public Route(Travel route, Map<Integer, Location> locations, int id, String description, String name) {
+	public Route(Travel route, ArrayList<Location> locations, int id, String description, String name) {
 		this.route = route;
 		this.locations = locations;
 		this.id = id;
@@ -38,7 +38,7 @@ public class Route {
 		this.name = name;
 	}
 	
-	public Route(Map<Integer, Location> locations, int id, String description, String name) {
+	public Route(ArrayList<Location> locations, int id, String description, String name) {
 		this.locations = locations;
 		this.id = id;
 		this.description = description;
@@ -62,14 +62,14 @@ public class Route {
 	Metodo che restituisce i luoghi dell'itinerario.
 	*@return locations
 	*/
-	public Map<Integer, Location> getLocations() {
+	public ArrayList<Location> getLocations() {
 		return locations;
 	}
 	/**
 	Metodo che setta l'arraylist di luoghi di un itinerario.
 	*@param locations
 	*/
-	public void setLocations(Map<Integer, Location> locations) {
+	public void setLocations(ArrayList<Location> locations) {
 		this.locations = locations;
 	}
 	/**
@@ -120,7 +120,7 @@ public class Route {
 	*/
 	public void addLocation(Location location)
 	{
-		this.locations.put(location.getId(), location);
+		this.locations.add(location);
 	}
 	/**
 	Metodo che rimuove un itinerario dall'arraylist di itinerari.
