@@ -10,16 +10,16 @@ import UserSubsystem.RegisteredUser;
 */
 public class FeedbackLocation extends Feedback {
 
-	private int locationID;
+	private Location locationID;
 
-	public FeedbackLocation(int id, RegisteredUser sender, String message, GregorianCalendar date, int locationID) {
+	public FeedbackLocation(int id, RegisteredUser sender, String message, GregorianCalendar date, Location locationID) {
 		super(id, sender, message, date);
 		this.locationID = locationID;
 	}
 
 
 
-	public FeedbackLocation(RegisteredUser sender, String message, GregorianCalendar date, int locationID) {
+	public FeedbackLocation(RegisteredUser sender, String message, GregorianCalendar date, Location locationID) {
 		super(sender, message, date);
 		this.locationID = locationID;
 	}
@@ -30,7 +30,7 @@ public class FeedbackLocation extends Feedback {
 	*@return locationID
 	*/
 	public int getFeedbackOwner() {
-		return this.locationID;
+		return this.locationID.getId();
 	}
 
 }

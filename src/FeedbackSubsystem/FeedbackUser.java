@@ -9,14 +9,14 @@ import UserSubsystem.RegisteredUser;
 */
 public class FeedbackUser extends Feedback {
 
-	private int userID;
+	private RegisteredUser userID;
 
-	public FeedbackUser(RegisteredUser sender, String message, GregorianCalendar date, int userID) {
+	public FeedbackUser(RegisteredUser sender, String message, GregorianCalendar date, RegisteredUser userID) {
 		super(sender, message, date);
 		this.userID = userID;
 	}
 
-	public FeedbackUser(int id, RegisteredUser sender, String message, GregorianCalendar date, int userID) {
+	public FeedbackUser(int id, RegisteredUser sender, String message, GregorianCalendar date, RegisteredUser userID) {
 		super(id, sender, message, date);
 		this.userID = userID;
 	}
@@ -25,7 +25,7 @@ public class FeedbackUser extends Feedback {
 	*@return userID
 	*/
 	public int getFeedbackOwner() {
-		return this.userID;
+		return this.userID.getId();
 	}
 
 }
