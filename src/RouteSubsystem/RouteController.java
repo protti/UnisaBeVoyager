@@ -41,10 +41,7 @@ public class RouteController {
 			if (idLocation == locations.get(i).getId()) {
 				return false;
 			}
-		}
-
-
-		
+		}		
 		return false;
 	}
 	
@@ -108,6 +105,22 @@ public class RouteController {
 			return false;
 		}
 		return true;
+	}
+	
+	public static Route fetchRoute(int idRoute) {
+		Route route;
+		
+		try {
+			route = RouteManager.fetchRoute(idRoute);
+		}
+		catch (DBException e) {
+			return null;
+		}
+		catch (SQLException e) {
+			return null;
+		}
+		return route;
+		
 	}
 
 
