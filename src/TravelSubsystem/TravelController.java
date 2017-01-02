@@ -115,20 +115,28 @@ public class TravelController {
 		return true;
 	}
 	
-	public static List<Travel> searchTravel(String locationName) {
+	public static List<Travel> searchTravel(String location) {
+		
+		List<Travel> results;
 		
 		try {
-			List<Travel> results = TravelManager.searchTravelByLocation(locationName);
+			results = TravelManager.searchTravelByLocation(location);
+			if (results.isEmpty()) {
+				results = TravelManager.searchTravelById(location);
+			}
 		}
 		catch (DBException e) {
 			return null;
 		}
 		catch (SQLException e) {
 			return null;
+		}	
+		
+		if(!results.isEmpty()) {
+			return results;
+		} else {
+			return null;
 		}
-		
-		
-		
 	}
 	
 }
