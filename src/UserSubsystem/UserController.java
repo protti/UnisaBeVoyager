@@ -1,35 +1,76 @@
 package UserSubsystem;
 
+import java.sql.SQLException;
 import java.util.GregorianCalendar;
+import java.util.List;
+
+import DBConnection.DBException;
 
 public class UserController {
 
-		static public User fetchUser(int id)
+		static public RegisteredUser fetchUser(int id)
 		{
-		
-			return null;
+			RegisteredUser user;
+			try {
+				user = UserManager.fetchUser(id);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				user = null;
+			} catch (DBException e) {
+				// TODO Auto-generated catch block
+				user = null;
+			}
+			return user;
 		}
 	
-		static public RegisteredUser searchUser(String username)
+		static public List<RegisteredUser> searchUser(String username)
 		{
-		
-			return null;
+			List<RegisteredUser> listUsers;
+			
+			try {
+				listUsers = UserManager.searchUsers(username);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				listUsers = null;
+			}
+			return listUsers;
 		}
 		
 		static public RegisteredUser createUser(String email, String username, String password, String nome, String cognome,
 				GregorianCalendar birthDate, int age)
 		{
-			return null;
+			RegisteredUser user = new RegisteredUser(email,username,password,nome,cognome,
+					birthDate,age);
+			try {
+				UserManager.saveUserToDB(user, password);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				return null;
+			} catch (DBException e) {
+				// TODO Auto-generated catch block
+				return null;
+			}
+			
+			return user;
 		}
 		
-		static public RegisteredUser getUser(String username,String password)
+		/*static public RegisteredUser getUser(String username,String password)
 		{
-			return null;
-		}
+			
+		}*/
 		
 		static public boolean deleteUser(int id)
 		{
-			return false;
+			try {
+				UserManager.deleteUser(id);
+				return true;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				return false;
+			} catch (DBException e) {
+				// TODO Auto-generated catch block
+				return false;
+			}
 		}
 	
 }
