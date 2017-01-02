@@ -17,8 +17,15 @@ import LocationSubsystem.Location;
 import PollSubsystem.Poll;
 import RouteSubsystem.Route;
 import UserSubsystem.RegisteredUser;
+/**
+*Classe che gestisce le operazioni su un viaggio.
+*/
 
 public class TravelManager {
+	/**
+	*Metodo che gestisce il salvataggio di un viaggio sul database.
+	*@param travel
+	*/
 
 	public static void saveTravelToDB(Travel travel)
 		throws SQLException,DBException{
@@ -40,7 +47,11 @@ public class TravelManager {
 		
 		if(result != 1) throw new DBException();
 	}
-	
+	/**
+	 * Metodo che controlla la presenza di un viaggio sul database.
+	 * @param idTravel
+	 * @return rs.next() se c'e', false altrimenti
+	 */
 	public static boolean checkTravel(int idTravel)
 			throws SQLException{
 		Connection con = DriverManagerConnection.getConnection();
@@ -56,7 +67,10 @@ public class TravelManager {
 		
 		return false;
 	}
-	
+	/**
+	*Metodo che gestisce l'eliminazione di un itinerario.
+	*@param idTravel
+	*/
 	public static void deleteTravel(int idTravel)
 		throws SQLException,DBException{
 		
@@ -71,7 +85,11 @@ public class TravelManager {
 		
 		if(result != 1) throw new DBException();
 	}
-	
+	/**
+	*Metodo che cerca sul database un viaggio tramite id.
+	*@param idTravel
+	*@return travel
+	*/
 	public static Travel searchTravelById(int id)
 		throws SQLException,DBException{
 		Travel travel = null;
@@ -168,7 +186,12 @@ public class TravelManager {
 		if(travel == null) throw new DBException();
 		return travel;
 	}
-	
+	/**
+	*Metodo che vede se un utente partecipa ad un viaggio.
+	*@param userId
+	*@param travelId
+	*return rs.next() se si', false altrimenti
+	*/
 	public static boolean checkUserPartecipant(int userId,int travelId)
 		throws SQLException{
 		
@@ -187,7 +210,10 @@ public class TravelManager {
 		
 		return false;
 	}
-	
+	/**
+	*Metodo che aggiorna i dati di un viaggio.
+	*@param travel
+	*/
 	public static void updateTravel(Travel travel)
 		throws SQLException,DBException{
 		
@@ -242,7 +268,11 @@ public class TravelManager {
 		}
 		if(result != 1) throw new DBException();
 	}
-	
+	/**
+	*Metodo che aggiunge un utente ad un viaggio.
+	*@param userId
+	*@param travelId
+	*/
 	private static void addUserToTravel(int userId,int travelId)
 		throws SQLException,DBException{
 		
@@ -262,7 +292,11 @@ public class TravelManager {
 	}
 	
 	
-	
+	/**
+	*Metodo che restituisce i partecipanti ad un viaggio.
+	*@param travelId
+	*@return users
+	*/
 	public static List<RegisteredUser> getPartecipatingUsers(int travelId)
 		throws SQLException{
 		
@@ -289,7 +323,11 @@ public class TravelManager {
 		
 		return users;
 	}
-	
+	/**
+	*Metodo che rimuove un utente da un viaggio.
+	*@param travelId
+	*@param userId
+	*/
 	private static void removeUserByTravel(int travelId,int userId)
 		throws SQLException,DBException{
 		
@@ -305,7 +343,11 @@ public class TravelManager {
 		
 		if(result != 1) throw new DBException();
 	}
-	
+	/**
+	*Metodo che filtra ed organizza i viaggi per data.
+	*@param date
+	@return travels
+	*/
 	public static List<Travel> filterAndSortByDate(GregorianCalendar date)
 		throws SQLException, DBException{
 		
@@ -327,7 +369,11 @@ public class TravelManager {
 		
 		return travels;
 	}
-	
+	/**
+	*Metodo che filtra ed organizza i viaggi per luogo.
+	*@param locationId
+	@return travels
+	*/
 	public static List<Travel> filterAndSortByLocation(int locationId)
 		throws SQLException,DBException{
 		List<Travel> travels = new ArrayList<Travel>();
@@ -353,7 +399,11 @@ public class TravelManager {
 		}
 		return travels;
 	}
-	
+	/**
+	*Metodo che restituisce i sondaggi su un viaggio.
+	*@param travelId
+	*@return polls
+	*/
 	public static List<Poll> getPollTravel(int travelId)
 		throws SQLException{
 		List<Poll> polls = new ArrayList<Poll>();
@@ -383,7 +433,11 @@ public class TravelManager {
 	
 	//Deve prende una stringa che è il nome del luogo cercato, non l'id del luogo,
 	//perchè l'utente non conosce direttamente l'id
-	
+	/**
+	*Metodo che ricerca viaggi tramite un luogo.
+	*@param locationId
+	*@return travels
+	*/
 	public static List<Travel> searchTravelByLocation(int locationId)
 		throws SQLException,DBException{
 		
