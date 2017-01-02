@@ -136,4 +136,14 @@ public class TravelController {
 		}
 	}
 	
+	public static List<Travel> filterByDate(GregorianCalendar date, List<Travel> travels) {
+		
+		
+		
+		
+		return travels;
+		
+	}
+	
+	
 }
