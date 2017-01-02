@@ -22,7 +22,7 @@ public class LocationController {
 		return location;
 	}
 	
-	public static List<Location> searchLocation(String location)
+	public static List<Location> searchLocations(String location)
 	{
 		List<Location> locations;
 		try {
