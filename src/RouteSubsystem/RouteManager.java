@@ -277,7 +277,7 @@ public class RouteManager {
 	 *@param locationId
 	 *@return routes
 	 */
-	public static List<Route> searchRoutesByLocation(int locationId)
+	public static List<Route> searchRoutesByLocation(String location)
 			throws SQLException,DBException{
 
 		List<Route> routes = new ArrayList<Route>();
@@ -288,7 +288,7 @@ public class RouteManager {
 					+ "from Route "
 					+ "where id IN (select routeID "
 					+ "from RouteLocationMatch "
-					+ "where locationID = " + locationId + ")");
+					+ "where name = " + location + ")");
 			DriverManagerConnection.releaseConnection(con);
 			while(rs.next()){
 				Route route = RouteManager.fetchRoute(rs.getInt(1));
