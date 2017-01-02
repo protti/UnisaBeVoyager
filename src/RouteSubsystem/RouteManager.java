@@ -11,8 +11,14 @@ import java.util.List;
 import DBConnection.DBException;
 import DBConnection.DriverManagerConnection;
 import LocationSubsystem.Location;
-
+/**
+*Classe che gestisce le operazioni su un itinerario.
+*/
 public class RouteManager {
+	/**
+	*Metodo che gestisce il salvataggio di un itinerario sul database.
+	*@param route
+	*/
 	public static void saveRouteToDB(Route route)
 		throws SQLException,DBException{
 		int result = 0;
@@ -29,7 +35,11 @@ public class RouteManager {
 		
 		if(result != 1) throw new DBException();
 	}
-	
+	/**
+	*Metodo che cerca sul database un itinerario tramite id.
+	*@param id
+	*@return rs.next() se c'e', false se non c'e'
+	*/
 	public static boolean checkRoute(int id)
 		throws SQLException{
 		
@@ -46,7 +56,10 @@ public class RouteManager {
 		
 		return false;
 	}
-	
+	/**
+	*Metodo che gestisce l'eliminazione di un itinerario.
+	*@param id
+	*/
 	public static void deleteRoute(int id)
 		throws SQLException,DBException{
 		
@@ -61,7 +74,11 @@ public class RouteManager {
 		
 		if(result != 1) throw new DBException();
 	}
-	
+	/**
+	*Metodo che preleva un itinerario tramite id.
+	*@param id
+	*@return route
+	*/
 	public static Route fetchRoute(int id)
 		throws SQLException,DBException{
 		Route route = null;
@@ -99,7 +116,11 @@ public class RouteManager {
 		if(route == null) throw new DBException();
 		return route;
 	}
-	
+	/**
+	*Metodo che effettua una ricerca di itinerari tramite nome.
+	*@param name
+	*@return routes
+	*/
 	public static List<Route> searchRoutes(String name)
 		throws SQLException,DBException{
 		
@@ -120,7 +141,10 @@ public class RouteManager {
 		
 		return routes;
 	}
-	
+	//	/**
+	//	*Metodo che aggiorna i dati di un itinerario.
+	//	*@param route
+	//	*/
 	/*public static void updateRoute(Route route)
 		throws SQLException,DBException{
 		
@@ -137,7 +161,11 @@ public class RouteManager {
 		
 		if(result != 1) throw new DBException();
 	} PROBABILMENTE RIDONDANTE*/
-	
+	/**
+	*Metodo che aggiunge un luogo ad un itinerario.
+	*@param routeId
+	*@param locationId
+	*/
 	public static void addLocationToRoute(int routeId,int locationId)
 		throws SQLException,DBException{
 		
@@ -156,8 +184,11 @@ public class RouteManager {
 		if(result != 1) throw new DBException();
 	}
 	
-	
-	
+	/**
+	*Metodo che restituisce i luogi di un itinerario.
+	*@param routeId
+	*@return locations
+	*/
 	public static List<Location> getLocations(int routeId)
 		throws SQLException{
 		List<Location> locations = new ArrayList<Location>();
@@ -180,7 +211,11 @@ public class RouteManager {
 		
 		return locations;
 	}
-	
+	/**
+	*Metodo che elimina un luogo ad un itinerario.
+	*@param routeId
+	*@param locationId
+	*/
 	public static void removeLocationByRoute(int routeId, int locationId)
 		throws SQLException,DBException{
 		
@@ -196,7 +231,11 @@ public class RouteManager {
 		
 		if(result != 1) throw new DBException();
 	}
-	
+	/**
+	*Metodo che gestisce la ricerca di itinerari tramite id di un luogo.
+	*@param locationId
+	*@return routes
+	*/
 	public static List<Route> searchRoutesByLocation(int locationId)
 		throws SQLException,DBException{
 		
