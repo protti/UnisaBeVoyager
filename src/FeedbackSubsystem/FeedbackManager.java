@@ -38,7 +38,7 @@ public class FeedbackManager {
 	*@param feedback
 	*@return rs.next() se si', false se no
 	*/
-	public static boolean chackFeedback(Feedback feedback)
+	public static boolean checkFeedback(Feedback feedback)
 		throws SQLException{
 		
 		Connection con = DriverManagerConnection.getConnection();
