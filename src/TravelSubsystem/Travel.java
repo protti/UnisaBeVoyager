@@ -77,7 +77,12 @@ public class Travel {
 		return true;
 		
 	}
-
+	/**
+	*Metodo che controlla se un utente è in quel viaggio.
+	*@param idUtente
+	*@return true se c'è, false se non c'è
+	*
+	*/
 	private boolean isUserInTravel(int idUtente) {
 		for (int i = 0; i < this.partecipantiViaggio.size(); i++) {
 			if (idUtente == partecipantiViaggio.get(i).getId()) {
