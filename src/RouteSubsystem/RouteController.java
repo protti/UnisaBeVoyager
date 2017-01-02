@@ -47,11 +47,11 @@ public class RouteController {
 		}*/
 
 		if (locations.containsKey(idLocation)) {
-			return false;
+			return true;
 		}
 
 		
-		return true;
+		return false;
 	}
 	
 	public static boolean addLocationToRoute(Location location, Route route) {
@@ -59,7 +59,7 @@ public class RouteController {
 		Map<Integer, Location> locations = route.getLocations();
 		
 		
-		if (!isLocationInRoute(location.getId(), locations)) {
+		if (isLocationInRoute(location.getId(), locations)) {
 			return false;
 		}
 		
@@ -80,5 +80,45 @@ public class RouteController {
 		return true;
 		
 	}
+
+	public static boolean removeLocationToRoute(Location location, Route route) {
+		
+		Map<Integer, Location> locations = route.getLocations();
+		
+		
+		if (!isLocationInRoute(location.getId(), locations)) {
+			return false;
+		}
+		
+		route.removeLocation(location);
+		try {
+			/*
+			 * MANCA UPDATE ROUTE NEL MANAGER
+			 */		
+		}
+		catch (DBException e) {
+			return false;
+		}
+		catch (SQLException e) {
+			return false;
+		}
+
+		return true;
+		
+	}
+	
+	public static boolean deleteRoute(int idRoute) {
+		try {
+			RouteManager.deleteRoute(idRoute);
+		}
+		catch (DBException e) {
+			return false;
+		}
+		catch (SQLException e) {
+			return false;
+		}
+		return true;
+	}
+
 
 }
