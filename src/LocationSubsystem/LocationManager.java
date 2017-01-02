@@ -36,7 +36,7 @@ public class LocationManager {
 	}
 	/**
 	*Metodo che cerca sul database un luogo tramite id.
-	*@param location
+	*@param locationId
 	*@return rs.next() se c'e', false se non c'e'
 	*/
 	public static boolean checkLocation(int locationId)
