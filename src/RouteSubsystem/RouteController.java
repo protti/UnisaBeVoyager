@@ -39,16 +39,13 @@ public class RouteController {
 		}
 	}
 	
-	private static boolean isLocationInRoute(int idLocation, Map<Integer, Location> locations) {
-		/*for (int i = 0; i < locations.size(); i++) {
+	private static boolean isLocationInRoute(int idLocation, ArrayList<Location> locations) {
+		for (int i = 0; i < locations.size(); i++) {
 			if (idLocation == locations.get(i).getId()) {
 				return false;
 			}
-		}*/
-
-		if (locations.containsKey(idLocation)) {
-			return true;
 		}
+
 
 		
 		return false;
@@ -56,7 +53,7 @@ public class RouteController {
 	
 	public static boolean addLocationToRoute(Location location, Route route) {
 		
-		Map<Integer, Location> locations = route.getLocations();
+		ArrayList<Location> locations = route.getLocations();
 		
 		
 		if (isLocationInRoute(location.getId(), locations)) {
@@ -83,7 +80,7 @@ public class RouteController {
 
 	public static boolean removeLocationToRoute(Location location, Route route) {
 		
-		Map<Integer, Location> locations = route.getLocations();
+		ArrayList<Location> locations = route.getLocations();
 		
 		
 		if (!isLocationInRoute(location.getId(), locations)) {
