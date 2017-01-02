@@ -20,10 +20,7 @@ public class RouteController {
 		List<Route> results; 
 		
 		try {
-			results = RouteManager.searchRouteByLocation(locationName);
-			if(results.isEmpty()) {
-				results = RouteManager.searchRoute(locationName);
-			}
+			results = RouteManager.searchRoutesByLocation(locationName);
 		}
 		catch (DBException e) {
 			return null;
