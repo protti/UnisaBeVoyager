@@ -1,6 +1,7 @@
 package TravelSubsystem;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 import DBConnection.DBException;
@@ -9,15 +10,41 @@ import TravelSubsystem.TravelManager;
 
 public class TravelController {
 
-
+	
+	/**
+	*Metodo che controlla se un utente � in quel viaggio.
+	*@param idUtente
+	*@return true se c'�, false se non c'�
+	*
+	*/
+	private static boolean isUserInTravel(int idUtente, ArrayList<RegisteredUser> users) {
+		for (int i = 0; i < users.size(); i++) {
+			if (idUtente == users.get(i).getId()) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	/* OCL
+	 * context TravelController::addUserInTralve(user, travel) pre:
+	 * 	not travel.partecipantiViaggio->includes(user)
+	 * 
+	 * context TravelController::addUserInTralve(user, travel) post
+	 * 	travel.partecipantiViaggio->includes(user)
+	 */
+	
 	public static boolean addUserInTravel(RegisteredUser user, Travel travel) {
 		
-		boolean res = travel.addUserToTravel(user);
+		ArrayList<RegisteredUser> users = travel.getPartecipantiViaggio();
 		
-		if (res = false) {
+		
+		if (!isUserInTravel(user.getId(), users)) {
 			return false;
 		}
 		
+		travel.addUserToTravel(user);
+				
 		try {
 			TravelManager.updateTravel(travel);
 		}
@@ -30,6 +57,17 @@ public class TravelController {
 		
 		return true;
 	}
+	
+	/*
+	 * 
+	 * @param idTravel
+	 * @return
+	 */
+	
+	/* OCL
+	 * context TravelController::deleteTravel(idTravel) pre
+	 * 	
+	 */
 	
 	public static boolean deleteTravel(int idTravel) {
 		try {
@@ -50,6 +88,15 @@ public class TravelController {
 		return travel;
 	}
 	
+
+	/* OCL
+	 * context TravelController::confirmTravel(travel) pre:
+	 * 	not travel.isConfirmed()
+	 * 
+	 * context TravelController::confirmTravel(travel) post:
+	 * 	travel.isConfirmed()
+	 */
+	
 	public static boolean confirmTravel(Travel travel) {
 		
 		travel.closeTravel();
@@ -61,8 +108,7 @@ public class TravelController {
 		}
 		catch (SQLException e) {
 			return false;
-		}
-		
+		}	
 		
 		return true;
 	}
