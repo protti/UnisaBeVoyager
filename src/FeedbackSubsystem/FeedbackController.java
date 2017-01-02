@@ -13,26 +13,45 @@ public class FeedbackController {
 	
 	static public Feedback createFeedback(RegisteredUser sender,RegisteredUser reciver, String message, GregorianCalendar date)
 	{	
-		FeedbackUser fu = new FeedbackUser(sender, message, date,reciver);
-		return fu;
+		FeedbackUser feedback = new FeedbackUser(sender, message, date,reciver);
+		try {
+			FeedbackManager.saveFeedbackToDB(feedback);
+		} catch (SQLException | DBException e) {
+			
+			return null;
+		}
+		return feedback;
 	}
 	static public Feedback createFeedback(RegisteredUser sender,Route reciver, String message, GregorianCalendar date)
 	{
 		
-		FeedbackRoute fu = new FeedbackRoute(sender,message, date,reciver);
-		return fu;
+		FeedbackRoute feedback = new FeedbackRoute(sender,message, date,reciver);
+		try {
+			FeedbackManager.saveFeedbackToDB(feedback);
+		} catch (SQLException | DBException e) {
+			
+			return null;
+		}
+		return feedback;
 	}
 	static public Feedback createFeedback(RegisteredUser sender,Location reciver, String message, GregorianCalendar date)
 	{
 		
-		FeedbackLocation fu = new FeedbackLocation(sender, message, date,reciver);
-		return fu;
+		FeedbackLocation feedback = new FeedbackLocation(sender, message, date,reciver);
+		try {
+			FeedbackManager.saveFeedbackToDB(feedback);
+		} catch (SQLException | DBException e) {
+			
+			return null;
+		}
+		return feedback;
 	}
 	
 	static public boolean deleteFeedback(Feedback feedback) 
 	{
 		try {
 			FeedbackManager.deleteFeedback(feedback);
+			
 		} catch (SQLException | DBException e) {
 			
 			return false;
