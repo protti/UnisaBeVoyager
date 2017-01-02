@@ -7,7 +7,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import DBConnection.DBException;
 import DBConnection.DriverManagerConnection;
@@ -108,11 +110,14 @@ public class TravelManager {
 						+ "where id IN(select locationID "
 						+ "from RouteLocationMatch "
 						+ "where routeID = " + rs2.getLong(1) + "");
-				ArrayList<Location> locations = new ArrayList<Location>();
+				//ArrayList<Location> locations = new ArrayList<Location>();
+				Map<Integer, Location> locations = new HashMap<>();
+				
 				while(rs4.next()){
 					Location location = new Location(rs4.getInt(1),
 							rs4.getString(3),rs4.getString(2));
-					locations.add(location);
+					//locations.add(location);
+					locations.put(location.getId(),location);
 				}
 				
 				route = new Route(locations,rs2.getInt(1),
