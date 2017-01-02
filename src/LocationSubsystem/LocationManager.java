@@ -103,7 +103,7 @@ public class LocationManager {
 	*@param id
 	*@return location
 	*/
-	public static Location searchLocationById(int id)
+	public static Location fetchLocation(int id)
 		throws SQLException,DBException{
 		
 		Location location = null;
