@@ -8,9 +8,14 @@ import java.util.Date;
 
 import DBConnection.DBException;
 import DBConnection.DriverManagerConnection;
-
+/**
+*Classe che gestisce le operazioni di feedback.
+*/
 public class FeedbackManager {
-
+	/**
+	*Metodo che gestisce il salvataggio di un feedback nel database.
+	*@param feedback
+	*/
 	public static void saveFeedbackToDB(Feedback feedback)
 		throws SQLException,DBException{
 		
@@ -28,7 +33,11 @@ public class FeedbackManager {
 		}
 		if(result != 1) throw new DBException();
 	}
-	
+	/**
+	*Metodo booleano che vede se un feedback è all'interno del database.
+	*@param feedback
+	*@return rs.next() se si', false se no
+	*/
 	public static boolean chackFeedback(Feedback feedback)
 		throws SQLException{
 		
@@ -45,7 +54,10 @@ public class FeedbackManager {
 		
 		return false;
 	}
-	
+	/**
+	*Metodo che gestisce l'eliminazione di un feedback.
+	*@param feedback
+	*/
 	public static void deleteFeedback(Feedback feedback)
 		throws SQLException,DBException{
 		
@@ -60,7 +72,10 @@ public class FeedbackManager {
 		
 		if(result != 1) throw new DBException();
 	}
-	
+	/**
+	*Metodo che gestisce l'aggiornamento di un feedback.
+	*@param feedback
+	*/
 	public static void updateFeedback(Feedback feedback)
 		throws SQLException,DBException{
 		
