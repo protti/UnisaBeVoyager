@@ -3,6 +3,7 @@ package TravelSubsystem;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import DBConnection.DBException;
 import UserSubsystem.RegisteredUser;
@@ -102,7 +103,8 @@ public class TravelController {
 		travel.closeTravel();
 
 		try {
-			TravelManager.updateTravel(travel);		}
+			TravelManager.updateTravel(travel);		
+		}
 		catch (DBException e) {
 			return false;
 		}
@@ -111,6 +113,22 @@ public class TravelController {
 		}	
 		
 		return true;
+	}
+	
+	public static List<Travel> searchTravel(String locationName) {
+		
+		try {
+			List<Travel> results = TravelManager.searchTravelByLocation(locationName);
+		}
+		catch (DBException e) {
+			return null;
+		}
+		catch (SQLException e) {
+			return null;
+		}
+		
+		
+		
 	}
 	
 }

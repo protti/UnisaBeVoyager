@@ -376,6 +376,9 @@ public class TravelManager {
 		return polls;
 	}
 	
+	//Deve prende una stringa che è il nome del luogo cercato, non l'id del luogo,
+	//perchè l'utente non conosce direttamente l'id
+	
 	public static List<Travel> searchTravelByLocation(int locationId)
 		throws SQLException,DBException{
 		
