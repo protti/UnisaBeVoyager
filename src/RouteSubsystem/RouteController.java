@@ -62,9 +62,7 @@ public class RouteController {
 		
 		route.addLocation(location);
 		try {
-			/*
-			 * MANCA UPDATE ROUTE NEL MANAGER
-			 */
+			RouteManager.updateRoute(route);
 		
 		}
 		catch (DBException e) {
@@ -89,9 +87,7 @@ public class RouteController {
 		
 		route.removeLocation(location);
 		try {
-			/*
-			 * MANCA UPDATE ROUTE NEL MANAGER
-			 */		
+			RouteManager.updateRoute(route);		
 		}
 		catch (DBException e) {
 			return false;
