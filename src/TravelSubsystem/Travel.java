@@ -28,6 +28,15 @@ public class Travel {
 	private int id;
 	private GregorianCalendar startDate;
 	private GregorianCalendar endDate;
+	private boolean confirmed;
+	
+	public boolean isConfirmed() {
+		return confirmed;
+	}
+	
+	public void setConfirmed(boolean confirmed) {
+		this.confirmed = confirmed;
+	}
 	
 	public Travel(RegisteredUser creatoreViaggio, int id, GregorianCalendar startDate, GregorianCalendar endDate, boolean type) {
 		this.creatoreViaggio = creatoreViaggio;
@@ -69,27 +78,9 @@ public class Travel {
 	
 	public boolean addUserToTravel(RegisteredUser user) { 
 		
-		if (isUserInTravel(user.getId())) {
-			return false;
-		}
-		
 		this.partecipantiViaggio.add(user);
 		return true;
 		
-	}
-	/**
-	*Metodo che controlla se un utente è in quel viaggio.
-	*@param idUtente
-	*@return true se c'è, false se non c'è
-	*
-	*/
-	private boolean isUserInTravel(int idUtente) {
-		for (int i = 0; i < this.partecipantiViaggio.size(); i++) {
-			if (idUtente == partecipantiViaggio.get(i).getId()) {
-				return false;
-			}
-		}
-		return true;
 	}
 			
 	/**
@@ -181,7 +172,7 @@ public class Travel {
 	}
 
 	/**
-	 * Imposta a false se il viaggio non è modificabile, oppure a true se è modificabile.
+	 * Imposta a false se il viaggio non ï¿½ modificabile, oppure a true se ï¿½ modificabile.
 	 * @param type
 	 */
 	public void setType(boolean type) {
