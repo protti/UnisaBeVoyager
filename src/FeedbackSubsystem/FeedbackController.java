@@ -42,6 +42,7 @@ public class FeedbackController {
 			FeedbackManager.saveFeedbackToDB(feedback);
 		} catch (SQLException | DBException e) {
 			
+			
 			return null;
 		}
 		return feedback;
