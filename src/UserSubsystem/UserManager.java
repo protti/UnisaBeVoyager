@@ -112,6 +112,61 @@ public class UserManager {
 		
 		return listUsers;
 	}
+	
+	public static RegisteredUser getUser(String username)
+		throws SQLException,DBException{
+		
+		RegisteredUser user = null;
+		Connection con = DriverManagerConnection.getConnection();
+		if(con != null && username != null){
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery("select * "
+					+ "from RegisteredUser "
+					+ "where username = '" + username + "'");
+			DriverManagerConnection.releaseConnection(con);
+			
+			if(rs.next()){
+				GregorianCalendar gc = new GregorianCalendar();
+				gc.setGregorianChange(rs.getDate(7));
+				user = new RegisteredUser(rs.getString(5),
+						rs.getString(2),rs.getString(6),rs.getString(3),
+						rs.getString(4),gc,rs.getInt(8));
+				user.setAuthorization(rs.getShort(9));
+				user.setId(rs.getInt(1));
+			}
+		}
+		
+		if(user == null) throw new DBException();
+		return user;
+	}
+	
+	public static RegisteredUser getUserByEmail(String email)
+			throws SQLException,DBException{
+			
+			RegisteredUser user = null;
+			Connection con = DriverManagerConnection.getConnection();
+			if(con != null && email != null){
+				Statement st = con.createStatement();
+				ResultSet rs = st.executeQuery("select * "
+						+ "from RegisteredUser "
+						+ "where email = '" + email + "'");
+				DriverManagerConnection.releaseConnection(con);
+				
+				if(rs.next()){
+					GregorianCalendar gc = new GregorianCalendar();
+					gc.setGregorianChange(rs.getDate(7));
+					user = new RegisteredUser(rs.getString(5),
+							rs.getString(2),rs.getString(6),rs.getString(3),
+							rs.getString(4),gc,rs.getInt(8));
+					user.setAuthorization(rs.getShort(9));
+					user.setId(rs.getInt(1));
+				}
+			}
+			
+			if(user == null) throw new DBException();
+			return user;
+		}
+	
 	/**
 	*Metodo che, stabilita connessione al database, va a prendere un utente tramite il suo id.
 	*@param id
