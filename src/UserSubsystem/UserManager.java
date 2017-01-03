@@ -250,6 +250,7 @@ public class UserManager {
 	*@param 
 	*@return
 	*/
+		
 	public static boolean checkUserTravel(int userId,
 			int travelId) throws SQLException,DBException{
 		

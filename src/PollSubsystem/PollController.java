@@ -6,7 +6,6 @@ import java.util.GregorianCalendar;
 import DBConnection.DBException;
 
 public class PollController {
-
 	public static Poll createPoll(String description,int pos, int neg, 
 			GregorianCalendar startDate, GregorianCalendar endDate,int travelId){
 

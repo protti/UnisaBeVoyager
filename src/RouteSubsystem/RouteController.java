@@ -12,10 +12,23 @@ import UserSubsystem.RegisteredUser;
 
 public class RouteController {
 	
+	public static Route createRoute(ArrayList<Location> locations, String name, String description) {
+		Route route = new Route(locations, description, name);
+		
+		try {
+			RouteManager.saveRouteToDB(route);
+		} catch (SQLException | DBException e) {
+			e.printStackTrace();
+			return null;			
+		}
+		return route;
+	}
+	
 	/* Search route dovrebbe direttamente eseguire la ricerca per ID e per nome della location
 	* Dalla servlet arriva comunque una stringa, quindi semplicemente effettua la ricerca 
 	* usando entrambi i metodi offerti dal manager, quello che cerca per id e quello che cerca per nome
 	*/
+	
 	public static List<Route> searchRoute(String locationName) {
 		List<Route> results; 
 		
@@ -70,7 +83,7 @@ public class RouteController {
 		
 	}
 
-	public static boolean removeLocationToRoute(Location location, Route route) {
+	public static boolean removeLocationFromRoute(Location location, Route route) {
 		
 		ArrayList<Location> locations = route.getLocations();
 		
@@ -107,7 +120,13 @@ public class RouteController {
 		return true;
 	}
 	
-	public static Route fetchRoute(int idRoute) {
+	/*
+	 * Questo è da usare quando un utente vuole visualizzare la pagina di un route, per esempio dopo la ricerca.
+	 * Usato anche nell'aggiunta di un luogo ad un itinerario
+	 * Era fetchRoute, l'ho cambiato in getRoute per essere coerente
+	 */
+	
+	public static Route getRoute(int idRoute) {
 		Route route;
 		
 		try {

@@ -108,6 +108,11 @@ public class NotificationManager {
 		if(result != 1) throw new DBException();
 	}
 	
+
+	/*
+	 * Usa il travelID per recuperare i partecipanti e gli manda la notifica giusto?
+	 */
+	
 	public static void notifyAllPartecipants(int travelId,int senderId, 
 			String message) throws SQLException,DBException{
 		
@@ -130,6 +135,7 @@ public class NotificationManager {
 		}
 	}
 		
+
 	public static void sendNotification(int senderId,int recipientId, 
 			String message) throws SQLException,DBException{
 		
