@@ -19,7 +19,7 @@ public class DriverManagerConnection {
 		freeDbConnections = new LinkedList<Connection>();	
 		try	{	
 			Class.forName("com.mysql.jdbc.Driver");	
-		}	catch(ClassNotFoundException	e){	
+		}	catch(ClassNotFoundException e){	
 			log.severe("DB driver not found: " + e.getMessage());	
 		}
 	}	
@@ -45,15 +45,15 @@ public class DriverManagerConnection {
 	public	static synchronized Connection	getConnection()	throws SQLException	{	
 		Connection	connection;	
 		if	(!freeDbConnections.isEmpty())	{	
-			connection	=	(Connection)	freeDbConnections.get(0);	
+			connection = (Connection) freeDbConnections.get(0);	
 			DriverManagerConnection.freeDbConnections.remove(0);	
 			try	{	
-				if	(connection.isClosed())	
-					connection	=	DriverManagerConnection.getConnection();	
-			}	catch	(SQLException	e)	{	
-				connection	=	DriverManagerConnection.getConnection();	
+				if(connection.isClosed())	
+					connection = DriverManagerConnection.getConnection();	
+			}	catch(SQLException e){	
+				connection = DriverManagerConnection.getConnection();	
 			}	
-		}	else		connection	=	DriverManagerConnection.createDBConnection();
+		}	else connection	= DriverManagerConnection.createDBConnection();
 		return	connection;	
 	}
 	/**
