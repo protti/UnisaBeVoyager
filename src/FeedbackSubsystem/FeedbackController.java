@@ -11,9 +11,9 @@ import UserSubsystem.RegisteredUser;
 public class FeedbackController {
 
 	
-	static public Feedback createFeedback(RegisteredUser sender,RegisteredUser reciver, String message, GregorianCalendar date)
+	static public Feedback createFeedback(RegisteredUser sender,RegisteredUser receiver, String message, GregorianCalendar date)
 	{	
-		FeedbackUser feedback = new FeedbackUser(sender, message, date,reciver);
+		FeedbackUser feedback = new FeedbackUser(sender, message, date,receiver);
 		try {
 			FeedbackManager.saveFeedbackToDB(feedback);
 		} catch (SQLException | DBException e) {
@@ -22,10 +22,10 @@ public class FeedbackController {
 		}
 		return feedback;
 	}
-	static public Feedback createFeedback(RegisteredUser sender,Route reciver, String message, GregorianCalendar date)
+	static public Feedback createFeedback(RegisteredUser sender,Route receiver, String message, GregorianCalendar date)
 	{
 		
-		FeedbackRoute feedback = new FeedbackRoute(sender,message, date,reciver);
+		FeedbackRoute feedback = new FeedbackRoute(sender,message, date,receiver);
 		try {
 			FeedbackManager.saveFeedbackToDB(feedback);
 		} catch (SQLException | DBException e) {
@@ -34,10 +34,10 @@ public class FeedbackController {
 		}
 		return feedback;
 	}
-	static public Feedback createFeedback(RegisteredUser sender,Location reciver, String message, GregorianCalendar date)
+	static public Feedback createFeedback(RegisteredUser sender,Location receiver, String message, GregorianCalendar date)
 	{
 		
-		FeedbackLocation feedback = new FeedbackLocation(sender, message, date,reciver);
+		FeedbackLocation feedback = new FeedbackLocation(sender, message, date,receiver);
 		try {
 			FeedbackManager.saveFeedbackToDB(feedback);
 		} catch (SQLException | DBException e) {
