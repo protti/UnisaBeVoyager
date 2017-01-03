@@ -8,7 +8,16 @@ import DBConnection.DBException;
 
 public class UserController {
 
-		static public RegisteredUser fetchUser(int id)
+
+	
+	/*
+	 * Prima era fetchUser, l'ho modificato per essere coerente con i sequence diagram
+	 * Questo serve per la visualizzazione del profilo di un utente. Quando per esempio un utente clicca su "Il mio profilo" oppure fa la ricerca di un utente,
+	 * fa prima "searchUser" e poi quando clicca sul risultato usa getUser, quindi non prnede username e password, ma un id
+	 * 
+	 */
+	
+		static public RegisteredUser getUser(int id)
 		{
 			RegisteredUser user;
 			try {
@@ -54,7 +63,7 @@ public class UserController {
 			return user;
 		}
 		
-		/*static public RegisteredUser getUser(String username,String password)
+		/*static public RegisteredUser getUser()
 		{
 			
 		}*/
