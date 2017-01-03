@@ -66,7 +66,10 @@ public class NotificationManager {
 		if(result != 1) throw new DBException();
 	}
 	
-	public static Notification searchNotificationById(int id)
+/*
+ * Era searchNotificationByID l'ho modificata in getNotification	
+ */
+	public static Notification getNotification(int id)
 		throws SQLException,DBException{
 		
 		Notification notification = null;

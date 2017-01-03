@@ -31,7 +31,7 @@ public class NotificationController {
 		
 		Notification notification;
 		try {
-			notification = NotificationManager.searchNotificationById(idNotification);
+			notification = NotificationManager.getNotification(idNotification);
 		} catch (SQLException | DBException e) {
 			e.printStackTrace();
 			return null;			
