@@ -158,7 +158,7 @@ public class NotificationManager {
 			ResultSet rs = st.executeQuery("select * "
 					+ "from Notification "
 					+ "where senderID = " + userId + "");
-			
+			DriverManagerConnection.releaseConnection(con);
 			RegisteredUser recipient = UserManager.fetchUser(userId);
 			
 			while(rs.next() && recipient != null){

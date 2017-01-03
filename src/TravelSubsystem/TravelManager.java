@@ -472,7 +472,7 @@ public class TravelManager {
 					+ "travelID IN (select travelID "
 					+ "from UserTravelMatch "
 					+ "where partecipantID = " + userId2 + ")");
-			
+			DriverManagerConnection.releaseConnection(con);
 			return rs.next();
 		}
 		return false;
