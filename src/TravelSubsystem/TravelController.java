@@ -86,6 +86,11 @@ public class TravelController {
 	public static Travel createTravel(RegisteredUser creatoreViaggio, GregorianCalendar startDate, GregorianCalendar endDate, boolean type) {
 
 		Travel travel = new Travel(creatoreViaggio, startDate, endDate, type);
+		try {
+			TravelManager.saveTravelToDB(travel);
+		} catch (SQLException | DBException e) {
+			return null;
+		}
 		return travel;
 	}
 	
