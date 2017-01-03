@@ -298,5 +298,22 @@ public class RouteManager {
 		return routes;
 	}
 
+	public static boolean checkUserRoute(int userId, int routeId)
+		throws SQLException{
+		
+		Connection con = DriverManagerConnection.getConnection();
+		if(con != null){
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery("select * "
+					+ "from UserTravelMatch "
+					+ "where partecipantID = " + userId + " AND "
+					+ "travelID IN (select id "
+					+ "from Travel where"
+					+ "routeId = " + routeId + ")");
+			DriverManagerConnection.releaseConnection(con);
+			return rs.next();
+		}
+		return false;
+	}
 
 }
