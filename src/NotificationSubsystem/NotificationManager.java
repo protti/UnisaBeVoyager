@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -145,5 +146,28 @@ public class NotificationManager {
 		Date date = new Date();
 		Notification notification = new Notification(sender,recipient,
 				message,false,date.toString());
+	}
+	
+	public static List<Notification> getUserNotifications(int userId)
+		throws SQLException,DBException{
+		
+		List<Notification> notifications = new ArrayList<Notification>();
+		Connection con = DriverManagerConnection.getConnection();
+		if(con != null){
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery("select * "
+					+ "from Notification "
+					+ "where senderID = " + userId + "");
+			
+			RegisteredUser recipient = UserManager.fetchUser(userId);
+			
+			while(rs.next() && recipient != null){
+				RegisteredUser sender = UserManager.fetchUser(rs.getInt(2));
+				Notification notification = new Notification(sender,recipient,
+						rs.getString(4),rs.getBoolean(5),rs.getString(6));
+				notifications.add(notification);
+			}
+		}
+		return notifications;
 	}
 }
