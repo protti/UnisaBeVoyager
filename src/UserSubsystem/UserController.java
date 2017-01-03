@@ -1,6 +1,7 @@
 package UserSubsystem;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -46,8 +47,12 @@ public class UserController {
 		}
 		
 		static public RegisteredUser createUser(String email, String username, String password, String nome, String cognome,
-				GregorianCalendar birthDate, int age)
+				GregorianCalendar birthDate)
 		{
+			GregorianCalendar date = new GregorianCalendar();
+			int time = date.compareTo(birthDate);
+			Date dateDif = new Date(time);
+			int age = dateDif.getYear();
 			RegisteredUser user = new RegisteredUser(email,username,password,nome,cognome,
 					birthDate,age);
 			try {
