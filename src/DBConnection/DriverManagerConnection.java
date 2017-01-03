@@ -18,9 +18,9 @@ public class DriverManagerConnection {
 	static	{	
 		freeDbConnections = new LinkedList<Connection>();	
 		try	{	
-			Class.forName("com.mysql.jdbc.Driver");	
-		}	catch(ClassNotFoundException e){	
-			log.severe("DB driver not found: " + e.getMessage());	
+			Class.forName("com.mysql.jdbc.Driver").newInstance();	
+		}	catch(ClassNotFoundException | InstantiationException | IllegalAccessException e){	
+			log.severe("DB driver not found: " + e.getMessage());
 		}
 	}	
 	/**
