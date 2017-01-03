@@ -21,22 +21,8 @@ public class Route {
 	private int id;
 	private String description;
 	private String name;
-	private Travel route; //noooooooooooo
 	
-	public Route(Travel route, ArrayList<Location> locations, String description, String name) {
-		this.route = route;
-		this.locations = locations;
-		this.description = description;
-		this.name = name;
-	}
 	
-	public Route(Travel route, ArrayList<Location> locations, int id, String description, String name) {
-		this.route = route;
-		this.locations = locations;
-		this.id = id;
-		this.description = description;
-		this.name = name;
-	}
 	
 	public Route(ArrayList<Location> locations, int id, String description, String name) {
 		this.locations = locations;
@@ -52,20 +38,6 @@ public class Route {
 		this.name = name;
 	}
 	
-	/**
-	Metodo che restituisce il viaggio relativo.
-	*@return route
-	*/
-	public Travel getRoute() {
-		return route;
-	}
-	/**
-	Metodo che setta il viaggio relativo.
-	*@param route
-	*/
-	public void setRoute(Travel route) {
-		this.route = route;
-	}
 	/**
 	Metodo che restituisce i luoghi dell'itinerario.
 	*@return locations

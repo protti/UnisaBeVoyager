@@ -180,7 +180,7 @@ public class TravelManager {
 				travel = new Travel(ru,rs.getInt(1),gc1,gc2,rs.getBoolean(6));
 				travel.setRoute(route);
 				travel.setPollList(polls);
-				if(route != null) route.setRoute(travel);
+				
 			}			
 		}
 		if(travel == null) throw new DBException();
