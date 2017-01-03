@@ -30,8 +30,8 @@ public class DriverManagerConnection {
 	private	static Connection createDBConnection() throws SQLException {	
 		Connection newConnection = null;	
 		String db = "bevoyager";	
-		String username	= "badmin@localhost";	
-				String password	= "adminadmin";	
+		String username	= "root";	
+				String password	= "camicia";	
 				newConnection = DriverManager.getConnection(	
 						"jdbc:mysql://localhost:3306/"+db, 
 						username,	password);	
