@@ -22,11 +22,11 @@ public class LocationController {
 		return location;
 	}
 	
-	public static List<Location> searchLocations(String location)
+	public static List<Location> searchLocations(String locationName)
 	{
 		List<Location> locations;
 		try {
-			locations = LocationManager.searchLocations(location);
+			locations = LocationManager.searchLocations(locationName);
 		} catch (SQLException e) {
 			return null;
 		}
@@ -34,7 +34,11 @@ public class LocationController {
 		return locations;
 	}
 	
-	public static Location fetchLocation(int id)
+	/*
+	 * Questo si usa quando un utente vuole accedere alla pagina di un luogo sequendo un link o dopo una ricerca per esempio
+	 */
+	
+	public static Location getLocation(int id)
 	{
 		Location location;
 		try {
