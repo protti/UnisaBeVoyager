@@ -44,6 +44,14 @@ public class Route {
 		this.description = description;
 		this.name = name;
 	}
+	
+	public Route(ArrayList<Location> locations, String description, String name) {
+		this.locations = locations;
+		this.id = -1;
+		this.description = description;
+		this.name = name;
+	}
+	
 	/**
 	Metodo che restituisce il viaggio relativo.
 	*@return route
