@@ -4,12 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<% if(session.getAttribute("UserR") != null) { %>
-<%RegisteredUser ru =(RegisteredUser)session.getAttribute("UserR"); %>
-
-<title><%=ru.getNome()%> <%=ru.getCognome()%></title>
+<title><%= (String) request.getAttribute("nome") %> <%= (String) request.getAttribute("cognome") %></title>
 </head>
 <body>
-<%} %>
 </body>
+
+Username: <%= (String) request.getAttribute("username") %>
+Nome: <%= (String) request.getAttribute("nome") %>
+Cognome: <%= (String) request.getAttribute("cognome") %>
+Età: <%= request.getAttribute("eta") %>
+
 </html>
