@@ -1,13 +1,14 @@
 package UserSubsystem;
 
 import java.sql.Connection;
-import java.sql.Date;
+//import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 import java.util.List;
+import java.sql.Date;
+
 
 import DBConnection.DBException;
 import DBConnection.DriverManagerConnection;
@@ -25,6 +26,7 @@ public class UserManager {
 		int result = 0;
 		Connection con = DriverManagerConnection.getConnection();
 		if(con != null && user != null && password != null){
+			System.out.println(user.getAge());
 			
 			Statement st = con.createStatement();
 			result = st.executeUpdate("insert into RegisteredUser"
@@ -37,9 +39,10 @@ public class UserManager {
 					+ "'" + password + "',"
 					+ "'" + user.getBirthDate() + "',"
 					+ "" + user.getAge() + ")");
-			
+			con.commit();
 			DriverManagerConnection.releaseConnection(con);
 		}
+		
 		
 		if(result != 1) throw new DBException();
 	}
@@ -99,11 +102,11 @@ public class UserManager {
 			DriverManagerConnection.releaseConnection(con);
 			
 			while(rs.next()){
-				GregorianCalendar gc = new GregorianCalendar();
-				gc.setGregorianChange(rs.getDate(7));
+			//	GregorianCalendar gc = new GregorianCalendar();
+				//gc.setGregorianChange(rs.getDate(7));
 				RegisteredUser user = new RegisteredUser(rs.getString(5),
 						rs.getString(2),rs.getString(6),rs.getString(3),
-						rs.getString(4),gc,rs.getInt(8));
+						rs.getString(4),rs.getString(7),rs.getInt(8));
 				user.setAuthorization(rs.getShort(9));
 				user.setId(rs.getInt(1));
 				listUsers.add(user);
@@ -126,11 +129,11 @@ public class UserManager {
 			DriverManagerConnection.releaseConnection(con);
 			
 			if(rs.next()){
-				GregorianCalendar gc = new GregorianCalendar();
-				gc.setGregorianChange(rs.getDate(7));
+				//GregorianCalendar gc = new GregorianCalendar();
+				//gc.setGregorianChange(rs.getDate(7));
 				user = new RegisteredUser(rs.getString(5),
 						rs.getString(2),rs.getString(6),rs.getString(3),
-						rs.getString(4),gc,rs.getInt(8));
+						rs.getString(4),rs.getString(7),rs.getInt(8));
 				user.setAuthorization(rs.getShort(9));
 				user.setId(rs.getInt(1));
 			}
@@ -153,11 +156,11 @@ public class UserManager {
 				DriverManagerConnection.releaseConnection(con);
 				
 				if(rs.next()){
-					GregorianCalendar gc = new GregorianCalendar();
-					gc.setGregorianChange(rs.getDate(7));
+					//GregorianCalendar gc = new GregorianCalendar();
+					//gc.setGregorianChange(rs.getDate(7));
 					user = new RegisteredUser(rs.getString(5),
 							rs.getString(2),rs.getString(6),rs.getString(3),
-							rs.getString(4),gc,rs.getInt(8));
+							rs.getString(4),rs.getString(7),rs.getInt(8));
 					user.setAuthorization(rs.getShort(9));
 					user.setId(rs.getInt(1));
 				}
@@ -186,12 +189,12 @@ public class UserManager {
 			DriverManagerConnection.releaseConnection(con);
 			
 			if(rs.next()){
-				GregorianCalendar gc = new GregorianCalendar();
-				gc.setGregorianChange(rs.getDate(7));
+				//GregorianCalendar gc = new GregorianCalendar();
+				//gc.setGregorianChange(rs.getDate(7));
 				
 				user = new RegisteredUser(rs.getString(5),
 						rs.getString(2),rs.getString(6),rs.getString(3),
-						rs.getString(4),gc,rs.getInt(8));
+						rs.getString(4),rs.getString(7),rs.getInt(8));
 				user.setAuthorization(rs.getShort(9));
 				user.setId(rs.getInt(1));
 			}
@@ -217,7 +220,7 @@ public class UserManager {
 					+ "name = '" + user.getNome() + "',"
 					+ "lastName = '" + user.getCognome() + "',"
 					+ "email = '" + user.getEmail() + "',"
-					+ "birthDate = '" + user.getBirthDate().getGregorianChange() + "',"
+					+ "birthDate = '" + user.getBirthDate() + "',"
 					+ "age = " + user.getAge() + ","
 					+ "authorization = " + user.getAuthorization() + " "
 					+ "where id = " + user.getId() + "");

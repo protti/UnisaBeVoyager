@@ -19,12 +19,12 @@ public class RegisteredUser extends User {
 	private String password;
 	private String nome;
 	private String cognome;
-	private GregorianCalendar birthDate;
+	private String birthDate;
 	private int age;
 	private int authorization;
 	
 	public RegisteredUser(String email, String username, String password, String nome, String cognome,
-			GregorianCalendar birthDate, int age) {
+			String birthDate, int age) {
 		super();
 		this.email = email;
 		this.username = username;
@@ -37,7 +37,7 @@ public class RegisteredUser extends User {
 
 
 	public RegisteredUser(int id, String email, String username, String password, String nome, String cognome,
-			GregorianCalendar birthDate, int age) {
+			String birthDate, int age) {
 		super(id);
 		this.email = email;
 		this.username = username;
@@ -117,16 +117,15 @@ public class RegisteredUser extends User {
 	*@return birthDate
 	*
 	*/
-	public GregorianCalendar getBirthDate() {
-		// TODO - implement {class}.{operation}
-		throw new UnsupportedOperationException();
+	public String getBirthDate() {
+		return birthDate;
 	}
 
 	/**
 	 * Metodo che setta la data di nascita dell'utente
 	 * @param birthDate
 	 */
-	public void setBirthDate(GregorianCalendar birthDate) {
+	public void setBirthDate(String birthDate) {
 		this.birthDate = birthDate;
 	}
 	/**

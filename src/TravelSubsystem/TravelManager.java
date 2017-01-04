@@ -105,11 +105,11 @@ public class TravelManager {
 					+ "where id = " + id + ")");
 			
 			if(rs1.next()){
-				GregorianCalendar gc = new GregorianCalendar();
-				gc.setGregorianChange(rs1.getDate(7));
+				//GregorianCalendar gc = new GregorianCalendar();
+				//gc.setGregorianChange(rs1.getDate(7));
 				ru = new RegisteredUser(rs1.getInt(1),rs1.getString(5),
 						rs1.getString(2),rs1.getString(6),rs1.getString(3),
-						rs1.getString(4),gc,rs1.getInt(8));
+						rs1.getString(4),rs1.getString(7),rs1.getInt(8));
 			}
 			
 			Statement st2 = con.createStatement();
@@ -312,11 +312,11 @@ public class TravelManager {
 			DriverManagerConnection.releaseConnection(con);
 			
 			while(rs.next()){
-				GregorianCalendar gc = new GregorianCalendar();
-				gc.setGregorianChange(rs.getDate(7));
+			//	GregorianCalendar gc = new GregorianCalendar();
+				//gc.setGregorianChange(rs.getDate(7));
 				RegisteredUser user = new RegisteredUser(rs.getInt(1),
 						rs.getString(5),rs.getString(2),rs.getString(6),
-						rs.getString(3),rs.getString(4),gc,rs.getInt(8));
+						rs.getString(3),rs.getString(4),rs.getString(7),rs.getInt(8));
 				users.add(user);
 			}
 		}

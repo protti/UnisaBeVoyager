@@ -1,6 +1,9 @@
 package UserSubsystem;
 
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -47,21 +50,22 @@ public class UserController {
 		}
 		
 		static public RegisteredUser createUser(String email, String username, String password, String nome, String cognome,
-				GregorianCalendar birthDate)
+				String birthDate)
 		{
-			GregorianCalendar date = new GregorianCalendar();
+			/*GregorianCalendar date = new GregorianCalendar();
 			int time = date.compareTo(birthDate);
 			Date dateDif = new Date(time);
-			int age = dateDif.getYear();
+			int age = dateDif.getYear();*/
+			
 			RegisteredUser user = new RegisteredUser(email,username,password,nome,cognome,
-					birthDate,age);
+					birthDate, computeAge(birthDate));
 			try {
 				UserManager.saveUserToDB(user, password);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				System.out.println("SQLEXCEPTION");
 				return null;
 			} catch (DBException e) {
-				// TODO Auto-generated catch block
+				System.out.println("DBEXCEPTION");
 				return null;
 			}
 			
@@ -86,5 +90,23 @@ public class UserController {
 				return false;
 			}
 		}
+		
+		private static int computeAge(String birthDate) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			Date dateOfBirth;
+			int age = 0; 
+			try {
+				dateOfBirth = sdf.parse(birthDate);
+				Calendar current = new GregorianCalendar();
+				current.setTime(new Date());
+				Calendar birthCalendar = new GregorianCalendar();
+				birthCalendar.setTime(dateOfBirth);
+				age = current.get(Calendar.YEAR) - birthCalendar.get(Calendar.YEAR); 
+			} catch (ParseException e1) {
+				e1.printStackTrace();
+			}
+			return age;
+		}
+
 	
 }
