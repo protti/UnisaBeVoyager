@@ -1,6 +1,8 @@
 package LoginServlet;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,7 +44,15 @@ public class Login extends HttpServlet {
 		synchronized(session) {
 			System.out.println("Login effettuato");
 			session.setAttribute("user", user);
-			response.sendRedirect("profilePage.jsp");	
+			//response.sendRedirect("profilePage.jsp");
+			
+			request.setAttribute("nome", user.getNome());
+			request.setAttribute("cognome", user.getCognome());
+			request.setAttribute("username", user.getUsername());
+			request.setAttribute("eta", user.getAge());
+			RequestDispatcher rd = request.getRequestDispatcher("profilePage.jsp");
+			rd.forward(request, response);
+			
 		}
 		
 		response.getWriter().append("Served at: ").append(password);
