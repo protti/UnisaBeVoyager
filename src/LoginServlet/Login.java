@@ -43,9 +43,8 @@ public class Login extends HttpServlet {
 		HttpSession session = request.getSession();		
 		synchronized(session) {
 			System.out.println("Login effettuato");
-			session.setAttribute("user", user);
 			//response.sendRedirect("profilePage.jsp");
-			
+			session.setAttribute("user", user);
 			request.setAttribute("nome", user.getNome());
 			request.setAttribute("cognome", user.getCognome());
 			request.setAttribute("username", user.getUsername());

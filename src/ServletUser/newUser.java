@@ -3,6 +3,7 @@ package ServletUser;
 import java.io.IOException;
 import java.util.GregorianCalendar;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -62,8 +63,16 @@ public class newUser extends HttpServlet {
 			}
 			else
 			{
-				session.setAttribute("UserR", user);
-				response.sendRedirect("profilePage.jsp");	
+				session.setAttribute("user", user);
+				request.setAttribute("nome", user.getNome());
+				request.setAttribute("cognome", user.getCognome());
+				request.setAttribute("username", user.getUsername());
+				request.setAttribute("eta", user.getAge());
+				RequestDispatcher rd = request.getRequestDispatcher("profilePage.jsp");
+				rd.forward(request, response);
+
+				//session.setAttribute("UserR", user);
+				//response.sendRedirect("profilePage.jsp");	
 			}
 			
 		}
