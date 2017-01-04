@@ -75,6 +75,11 @@ public class UserManager {
 		int result = 0;
 		Connection con = DriverManagerConnection.getConnection();
 		if(con != null){
+			
+			Statement st1 = con.createStatement();
+			st1.executeQuery("delete from UserTravelMatch "
+					+ "where partecipantID = " + userId + "");
+			
 			Statement st = con.createStatement();
 			result = st.executeUpdate("delete from RegisteredUser "
 					+ "where id = " + userId + "");
