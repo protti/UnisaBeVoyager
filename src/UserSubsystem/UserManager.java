@@ -78,7 +78,7 @@ public class UserManager {
 			
 			
 			Statement st1 = con.createStatement();
-			st1.executeQuery("delete from UserTravelMatch "
+			st1.executeUpdate("delete from UserTravelMatch "
 					+ "where partecipantID = " + userId + "");
 			
 			Statement st = con.createStatement();
