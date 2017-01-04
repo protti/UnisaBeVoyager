@@ -39,7 +39,6 @@ public class UserManager {
 					+ "'" + password + "',"
 					+ "'" + user.getBirthDate() + "',"
 					+ "" + user.getAge() + ")");
-			con.commit();
 			DriverManagerConnection.releaseConnection(con);
 		}
 		
