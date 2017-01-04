@@ -32,18 +32,20 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String username = request.getParameter("username");
-		String password = Integer.toString(request.getParameter("password").hashCode());
+		String password = request.getParameter("password");
 		RegisteredUser user = AccessController.logUser(username, password);
 		if (user == null) {
-			//response.sendRedirect();			
+			response.sendRedirect("login.html");	
+			return;
 		}		
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession();		
 		synchronized(session) {
+			System.out.println("Login effettuato");
 			session.setAttribute("user", user);
-			
+			response.sendRedirect("profilePage.jsp");	
 		}
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("Served at: ").append(password);
 	}
 
 	/**

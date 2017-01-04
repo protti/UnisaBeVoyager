@@ -51,6 +51,7 @@ public class AccessController {
 	static public RegisteredUser logUser(String username,String password)	{
 		try {
 			RegisteredUser user = UserManager.getUser(username, password);
+			System.out.println(password);
 			if (user == null) return null;
 				return user;
 			
