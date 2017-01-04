@@ -49,7 +49,7 @@ public class newUser extends HttpServlet {
 			String email = request.getParameter("email");
 			String nome = request.getParameter("name");
 			String cognome = request.getParameter("surname");
-			String password = Integer.toString(request.getParameter("secret").hashCode());
+			String password = request.getParameter("secret");
 			String birthDate = request.getParameter("birth");
 			
 			String username = request.getParameter("username");

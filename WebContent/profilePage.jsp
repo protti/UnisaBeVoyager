@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <title><%= (String) request.getAttribute("nome") %> <%= (String) request.getAttribute("cognome") %></title>
 </head>
 <body>
