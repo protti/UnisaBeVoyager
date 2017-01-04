@@ -50,12 +50,8 @@ public class newUser extends HttpServlet {
 			String nome = request.getParameter("name");
 			String cognome = request.getParameter("surname");
 			String password = Integer.toString(request.getParameter("secret").hashCode());
-			String d = request.getParameter("birth");
-			String[] dt = d.split("-");
-			int databd = Integer.parseInt(dt[2]);
-			int databm = Integer.parseInt(dt[1]);
-			int databy = Integer.parseInt(dt[0]);
-			GregorianCalendar birthDate =	new GregorianCalendar(databy,databm,databd);
+			String birthDate = request.getParameter("birth");
+			
 			String username = request.getParameter("username");
 			
 			RegisteredUser user = UserController.createUser(email, username, password, nome, cognome, birthDate);
@@ -67,7 +63,7 @@ public class newUser extends HttpServlet {
 			else
 			{
 				session.setAttribute("UserR", user);
-				
+				response.sendRedirect("profilePage.jsp");	
 			}
 			
 		}
