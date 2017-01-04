@@ -6,6 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import AccessController.AccessController;
+import UserSubsystem.RegisteredUser;
 
 /**
  * Servlet implementation class Login
@@ -26,7 +30,19 @@ public class Login extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+		String username = request.getParameter("username");
+		String password = Integer.toString(request.getParameter("password").hashCode());
+		RegisteredUser user = AccessController.logUser(username, password);
+		if (user == null) {
+			//response.sendRedirect();			
+		}		
+		HttpSession session = request.getSession();
+		synchronized(session) {
+			session.setAttribute("user", user);
+			
+		}
+		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 

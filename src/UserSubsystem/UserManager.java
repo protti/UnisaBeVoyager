@@ -39,7 +39,6 @@ public class UserManager {
 					+ "'" + password + "',"
 					+ "'" + user.getBirthDate() + "',"
 					+ "" + user.getAge() + ")");
-			con.commit();
 			DriverManagerConnection.releaseConnection(con);
 		}
 		
@@ -116,7 +115,7 @@ public class UserManager {
 		return listUsers;
 	}
 	
-	public static RegisteredUser getUser(String username)
+	public static RegisteredUser getUser(String username, String password)
 		throws SQLException,DBException{
 		
 		RegisteredUser user = null;
@@ -125,7 +124,7 @@ public class UserManager {
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery("select * "
 					+ "from RegisteredUser "
-					+ "where username = '" + username + "'");
+					+ "where username = '" + username + "' and password = '" + password + "'");
 			DriverManagerConnection.releaseConnection(con);
 			
 			if(rs.next()){

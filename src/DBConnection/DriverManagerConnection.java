@@ -30,8 +30,8 @@ public class DriverManagerConnection {
 	private	static Connection createDBConnection() throws SQLException {	
 		Connection newConnection = null;	
 		String db = "bevoyager";	
-		String username	= "root";	
-				String password	= "camicia";	
+		String username	= "badmin@localhost";	
+				String password	= "adminadmin";	
 				newConnection = DriverManager.getConnection(	
 						"jdbc:mysql://localhost:3306/"+db, 
 						username,	password);	
@@ -60,7 +60,10 @@ public class DriverManagerConnection {
 	*Metodo che aggiunge una connessione alla lista delle connessioni.
 	*@param connection
 	*/
-	public	static synchronized void releaseConnection(Connection connection){	
-		DriverManagerConnection.freeDbConnections.add(connection);	
+	public	static synchronized void releaseConnection(Connection connection)
+		throws SQLException{	
+		connection.commit();
+		DriverManagerConnection.freeDbConnections.add(connection);
+		
 	}	
 }
