@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import UserSubsystem.RegisteredUser;
+import UserSubsystem.User;
 import UserSubsystem.UserController;
 
 /**
@@ -40,7 +41,7 @@ public class SearchUser extends HttpServlet {
 		
 		if(users.size() > 0){
 			for(RegisteredUser user: users){
-				out.println("<p>" + user.getUsername() + "</p>");
+				out.println("<a href=\"showProfile.jsp?id="+ user.getId()+"\">"+user.getNome()+"</a><br>");
 			}
 		}
 		else{
