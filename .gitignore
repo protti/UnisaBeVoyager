@@ -4,3 +4,5 @@
 .classpath
 .settings/
 /bin/
+/src/DBConnection/DiverManagerConnection.java
+/src/DBConnection/DiverManagerConnection
