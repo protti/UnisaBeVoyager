@@ -11,9 +11,9 @@ import UserSubsystem.RegisteredUser;
 public class LocationController {
 
 	
-	static public Location createLocation(int id,String name, String descrizione)
+	static public Location createLocation(String name, String descrizione)
 	{
-		Location location = new Location(id,name,descrizione);
+		Location location = new Location(name,descrizione);
 		try {
 			LocationManager.saveLocationToDB(location);
 		} catch (SQLException | DBException e) {

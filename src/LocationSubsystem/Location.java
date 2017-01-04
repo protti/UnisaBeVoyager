@@ -11,12 +11,19 @@ public class Location {
 	private int id;
 	private String descrizione;
 	
-	public Location(int id,String name, String descrizione) {
+	public Location(String name, String descrizione) {
 		super();
 		this.name = name;
-		this.id = id;
 		this.descrizione = descrizione;
 	}
+	
+	public Location(int id,String name, String descrizione) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.descrizione = descrizione;
+	}
+	
 	/**
 	*Metodo che restituisce il nome del luogo.
 	*@return name
