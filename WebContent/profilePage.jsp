@@ -7,11 +7,10 @@
 <title><%= (String) request.getAttribute("nome") %> <%= (String) request.getAttribute("cognome") %></title>
 </head>
 <body>
-</body>
-
 Username: <%= (String) request.getAttribute("username") %>
 Nome: <%= (String) request.getAttribute("nome") %>
 Cognome: <%= (String) request.getAttribute("cognome") %>
 Età: <%= request.getAttribute("eta") %>
-
+<a href="eliminaUtente.jsp">Elimina account</a>
+</body>
 </html>
