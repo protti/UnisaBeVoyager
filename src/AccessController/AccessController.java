@@ -10,10 +10,10 @@ public class AccessController {
 
 
 
-	static public RegisteredUser recoveryPwd(String username)
+	static public RegisteredUser recoveryPwd(String email)
 	{
 		try {
-			RegisteredUser user = UserManager.getUser(username);
+			RegisteredUser user = UserManager.getUserByEmail(email);
 			return user;
 		} catch (SQLException | DBException e) {
 			// TODO Auto-generated catch block
@@ -42,15 +42,22 @@ public class AccessController {
 	{
 		return false;
 	}
-	
+		
 	static public boolean controlLogOut(int idUser)
 	{
 		return false;
 	}
 	
-	static public RegisteredUser logUser(String username,String password)
-	{
-		return null;
+	static public RegisteredUser logUser(String username,String password)	{
+		try {
+			RegisteredUser user = UserManager.getUser(username, password);
+			if (user == null) return null;
+				return user;
+			
+		} catch (SQLException | DBException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }
