@@ -3,6 +3,7 @@ package ServletLocation;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,7 +48,10 @@ public class CreateLocation extends HttpServlet {
 					response.sendRedirect("500page.html");
 				}
 				else{
-					//crea luogo
+					request.setAttribute("nome", location.getName());
+					request.setAttribute("descrizione", location.getDescrizione());
+					RequestDispatcher rd = request.getRequestDispatcher("locationpage.jsp");
+					rd.forward(request, response);
 					logger.info("Il luogo è stato creato!");
 				}
 			}
