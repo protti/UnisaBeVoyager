@@ -9,12 +9,13 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import DBConnection.DBException;
+import RouteSubsystem.RouteManager;
 
 public class test {
 
 	public static void main(String[] args) {
-		System.out.println("Inizio");
-		RegisteredUser user = new RegisteredUser("emailprova", "paolo1", "password", "paolo", "zirpoli", "1995-05-12", 21);
+		//System.out.println("Inizio");
+		//RegisteredUser user = new RegisteredUser("emailprova", "paolo1", "password", "paolo", "zirpoli", "1995-05-12", 21);
 		
 	/*	String birthDate = "1995-05-12";
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -30,7 +31,7 @@ public class test {
 		} catch (ParseException e1) {
 			e1.printStackTrace();
 		}*/
-		RegisteredUser protti = null;
+		/*RegisteredUser protti = null;
 		List<RegisteredUser> users = null;
 		try {
 			//protti = UserManager.getUser("protti");
@@ -51,8 +52,14 @@ public class test {
 		
 		System.out.println(protti.getCognome());
 		System.out.println(protti.getEmail());
-		System.out.println(protti.getBirthDate());
+		System.out.println(protti.getBirthDate());*/
 		
+		try {
+			RouteManager.addLocationToRoute(9, 1);
+		} catch (SQLException | DBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }
