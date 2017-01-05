@@ -70,9 +70,6 @@ public class newUser extends HttpServlet {
 				request.setAttribute("eta", user.getAge());
 				RequestDispatcher rd = request.getRequestDispatcher("profilePage.jsp");
 				rd.forward(request, response);
-
-				//session.setAttribute("UserR", user);
-				//response.sendRedirect("profilePage.jsp");	
 			}
 			
 		}
