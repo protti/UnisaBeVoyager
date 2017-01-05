@@ -34,25 +34,29 @@ public class RouteManager {
 		Connection con = DriverManagerConnection.getConnection();
 		if(con != null && route != null){
 
-			Calendar current = new GregorianCalendar();
-			current.setTime(new Date());
-			String date = "" + current.get(Calendar.YEAR) + "-" + current.get(Calendar.MONTH) + "-" + current.get(Calendar.DAY_OF_MONTH);
-			logger.info(date);
+			
 			Statement st = con.createStatement();
 			result = st.executeUpdate("insert into Route(description,name) "
 					+ "values('" + route.getDescription() + "',"
 					+ "'" + route.getName() + "')");
 			
+			Statement st2 = con.createStatement();
+			ResultSet rs = st2.executeQuery("select id "
+					+ "from Route "
+					+ "where name = '" + route.getName() + "' AND "
+					+ "description = '" + route.getDescription() + "'");
 			
+			int id = 0;
+			if(rs.next()) id = rs.getInt(1);
 			
 			List<Location> locations = route.getLocations();
-			if(locations != null){
+			if(locations != null && id > 0){
 				for(Location location: locations){
 					Statement st1 = con.createStatement();
 					st1.executeUpdate("insert into RouteLocationMatch "
 						+ "values(" + location.getId() + ","
-						+ "" + route.getId() + ","
-						+ "'" + date + "')");
+						+ "" + id + ","
+						+ "'0000-00-00')");
 				}
 			}
 			
