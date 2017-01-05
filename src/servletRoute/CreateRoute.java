@@ -35,14 +35,14 @@ public class CreateRoute extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		return;
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request,response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String routeName = request.getParameter("name");
 		String routeDesc = request.getParameter("descrizione");
 		HttpSession session = request.getSession();
@@ -57,12 +57,15 @@ public class CreateRoute extends HttpServlet {
 		if (newRoute == null) {
 			response.sendRedirect("500page.html");
 		}
-		session.removeAttribute("currentList");		
+				
 
-		request.setAttribute("nome",newRoute.getName());
-		request.setAttribute("descrizione", newRoute.getDescription());
-		request.setAttribute("locationList", newRoute.getLocations());
-		RequestDispatcher rd = request.getRequestDispatcher("routePage.jsp");
-		rd.forward(request, response);		}
+		synchronized(session){
+			session.removeAttribute("currentList");
+			request.setAttribute("nome",newRoute.getName());
+			request.setAttribute("descrizione", newRoute.getDescription());
+			request.setAttribute("locationList", newRoute.getLocations());
+			RequestDispatcher rd = request.getRequestDispatcher("routePage.jsp");
+			rd.forward(request, response);
+		}}
 
 }

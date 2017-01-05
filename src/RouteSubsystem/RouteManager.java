@@ -5,10 +5,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import DBConnection.DBException;
 import DBConnection.DriverManagerConnection;
@@ -18,6 +21,9 @@ import LocationSubsystem.LocationManager;
  *Classe che gestisce le operazioni su un itinerario.
  */
 public class RouteManager {
+	
+	private static Logger logger = Logger.getLogger("global");
+	
 	/**
 	 *Metodo che gestisce il salvataggio di un itinerario sul database.
 	 *@param route
@@ -28,11 +34,28 @@ public class RouteManager {
 		Connection con = DriverManagerConnection.getConnection();
 		if(con != null && route != null){
 
+			Calendar current = new GregorianCalendar();
+			current.setTime(new Date());
+			String date = "" + current.get(Calendar.YEAR) + "-" + current.get(Calendar.MONTH) + "-" + current.get(Calendar.DAY_OF_MONTH);
+			logger.info(date);
 			Statement st = con.createStatement();
-			result = st.executeUpdate("insert into Route "
-					+ "values(" + route.getId() + ","
-					+ "'" + route.getDescription() + "',"
+			result = st.executeUpdate("insert into Route(description,name) "
+					+ "values('" + route.getDescription() + "',"
 					+ "'" + route.getName() + "')");
+			
+			
+			
+			List<Location> locations = route.getLocations();
+			if(locations != null){
+				for(Location location: locations){
+					Statement st1 = con.createStatement();
+					st1.executeUpdate("insert into RouteLocationMatch "
+						+ "values(" + location.getId() + ","
+						+ "" + route.getId() + ","
+						+ "'" + date + "')");
+				}
+			}
+			
 			DriverManagerConnection.releaseConnection(con);
 		}
 
