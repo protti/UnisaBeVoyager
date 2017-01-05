@@ -50,8 +50,6 @@ public class Login extends HttpServlet {
 			rd.forward(request, response);
 			
 		}
-		
-		response.getWriter().append("Served at: ").append(password);
 	}
 
 	/**
