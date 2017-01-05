@@ -36,6 +36,13 @@ public class CreateRoute extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		return;
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String routeName = request.getParameter("name");
 		String routeDesc = request.getParameter("descrizione");
 		HttpSession session = request.getSession();
@@ -56,15 +63,6 @@ public class CreateRoute extends HttpServlet {
 		request.setAttribute("descrizione", newRoute.getDescription());
 		request.setAttribute("locationList", newRoute.getLocations());
 		RequestDispatcher rd = request.getRequestDispatcher("routePage.jsp");
-		rd.forward(request, response);	
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+		rd.forward(request, response);		}
 
 }
