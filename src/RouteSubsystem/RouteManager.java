@@ -47,7 +47,10 @@ public class RouteManager {
 					+ "description = '" + route.getDescription() + "'");
 			
 			int id = 0;
-			if(rs.next()) id = rs.getInt(1);
+			if(rs.next()){
+				id = rs.getInt(1);
+				route.setId(id);
+			}
 			
 			List<Location> locations = route.getLocations();
 			if(locations != null && id > 0){

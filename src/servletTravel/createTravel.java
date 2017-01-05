@@ -43,15 +43,6 @@ public class createTravel extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
 		HttpSession session = request.getSession();
 		synchronized (session) {
 			
@@ -76,7 +67,7 @@ public class createTravel extends HttpServlet {
 			String endDate = request.getParameter("startDate");
 			String types = request.getParameter("type");
 			boolean type;
-			if(types == "Y")
+			if(types.equals("Y"))
 				type = true;
 			else
 				type=false;
@@ -95,6 +86,15 @@ public class createTravel extends HttpServlet {
 			
 			response.sendRedirect(page);
 		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		
 		doGet(request, response);
 	}
 

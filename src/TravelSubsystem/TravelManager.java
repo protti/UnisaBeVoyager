@@ -38,12 +38,13 @@ public class TravelManager {
 			Statement st = con.createStatement();
 			result = st.executeUpdate("insert into "
 					+ "Travel(startDate,endDate,routeID,"
-					+ "creatorID,type,nome) "
+					+ "creatorID,type,name) "
 					+ "values('" + travel.getStartDate() + "',"
 					+ "'" + travel.getEndDate()+ "',"
-					+ "'" + travel.getRoute().getId() + "',"
-					+ "'" + travel.getCreatoreViaggio().getId() + "',"
-					+ "" + travel.getType() + ")");
+					+ "" + travel.getRoute().getId() + ","
+					+ "" + travel.getCreatoreViaggio().getId() + ","
+					+ "" + travel.getType() + ","
+					+ "'" + travel.getNome() + "')");
 			logger.info("Salvo");
 			DriverManagerConnection.releaseConnection(con);
 
