@@ -39,6 +39,7 @@ public class ShowRoute extends HttpServlet {
 		
 		if(route == null) {
 			response.sendRedirect("500page.html");
+			return;
 		}
 		else {
 			request.setAttribute("nome", route.getName());
@@ -46,7 +47,9 @@ public class ShowRoute extends HttpServlet {
 			request.setAttribute("locationList", route.getLocations());
 			RequestDispatcher rd = request.getRequestDispatcher("routePage.jsp");
 			rd.forward(request, response);
-		}			}
+			return;
+		}			
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
