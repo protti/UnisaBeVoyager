@@ -17,16 +17,16 @@ public class Poll {
 	private String description;
 	private int vnegative;
 	private int vpositive;
-	private GregorianCalendar startDate;
-	private GregorianCalendar endDate;
+	private String startDate;
+	private String endDate;
 
-	public GregorianCalendar getEndDate() {
+	public String getEndDate() {
 		return this.endDate;
 	}
 
 	
 	
-	public Poll(int id, String description, int vnegative, int vpositive, GregorianCalendar startDate, GregorianCalendar endDate) {
+	public Poll(int id, String description, int vnegative, int vpositive, String startDate, String endDate) {
 		super();
 		this.id = id;
 		this.description = description;
@@ -37,8 +37,8 @@ public class Poll {
 	}
 
 
-	public Poll(String description, int vnegative, int vpositive, GregorianCalendar startDate,
-			GregorianCalendar endDate) {
+	public Poll(String description, int vnegative, int vpositive, String startDate,
+			String endDate) {
 		super();
 		this.description = description;
 		this.vnegative = vnegative;
@@ -53,14 +53,14 @@ public class Poll {
 	*Metodo che setta la data di fine.
 	*@param endDate
 	*/
-	public void setEndDate(GregorianCalendar endDate) {
+	public void setEndDate(String endDate) {
 		this.endDate = endDate;
 	}
 	/**
 	*Metodo che restituisce la data di inizio.
 	*@return startDate
 	*/
-	public GregorianCalendar getStartDate() {
+	public String getStartDate() {
 		return this.startDate;
 	}
 
@@ -68,7 +68,7 @@ public class Poll {
 	*Metodo che setta la data di inizio.
 	*@param startDate
 	*/
-	public void setStartDate(GregorianCalendar startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 	/**

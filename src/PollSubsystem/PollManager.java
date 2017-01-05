@@ -25,8 +25,8 @@ public class PollManager {
 					+ "values('" + poll.getDescription() + "',"
 					+ "" + poll.getVpositive() + ","
 					+ "" + poll.getVnegative() + ","
-					+ "'" + poll.getStartDate().getGregorianChange() + "',"
-					+ "'" + poll.getEndDate().getGregorianChange() + "',"
+					+ "'" + poll.getStartDate() + "',"
+					+ "'" + poll.getEndDate() + "',"
 					+ "" + travelId + ")");
 			DriverManagerConnection.releaseConnection(con);
 		}
@@ -74,8 +74,8 @@ public class PollManager {
 					+ "set descritpion = '" + poll.getDescription() + "',"
 					+ "positive = " + poll.getVpositive() +","
 					+ "negative = " + poll.getVnegative() + ","
-					+ "startDate = '" + poll.getStartDate().getGregorianChange() + "',"
-					+ "endDate = '" + poll.getEndDate().getGregorianChange() + "' "
+					+ "startDate = '" + poll.getStartDate() + "',"
+					+ "endDate = '" + poll.getEndDate() + "' "
 					+ "where id = " + poll.getId() + "");
 			DriverManagerConnection.releaseConnection(con);
 		}
@@ -94,12 +94,12 @@ public class PollManager {
 					+ "where id = " + id + "");
 			DriverManagerConnection.releaseConnection(con);
 			if(rs.next()){
-				GregorianCalendar gc1 = new GregorianCalendar();
-				GregorianCalendar gc2 = new GregorianCalendar();
-				gc1.setGregorianChange(rs.getDate(6));
-				gc2.setGregorianChange(rs.getDate(7));
+				//GregorianCalendar gc1 = new GregorianCalendar();
+				//GregorianCalendar gc2 = new GregorianCalendar();
+				//gc1.setGregorianChange(rs.getDate(6));
+				//gc2.setGregorianChange(rs.getDate(7));
 				poll = new Poll(rs.getString(3),rs.getInt(5),rs.getInt(4),
-						gc1,gc2);
+						rs.getString(6),rs.getString(7));
 				poll.setId(rs.getInt(1));
 			}
 		}

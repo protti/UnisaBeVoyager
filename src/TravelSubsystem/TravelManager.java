@@ -157,12 +157,12 @@ public class TravelManager {
 			ArrayList<Poll> polls = new ArrayList<Poll>();
 			
 			while(rs5.next()){
-				GregorianCalendar gc1 = new GregorianCalendar();
-				GregorianCalendar gc2 = new GregorianCalendar();
-				gc1.setGregorianChange(rs5.getDate(6));
-				gc2.setGregorianChange(rs5.getDate(7));
+				//GregorianCalendar gc1 = new GregorianCalendar();
+			//	GregorianCalendar gc2 = new GregorianCalendar();
+				//gc1.setGregorianChange(rs5.getDate(6));
+				//gc2.setGregorianChange(rs5.getDate(7));
 				Poll poll = new Poll(rs5.getInt(1),rs5.getString(3),
-						rs5.getInt(5),rs5.getInt(4),gc1,gc2);
+						rs5.getInt(5),rs5.getInt(4),rs5.getString(6),rs5.getString(6));
 				polls.add(poll);
 			}
 			
@@ -418,12 +418,12 @@ public class TravelManager {
 			DriverManagerConnection.releaseConnection(con);
 			
 			while(rs.next()){
-				GregorianCalendar gc1 = new GregorianCalendar();
-				GregorianCalendar gc2 = new GregorianCalendar();
-				gc1.setGregorianChange(rs.getDate(6));
-				gc2.setGregorianChange(rs.getDate(7));
+				//GregorianCalendar gc1 = new GregorianCalendar();
+				//GregorianCalendar gc2 = new GregorianCalendar();
+			//	gc1.setGregorianChange(rs.getDate(6));
+			//	gc2.setGregorianChange(rs.getDate(7));
 				Poll poll = new Poll(rs.getString(3),rs.getInt(5),rs.getInt(4),
-						gc1,gc2);
+						rs.getString(6),rs.getString(7));
 				poll.setId(rs.getInt(1));
 				polls.add(poll);
 			}

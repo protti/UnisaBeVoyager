@@ -7,7 +7,7 @@ import DBConnection.DBException;
 
 public class PollController {
 	public static Poll createPoll(String description,int pos, int neg, 
-			GregorianCalendar startDate, GregorianCalendar endDate,int travelId){
+			String startDate, String endDate,int travelId){
 
 		Poll poll = new Poll(description,neg,pos,startDate,endDate);
 		try {
