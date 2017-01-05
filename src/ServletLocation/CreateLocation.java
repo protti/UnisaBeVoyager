@@ -22,7 +22,7 @@ import UserSubsystem.RegisteredUser;
 public class CreateLocation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static Logger logger = Logger.getLogger("global"); 
-	
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -52,7 +52,6 @@ public class CreateLocation extends HttpServlet {
 					request.setAttribute("descrizione", location.getDescrizione());
 					RequestDispatcher rd = request.getRequestDispatcher("locationpage.jsp");
 					rd.forward(request, response);
-					logger.info("Il luogo � stato creato!");
 				}
 			}
 		}
