@@ -42,6 +42,7 @@ public class ShowLocation extends HttpServlet {
 		
 		if(location == null) {
 			response.sendRedirect("500page.html");
+			return;
 		}
 		else {
 			request.setAttribute("nome", location.getName());
@@ -49,6 +50,7 @@ public class ShowLocation extends HttpServlet {
 			session.setAttribute("location", location);
 			RequestDispatcher rd = request.getRequestDispatcher("locationpage.jsp");
 			rd.forward(request, response);
+			return;
 		}		
 	}
 
