@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<%if(session.getAttribute("user") != null){ 
+<%//if(session.getAttribute("user") != null){ 
 
-RegisteredUser user = (RegisteredUser) session.getAttribute("user");
-
+//RegisteredUser user = (RegisteredUser) session.getAttribute("user");
+RegisteredUser user = (RegisteredUser) request.getAttribute("user");
 %>
 <title><%= user.getNome() %> <%= user.getCognome() %></title>
 </head>
@@ -17,6 +17,6 @@ Nome: <%= user.getNome()%>
 Cognome: <%= user.getCognome() %>
 Età: <%= user.getAge() %>
 <a href="eliminaUtente.jsp">Elimina account</a>
-<%} %>
+<%//} %>
 </body>
 </html>

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import UserSubsystem.RegisteredUser;
 import UserSubsystem.UserController;
@@ -32,19 +33,31 @@ public class showProfile extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession session = request.getSession();
+		
+		if(!session.isNew()) {
+			response.sendRedirect("500page.html");
+		}
+		
+		RegisteredUser temp = (RegisteredUser) session.getAttribute("User");
+		RegisteredUser user = null;
+		
 		int userID = Integer.parseInt(request.getParameter("id"));
-		
-		RegisteredUser user = UserController.getUser(userID);
-		
+
+		if (temp.getId() != userID) {
+			user = UserController.getUser(userID);
+		} else {
+			user = temp;
+		}		
 		
 		if(user == null) {
 			response.sendRedirect("500page.html");
 		}
 		else {
-			request.setAttribute("nome", user.getNome());
-			request.setAttribute("cognome", user.getCognome());
-			request.setAttribute("username", user.getUsername());
-			request.setAttribute("eta", user.getAge());
+		//	request.setAttribute("nome", user.getNome());
+		//	request.setAttribute("cognome", user.getCognome());
+		//	request.setAttribute("username", user.getUsername());
+		//	request.setAttribute("eta", user.getAge());
 			RequestDispatcher rd = request.getRequestDispatcher("profilePage.jsp");
 			rd.forward(request, response);
 		}
