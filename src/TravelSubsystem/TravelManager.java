@@ -43,8 +43,7 @@ public class TravelManager {
 					+ "'" + travel.getEndDate()+ "',"
 					+ "'" + travel.getRoute().getId() + "',"
 					+ "'" + travel.getCreatoreViaggio().getId() + "',"
-					+ "" + travel.getType() + 
-					",'"  + travel.getNome()+"')");
+					+ "" + travel.getType() + ")");
 			logger.info("Salvo");
 			DriverManagerConnection.releaseConnection(con);
 
