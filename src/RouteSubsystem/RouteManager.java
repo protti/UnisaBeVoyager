@@ -126,7 +126,7 @@ public class RouteManager {
 			ResultSet rs1 = st1.executeQuery("select * "
 					+ "from Location "
 					+ "where id IN(select locationID "
-					+ "from RouteLocation "
+					+ "from RouteLocationMatch "
 					+ "where routeID = " + id + ")");
 
 			while(rs1.next()){
