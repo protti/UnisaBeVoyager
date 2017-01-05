@@ -12,13 +12,9 @@
 		<span>Nome </span><input type="text" class="focus" name="nome"><br>
 		<span>Start Date </span><input type="text" class="focus" name="startDate"><br>
 		<span>End Date </span><input type="text" class="focus" name="endDate"><br>
-		<span>Modificabile? </span><input type="text" class="focus" name="type"><br>
+		<span>Modificabile?(Y: si) </span><input type="text" class="focus" name="type"><br>
 		
 		<input type="submit" value="Crea">
-		
-			String startDate = request.getParameter("startDate");
-			String endDate = request.getParameter("endDate");
-			String types = request.getParameter("type");
 	</form>
 <%} else{%>
 Non sei loggato
