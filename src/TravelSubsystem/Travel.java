@@ -47,21 +47,25 @@ public class Travel {
 		this.nome = nome;
 	}
 
-	public Travel(String nome, RegisteredUser creatoreViaggio, int id, String startDate, String endDate, boolean type) {
+	public Travel(int id, String nome, Route route, RegisteredUser creatoreViaggio, String startDate,
+			String endDate, boolean type) {
 		this.nome = nome;
 		this.creatoreViaggio = creatoreViaggio;
 		this.id = id;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.type = type;
+		this.route = route;
 	}
 
-	public Travel(String nome,RegisteredUser creatoreViaggio, String startDate, String endDate, boolean type) {
+	public Travel(String nome, Route route, RegisteredUser creatoreViaggio, String startDate,
+			String endDate, boolean type) {
 		this.nome = nome;
 		this.creatoreViaggio = creatoreViaggio;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.type = type;
+		this.route = route;
 	}
 	/**
 	*Metodo che restituisce l'utente creatore del viaggio.

@@ -1,6 +1,10 @@
 package servletTravel;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Logger;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,10 +12,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import DBConnection.DBException;
+import LocationSubsystem.Location;
+import LocationSubsystem.LocationController;
+import LocationSubsystem.LocationManager;
 import TravelSubsystem.Travel;
 import TravelSubsystem.TravelController;
 import TravelSubsystem.TravelManager;
 import UserSubsystem.RegisteredUser;
+import RouteSubsystem.*;
 
 /**
  * Servlet implementation class createTravel
@@ -19,7 +28,8 @@ import UserSubsystem.RegisteredUser;
 @WebServlet("/createTravel")
 public class createTravel extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private static Logger logger = Logger.getLogger("global"); 
+   
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -45,6 +55,20 @@ public class createTravel extends HttpServlet {
 		HttpSession session = request.getSession();
 		synchronized (session) {
 			
+			
+			Location loc = new Location("Milano","Bellissimo");
+			Location loca = new Location("Malpensa","Bellissimo");
+			
+			LocationController.createLocation("Milano", "Bellissimo");
+			LocationController.createLocation("Malpensa", "Bellissimo");
+			
+			ArrayList<Location> locs = new ArrayList<Location>();
+			 //(Route)session.getAttribute("route");
+			Route route;
+			route = RouteController.createRoute(locs, "Giro a milano", "Terun");
+			RouteController.addLocationToRoute(loc, route);
+			RouteController.addLocationToRoute(loca, route);
+			
 			RegisteredUser creatoreViaggio = (RegisteredUser)session.getAttribute("user");
 			String nome = request.getParameter("nome");
 			
@@ -56,8 +80,11 @@ public class createTravel extends HttpServlet {
 				type = true;
 			else
 				type=false;
-			Travel travel = TravelController.createTravel(nome,creatoreViaggio, startDate, endDate, type);
+			
+			
+			Travel travel = TravelController.createTravel(nome,route,creatoreViaggio, startDate, endDate, type);
 			String page = null;
+			
 			if(travel == null)
 			{
 				page = "500page.html";

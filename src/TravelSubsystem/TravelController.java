@@ -4,8 +4,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.logging.Logger;
 
 import DBConnection.DBException;
+import RouteSubsystem.Route;
 import UserSubsystem.RegisteredUser;
 import TravelSubsystem.TravelManager;
 
@@ -82,13 +84,18 @@ public class TravelController {
 		}
 		return true;
 	}
-	
-	public static Travel createTravel(String nome,RegisteredUser creatoreViaggio, String startDate, String endDate, boolean type) {
+	private static Logger logger = Logger.getLogger("global"); 
+
+	public static Travel createTravel(String nome, Route route, RegisteredUser creatoreViaggio, String startDate,
+			String endDate, boolean type) {
+		logger.info("creo travel");
+		Travel travel = new Travel(nome,route,creatoreViaggio, startDate, endDate, type);
 		
-		Travel travel = new Travel(nome,creatoreViaggio, startDate, endDate, type);
 		try {
+			logger.info("Salvo sul db");
 			TravelManager.saveTravelToDB(travel);
 		} catch (SQLException | DBException e) {
+			e.printStackTrace();
 			return null;
 		}
 		return travel;
@@ -140,7 +147,8 @@ public class TravelController {
 			return null;
 		}
 	}
-	
+
+
 	
 	
 	

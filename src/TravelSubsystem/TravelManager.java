@@ -10,6 +10,7 @@ import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import DBConnection.DBException;
 import DBConnection.DriverManagerConnection;
@@ -26,6 +27,7 @@ public class TravelManager {
 	*Metodo che gestisce il salvataggio di un viaggio sul database.
 	*@param travel
 	*/
+	private static Logger logger = Logger.getLogger("global"); 
 
 	public static void saveTravelToDB(Travel travel)
 		throws SQLException,DBException{
@@ -42,11 +44,17 @@ public class TravelManager {
 					+ "'" + travel.getRoute().getId() + "',"
 					+ "'" + travel.getCreatoreViaggio().getId() + "',"
 					+ "" + travel.getType() + 
-					"'," + "'" + travel.getNome()+")");
+					",'"  + travel.getNome()+"')");
+			logger.info("Salvo");
 			DriverManagerConnection.releaseConnection(con);
+
 		}
 		
-		if(result != 1) throw new DBException();
+		if(result != 1)
+		{	
+			logger.info("Eccezione");
+			throw new DBException();
+		}
 	}
 	/**
 	 * Metodo che controlla la presenza di un viaggio sul database.
@@ -178,8 +186,7 @@ public class TravelManager {
 				gc1 = (rs.getDate(2).toString());
 				gc2 = (rs.getDate(3).toString());
 				
-				travel = new Travel(rs.getString(7),ru,rs.getInt(1),gc1,gc2,rs.getBoolean(6));
-				travel.setRoute(route);
+				travel = new Travel(rs.getString(7),route,ru,gc1,gc2,rs.getBoolean(6));
 				travel.setPollList(polls);
 				
 			}			
