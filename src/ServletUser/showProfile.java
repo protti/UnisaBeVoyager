@@ -39,7 +39,7 @@ public class showProfile extends HttpServlet {
 			response.sendRedirect("500page.html");
 		}
 		
-		RegisteredUser temp = (RegisteredUser) session.getAttribute("User");
+		RegisteredUser temp = (RegisteredUser) session.getAttribute("user");
 		RegisteredUser user = null;
 		
 		int userID = Integer.parseInt(request.getParameter("id"));
