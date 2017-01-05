@@ -14,7 +14,7 @@
 	
 	<%List<Location> locations = (List<Location>) request.getAttribute("locations"); %>
 	
-	<% if (locations != null) { 
+	<% if (locations != null && !locations.isEmpty()) { 
 		for(int i = 0; i < locations.size(); i++) { %>
 		<p>Nome: <%=locations.get(i).getName() %></p>
 		<a href=ShowLocation?id=<%=locations.get(i).getId() %>><%=locations.get(i).getName() %></a><br>

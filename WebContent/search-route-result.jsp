@@ -13,7 +13,7 @@
 	
 	<%List<Route> routes = (List<Route>) request.getAttribute("routes"); %>
 	
-	<% if (routes != null) { 
+	<% if (routes != null && !routes.isEmpty()) { 
 		for(int i = 0; i < routes.size(); i++) { %>
 		<p>Nome: <%=routes.get(i).getName() %></p>
 		<a href=ShowRoute?id=<%=routes.get(i).getId() %>><%=routes.get(i).getName() %></a><br>
