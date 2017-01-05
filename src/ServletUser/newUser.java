@@ -64,10 +64,11 @@ public class newUser extends HttpServlet {
 			else
 			{
 				session.setAttribute("user", user);
-				request.setAttribute("nome", user.getNome());
+				/*request.setAttribute("nome", user.getNome());
 				request.setAttribute("cognome", user.getCognome());
 				request.setAttribute("username", user.getUsername());
-				request.setAttribute("eta", user.getAge());
+				request.setAttribute("eta", user.getAge());*/
+				request.setAttribute("user", user);				
 				RequestDispatcher rd = request.getRequestDispatcher("profilePage.jsp");
 				rd.forward(request, response);
 			}
