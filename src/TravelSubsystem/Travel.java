@@ -26,8 +26,8 @@ public class Travel {
 	private ArrayList<Poll> pollList;
 	private Route route;
 	private int id;
-	private GregorianCalendar startDate;
-	private GregorianCalendar endDate;
+	private String startDate;
+	private String endDate;
 	private boolean confirmed;
 	
 	public boolean isConfirmed() {
@@ -38,7 +38,7 @@ public class Travel {
 		this.confirmed = confirmed;
 	}
 	
-	public Travel(RegisteredUser creatoreViaggio, int id, GregorianCalendar startDate, GregorianCalendar endDate, boolean type) {
+	public Travel(RegisteredUser creatoreViaggio, int id, String startDate, String endDate, boolean type) {
 		this.creatoreViaggio = creatoreViaggio;
 		this.id = id;
 		this.startDate = startDate;
@@ -46,7 +46,7 @@ public class Travel {
 		this.type = type;
 	}
 
-	public Travel(RegisteredUser creatoreViaggio, GregorianCalendar startDate, GregorianCalendar endDate, boolean type) {
+	public Travel(RegisteredUser creatoreViaggio, String startDate, String endDate, boolean type) {
 		this.creatoreViaggio = creatoreViaggio;
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -133,7 +133,7 @@ public class Travel {
 	*@return startDate
 	*
 	*/
-	public GregorianCalendar getStartDate() {
+	public String getStartDate() {
 		return this.startDate;
 	}
 
@@ -142,7 +142,7 @@ public class Travel {
 	*@param startDate
 	*
 	*/
-	public void setStartDate(GregorianCalendar startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 	/**
@@ -150,7 +150,7 @@ public class Travel {
 	*@return endDate
 	*
 	*/
-	public GregorianCalendar getEndDate() {
+	public String getEndDate() {
 		return this.endDate;
 	}
 
@@ -159,7 +159,7 @@ public class Travel {
 	*@param endDate
 	*
 	*/
-	public void GregorianCalendar(GregorianCalendar endDate) {
+	public void GregorianCalendar(String endDate) {
 		this.endDate = endDate;
 	}
 	/**

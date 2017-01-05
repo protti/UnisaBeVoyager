@@ -83,7 +83,7 @@ public class TravelController {
 		return true;
 	}
 	
-	public static Travel createTravel(RegisteredUser creatoreViaggio, GregorianCalendar startDate, GregorianCalendar endDate, boolean type) {
+	public static Travel createTravel(RegisteredUser creatoreViaggio, String startDate, String endDate, boolean type) {
 
 		Travel travel = new Travel(creatoreViaggio, startDate, endDate, type);
 		try {
@@ -141,14 +141,7 @@ public class TravelController {
 		}
 	}
 	
-	public static List<Travel> filterByDate(GregorianCalendar date, List<Travel> travels) {
-		
-		
-		
-		
-		return travels;
-		
-	}
+	
 	
 	
 }

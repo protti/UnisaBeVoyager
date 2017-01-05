@@ -37,8 +37,8 @@ public class TravelManager {
 			result = st.executeUpdate("insert into "
 					+ "Travel(startDate,endDate,routeID,"
 					+ "creatorID,type) "
-					+ "values('" + travel.getStartDate().getGregorianChange() + "',"
-					+ "'" + travel.getEndDate().getGregorianChange() + "',"
+					+ "values('" + travel.getStartDate() + "',"
+					+ "'" + travel.getEndDate()+ "',"
 					+ "'" + travel.getRoute().getId() + "',"
 					+ "'" + travel.getCreatoreViaggio().getId() + "',"
 					+ "" + travel.getType() + ")");
@@ -172,10 +172,10 @@ public class TravelManager {
 			
 			DriverManagerConnection.releaseConnection(con);
 			if(rs.next()){
-				GregorianCalendar gc1 = new GregorianCalendar();
-				GregorianCalendar gc2 = new GregorianCalendar();
-				gc1.setGregorianChange(rs.getDate(2));
-				gc2.setGregorianChange(rs.getDate(3));
+				String gc1 = new String();
+				String gc2 = new String();
+				gc1 = (rs.getDate(2).toString());
+				gc2 = (rs.getDate(3).toString());
 				
 				travel = new Travel(ru,rs.getInt(1),gc1,gc2,rs.getBoolean(6));
 				travel.setRoute(route);
@@ -223,9 +223,9 @@ public class TravelManager {
 			Statement st = con.createStatement();
 			result = st.executeUpdate("update Travel "
 					+ "set startDate = '" + travel.getStartDate()
-					.getGregorianChange().toString() + "',"
+					 + "',"
 					+ "endDate = '" + travel.getEndDate()
-					.getGregorianChange().toString() + "',"
+					 + "',"
 					+ "routeID = " + travel.getRoute().getId() + ""
 					+ "where id = " + travel.getId());
 			
