@@ -236,7 +236,15 @@ public class RouteManager {
 		int result = 0;
 		Connection con = DriverManagerConnection.getConnection();
 		if(con != null){
-			Date date = new Date();
+			
+			Calendar current = new GregorianCalendar();
+			current.setTime(new Date());
+			int m = current.get(Calendar.MONTH) + 1;
+			String month = "" + m;
+			if(month.length() == 1) month = "0" + month;
+			String day = "" + current.get(Calendar.DAY_OF_MONTH);
+			if(day.length() == 1) day = "0" + day;
+			String date = "" + current.get(Calendar.YEAR) + "-" + month + "-" + day;
 			Statement st = con.createStatement();
 			result = st.executeUpdate("insert into RouteLocationMatch "
 					+ "values(" + locationId + ","
