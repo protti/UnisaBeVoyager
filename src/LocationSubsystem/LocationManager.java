@@ -64,6 +64,11 @@ public class LocationManager {
 		int result = 0;
 		Connection con = DriverManagerConnection.getConnection();
 		if(con != null){
+			
+			Statement st1 = con.createStatement();
+			st1.executeUpdate("delete from RouteLocationMatch "
+					+ "where locationID = " + id + "");
+			
 			Statement st = con.createStatement();
 			result = st.executeUpdate("delete from Location "
 					+ "where id = " + id + "");
