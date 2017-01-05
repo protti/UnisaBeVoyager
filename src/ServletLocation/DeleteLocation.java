@@ -1,6 +1,8 @@
 package ServletLocation;
 
 import java.io.IOException;
+import java.util.logging.Logger;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +19,7 @@ import UserSubsystem.RegisteredUser;
  */
 @WebServlet("/DeleteLocation")
 public class DeleteLocation extends HttpServlet {
+	private static Logger logger = Logger.getLogger("global"); 
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -43,14 +46,28 @@ public class DeleteLocation extends HttpServlet {
 		if(user.getAuthorization() != 1){
 			response.sendRedirect("500page.jsp");
 		}
-		
-		Location location = (Location) request.getAttribute("location");
+		String id = request.getParameter("id");
+		Location location = LocationController.getLocation(Integer.parseInt(id));
 		synchronized(session){
+			String page = null;
 			Boolean b = LocationController.deleteLocation(location);
+			logger.info(""+b);
 			if(b != true){
-				response.sendRedirect("500page.html");
+				
+				page = "500page.html";
 			}
+			else
+			{
+				page = "profilePage.jsp";
+			}
+				
+			
+			response.sendRedirect(page);
+			
 		}
+		
+		
+		
 		//Bisognerebbe aggiungere un redirect a qualcosa qui
 	}
 

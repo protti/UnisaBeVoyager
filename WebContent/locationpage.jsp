@@ -10,5 +10,6 @@
 Nome: <%= (String) request.getAttribute("nome") %>
 Descrizione: <%= (String) request.getAttribute("descrizione") %>
 
+<a href="deleteLocation.jsp">Elimina Luogo</a>
 </body>
 </html>

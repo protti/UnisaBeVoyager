@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import LocationSubsystem.Location;
 import LocationSubsystem.LocationController;
@@ -34,9 +35,10 @@ public class ShowLocation extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int locationID = Integer.parseInt(request.getParameter("id"));
 		
+		int locationID = Integer.parseInt(request.getParameter("id"));		
 		Location location = LocationController.getLocation(locationID) ;
+		HttpSession session = request.getSession();
 		
 		if(location == null) {
 			response.sendRedirect("500page.html");
@@ -44,6 +46,7 @@ public class ShowLocation extends HttpServlet {
 		else {
 			request.setAttribute("nome", location.getName());
 			request.setAttribute("descrizione", location.getDescrizione());
+			session.setAttribute("location", location);
 			RequestDispatcher rd = request.getRequestDispatcher("locationpage.jsp");
 			rd.forward(request, response);
 		}		

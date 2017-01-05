@@ -4,14 +4,19 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<%if(session.getAttribute("user") != null){ 
 
-<title><%= (String) request.getAttribute("nome") %> <%= (String) request.getAttribute("cognome") %></title>
+RegisteredUser user = (RegisteredUser) session.getAttribute("user");
+
+%>
+<title><%= user.getNome() %> <%= user.getCognome() %></title>
 </head>
 <body>
-Username: <%= (String) request.getAttribute("username") %>
-Nome: <%= (String) request.getAttribute("nome") %>
-Cognome: <%= (String) request.getAttribute("cognome") %>
-Età: <%= request.getAttribute("eta") %>
+Username: <%= user.getUsername() %>
+Nome: <%= user.getNome()%>
+Cognome: <%= user.getCognome() %>
+Età: <%= user.getAge() %>
 <a href="eliminaUtente.jsp">Elimina account</a>
+<%} %>
 </body>
 </html>
