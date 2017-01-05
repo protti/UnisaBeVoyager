@@ -43,11 +43,12 @@ public class CreateLocation extends HttpServlet {
 			synchronized(session){
 				Location location = LocationController.createLocation(name,description);
 				if(location == null){
-					response.sendRedirect("creaLuogo.html");
+					//response.sendRedirect("creaLuogo.html");
+					response.sendRedirect("500page.html");
 				}
 				else{
 					//crea luogo
-					logger.info("Il luogo è stato creato!!!");
+					logger.info("Il luogo è stato creato!");
 				}
 			}
 		}
