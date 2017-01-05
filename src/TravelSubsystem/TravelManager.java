@@ -36,12 +36,13 @@ public class TravelManager {
 			Statement st = con.createStatement();
 			result = st.executeUpdate("insert into "
 					+ "Travel(startDate,endDate,routeID,"
-					+ "creatorID,type) "
+					+ "creatorID,type,nome) "
 					+ "values('" + travel.getStartDate() + "',"
 					+ "'" + travel.getEndDate()+ "',"
 					+ "'" + travel.getRoute().getId() + "',"
 					+ "'" + travel.getCreatoreViaggio().getId() + "',"
-					+ "" + travel.getType() + ")");
+					+ "" + travel.getType() + 
+					"'," + "'" + travel.getNome()+")");
 			DriverManagerConnection.releaseConnection(con);
 		}
 		
@@ -177,7 +178,7 @@ public class TravelManager {
 				gc1 = (rs.getDate(2).toString());
 				gc2 = (rs.getDate(3).toString());
 				
-				travel = new Travel(ru,rs.getInt(1),gc1,gc2,rs.getBoolean(6));
+				travel = new Travel(rs.getString(7),ru,rs.getInt(1),gc1,gc2,rs.getBoolean(6));
 				travel.setRoute(route);
 				travel.setPollList(polls);
 				

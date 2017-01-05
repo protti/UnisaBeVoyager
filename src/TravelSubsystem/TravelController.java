@@ -83,9 +83,9 @@ public class TravelController {
 		return true;
 	}
 	
-	public static Travel createTravel(RegisteredUser creatoreViaggio, String startDate, String endDate, boolean type) {
-
-		Travel travel = new Travel(creatoreViaggio, startDate, endDate, type);
+	public static Travel createTravel(String nome,RegisteredUser creatoreViaggio, String startDate, String endDate, boolean type) {
+		
+		Travel travel = new Travel(nome,creatoreViaggio, startDate, endDate, type);
 		try {
 			TravelManager.saveTravelToDB(travel);
 		} catch (SQLException | DBException e) {

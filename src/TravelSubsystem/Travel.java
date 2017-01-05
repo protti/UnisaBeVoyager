@@ -26,6 +26,7 @@ public class Travel {
 	private ArrayList<Poll> pollList;
 	private Route route;
 	private int id;
+	private String nome;
 	private String startDate;
 	private String endDate;
 	private boolean confirmed;
@@ -38,7 +39,16 @@ public class Travel {
 		this.confirmed = confirmed;
 	}
 	
-	public Travel(RegisteredUser creatoreViaggio, int id, String startDate, String endDate, boolean type) {
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Travel(String nome, RegisteredUser creatoreViaggio, int id, String startDate, String endDate, boolean type) {
+		this.nome = nome;
 		this.creatoreViaggio = creatoreViaggio;
 		this.id = id;
 		this.startDate = startDate;
@@ -46,7 +56,8 @@ public class Travel {
 		this.type = type;
 	}
 
-	public Travel(RegisteredUser creatoreViaggio, String startDate, String endDate, boolean type) {
+	public Travel(String nome,RegisteredUser creatoreViaggio, String startDate, String endDate, boolean type) {
+		this.nome = nome;
 		this.creatoreViaggio = creatoreViaggio;
 		this.startDate = startDate;
 		this.endDate = endDate;
