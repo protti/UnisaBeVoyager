@@ -56,6 +56,7 @@ public class CreateRoute extends HttpServlet {
 		Route newRoute = RouteController.createRoute(currentList, routeName, routeDesc);
 		if (newRoute == null) {
 			response.sendRedirect("500page.html");
+			return;
 		}
 				
 
