@@ -9,6 +9,8 @@
 <title>Risultati ricerca</title>
 </head>
 <body>
+	<jsp:include page="search-route-location.jsp" /> <br></br>
+
 	Risultati della ricerca:
 	
 	<%List<Route> routes = (List<Route>) request.getAttribute("routes"); %>

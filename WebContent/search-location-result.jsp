@@ -9,7 +9,7 @@
 <title>Risultati ricerca</title>
 </head>
 <body>
-
+	<jsp:include page="search-location.jsp" /> <br><br>
 	Risultati della ricerca:
 	
 	<%List<Location> locations = (List<Location>) request.getAttribute("locations"); %>

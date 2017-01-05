@@ -39,9 +39,12 @@ public class SearchRouteFromLocation extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String location = request.getParameter("search");
+		String location = (String) request.getParameter("search");
 		
-		if(location.equals("")) return;
+		if(location.equals("")) {
+			response.sendRedirect("search-route-location.jsp");
+			return;
+		}
 		
 		List<Route> routes = null;
 		try {

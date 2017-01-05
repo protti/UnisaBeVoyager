@@ -34,9 +34,12 @@ public class SearchLocation extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String location = request.getParameter("search");
+		String location = (String) request.getParameter("search");
 		
-		if(location.equals("")) return;
+		if(location.equals("")) {
+			response.sendRedirect("search-location.jsp");
+			return;
+		}
 		
 		List<Location> locations = null;
 		try {
@@ -44,6 +47,7 @@ public class SearchLocation extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			response.sendRedirect("500page.html");
+			return;
 		}
 		System.out.println("Eccomi");
 		System.out.println(locations.get(0).getDescrizione());
