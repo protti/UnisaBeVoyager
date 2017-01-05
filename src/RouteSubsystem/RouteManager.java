@@ -331,7 +331,7 @@ public class RouteManager {
 					+ "from RouteLocationMatch "
 					+ "where locationID IN (select id "
 					+ "from Location "
-					+ "where name LIKE '%" + location + "%')");
+					+ "where name LIKE '%" + location + "%'))");
 			DriverManagerConnection.releaseConnection(con);
 			while(rs.next()){
 				Route route = RouteManager.fetchRoute(rs.getInt(1));
