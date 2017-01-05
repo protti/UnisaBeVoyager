@@ -93,6 +93,8 @@ public class RouteManager {
 	public static void deleteRoute(int id)
 			throws SQLException,DBException{
 
+		
+		
 		int result = 0;
 		Connection con = DriverManagerConnection.getConnection();
 		if(con != null){
