@@ -35,12 +35,17 @@ public class showProfile extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
-		if(!session.isNew()) {
+		if(session.isNew()) {
 			response.sendRedirect("500page.html");
 		}
 		
 		RegisteredUser temp = (RegisteredUser) session.getAttribute("user");
 		RegisteredUser user = null;
+		
+		if(temp == null) {
+			response.sendRedirect("500page.html");
+			return;
+		}		
 		
 		int userID = Integer.parseInt(request.getParameter("id"));
 
@@ -52,18 +57,14 @@ public class showProfile extends HttpServlet {
 		
 		if(user == null) {
 			response.sendRedirect("500page.html");
+			return;
 		}
 		else {
-		//	request.setAttribute("nome", user.getNome());
-		//	request.setAttribute("cognome", user.getCognome());
-		//	request.setAttribute("username", user.getUsername());
-		//	request.setAttribute("eta", user.getAge());
+			request.setAttribute("user", user);
 			RequestDispatcher rd = request.getRequestDispatcher("profilePage.jsp");
 			rd.forward(request, response);
+			return;
 		}
-		
-		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
