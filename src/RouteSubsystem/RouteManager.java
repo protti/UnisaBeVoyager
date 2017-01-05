@@ -96,6 +96,10 @@ public class RouteManager {
 		int result = 0;
 		Connection con = DriverManagerConnection.getConnection();
 		if(con != null){
+			Statement st1 = con.createStatement();
+			st1.executeUpdate("delete from RouteLocationMatch "
+					+ "where routeID = " + id + "");
+			
 			Statement st = con.createStatement();
 			result = st.executeUpdate("delete from Route "
 					+ "where id = " + id + "");
