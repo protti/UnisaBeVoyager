@@ -36,6 +36,7 @@ public class SearchLocationForRoute extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String name = request.getParameter("nameLocation");
+		if(name.equals("")) return;
 		List<Location> locations = LocationController.searchLocations(name);
 		PrintWriter out = response.getWriter();
 		synchronized(session){

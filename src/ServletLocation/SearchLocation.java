@@ -35,6 +35,9 @@ public class SearchLocation extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String location = request.getParameter("search");
+		
+		if(location.equals("")) return;
+		
 		List<Location> locations = null;
 		try {
 			locations = LocationManager.searchLocations(location);

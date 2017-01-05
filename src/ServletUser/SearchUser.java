@@ -35,6 +35,9 @@ public class SearchUser extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String result = (String) request.getParameter("search");
+		
+		if(result.equals("")) return;
+		
 		List<RegisteredUser> users = UserController.searchUser(result);
 		
 		PrintWriter out = response.getWriter();

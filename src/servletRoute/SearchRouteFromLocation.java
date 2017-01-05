@@ -40,6 +40,9 @@ public class SearchRouteFromLocation extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String location = request.getParameter("search");
+		
+		if(location.equals("")) return;
+		
 		List<Route> routes = null;
 		try {
 			routes = RouteManager.searchRoutesByLocation(location);
