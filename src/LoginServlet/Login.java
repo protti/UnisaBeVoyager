@@ -45,10 +45,7 @@ public class Login extends HttpServlet {
 			System.out.println("Login effettuato");
 			//response.sendRedirect("profilePage.jsp");
 			session.setAttribute("user", user);
-			request.setAttribute("nome", user.getNome());
-			request.setAttribute("cognome", user.getCognome());
-			request.setAttribute("username", user.getUsername());
-			request.setAttribute("eta", user.getAge());
+			request.setAttribute("user", user);
 			RequestDispatcher rd = request.getRequestDispatcher("profilePage.jsp");
 			rd.forward(request, response);
 			
