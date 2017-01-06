@@ -43,13 +43,13 @@ public class Vote extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
+
 		int vote = Integer.parseInt(request.getParameter("vote"));
 		int pollID = Integer.parseInt(request.getParameter("pollID"));
 
 		HttpSession session = request.getSession();
 		Travel travel = (Travel) session.getAttribute("travel");
-		 
+		
 		
 		RegisteredUser user = (RegisteredUser) session.getAttribute("user");
 		int userID = user.getId();

@@ -20,7 +20,7 @@
 	
 	<h4>Vota</h4>
 	<form action="Vote" method="post">
-		<inpu type="hidden" name="pollID" value="<%= poll.getId()%>">
+		<input type="hidden" name="pollID" value="<%= poll.getId()%>">
 		<span><b>SI </b></span><input name="vote" type="radio" value="1"><br>
 		<span><b>NO </b></span><input name="vote" type="radio" value="-1"><br>
 		<input type="submit" value="Vota">

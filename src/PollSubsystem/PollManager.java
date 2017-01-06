@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -114,11 +115,20 @@ public class PollManager {
 		Connection con = DriverManagerConnection.getConnection();
 		if(con != null){
 			Date date = new Date();
+			Calendar current = new GregorianCalendar();
+			current.setTime(date);
+			int mm = current.get(Calendar.MONTH) + 1;
+			String month = "" + mm;
+			if(month.length() == 1) month = "0" + month;
+			int dd = current.get(Calendar.DAY_OF_MONTH);
+			String day = "" + dd;
+			if(day.length() == 1) day = "0" + day;
+			String data = "" + current.get(Calendar.YEAR) + "-" + month + "-" + day;
 			Statement st = con.createStatement();
 			result = st.executeUpdate("insert into PollUserMatch "
 					+ "values(" + userId + ","
-							+ "" + pollId + ""
-							+ "'" + date + "')");
+							+ "" + pollId + ","
+							+ "'" + data + "')");
 			DriverManagerConnection.releaseConnection(con);
 		}
 		if(result != 1) throw new DBException();
