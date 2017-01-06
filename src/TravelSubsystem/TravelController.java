@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 
 import DBConnection.DBException;
 import RouteSubsystem.Route;
+import RouteSubsystem.RouteManager;
 import UserSubsystem.RegisteredUser;
 import TravelSubsystem.TravelManager;
 
@@ -97,8 +98,12 @@ public class TravelController {
 		logger.info("creo travel");
 		Travel travel = new Travel(nome,route,creatoreViaggio, startDate, endDate, type);
 		
+		
+		
 		try {
+			Route r = RouteManager.saveRouteToDB(route);
 			logger.info("Salvo sul db");
+			travel.setRoute(r);
 			TravelManager.saveTravelToDB(travel);
 		} catch (SQLException | DBException e) {
 			e.printStackTrace();

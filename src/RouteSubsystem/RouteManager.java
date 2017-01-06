@@ -28,7 +28,7 @@ public class RouteManager {
 	 *Metodo che gestisce il salvataggio di un itinerario sul database.
 	 *@param route
 	 */
-	public static void saveRouteToDB(Route route)
+	public static Route saveRouteToDB(Route route)
 			throws SQLException,DBException{
 		int result = 0;
 		Connection con = DriverManagerConnection.getConnection();
@@ -41,7 +41,7 @@ public class RouteManager {
 					+ "'" + route.getName() + "')");
 			
 			Statement st2 = con.createStatement();
-			ResultSet rs = st2.executeQuery("select id "
+			ResultSet rs = st2.executeQuery("select max(id) as max_id "
 					+ "from Route "
 					+ "where name = '" + route.getName() + "' AND "
 					+ "description = '" + route.getDescription() + "'");
@@ -64,9 +64,13 @@ public class RouteManager {
 			}
 			
 			DriverManagerConnection.releaseConnection(con);
+			
+			
 		}
 
 		if(result != 1) throw new DBException();
+		
+		return route;
 	}
 	/**
 	 *Metodo che cerca sul database un itinerario tramite id.

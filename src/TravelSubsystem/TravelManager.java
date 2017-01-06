@@ -18,24 +18,27 @@ import DBConnection.DriverManagerConnection;
 import LocationSubsystem.Location;
 import PollSubsystem.Poll;
 import RouteSubsystem.Route;
+import RouteSubsystem.RouteManager;
 import UserSubsystem.RegisteredUser;
 /**
 *Classe che gestisce le operazioni su un viaggio.
 */
 
 public class TravelManager {
+	
+	private static Logger logger = Logger.getLogger("global"); 
+	
 	/**
 	*Metodo che gestisce il salvataggio di un viaggio sul database.
 	*@param travel
 	*/
-	private static Logger logger = Logger.getLogger("global"); 
-
 	public static void saveTravelToDB(Travel travel)
 		throws SQLException,DBException{
 		
 		int result = 0;
 		Connection con = DriverManagerConnection.getConnection();
 		if(con != null && travel != null){
+			
 			Statement st = con.createStatement();
 			result = st.executeUpdate("insert into "
 					+ "Travel(startDate,endDate,routeID,"
@@ -57,6 +60,7 @@ public class TravelManager {
 			throw new DBException();
 		}
 	}
+	
 	/**
 	 * Metodo che controlla la presenza di un viaggio sul database.
 	 * @param idTravel
@@ -249,6 +253,8 @@ public class TravelManager {
 					+ "type = " + travel.getType() + " "
 					+ "where id = " + travel.getId() + "");
 			logger.info("Sono dentro!!");
+			
+			
 			
 			Statement st1 = con.createStatement();
 			ResultSet rs = st1.executeQuery("select * "
