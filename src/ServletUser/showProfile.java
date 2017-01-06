@@ -61,7 +61,7 @@ public class showProfile extends HttpServlet {
 		}
 		else {
 			request.setAttribute("user", user);
-			RequestDispatcher rd = request.getRequestDispatcher("profilePage.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("object/profilePage.jsp");
 			rd.forward(request, response);
 			return;
 		}

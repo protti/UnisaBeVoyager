@@ -55,7 +55,7 @@ public class SearchLocation extends HttpServlet {
 		if (locations != null) {
 		
 			request.setAttribute("locations", locations);
-			RequestDispatcher rd = request.getRequestDispatcher("search-location-result.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("research/search-location-result.jsp");
 			rd.forward(request, response);
 		}
 	}

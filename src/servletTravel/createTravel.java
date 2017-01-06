@@ -122,7 +122,7 @@ public class createTravel extends HttpServlet {
 		synchronized(session){
 			session.removeAttribute("selectedRoute");
 			request.setAttribute("travel", newTravel);
-			RequestDispatcher rd = request.getRequestDispatcher("travelPage.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("object/travelPage.jsp");
 			rd.forward(request, response);
 		}	
 

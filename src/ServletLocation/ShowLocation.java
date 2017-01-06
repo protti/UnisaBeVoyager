@@ -48,7 +48,7 @@ public class ShowLocation extends HttpServlet {
 			request.setAttribute("nome", location.getName());
 			request.setAttribute("descrizione", location.getDescrizione());
 			session.setAttribute("location", location);
-			RequestDispatcher rd = request.getRequestDispatcher("locationpage.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("object/locationpage.jsp");
 			rd.forward(request, response);
 			return;
 		}		

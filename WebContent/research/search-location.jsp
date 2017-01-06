@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form method="get" action="SearchLocation">
+<form method="get" action="../SearchLocation">
 				<p>Cerca un luogo da visitare:</p> <input type="text" class="focus" name="search"><br>
 				<input type="submit" class="submit" value="Cerca">	
 </form>

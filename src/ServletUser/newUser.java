@@ -69,7 +69,7 @@ public class newUser extends HttpServlet {
 				request.setAttribute("username", user.getUsername());
 				request.setAttribute("eta", user.getAge());*/
 				request.setAttribute("user", user);				
-				RequestDispatcher rd = request.getRequestDispatcher("profilePage.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("object/profilePage.jsp");
 				rd.forward(request, response);
 			}
 			

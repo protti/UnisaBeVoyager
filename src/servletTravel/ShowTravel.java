@@ -44,7 +44,7 @@ public class ShowTravel extends HttpServlet {
 		}
 		else {
 			request.setAttribute("travel", travel);
-			RequestDispatcher rd = request.getRequestDispatcher("travelPage.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("object/travelPage.jsp");
 			rd.forward(request, response);
 			return;
 		}	

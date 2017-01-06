@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="CreateLocation" method="post">
+	<form action="../CreateLocation" method="post">
 		<span>Nome </span><input type="text" class="focus" name="nome"><br>
 		<span>Descrizione </span><br><textarea cols="10" rows="5" class="focus" name="descrizione"></textarea><br>
 		<input type="submit" value="Crea">

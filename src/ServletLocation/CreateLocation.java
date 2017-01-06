@@ -50,7 +50,7 @@ public class CreateLocation extends HttpServlet {
 				else{
 					request.setAttribute("nome", location.getName());
 					request.setAttribute("descrizione", location.getDescrizione());
-					RequestDispatcher rd = request.getRequestDispatcher("locationpage.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("object/locationpage.jsp");
 					rd.forward(request, response);
 				}
 			}

@@ -45,7 +45,7 @@ public class ShowRoute extends HttpServlet {
 			request.setAttribute("nome", route.getName());
 			request.setAttribute("descrizione", route.getDescription());
 			request.setAttribute("locationList", route.getLocations());
-			RequestDispatcher rd = request.getRequestDispatcher("routePage.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("object/routePage.jsp");
 			rd.forward(request, response);
 			return;
 		}			

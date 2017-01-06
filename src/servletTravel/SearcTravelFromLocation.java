@@ -48,7 +48,7 @@ public class SearcTravelFromLocation extends HttpServlet {
 		
 		if (travels != null) {
 			request.setAttribute("travels", travels);
-			RequestDispatcher rd = request.getRequestDispatcher("search-travel-result.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("research/search-travel-result.jsp");
 			rd.forward(request, response);
 		}
 		else{

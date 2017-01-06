@@ -1,42 +1,43 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="LocationSubsystem.Location"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<%List<Location> currentList= new ArrayList<Location>();%>
+<%session.setAttribute("currentList", currentList); %>
 <head>
-<%if(session.getAttribute("user") != null){ %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Crea un viaggio</title>
+<title>Crea Itinerario</title>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
 </head>
 <body>
-	<form action="createTravel" method="post">
-		<span>Nome </span><input type="text" class="focus" name="nome"><br>
-		<p>Descrizione</p><br><textarea rows="10" cols="20" name="descrizione"></textarea>
-		<span>Start Date </span><input type="text" class="focus" name="startDate"><br>
-		<span>End Date </span><input type="text" class="focus" name="endDate"><br>
-		<span>Modificabile </span><input type="radio" class="focus" name="type"><br>
-		
+
+	<form action="../CreateRoute" method="post">
+		<span>Nome </span><input type="text" class="focus" name="name">
+		<p>Descrizione </p><br><textarea row="10" col="10" type="text" name="descrizione"></textarea><br>
 		<input type="submit" value="Crea">
 	</form>
 	
 	<form>
-		<input id="nameLoc" type="text">
-		<input type="button" onclick="searchRoute()" value="Cerca">
+		<input type="text" id="nameLoc" name="name">
+		<input type="button" onclick="searchLoc()" value="Cerca">
 	</form>
-	
-	<div id="result"></div>
+
+	<div id="response"></div>
 	
 	<script type="text/javascript">
-	function searchRoute() {
+	function searchLoc() {
 		  var xhttp;
 		  xhttp = new XMLHttpRequest();
 		  xhttp.onreadystatechange = function() {
 		    if (xhttp.readyState == 4 && xhttp.status == 200) {
-		      document.getElementById("result").innerHTML = xhttp.responseText;
+		      document.getElementById("response").innerHTML = xhttp.responseText;
 		    }
 		  };
 		  var name = $('#nameLoc').val();
-		  xhttp.open("POST", "SearchRouteForTravel?location="+name, true);
+		  xhttp.open("POST", "../SearchLocationForRoute?nameLocation="+name, true);
 		  xhttp.send();
 		}
 	</script>
@@ -47,18 +48,14 @@
 		  xhttp = new XMLHttpRequest();
 		  xhttp.onreadystatechange = function() {
 		    if (xhttp.readyState == 4 && xhttp.status == 200) {
-		      document.getElementById("result").innerHTML = xhttp.responseText;
+		      document.getElementById("response").innerHTML = xhttp.responseText;
 		    }
 		  };
-		  xhttp.open("POST", "addRouteForNewTravel?id="+id, true);
+		  xhttp.open("POST", "../AddToLocationList?id="+id, true);
 		  xhttp.send();
 		}
 	</script>
 	
-<%} else{%>
-Non sei loggato
-<%}%>
-
-	
 </body>
+
 </html>

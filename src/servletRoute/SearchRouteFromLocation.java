@@ -60,7 +60,7 @@ public class SearchRouteFromLocation extends HttpServlet {
 		}
 		if (routes != null) {
 			request.setAttribute("routes", routes);
-			RequestDispatcher rd = request.getRequestDispatcher("search-route-result.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("research/search-route-result.jsp");
 			rd.forward(request, response);
 		}	
 	}
