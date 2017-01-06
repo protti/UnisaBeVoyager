@@ -37,6 +37,7 @@ public class showProfile extends HttpServlet {
 		
 		if(session.isNew()) {
 			response.sendRedirect("500page.html");
+			return;
 		}
 		
 		RegisteredUser temp = (RegisteredUser) session.getAttribute("user");
