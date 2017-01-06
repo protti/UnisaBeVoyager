@@ -13,6 +13,22 @@
 </head>
 <body>
 	<h2><%= travel.getNome() %></h2>
+	
+	<%RegisteredUser admin = (RegisteredUser) session.getAttribute("user"); %>
+	<%if(admin.getAuthorization() > 0){ %>
+		<br><form action="DeleteTravel" method="post">
+			<input type="hidden" name="idTravel" value="<%= travel.getId()%>">
+			<input type="submit" value="Cancella questo viaggio">
+		</form><br><br>
+	<%} %>
+	
+	<%if(admin.getId() != travel.getCreatoreViaggio().getId()){ %>
+		<form action="JoinTravel" method="post">
+			<input type="hidden" name="travelID" value="<%= travel.getId()%>">
+			<input type="submit" value="Aggiungiti al viaggio">
+		</form>
+	<%} %>
+	
 	<h4>Caratteristiche</h4><br>
 	<span>Data di partenza: </span><p><%= travel.getStartDate()%></p><br>
 	<span>Data di fine: </span><p><%= travel.getEndDate() %></p><br>
@@ -24,6 +40,7 @@
 	<h4>Creatore Viaggio</h4>
 	<a href="showProfile?id=<%=travel.getCreatoreViaggio().getId()%>">
 	<%=travel.getCreatoreViaggio().getUsername() %></a>
+	
 	
 	
 	<h4>Lista partecipanti viaggio</h4>

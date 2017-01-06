@@ -1,6 +1,8 @@
 package servletTravel;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -43,6 +45,7 @@ public class DeleteTravel extends HttpServlet {
 		RegisteredUser user = (RegisteredUser) session.getAttribute("user");
 		if(user.getAuthorization() != 1){
 			response.sendRedirect("500page.jsp");
+			return;
 		}
 		
 		int idTravel = Integer.parseInt(request.getParameter("idTravel"));
@@ -50,10 +53,11 @@ public class DeleteTravel extends HttpServlet {
 			Boolean b = TravelController.deleteTravel(idTravel);
 			if(b != true){
 				response.sendRedirect("500page.html");
+				return;
 			}
 		}
-		//Aggiungi redirect ad homepage?
-	
+		response.sendRedirect("correctResult.jsp");
+		return;
 	}
 
 }

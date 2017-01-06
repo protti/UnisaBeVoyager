@@ -45,7 +45,7 @@ public class TravelController {
 		ArrayList<RegisteredUser> users = travel.getPartecipantiViaggio();
 		
 		
-		if (!isUserInTravel(user.getId(), users)) {
+		if (!isUserInTravel(user.getId(), users) && user.getId() != travel.getCreatoreViaggio().getId()) {
 			return false;
 		}
 		
@@ -60,7 +60,6 @@ public class TravelController {
 		catch (SQLException e) {
 			return false;
 		}
-		
 		return true;
 	}
 	
