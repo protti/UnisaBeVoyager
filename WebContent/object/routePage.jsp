@@ -19,7 +19,8 @@
 	<h4>Luoghi</h4>
 	<%List<Location> locations = (List<Location>) request.getAttribute("locationList");%>
 	<%for(Location location:locations){ %>
-		<p><%=location.getName() %></p>
+	
+		<a href=ShowLocation?id=<%=location.getId()%>><%=location.getName()%></a>
 	<%} %>
 </body>
 </html>
