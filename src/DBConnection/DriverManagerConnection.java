@@ -31,7 +31,7 @@ public class DriverManagerConnection {
 		Connection newConnection = null;	
 		String db = "bevoyager";	
 		String username	= "root";	
-				String password	= "admin";	
+				String password	= "camicia";	
 				newConnection = DriverManager.getConnection(	
 						"jdbc:mysql://localhost:3306/"+db, 
 						username,	password);	
