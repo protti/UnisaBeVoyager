@@ -172,6 +172,31 @@ public class TravelController {
 	}
 	
 	
-	
+	public static List<Travel> filterTravelByDates(List<Travel> travels, String start, String end) {
+		List<Travel> filtered = new ArrayList<Travel>();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date curStartDate = null;
+		Date curEndDate = null;
+		
+		try {
+			Date startDate = sdf.parse(start);
+			Date endDate = sdf.parse(end);
+
+			for(Travel t : travels) {
+				curStartDate = sdf.parse(t.getStartDate());
+				curEndDate = sdf.parse(t.getEndDate());
+				
+				if(startDate.before(curStartDate) && endDate.after(curEndDate)) {
+					filtered.add(t);
+				}				
+			}
+		} catch (ParseException e) {
+			logger.severe("PARSE ERROR");			
+			e.printStackTrace();
+			return null;
+		}
+		
+		return filtered;
+	}
 	
 }
