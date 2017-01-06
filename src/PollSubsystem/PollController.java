@@ -40,7 +40,6 @@ public class PollController {
 			// TODO Auto-generated catch block
 			return false;
 		}
-
 	}
 	
 	

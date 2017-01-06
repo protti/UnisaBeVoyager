@@ -50,6 +50,7 @@ public class Vote extends HttpServlet {
 		HttpSession session = request.getSession();
 		Travel travel = (Travel) session.getAttribute("travel");
 		 
+		
 		RegisteredUser user = (RegisteredUser) session.getAttribute("user");
 		int userID = user.getId();
 		boolean b = PollController.updatePoll(pollID, vote, userID);

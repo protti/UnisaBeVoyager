@@ -24,7 +24,6 @@
 	<a href="deleteTravel.jsp">Cancella questo viaggio</a>
 	<br>
 	<%} %>
-
 	<%if(admin.getId() != travel.getCreatoreViaggio().getId()){ %>
 		<a href="insertUserInTravel.jsp">Partecipa a questo viaggio</a><br>
 	<%} %>

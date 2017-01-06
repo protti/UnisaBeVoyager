@@ -88,6 +88,7 @@ public class PollManager {
 		Poll poll = null;
 		Connection con = DriverManagerConnection.getConnection();
 	
+		
 		if(con != null){
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery("select * "

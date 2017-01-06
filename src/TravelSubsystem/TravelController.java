@@ -19,6 +19,7 @@ public class TravelController {
 
 	
 	
+	
 	/**
 	*Metodo che controlla se un utente � in quel viaggio.
 	*@param idUtente

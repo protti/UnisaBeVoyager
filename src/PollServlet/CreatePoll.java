@@ -51,7 +51,8 @@ public class CreatePoll extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		ArrayList<Location> currentList = (ArrayList<Location>) session.getAttribute("currentList");
-				
+			
+		
 		if(currentList == null) {
 			response.sendRedirect("500page.html");
 			return;
