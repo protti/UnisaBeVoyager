@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,8 +43,11 @@ public class createTravel extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
+
+		
+		
+		
+		/*HttpSession session = request.getSession();
 		synchronized (session) {
 			
 			
@@ -85,17 +89,43 @@ public class createTravel extends HttpServlet {
 			}
 			
 			response.sendRedirect(page);
-		}
+		}*/
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
+		String travelName = request.getParameter("nome");
+		String travelDesc = request.getParameter("descrizione");
+		String startDate = request.getParameter("startDate");
+		String endDate = request.getParameter("endDate");
+		Boolean type = Boolean.parseBoolean(request.getParameter("type"));
 		
-		doGet(request, response);
+		HttpSession session = request.getSession();
+		RegisteredUser user = (RegisteredUser) session.getAttribute("user");
+		Route selectedRoute = (Route) session.getAttribute("selectedRoute");
+				
+		if(selectedRoute == null) {
+			response.sendRedirect("500page.html");
+			return;
+		}
+
+		Travel newTravel = TravelController.createTravel(travelName, selectedRoute, user, startDate, endDate, type);
+		if (newTravel == null) {
+			response.sendRedirect("500page.html");
+			return;
+		}
+				
+
+		synchronized(session){
+			session.removeAttribute("selectedRoute");
+			request.setAttribute("newTravel", newTravel);
+			RequestDispatcher rd = request.getRequestDispatcher("travelPage.jsp");
+			rd.forward(request, response);
+		}	
+
 	}
 
 }
