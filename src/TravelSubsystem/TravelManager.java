@@ -253,8 +253,7 @@ public class TravelManager {
 					+ "from UserTravelMatch "
 					+ "where travelID = " + travel.getId() + "");
 			
-			DriverManagerConnection.releaseConnection(con);
-			
+			DriverManagerConnection.releaseConnection(con);			
 			ArrayList<Integer> usersId = new ArrayList<Integer>();
 			
 			while(rs.next()){

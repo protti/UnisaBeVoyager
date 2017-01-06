@@ -9,6 +9,7 @@
 </head>
 <body>
 	
+	
 	<%RegisteredUser user = (RegisteredUser) session.getAttribute("user"); %>
 	<h1>Operazione riuscita con successo</h1>
 	<a href="showProfile?id=<%= user.getId()%>">Ritorna alla tua pagina</a>

@@ -48,6 +48,7 @@ public class DeleteTravel extends HttpServlet {
 			return;
 		}
 		
+		
 		int idTravel = Integer.parseInt(request.getParameter("idTravel"));
 		synchronized(session){
 			Boolean b = TravelController.deleteTravel(idTravel);

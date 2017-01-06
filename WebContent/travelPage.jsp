@@ -14,6 +14,7 @@
 <body>
 	<h2><%= travel.getNome() %></h2>
 	
+	
 	<%RegisteredUser admin = (RegisteredUser) session.getAttribute("user"); %>
 	<%if(admin.getAuthorization() > 0){ %>
 		<br><form action="DeleteTravel" method="post">
