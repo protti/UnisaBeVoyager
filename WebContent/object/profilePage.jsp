@@ -29,6 +29,9 @@ Età: <%= user.getAge() %>
 <a href="research/search-route-location.jsp">Cerca itinerari per luoghi</a>
 <a href="research/searchUser.html">Cerca Utente</a>
 <a href="research/search-travel-location.jsp">Cerca Viaggi per luoghi</a>
+<form method="post" action="Logout">
+<input type="submit" class="submit" value="Logout!">
+</form>
 
 
 
