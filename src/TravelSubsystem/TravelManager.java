@@ -183,6 +183,7 @@ public class TravelManager {
 				polls.add(poll);
 			}
 			
+			
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery("select * "
 					+ "from Travel "
@@ -196,6 +197,7 @@ public class TravelManager {
 				gc2 = (rs.getDate(3).toString());
 				
 				travel = new Travel(rs.getString(7),route,ru,gc1,gc2,rs.getBoolean(6));
+				travel.setId(rs.getInt(1));
 				travel.setPollList(polls);
 				for(RegisteredUser partecipant: partecipants){
 					travel.addUserToTravel(partecipant);
