@@ -237,18 +237,17 @@ public class TravelManager {
 	*/
 	public static void updateTravel(Travel travel)
 		throws SQLException,DBException{
-		
 		int result = 0;
 		Connection con = DriverManagerConnection.getConnection();
 		if(con != null && travel != null){
+			
 			Statement st = con.createStatement();
 			result = st.executeUpdate("update Travel "
-					+ "set startDate = '" + travel.getStartDate()
-					 + "',"
-					+ "endDate = '" + travel.getEndDate()
-					 + "',"
-					+ "routeID = " + travel.getRoute().getId() + ""
-					+ "where id = " + travel.getId());
+					+ "set startDate = '" + travel.getStartDate()+ "',"
+					+ "endDate = '" + travel.getEndDate()+ "',"
+					+ "routeID = " + travel.getRoute().getId() + " "
+					+ "where id = " + travel.getId() + "");
+			logger.info("Sono dentro!!");
 			
 			Statement st1 = con.createStatement();
 			ResultSet rs = st1.executeQuery("select * "
@@ -259,7 +258,7 @@ public class TravelManager {
 			ArrayList<Integer> usersId = new ArrayList<Integer>();
 			
 			while(rs.next()){
-				usersId.add(rs.getInt("partecipantID"));
+				usersId.add(rs.getInt(1));
 			}
 			
 			
@@ -309,6 +308,7 @@ public class TravelManager {
 			String day = "" + dd;
 			if(day.length() == 1) day = "0" + day;
 			String data = "" + current.get(Calendar.YEAR) + "-" + month + "-" + day;
+			logger.info(data);
 			Statement st = con.createStatement();
 			result = st.executeUpdate("insert into UserTravelMatch "
 					+ "values(" + userId + ","
@@ -450,9 +450,8 @@ public class TravelManager {
 				//GregorianCalendar gc2 = new GregorianCalendar();
 			//	gc1.setGregorianChange(rs.getDate(6));
 			//	gc2.setGregorianChange(rs.getDate(7));
-				Poll poll = new Poll(rs.getString(3),rs.getInt(5),rs.getInt(4),
+				Poll poll = new Poll(rs.getInt(1),rs.getString(3),rs.getInt(5),rs.getInt(4),
 						rs.getString(6),rs.getString(7));
-				poll.setId(rs.getInt(1));
 				polls.add(poll);
 			}
 		}

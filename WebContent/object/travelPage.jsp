@@ -23,10 +23,7 @@
 	<%} %>
 	
 	<%if(admin.getId() != travel.getCreatoreViaggio().getId()){ %>
-		<form action="JoinTravel" method="post">
-			<input type="hidden" name="travelID" value="<%= travel.getId()%>">
-			<input type="submit" value="Aggiungiti al viaggio">
-		</form>
+		<a href="insertUserInTravel.jsp">Partecipa a questo viaggio</a>
 	<%} %>
 	
 	<h4>Caratteristiche</h4><br>

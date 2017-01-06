@@ -1,6 +1,8 @@
 package servletTravel;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,14 +20,14 @@ import UserSubsystem.RegisteredUser;
 @WebServlet("/JoinTravel")
 public class JoinTravel extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public JoinTravel() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public JoinTravel() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -39,21 +41,26 @@ public class JoinTravel extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int travelID = Integer.parseInt(request.getParameter("travelID"));
-		
+
+
 		HttpSession session = request.getSession();		
 		RegisteredUser user = (RegisteredUser) session.getAttribute("user");
-		
-		Travel travel = TravelController.getTravel(travelID);
-		
+
+		Travel travel = (Travel) session.getAttribute("travel");
+		session.removeAttribute("travel");
+		int travelID = travel.getId();
+
 		if(travel != null) {
 			boolean b = TravelController.addUserInTravel(user, travel);
 			if(b == false) {
 				response.sendRedirect("500page.html");
 				return;
 			} else {
-				//Mostrare un risultato positivo o fare qualcosa del genere
+				RequestDispatcher rd = request.getRequestDispatcher("travelPage.jsp");
+				request.setAttribute("travel", travel);
+				rd.forward(request, response);
 			}
-		}	}
+		}	
+	}
 
 }

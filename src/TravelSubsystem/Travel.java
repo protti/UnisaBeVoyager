@@ -56,6 +56,7 @@ public class Travel {
 		this.endDate = endDate;
 		this.type = type;
 		this.route = route;
+		partecipantiViaggio = new ArrayList<RegisteredUser>();
 	}
 
 	public Travel(String nome, Route route, RegisteredUser creatoreViaggio, String startDate,
@@ -66,6 +67,7 @@ public class Travel {
 		this.endDate = endDate;
 		this.type = type;
 		this.route = route;
+		partecipantiViaggio = new ArrayList<RegisteredUser>();
 	}
 	/**
 	*Metodo che restituisce l'utente creatore del viaggio.
