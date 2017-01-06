@@ -1,6 +1,8 @@
 package servletTravel;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,12 +33,11 @@ public class CloseTravel extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int travelID = Integer.parseInt(request.getParameter("travelID"));
 		
 		HttpSession session = request.getSession();		
 		RegisteredUser user = (RegisteredUser) session.getAttribute("user");
 		
-		Travel travel = TravelController.getTravel(travelID);
+		Travel travel = (Travel) session.getAttribute("travel");
 		
 		RegisteredUser creator = travel.getCreatoreViaggio();
 		if(creator.getId() == user.getId() && travel != null) {
@@ -45,7 +46,10 @@ public class CloseTravel extends HttpServlet {
 				response.sendRedirect("500page.html");
 				return;
 			} else {
-				//Mostrare un risultato positivo o fare qualcosa del genere
+				RequestDispatcher rd = request.getRequestDispatcher("object/travelPage.jsp");
+				request.setAttribute("travel", travel);
+				rd.forward(request, response);
+				return;
 			}
 		}
 	}

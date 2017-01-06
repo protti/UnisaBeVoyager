@@ -245,7 +245,8 @@ public class TravelManager {
 			result = st.executeUpdate("update Travel "
 					+ "set startDate = '" + travel.getStartDate()+ "',"
 					+ "endDate = '" + travel.getEndDate()+ "',"
-					+ "routeID = " + travel.getRoute().getId() + " "
+					+ "routeID = " + travel.getRoute().getId() + ","
+					+ "type = " + travel.getType() + " "
 					+ "where id = " + travel.getId() + "");
 			logger.info("Sono dentro!!");
 			

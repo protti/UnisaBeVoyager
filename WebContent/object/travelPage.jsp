@@ -19,11 +19,17 @@
 	
 	<%RegisteredUser admin = (RegisteredUser) session.getAttribute("user"); %>
 	<%if(admin.getAuthorization() > 0){ %>
-		<a href="deleteTravel.jsp">Cancella questo viaggio</a>
+		<a href="deleteTravel.jsp">Cancella questo viaggio</a><br>
 	<%} %>
 	
 	<%if(admin.getId() != travel.getCreatoreViaggio().getId()){ %>
-		<a href="insertUserInTravel.jsp">Partecipa a questo viaggio</a>
+		<a href="insertUserInTravel.jsp">Partecipa a questo viaggio</a><br>
+	<%} %>
+	
+	<%if(admin.getId() == travel.getCreatoreViaggio().getId() && travel.getType()){ %>
+		<form action="CloseTravel" method="post">
+			<input type="submit" value="Conferma Viaggio">
+		</form>
 	<%} %>
 	
 	<h4>Caratteristiche</h4><br>
