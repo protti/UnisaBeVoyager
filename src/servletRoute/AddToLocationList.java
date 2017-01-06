@@ -39,6 +39,7 @@ public class AddToLocationList extends HttpServlet {
 		
 		if(location == null) {
 			response.sendRedirect("500page.html");
+			return;
 		}
 		else {
 			HttpSession session = request.getSession();

@@ -52,7 +52,7 @@ public class DeleteRoute extends HttpServlet {
 				response.sendRedirect("500page.html");
 			}
 		}
-		//Bisognerebbe aggiungere un redirect a qualcosa qui
+		//Bisognerebbe aggiungere un redirect a qualcosa qui (possibilmente una homepage)
 	
 	}
 

@@ -67,6 +67,7 @@ public class CreateRoute extends HttpServlet {
 			request.setAttribute("locationList", newRoute.getLocations());
 			RequestDispatcher rd = request.getRequestDispatcher("routePage.jsp");
 			rd.forward(request, response);
-		}}
+		}
+	}
 
 }
