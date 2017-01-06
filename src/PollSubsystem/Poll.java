@@ -22,9 +22,7 @@ public class Poll {
 
 	public String getEndDate() {
 		return this.endDate;
-	}
-
-	
+	}	
 	
 	public Poll(int id, String description, int vnegative, int vpositive, String startDate, String endDate) {
 		super();
@@ -37,12 +35,11 @@ public class Poll {
 	}
 
 
-	public Poll(String description, int vnegative, int vpositive, String startDate,
-			String endDate) {
+	public Poll(String description, String startDate, String endDate) {
 		super();
 		this.description = description;
-		this.vnegative = vnegative;
-		this.vpositive = vpositive;
+		this.vnegative = 0;
+		this.vpositive = 0;
 		this.startDate = startDate;
 		this.endDate = endDate;
 	}
@@ -113,9 +110,9 @@ public class Poll {
 	*Metodo che setta la valutazione negativa.
 	*@param description
 	*/
-	public void setVnegative(int vnegative) {
+	/*public void setVnegative(int vnegative) {
 		this.vnegative = vnegative;
-	}
+	}*/
 	/**
 	*Metodo che restituisce la valutazione positiva.
 	*@return description
@@ -128,8 +125,16 @@ public class Poll {
 	*Metodo che setta la valutazione positiva.
 	*@param description
 	*/
-	public void setVpositive(int vpositive) {
+	/*public void setVpositive(int vpositive) {
 		this.vpositive = vpositive;
+	}*/
+	
+	public void registerVote(int vote) {
+		if (vote > 0) {
+			vpositive++;
+		} else if (vote < 0) {
+			vnegative++;
+		}
 	}
 
 }
