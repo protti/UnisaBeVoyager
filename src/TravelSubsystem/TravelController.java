@@ -24,7 +24,7 @@ public class TravelController {
 	*@return true se c'�, false se non c'�
 	*
 	*/
-	private static boolean isUserInTravel(int idUtente, ArrayList<RegisteredUser> users) {
+	public static boolean isUserInTravel(int idUtente, ArrayList<RegisteredUser> users) {
 		for (int i = 0; i < users.size(); i++) {
 			if (idUtente == users.get(i).getId()) {
 				return false;

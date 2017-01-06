@@ -42,4 +42,15 @@ public class PollController {
 		}
 
 	}
+	
+	public static Poll fetchPoll(int id){
+		
+		try {
+			Poll poll = PollManager.searchPollById(id);
+			return poll;
+		} catch (SQLException | DBException e) {
+			// TODO Auto-generated catch block
+			return null;
+		} 
+	}
 }

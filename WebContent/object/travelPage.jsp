@@ -1,3 +1,4 @@
+<%@page import="TravelSubsystem.TravelController"%>
 <%@page import="PollSubsystem.Poll"%>
 <%@page import="UserSubsystem.RegisteredUser"%>
 <%@page import="java.util.List"%>
@@ -24,6 +25,11 @@
 	
 	<%if(admin.getId() != travel.getCreatoreViaggio().getId()){ %>
 		<a href="insertUserInTravel.jsp">Partecipa a questo viaggio</a><br>
+	<%} %>
+	
+	<%if(admin.getId() == travel.getCreatoreViaggio().getId() ||
+			TravelController.isUserInTravel(admin.getId(), travel.getPartecipantiViaggio())){ %>
+		<a href="create/createPoll.jsp">Proponi un luogo</a><br>	
 	<%} %>
 	
 	<%if(admin.getId() == travel.getCreatoreViaggio().getId() && travel.getType()){ %>
@@ -74,7 +80,7 @@
 	<%if(polls != null){ %>
 		<%if(polls.size() > 0){ %>
 			<%for(Poll poll:polls){ %>
-				<a href="#"><%=poll.getDescription() %></a>
+				<a href="ShowPoll?id=<%= poll.getId()%>"><%=poll.getDescription() %></a>
 			<%} %>
 		<%} else{ %>
 			<b>Non ci sono richieste</b>
@@ -82,5 +88,6 @@
 	<%} else{ %>
 		<b>Non ci sono richieste</b>
 	<%}%>
+	
 </body>
 </html>
