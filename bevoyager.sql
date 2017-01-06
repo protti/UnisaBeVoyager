@@ -344,7 +344,6 @@ CREATE TABLE `travel` (
   `routeID` bigint(20) DEFAULT NULL,
   `creatorID` bigint(20) NOT NULL,
   `type` tinyint(1) NOT NULL,
-  `name` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `routeID` (`routeID`),
   KEY `creatorID` (`creatorID`),
