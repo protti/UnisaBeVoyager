@@ -1,7 +1,10 @@
 package TravelSubsystem;
 
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Logger;
@@ -149,6 +152,25 @@ public class TravelController {
 	}
 
 
+	public static Travel getTravel(int id) {
+		Travel result = null;
+		try {
+			result = TravelManager.fetchTravel(id);
+		}
+		catch (DBException e) {
+			return null;
+		}
+		catch (SQLException e) {
+			return null;
+		}	
+		
+		if(result != null) {
+			return result;
+		} else {
+			return null;
+		}
+	}
+	
 	
 	
 	
