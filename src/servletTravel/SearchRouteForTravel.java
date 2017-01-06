@@ -46,7 +46,7 @@ public class SearchRouteForTravel extends HttpServlet {
 				if(routes.size() > 0){
 					for(Route route : routes){
 						out.println("<p>" + route.getName() + "</p> " 
-								+ "<button onclick=addToList(" + route.getId() + ")>Aggiungi luogo"
+								+ "<button onclick=addToList(" + route.getId() + ")>Aggiungi itinerario"
 										+ "</button>");
 					}
 				}

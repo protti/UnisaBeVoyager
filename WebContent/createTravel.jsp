@@ -11,15 +11,16 @@
 <body>
 	<form action="createTravel" method="post">
 		<span>Nome </span><input type="text" class="focus" name="nome"><br>
+		<p>Descrizione</p><br><textarea rows="10" cols="20" name="descrizione"></textarea>
 		<span>Start Date </span><input type="text" class="focus" name="startDate"><br>
 		<span>End Date </span><input type="text" class="focus" name="endDate"><br>
-		<span>Modificabile?(Y: si) </span><input type="text" class="focus" name="type"><br>
+		<span>Modificabile </span><input type="radio" class="focus" name="type"><br>
 		
 		<input type="submit" value="Crea">
 	</form>
 	
 	<form>
-		<input id="nameRoute" type="text">
+		<input id="nameLoc" type="text">
 		<input type="button" onclick="searchRoute()" value="Cerca">
 	</form>
 	
@@ -34,14 +35,14 @@
 		      document.getElementById("result").innerHTML = xhttp.responseText;
 		    }
 		  };
-		  var name = $('#nameRoute').val();
-		  xhttp.open("POST", ""+name, true);
+		  var name = $('#nameLoc').val();
+		  xhttp.open("POST", "SearchRouteForTravel?location="+name, true);
 		  xhttp.send();
 		}
 	</script>
 	
 	<script type="text/javascript">
-	function addRoute(id) {
+	function addToList(id) {
 		  var xhttp;
 		  xhttp = new XMLHttpRequest();
 		  xhttp.onreadystatechange = function() {
@@ -49,7 +50,7 @@
 		      document.getElementById("result").innerHTML = xhttp.responseText;
 		    }
 		  };
-		  xhttp.open("POST", ""+id, true);
+		  xhttp.open("POST", "addRouteForNewTravel?id="+id, true);
 		  xhttp.send();
 		}
 	</script>

@@ -136,7 +136,7 @@ public class TravelManager {
 						+ "from Location "
 						+ "where id IN(select locationID "
 						+ "from RouteLocationMatch "
-						+ "where routeID = " + rs2.getLong(1) + "");
+						+ "where routeID = " + rs2.getLong(1) + ")");
 				ArrayList<Location> locations = new ArrayList<Location>();
 				
 				
@@ -157,6 +157,14 @@ public class TravelManager {
 					+ "where id IN (select partecipantID "
 					+ "from UserTravelMatch "
 					+ "where travelID = " + id + ")");
+			ArrayList<RegisteredUser> partecipants = new ArrayList<RegisteredUser>();
+			
+			while(rs3.next()){
+				RegisteredUser user = new RegisteredUser(rs3.getInt(1),rs3.getString(5),
+						rs3.getString(2),rs3.getString(6),rs3.getString(3),
+						rs3.getString(4),rs3.getString(7),rs3.getInt(8));
+				partecipants.add(user);
+			}
 			
 			Statement st5 = con.createStatement();
 			ResultSet rs5 = st5.executeQuery("select * "
@@ -188,7 +196,9 @@ public class TravelManager {
 				
 				travel = new Travel(rs.getString(7),route,ru,gc1,gc2,rs.getBoolean(6));
 				travel.setPollList(polls);
-				
+				for(RegisteredUser partecipant: partecipants){
+					travel.addUserToTravel(partecipant);
+				}
 			}			
 		}
 		if(travel == null) throw new DBException();
