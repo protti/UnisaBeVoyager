@@ -25,11 +25,13 @@ Età: <%= user.getAge() %>
 
 <% if(user.getAuthorization() == 1){%>
 <a href="create/creaLuogo.jsp">Aggiungi Luogo</a>
+<%} %>
 <a href="research/search-route-location.jsp">Cerca itinerari per luoghi</a>
 <a href="research/searchUser.html">Cerca Utente</a>
+<a href="research/search-travel-location.jsp">Cerca Viaggi per luoghi</a>
 
 
-<%} %>
+
 
 
 </body>
