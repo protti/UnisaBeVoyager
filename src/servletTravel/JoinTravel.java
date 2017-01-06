@@ -49,19 +49,21 @@ public class JoinTravel extends HttpServlet {
 		Travel travel = (Travel) session.getAttribute("travel");
 		session.removeAttribute("travel");
 		int travelID = travel.getId();
-
-		if(travel != null) {
-			boolean b = TravelController.addUserInTravel(user, travel);
-			if(b == false) {
-				response.sendRedirect("500page.html");
-				return;
-			} else {
-				RequestDispatcher rd = request.getRequestDispatcher("object/travelPage.jsp");
-				request.setAttribute("travel", travel);
-				rd.forward(request, response);
-				return;
-			}
-		}	
+		synchronized (session) {
+			if(travel != null) {
+				boolean b = TravelController.addUserInTravel(user, travel);
+				if(b == false) {
+					response.sendRedirect("500page.html");
+					return;
+				} else {
+					RequestDispatcher rd = request.getRequestDispatcher("object/travelPage.jsp");
+					request.setAttribute("travel", travel);
+					rd.forward(request, response);
+					return;
+				}
+			}	
+		}
+		
 	}
 
 }
