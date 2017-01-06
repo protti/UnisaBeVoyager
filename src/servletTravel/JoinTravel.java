@@ -56,9 +56,10 @@ public class JoinTravel extends HttpServlet {
 				response.sendRedirect("500page.html");
 				return;
 			} else {
-				RequestDispatcher rd = request.getRequestDispatcher("travelPage.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("object/travelPage.jsp");
 				request.setAttribute("travel", travel);
 				rd.forward(request, response);
+				return;
 			}
 		}	
 	}
