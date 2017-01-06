@@ -75,6 +75,7 @@
 	<%} %>
 	
 	
+	
 	<h4>Richieste inserimento luogo</h4>
 	<%List<Poll> polls = travel.getPollList(); %>
 	<%if(polls != null){ %>

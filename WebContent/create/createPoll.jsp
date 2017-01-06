@@ -10,6 +10,7 @@
 <% Route route = travel.getRoute(); %>
 <% ArrayList<Location> locations = route.getLocations();%>
 <% session.setAttribute("currentList", locations); %>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Richiesta di inserimento</title>

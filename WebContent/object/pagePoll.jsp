@@ -16,6 +16,7 @@
 	<b>Voti negativo: </b><span><%= poll.getVnegative() %></span><br><br>
 	
 	
+	
 	<h4>Vota</h4>
 	<form action="Vote" method="post">
 		<inpu type="hidden" name="pollID" value="<%= poll.getId()%>">

@@ -36,6 +36,7 @@ public class ShowPoll extends HttpServlet {
 		
 		Poll poll = PollController.fetchPoll(pollID);
 		
+		
 		if(poll == null){
 			response.sendRedirect("500page.html");
 		}
