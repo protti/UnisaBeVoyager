@@ -97,18 +97,13 @@
 	<%} else{ %>
 	<b>Non ci sono itinerari</b>
 	<%} %>
-<<<<<<< HEAD
-	
-	
-	
-=======
 
 
->>>>>>> branch 'master' of https://github.com/protti/UnisaBeVoyager.git
+
+
 	<h4>Richieste inserimento luogo</h4>
 	<%List<Poll> polls = travel.getPollList(); %>
 	<%if(polls != null){ %>
-<<<<<<< HEAD
 		<%if(polls.size() > 0){ %>
 			<%for(Poll poll:polls){ %>
 				<a href="ShowPoll?id=<%= poll.getId()%>"><%=poll.getDescription() %></a>
@@ -116,18 +111,7 @@
 		<%} else{ %>
 			<b>Non ci sono richieste</b>
 		<%} %>
-=======
-	<%if(polls.size() > 0){ %>
-	<%for(Poll poll:polls){ %>
-	<a href="#"><%=poll.getDescription() %></a>
 	<%} %>
->>>>>>> branch 'master' of https://github.com/protti/UnisaBeVoyager.git
-	<%} else{ %>
-	<b>Non ci sono richieste</b>
-	<%} %>
-	<%} else{ %>
-	<b>Non ci sono richieste</b>
-	<%}%>
 	
 </body>
 </html>
