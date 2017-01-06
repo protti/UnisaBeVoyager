@@ -1,6 +1,7 @@
 package servletTravel;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import RouteSubsystem.RouteController;
+import TravelSubsystem.Travel;
 import TravelSubsystem.TravelController;
 import UserSubsystem.RegisteredUser;
 
@@ -20,7 +22,7 @@ import UserSubsystem.RegisteredUser;
 @WebServlet("/DeleteTravel")
 public class DeleteTravel extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    private static Logger logger = Logger.getLogger("global");
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -48,8 +50,10 @@ public class DeleteTravel extends HttpServlet {
 			return;
 		}
 		
-		
-		int idTravel = Integer.parseInt(request.getParameter("idTravel"));
+		Travel travel = (Travel) session.getAttribute("travel");
+		session.removeAttribute("travel");
+		int idTravel = travel.getId();
+		logger.info("" + idTravel);
 		synchronized(session){
 			Boolean b = TravelController.deleteTravel(idTravel);
 			if(b != true){

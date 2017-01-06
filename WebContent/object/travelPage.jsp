@@ -7,6 +7,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <%Travel travel = (Travel) request.getAttribute("travel"); %>
+<%session.setAttribute("travel", travel); %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title><%= travel.getNome() %></title>
@@ -17,10 +18,7 @@
 	
 	<%RegisteredUser admin = (RegisteredUser) session.getAttribute("user"); %>
 	<%if(admin.getAuthorization() > 0){ %>
-		<br><form action="DeleteTravel" method="post">
-			<input type="hidden" name="idTravel" value="<%= travel.getId()%>">
-			<input type="submit" value="Cancella questo viaggio">
-		</form><br><br>
+		<a href="deleteTravel.jsp">Cancella questo viaggio</a>
 	<%} %>
 	
 	<%if(admin.getId() != travel.getCreatoreViaggio().getId()){ %>
