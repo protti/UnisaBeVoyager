@@ -183,6 +183,7 @@ public class TravelManager {
 				polls.add(poll);
 			}
 			
+			
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery("select * "
 					+ "from Travel "
