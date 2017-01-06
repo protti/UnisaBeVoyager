@@ -467,7 +467,9 @@ public class TravelManager {
 					+ "from Travel "
 					+ "where routeID IN (select routeID "
 					+ "from RouteLocationMatch "
-					+ "where name = " + location + ")");
+					+ "where locationID IN (select id "
+					+ "from Location "
+					+ "where name LIKE '%" + location + "%'))");
 			DriverManagerConnection.releaseConnection(con);
 			
 			while(rs.next()){

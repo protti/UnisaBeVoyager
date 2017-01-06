@@ -15,6 +15,7 @@ import DBConnection.DBException;
 import RouteSubsystem.Route;
 import RouteSubsystem.RouteManager;
 import TravelSubsystem.Travel;
+import TravelSubsystem.TravelController;
 import TravelSubsystem.TravelManager;
 
 /**
@@ -43,23 +44,17 @@ public class SearcTravelFromLocation extends HttpServlet {
 			return;
 		}
 		
-		List<Travel> travels = null;
-		try {
-			travels = TravelManager.searchTravelByLocation(location);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			response.sendRedirect("500page.html");
-			return;
-		} catch (DBException e) {
-			e.printStackTrace();
-			response.sendRedirect("500page.html");
-			return;
-		}
+		List<Travel> travels = TravelController.searchTravel(location);
+		
 		if (travels != null) {
 			request.setAttribute("travels", travels);
 			RequestDispatcher rd = request.getRequestDispatcher("search-travel-result.jsp");
 			rd.forward(request, response);
-		}	
+		}
+		else{
+			response.sendRedirect("500page.html");
+			return;
+		}
 	
 	}
 
