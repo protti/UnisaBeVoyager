@@ -96,12 +96,9 @@ public class PollManager {
 					+ "where id = " + id + "");
 			DriverManagerConnection.releaseConnection(con);
 			if(rs.next()){
-				//GregorianCalendar gc1 = new GregorianCalendar();
-				//GregorianCalendar gc2 = new GregorianCalendar();
-				//gc1.setGregorianChange(rs.getDate(6));
-				//gc2.setGregorianChange(rs.getDate(7));
-				poll = new Poll(rs.getInt(1), rs.getString(3),rs.getInt(5),rs.getInt(4),
-						rs.getString(6),rs.getString(7));
+				
+				poll = new Poll(rs.getInt(1), rs.getString(2),rs.getInt(4),rs.getInt(3),
+						rs.getString(5),rs.getString(6));
 				poll.setId(rs.getInt(1));
 			}
 		}
