@@ -58,7 +58,7 @@ public class DeleteLocation extends HttpServlet {
 			}
 			else
 			{
-				page = "profilePage.jsp";
+				page = "object/profilePage.jsp";
 			}
 				
 			
