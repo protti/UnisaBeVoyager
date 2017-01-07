@@ -19,29 +19,21 @@ public class PollController {
 		}
 		return poll;
 	}
-	
-	public static boolean hasUserVoted(int userId, int pollId) {
-		try {
-			if(!PollManager.checkUserPoll(pollId, userId)){
-				return false;
-			} 
-			else return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return true;
-	}
 
 	public static boolean updatePoll(int pollId, int voto, int userId){
 
 		try {
-			Poll poll = PollManager.fetchPoll(pollId);
-			/*if(voto >= 0) poll.setVpositive(poll.getVpositive() + 1);
-			else poll.setVnegative(poll.getVnegative() + 1);*/
-			poll.registerVote(voto);
-			PollManager.updatePoll(poll);
-			PollManager.insertUserPoll(pollId, userId);
-			return true;
+			if(!PollManager.checkUserPoll(pollId, userId)){
+				Poll poll = PollManager.fetchPoll(pollId);
+				/*if(voto >= 0) poll.setVpositive(poll.getVpositive() + 1);
+				else poll.setVnegative(poll.getVnegative() + 1);*/
+				poll.registerVote(voto);
+				PollManager.updatePoll(poll);
+				PollManager.insertUserPoll(pollId, userId);
+				return true;
+			} 
+			else return false;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
