@@ -51,9 +51,9 @@ public class CreatePoll extends HttpServlet {
 		
 		HttpSession session = request.getSession();			
 		
-
 		Poll newPoll = PollController.createPoll(pollDesc, pollStart, pollEnd, travelID);
 		if (newPoll == null) {
+			System.out.println("Fallito creatPoll");
 			response.sendRedirect("500page.html");
 			return;
 		}

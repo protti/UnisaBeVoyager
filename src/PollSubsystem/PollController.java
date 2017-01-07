@@ -11,9 +11,10 @@ public class PollController {
 		try {
 			PollManager.savePollToDB(poll, travelId);
 		} catch (SQLException e) {
+			e.printStackTrace();
 			return null;
 		} catch (DBException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
 			return null;
 		}
 		return poll;
@@ -34,10 +35,10 @@ public class PollController {
 			else return false;
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
 			return false;
 		} catch (DBException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
 			return false;
 		}
 	}
