@@ -55,7 +55,7 @@ public class Vote extends HttpServlet {
 		int userID = user.getId();
 
 		if (PollController.hasUserVoted(userID, pollID)) {
-			
+			return;
 		}
 		
 		boolean b = PollController.updatePoll(pollID, vote, userID);
