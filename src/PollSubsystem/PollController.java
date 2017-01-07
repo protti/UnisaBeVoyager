@@ -1,10 +1,12 @@
 package PollSubsystem;
 
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
 import DBConnection.DBException;
 
 public class PollController {
+	private static Logger logger = Logger.getLogger("global");
 	public static Poll createPoll(String description, String startDate, String endDate, int travelId){
 
 		Poll poll = new Poll(description, startDate, endDate, travelId);
@@ -24,6 +26,7 @@ public class PollController {
 
 		try {
 			if(!PollManager.checkUserPoll(pollId, userId)){
+				logger.info("Ci sei");
 				Poll poll = PollManager.fetchPoll(pollId);
 				/*if(voto >= 0) poll.setVpositive(poll.getVpositive() + 1);
 				else poll.setVnegative(poll.getVnegative() + 1);*/

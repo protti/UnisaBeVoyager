@@ -72,7 +72,7 @@ public class PollManager {
 		if(con != null){
 			Statement st = con.createStatement();
 			result = st.executeUpdate("update Poll "
-					+ "set descritpion = '" + poll.getDescription() + "',"
+					+ "set description = '" + poll.getDescription() + "',"
 					+ "positive = " + poll.getVpositive() +","
 					+ "negative = " + poll.getVnegative() + ","
 					+ "startDate = '" + poll.getStartDate() + "',"

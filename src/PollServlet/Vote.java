@@ -58,7 +58,7 @@ public class Vote extends HttpServlet {
 			response.sendRedirect("500page.html");
 			return;
 		} else {
-			RequestDispatcher rd = request.getRequestDispatcher("/ShotTravel.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/ShowTravel.jsp");
 			request.setAttribute("id", poll.getIdTravel());
 			rd.forward(request, response);
 		}		
