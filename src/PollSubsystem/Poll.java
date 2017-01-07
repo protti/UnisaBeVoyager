@@ -21,6 +21,11 @@ public class Poll {
 	private String endDate;
 	private int idTravel;
 	
+	public int getIdTravel() {
+		return idTravel;
+	}
+
+
 	public String getEndDate() {
 		return this.endDate;
 	}	
