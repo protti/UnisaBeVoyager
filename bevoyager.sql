@@ -117,7 +117,7 @@ CREATE TABLE `location` (
   `description` varchar(255) NOT NULL,
   `name` char(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -126,7 +126,7 @@ CREATE TABLE `location` (
 
 LOCK TABLES `location` WRITE;
 /*!40000 ALTER TABLE `location` DISABLE KEYS */;
-INSERT INTO `location` VALUES (1,'Fumo','Amsterdam');
+INSERT INTO `location` VALUES (1,'Fumo','Amsterdam'),(2,'Bellissimo','Milano'),(10,'Welcome to London','Londra');
 /*!40000 ALTER TABLE `location` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -170,7 +170,6 @@ DROP TABLE IF EXISTS `poll`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `poll` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `locationName` char(50) NOT NULL,
   `description` varchar(255) NOT NULL,
   `positive` int(11) NOT NULL DEFAULT '0',
   `negative` int(11) NOT NULL DEFAULT '0',
@@ -180,7 +179,7 @@ CREATE TABLE `poll` (
   PRIMARY KEY (`id`),
   KEY `idTravel` (`idTravel`),
   CONSTRAINT `poll_ibfk_1` FOREIGN KEY (`idTravel`) REFERENCES `travel` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -189,6 +188,7 @@ CREATE TABLE `poll` (
 
 LOCK TABLES `poll` WRITE;
 /*!40000 ALTER TABLE `poll` DISABLE KEYS */;
+INSERT INTO `poll` VALUES (1,'Brighton',0,0,'2017-02-04','2017-02-07',10),(2,'Vediamo il Duomo',0,0,'2017-02-01','2017-02-03',9),(3,'Duomo Milano',0,0,'2017-02-01','2017-02-03',11);
 /*!40000 ALTER TABLE `poll` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -247,7 +247,7 @@ CREATE TABLE `registereduser` (
 
 LOCK TABLES `registereduser` WRITE;
 /*!40000 ALTER TABLE `registereduser` DISABLE KEYS */;
-INSERT INTO `registereduser` VALUES (1,'alexlon','Alessandro','Longobardi','alexlon994@gmail.com','ciao','1994-08-29',22,0),(4,'protti','Donato','Tiano','protti@gmail.com','camicia','1995-04-17',21,0),(5,'bestZirpolone','Paolo','Zirpoli','zirpoli.paolo@gmail.com','amoreamaro','1995-05-12',21,0),(6,'theZirpolone','Francesco','Zirpoli','zirpoli.francesco@gmail.com','amaro','1995-11-10',21,0);
+INSERT INTO `registereduser` VALUES (1,'alexlon','Alessandro','Longobardi','alexlon994@gmail.com','ciao','1994-08-29',22,1),(4,'protti','Donato','Tiano','protti@gmail.com','camicia','1995-04-17',21,0),(5,'bestZirpolone','Paolo','Zirpoli','zirpoli.paolo@gmail.com','amoreamaro','1995-05-12',21,0),(6,'theZirpolone','Francesco','Zirpoli','zirpoli.francesco@gmail.com','amaro','1995-11-10',21,0);
 /*!40000 ALTER TABLE `registereduser` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -263,7 +263,7 @@ CREATE TABLE `route` (
   `description` varchar(255) NOT NULL,
   `name` char(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -272,7 +272,7 @@ CREATE TABLE `route` (
 
 LOCK TABLES `route` WRITE;
 /*!40000 ALTER TABLE `route` DISABLE KEYS */;
-INSERT INTO `route` VALUES (1,'Paesi di buona cultura','Gironzolando in Olanda');
+INSERT INTO `route` VALUES (1,'Paesi di buona cultura','Gironzolando in Olanda'),(2,'Terun','Giro a milano'),(6,'Go to London','Andiamo a Londra'),(9,'Go to London','Andiamo a Londra'),(10,'Terun','Giro a milano');
 /*!40000 ALTER TABLE `route` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -300,7 +300,7 @@ CREATE TABLE `routelocationmatch` (
 
 LOCK TABLES `routelocationmatch` WRITE;
 /*!40000 ALTER TABLE `routelocationmatch` DISABLE KEYS */;
-INSERT INTO `routelocationmatch` VALUES (1,1,'2016-12-29');
+INSERT INTO `routelocationmatch` VALUES (1,1,'2016-12-29'),(2,2,'2017-01-06'),(2,10,'0000-00-00'),(10,6,'2017-01-05'),(10,9,'0000-00-00');
 /*!40000 ALTER TABLE `routelocationmatch` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -344,12 +344,13 @@ CREATE TABLE `travel` (
   `routeID` bigint(20) DEFAULT NULL,
   `creatorID` bigint(20) NOT NULL,
   `type` tinyint(1) NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `routeID` (`routeID`),
   KEY `creatorID` (`creatorID`),
   CONSTRAINT `travel_ibfk_1` FOREIGN KEY (`routeID`) REFERENCES `route` (`id`),
   CONSTRAINT `travel_ibfk_2` FOREIGN KEY (`creatorID`) REFERENCES `registereduser` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -358,7 +359,7 @@ CREATE TABLE `travel` (
 
 LOCK TABLES `travel` WRITE;
 /*!40000 ALTER TABLE `travel` DISABLE KEYS */;
-INSERT INTO `travel` VALUES (1,'2017-01-20','2017-02-04',1,1,1),(2,'2017-02-04','2017-02-13',1,4,1);
+INSERT INTO `travel` VALUES (9,'2017-02-02','2017-02-08',2,4,0,'Andiamo a Milano'),(10,'2017-02-01','2017-02-13',9,1,0,'Viaggiamo a Londra'),(11,'2017-02-04','2017-02-07',10,1,0,'Travel');
 /*!40000 ALTER TABLE `travel` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -386,7 +387,7 @@ CREATE TABLE `usertravelmatch` (
 
 LOCK TABLES `usertravelmatch` WRITE;
 /*!40000 ALTER TABLE `usertravelmatch` DISABLE KEYS */;
-INSERT INTO `usertravelmatch` VALUES (4,1,'2016-12-29'),(5,1,'2016-12-29');
+INSERT INTO `usertravelmatch` VALUES (1,9,'2017-01-06'),(5,1,'2016-12-29'),(6,9,'2017-01-06');
 /*!40000 ALTER TABLE `usertravelmatch` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -399,4 +400,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-01 20:30:58
+-- Dump completed on 2017-01-07 17:06:47
