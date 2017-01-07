@@ -52,7 +52,7 @@ public class Vote extends HttpServlet {
 		boolean hasVoted = false;
 		HttpSession session = request.getSession();
 		RegisteredUser user = (RegisteredUser) session.getAttribute("user");
-
+		
 
 		int userID = user.getId();
 

@@ -26,7 +26,8 @@
 		<input type="submit" value="Vota">
 	</form>
 	
-	<div id="response"></div>
+	<div id="response"></div> 
+	
 	
 	<script type="text/javascript">
 	function vote() {
