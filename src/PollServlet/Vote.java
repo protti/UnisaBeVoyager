@@ -50,8 +50,6 @@ public class Vote extends HttpServlet {
 		boolean hasVoted = false;
 		HttpSession session = request.getSession();
 		RegisteredUser user = (RegisteredUser) session.getAttribute("user");
-		System.out.println("ECCOMI QUI");
-
 		int userID = user.getId();
 
 		if (PollController.hasUserVoted(userID, pollID)) {
