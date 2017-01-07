@@ -44,22 +44,21 @@ public class Vote extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
 		int vote = Integer.parseInt(request.getParameter("vote"));
 		int pollID = Integer.parseInt(request.getParameter("pollID"));
 
 		boolean hasVoted = false;
 		HttpSession session = request.getSession();
 		RegisteredUser user = (RegisteredUser) session.getAttribute("user");
-		
+		System.out.println("ECCOMI QUI");
 
 		int userID = user.getId();
 
 		if (PollController.hasUserVoted(userID, pollID)) {
 			PrintWriter pw = response.getWriter();
-			pw.println("Hai già votato!");
-			hasVoted = true;
+			//pw.println("Hai già votato!");
+			pw.println("<p>Hai già votato in questo sondaggio!</p><br>");
+			return;
 		}
 		
 		if(hasVoted == false){

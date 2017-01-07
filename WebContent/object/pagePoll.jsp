@@ -19,28 +19,33 @@
 	
 	
 	<h4>Vota</h4>
-	<form action="Vote" method="post">
+	<form>
 		<input id="poll" type="hidden" name="pollID" value="<%= poll.getId()%>">
-		<span><b>SI </b></span><input name="vote" type="radio" value="1"><br>
-		<span><b>NO </b></span><input name="vote" type="radio" value="-1"><br>
-		<input type="submit" value="Vota">
+		<span><b>SI </b></span><input name="vote" id="si" type="radio" value="1"><br>
+		<span><b>NO </b></span><input name="vote" id="no" type="radio" value="-1"><br>
+		<input type="button" onclick="vota()" value="Vota">
 	</form>
 	
-	<div id="response"></div> 
+	<div id="risposta"></div> 
 	
 	
 	<script type="text/javascript">
-	function vote() {
+	function vota() {
 		  var xhttp;
 		  xhttp = new XMLHttpRequest();
 		  xhttp.onreadystatechange = function() {
 		    if (xhttp.readyState == 4 && xhttp.status == 200) {
-		      document.getElementById("response").innerHTML = xhttp.responseText;
+		      document.getElementById("risposta").innerHTML = xhttp.responseText;
 		    }
 		  };
 		  var id = $('#poll').val();
-		  var vote = document.getElementsByName("vote").valueOf();
-		  xhttp.open("POST", "/Vote?pollID="+id+"&vote="+vote, true);
+		  if (document.getElementById('si').checked) {
+			  vote = document.getElementById('si').value;
+		  }
+		  if (document.getElementById('no').checked) {
+			  vote = document.getElementById('no').value;
+		  }
+		  xhttp.open("POST", "Vote?pollID="+id+"&vote="+vote, true);
 		  xhttp.send();
 		}</script>
 </body>
