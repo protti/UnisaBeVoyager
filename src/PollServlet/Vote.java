@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import PollSubsystem.Poll;
 import PollSubsystem.PollController;
 import PollSubsystem.PollManager;
 import TravelSubsystem.Travel;
@@ -48,17 +49,17 @@ public class Vote extends HttpServlet {
 		int pollID = Integer.parseInt(request.getParameter("pollID"));
 
 		HttpSession session = request.getSession();
-		Travel travel = (Travel) session.getAttribute("travel");
 		RegisteredUser user = (RegisteredUser) session.getAttribute("user");
 
 		int userID = user.getId();
 		boolean b = PollController.updatePoll(pollID, vote, userID);
+		Poll poll = PollController.getPoll(pollID);
 		if (b == false) {
 			response.sendRedirect("500page.html");
 			return;
 		} else {
-			RequestDispatcher rd = request.getRequestDispatcher("object/travelPage.jsp");
-			request.setAttribute("travel", travel);
+			RequestDispatcher rd = request.getRequestDispatcher("/ShotTravel.jsp");
+			request.setAttribute("id", poll.getIdTravel());
 			rd.forward(request, response);
 		}		
 	}
