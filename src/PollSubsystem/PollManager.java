@@ -7,12 +7,14 @@ import java.sql.Statement;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.logging.Logger;
 
 import DBConnection.DBException;
 import DBConnection.DriverManagerConnection;
 
 public class PollManager {
 
+	private static Logger logger = Logger.getLogger("gloabel");
 	public static void savePollToDB(Poll poll, int travelId)
 		throws SQLException,DBException{
 		
@@ -89,7 +91,7 @@ public class PollManager {
 		Poll poll = null;
 		Connection con = DriverManagerConnection.getConnection();
 	
-		
+		logger.info("Sono dentro");
 		if(con != null){
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery("select * "
@@ -97,9 +99,7 @@ public class PollManager {
 					+ "where id = " + id + "");
 			DriverManagerConnection.releaseConnection(con);
 			if(rs.next()){
-				/*poll = new Poll(rs.getInt(1), rs.getString(2),rs.getInt(4),rs.getInt(3),
-						rs.getString(5),rs.getString(6));
-				poll.setId(rs.getInt(1));*/
+				
 				poll = new Poll(rs.getInt(1), rs.getString(2),rs.getInt(4),rs.getInt(3),
 						rs.getString(5),rs.getString(6), rs.getInt(7));
 			}
