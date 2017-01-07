@@ -19,12 +19,13 @@ public class Poll {
 	private int vpositive;
 	private String startDate;
 	private String endDate;
-
+	private int idTravel;
+	
 	public String getEndDate() {
 		return this.endDate;
 	}	
 	
-	public Poll(int id, String description, int vnegative, int vpositive, String startDate, String endDate) {
+	public Poll(int id, String description, int vnegative, int vpositive, String startDate, String endDate, int idTravel) {
 		super();
 		this.id = id;
 		this.description = description;
@@ -32,16 +33,18 @@ public class Poll {
 		this.vpositive = vpositive;
 		this.startDate = startDate;
 		this.endDate = endDate;
+		this.idTravel = idTravel;
 	}
 
 
-	public Poll(String description, String startDate, String endDate) {
+	public Poll(String description, String startDate, String endDate, int idTravel) {
 		super();
 		this.description = description;
 		this.vnegative = 0;
 		this.vpositive = 0;
 		this.startDate = startDate;
 		this.endDate = endDate;
+		this.idTravel = idTravel;
 	}
 
 

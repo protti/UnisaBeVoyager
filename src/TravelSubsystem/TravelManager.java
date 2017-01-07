@@ -182,8 +182,11 @@ public class TravelManager {
 			//	GregorianCalendar gc2 = new GregorianCalendar();
 				//gc1.setGregorianChange(rs5.getDate(6));
 				//gc2.setGregorianChange(rs5.getDate(7));
-				Poll poll = new Poll(rs5.getInt(1),rs5.getString(3),
-						rs5.getInt(5),rs5.getInt(4),rs5.getString(6),rs5.getString(6));
+				/*Poll poll = new Poll(rs5.getInt(1),rs5.getString(3),
+						rs5.getInt(5),rs5.getInt(4),rs5.getString(6),rs5.getString(6));*/
+				Poll poll = new Poll(rs5.getInt(1), rs5.getString(3),rs5.getInt(5),rs5.getInt(4),
+						rs5.getString(6),rs5.getString(7), rs5.getInt(8));
+
 				polls.add(poll);
 			}
 			
@@ -457,8 +460,11 @@ public class TravelManager {
 				//GregorianCalendar gc2 = new GregorianCalendar();
 			//	gc1.setGregorianChange(rs.getDate(6));
 			//	gc2.setGregorianChange(rs.getDate(7));
-				Poll poll = new Poll(rs.getInt(1),rs.getString(3),rs.getInt(5),rs.getInt(4),
-						rs.getString(6),rs.getString(7));
+				/*Poll poll = new Poll(rs.getInt(1),rs.getString(3),rs.getInt(5),rs.getInt(4),
+						rs.getString(6),rs.getString(7));*/
+				Poll poll = new Poll(rs.getInt(1), rs.getString(3),rs.getInt(5),rs.getInt(4),
+						rs.getString(6),rs.getString(7), rs.getInt(8));
+
 				polls.add(poll);
 			}
 		}

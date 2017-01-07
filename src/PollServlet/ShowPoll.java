@@ -35,7 +35,7 @@ public class ShowPoll extends HttpServlet {
 		// TODO Auto-generated method stub
 		int pollID = Integer.parseInt(request.getParameter("id"));
 		
-		Poll poll = PollController.fetchPoll(pollID);
+		Poll poll = PollController.getPoll(pollID);
 		
 		
 		if(poll == null){

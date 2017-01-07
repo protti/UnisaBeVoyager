@@ -84,7 +84,7 @@ public class PollManager {
 		if(result != 1) throw new DBException();
 	}
 	
-	public static Poll searchPollById(int id)
+	public static Poll fetchPoll(int id)
 		throws SQLException,DBException{
 		Poll poll = null;
 		Connection con = DriverManagerConnection.getConnection();
@@ -97,10 +97,11 @@ public class PollManager {
 					+ "where id = " + id + "");
 			DriverManagerConnection.releaseConnection(con);
 			if(rs.next()){
-				
-				poll = new Poll(rs.getInt(1), rs.getString(2),rs.getInt(4),rs.getInt(3),
+				/*poll = new Poll(rs.getInt(1), rs.getString(2),rs.getInt(4),rs.getInt(3),
 						rs.getString(5),rs.getString(6));
-				poll.setId(rs.getInt(1));
+				poll.setId(rs.getInt(1));*/
+				poll = new Poll(rs.getInt(1), rs.getString(3),rs.getInt(5),rs.getInt(4),
+						rs.getString(6),rs.getString(7), rs.getInt(8));
 			}
 		}
 		

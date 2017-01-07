@@ -5,9 +5,9 @@ import java.sql.SQLException;
 import DBConnection.DBException;
 
 public class PollController {
-	public static Poll createPoll(String description, String startDate, String endDate,int travelId){
+	public static Poll createPoll(String description, String startDate, String endDate, int travelId){
 
-		Poll poll = new Poll(description, startDate, endDate);
+		Poll poll = new Poll(description, startDate, endDate, travelId);
 		try {
 			PollManager.savePollToDB(poll, travelId);
 		} catch (SQLException e) {
@@ -23,7 +23,7 @@ public class PollController {
 
 		try {
 			if(!PollManager.checkUserPoll(pollId, userId)){
-				Poll poll = PollManager.searchPollById(pollId);
+				Poll poll = PollManager.fetchPoll(pollId);
 				/*if(voto >= 0) poll.setVpositive(poll.getVpositive() + 1);
 				else poll.setVnegative(poll.getVnegative() + 1);*/
 				poll.registerVote(voto);
@@ -43,10 +43,10 @@ public class PollController {
 	}
 	
 	
-	public static Poll fetchPoll(int id){
+	public static Poll getPoll(int id){
 		
 		try {
-			Poll poll = PollManager.searchPollById(id);
+			Poll poll = PollManager.fetchPoll(id);
 			return poll;
 		} catch (SQLException | DBException e) {
 			// TODO Auto-generated catch block
