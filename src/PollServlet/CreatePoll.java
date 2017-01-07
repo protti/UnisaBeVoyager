@@ -49,14 +49,8 @@ public class CreatePoll extends HttpServlet {
 		String pollEnd = request.getParameter("endDate");
 		int travelID = Integer.parseInt(request.getParameter("travelID"));
 		
-		HttpSession session = request.getSession();
-		ArrayList<Location> currentList = (ArrayList<Location>) session.getAttribute("currentList");
-			
+		HttpSession session = request.getSession();			
 		
-		if(currentList == null) {
-			response.sendRedirect("500page.html");
-			return;
-		}
 
 		Poll newPoll = PollController.createPoll(pollDesc, pollStart, pollEnd, travelID);
 		if (newPoll == null) {
@@ -67,7 +61,7 @@ public class CreatePoll extends HttpServlet {
 
 		synchronized(session){
 			request.setAttribute("poll", newPoll);
-			RequestDispatcher rd = request.getRequestDispatcher("object/pollPage.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("object/pagePoll.jsp");
 			rd.forward(request, response);
 		}	}
 
