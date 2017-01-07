@@ -1,6 +1,7 @@
 package PollServlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,14 +23,14 @@ import UserSubsystem.RegisteredUser;
 @WebServlet("/Vote")
 public class Vote extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Vote() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public Vote() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -43,31 +44,35 @@ public class Vote extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 
 		int vote = Integer.parseInt(request.getParameter("vote"));
 		int pollID = Integer.parseInt(request.getParameter("pollID"));
 
+		boolean hasVoted = false;
 		HttpSession session = request.getSession();
 		RegisteredUser user = (RegisteredUser) session.getAttribute("user");
 
-		
+
 		int userID = user.getId();
 
 		if (PollController.hasUserVoted(userID, pollID)) {
-			return;
+			PrintWriter pw = response.getWriter();
+			pw.println("Hai già votato!");
+			hasVoted = true;
 		}
 		
-		boolean b = PollController.updatePoll(pollID, vote, userID);
-		Poll poll = PollController.getPoll(pollID);
-		if (b == false) {
-			response.sendRedirect("500page.html");
-			return;
-		} else {
-			RequestDispatcher rd = request.getRequestDispatcher("/ShotTravel.jsp");
-			request.setAttribute("id", poll.getIdTravel());
-			rd.forward(request, response);
-		}		
+		if(hasVoted == false){
+			boolean b = PollController.updatePoll(pollID, vote, userID);
+			Poll poll = PollController.getPoll(pollID);
+			if (b == false) {
+				response.sendRedirect("500page.html");
+				return;
+			} else {
+				PrintWriter pw = response.getWriter();
+				pw.println("Grazie per il voto");
+			}
+		}
 	}
 
 }
