@@ -352,4 +352,23 @@ public class UserManager {
 		}
 		return false;
 	}
+	
+	public static boolean checkUserHasTraveledWith(int userId1,int userId2)
+			throws SQLException{
+			
+			Connection con = DriverManagerConnection.getConnection();
+			if(con != null){
+				Statement st = con.createStatement();
+				ResultSet rs = st.executeQuery("select * "
+						+ "from UserTravelMatch "
+						+ "where partecipantID = " + userId1 + " AND "
+						+ "travelID IN (select travelID "
+						+ "from UserTravelMatch "
+						+ "where partecipantID = " + userId2 + ")");
+				DriverManagerConnection.releaseConnection(con);
+				return rs.next();
+			}
+			return false;
+		}
+	
 }
