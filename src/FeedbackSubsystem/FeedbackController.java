@@ -17,6 +17,12 @@ public class FeedbackController {
 	
 	static public Feedback createFeedbackUser(RegisteredUser sender, int idUser, String message, String date) {	
 		try {
+			
+			boolean b = UserManager.checkUserHasTraveledWith(sender.getId(), idUser);
+			if (b == false) {
+				return null;
+			}	
+			
 			RegisteredUser receiver = UserManager.fetchUser(idUser);
 			Feedback feedback = null;
 			if(receiver != null) {
@@ -32,6 +38,12 @@ public class FeedbackController {
 	
 	static public Feedback createFeedbackRoute(RegisteredUser sender, int idRoute, String message, String date)	{
 		try {
+			
+			boolean b = UserManager.checkUserRoute(sender.getId(), idRoute);
+			if (b == false) {
+				return null;
+			}	
+			
 			Route receiver = RouteManager.fetchRoute(idRoute);
 			Feedback feedback = null;
 			if(receiver != null) {
@@ -47,6 +59,12 @@ public class FeedbackController {
 	
 	static public Feedback createFeedbackLocation(RegisteredUser sender, int idLocation, String message, String date) {
 		try {
+			
+			boolean b = UserManager.checkUserVisit(sender.getId(), idLocation);
+			if (b == false) {
+				return null;
+			}	
+			
 			Location receiver = LocationManager.fetchLocation(idLocation);
 			Feedback feedback = null;
 			if(receiver != null) {

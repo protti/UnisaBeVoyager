@@ -57,6 +57,8 @@ public class GiveFeedbackToLocation extends HttpServlet {
 		if (fb == null) {
 			response.sendRedirect("500page.jsp");
 		}
+		
+		
 	}
 
 }
