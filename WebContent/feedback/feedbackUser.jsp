@@ -17,13 +17,16 @@
 
 	<h4>Feedback</h4>
 	
-	<textarea rows="10" cols="20" id="feedback"></textarea><br>
-	<button onclick="putFeedback(<%= own.getId()%>,<%= idUser%>)">Commenta</button>
+	<form>
+		<textarea rows="10" cols="20" id="feedback"></textarea><br>
+		<input type="button" onclick="putFeedback(<%= idUser%>)" value="Commenta">
+	</form>
 	
+	<div id="response"></div>
 	<%if(feedbackUser != null){ %>
 		<%if(feedbackUser.size() > 0){ %>
 			<%for(FeedbackUser fu: feedbackUser){ %>
-				<a href="showProfile?id="<%= fu.getSender().getId() %>>
+				<a href="showProfile?id=<%= fu.getSender().getId() %>">
 				<%= fu.getSender().getUsername() %></a>
 				<p> <%= fu.getMessage() %></p>
 			<%} %>
@@ -35,7 +38,7 @@
 	<%} %>
 	
 	<script type="text/javascript">
-	function putFeedback(idSender,idReceiver) {
+	function putFeedback(idRecevier) {
 		  var xhttp;
 		  xhttp = new XMLHttpRequest();
 		  xhttp.onreadystatechange = function() {
@@ -44,7 +47,7 @@
 		    }
 		  };
 		  var feedback = $('#feedback').val();
-		  xhttp.open("POST", "#", true);
+		  xhttp.open("POST", "GiveFeedbackToUser?id="+idRecevier+"&message="+feedback, true);
 		  xhttp.send();
 		}</script>
 </body>

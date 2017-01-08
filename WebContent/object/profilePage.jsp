@@ -18,7 +18,7 @@ Cognome: <%= user.getCognome() %>
 Età: <%= user.getAge() %>
 
 
-
+<%@ include file="../feedback/feedbackUser.jsp" %>
 
 
 

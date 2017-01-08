@@ -1,6 +1,7 @@
 package LoginServlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import AccessController.AccessController;
+import FeedbackSubsystem.FeedbackController;
+import FeedbackSubsystem.FeedbackUser;
 import UserSubsystem.RegisteredUser;
 
 /**
@@ -39,13 +42,16 @@ public class Login extends HttpServlet {
 		if (user == null) {
 			response.sendRedirect("login.html");	
 			return;
-		}		
+		}
+		List<FeedbackUser> fbs = FeedbackController.searchFeedbackUser(user.getId());
 		HttpSession session = request.getSession();		
 		synchronized(session) {
 			System.out.println("Login effettuato");
 			//response.sendRedirect("profilePage.jsp");
 			session.setAttribute("user", user);
 			request.setAttribute("user", user);
+			request.setAttribute("feedbacks", fbs);
+			request.setAttribute("id", user.getId());
 			RequestDispatcher rd = request.getRequestDispatcher("object/profilePage.jsp");
 			rd.forward(request, response);
 			
