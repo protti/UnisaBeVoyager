@@ -25,14 +25,14 @@ DROP TABLE IF EXISTS `feedbacklocation`;
 CREATE TABLE `feedbacklocation` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `senderID` bigint(20) NOT NULL,
-  `locationID` bigint(20) NOT NULL,
+  `recipientID` bigint(20) NOT NULL,
   `message` varchar(500) NOT NULL,
   `sendDate` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `senderID` (`senderID`),
-  KEY `locationID` (`locationID`),
+  KEY `locationID` (`recipientID`),
   CONSTRAINT `feedbacklocation_ibfk_1` FOREIGN KEY (`senderID`) REFERENCES `registereduser` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `feedbacklocation_ibfk_2` FOREIGN KEY (`locationID`) REFERENCES `registereduser` (`id`) ON DELETE CASCADE
+  CONSTRAINT `feedbacklocation_ibfk_2` FOREIGN KEY (`recipientID`) REFERENCES `registereduser` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -55,14 +55,14 @@ DROP TABLE IF EXISTS `feedbackroute`;
 CREATE TABLE `feedbackroute` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `senderID` bigint(20) NOT NULL,
-  `routeID` bigint(20) NOT NULL,
+  `recipientID` bigint(20) NOT NULL,
   `message` varchar(500) NOT NULL,
   `sendDate` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `senderID` (`senderID`),
-  KEY `routeID` (`routeID`),
+  KEY `routeID` (`recipientID`),
   CONSTRAINT `feedbackroute_ibfk_1` FOREIGN KEY (`senderID`) REFERENCES `registereduser` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `feedbackroute_ibfk_2` FOREIGN KEY (`routeID`) REFERENCES `registereduser` (`id`) ON DELETE CASCADE
+  CONSTRAINT `feedbackroute_ibfk_2` FOREIGN KEY (`recipientID`) REFERENCES `registereduser` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -179,7 +179,7 @@ CREATE TABLE `poll` (
   PRIMARY KEY (`id`),
   KEY `idTravel` (`idTravel`),
   CONSTRAINT `poll_ibfk_1` FOREIGN KEY (`idTravel`) REFERENCES `travel` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -188,7 +188,7 @@ CREATE TABLE `poll` (
 
 LOCK TABLES `poll` WRITE;
 /*!40000 ALTER TABLE `poll` DISABLE KEYS */;
-INSERT INTO `poll` VALUES (1,'Brighton',0,0,'2017-02-04','2017-02-07',10),(2,'Vediamo il Duomo',0,0,'2017-02-01','2017-02-03',9),(3,'Duomo Milano',0,0,'2017-02-01','2017-02-03',11);
+INSERT INTO `poll` VALUES (1,'Brighton',0,1,'2017-02-04','2017-02-07',10),(2,'Vediamo il Duomo',1,0,'2017-02-01','2017-02-03',9),(3,'Duomo Milano',0,1,'2017-02-01','2017-02-03',11),(4,'fghjklkjhgfghj',1,0,'2017-02-01','2017-02-03',11),(5,'San Siro',0,1,'2017-02-01','2017-02-07',11);
 /*!40000 ALTER TABLE `poll` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -216,6 +216,7 @@ CREATE TABLE `pollusermatch` (
 
 LOCK TABLES `pollusermatch` WRITE;
 /*!40000 ALTER TABLE `pollusermatch` DISABLE KEYS */;
+INSERT INTO `pollusermatch` VALUES (1,1,'2017-01-07'),(1,2,'2017-01-07'),(1,3,'2017-01-07'),(1,4,'2017-01-07'),(1,5,'2017-01-07');
 /*!40000 ALTER TABLE `pollusermatch` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -400,4 +401,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-07 17:06:47
+-- Dump completed on 2017-01-08 19:18:09
