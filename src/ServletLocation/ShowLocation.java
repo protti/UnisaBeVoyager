@@ -38,16 +38,16 @@ public class ShowLocation extends HttpServlet {
 		
 		int locationID = Integer.parseInt(request.getParameter("id"));		
 		Location location = LocationController.getLocation(locationID) ;
-		HttpSession session = request.getSession();
 		
 		if(location == null) {
 			response.sendRedirect("500page.html");
 			return;
 		}
 		else {
-			request.setAttribute("nome", location.getName());
-			request.setAttribute("descrizione", location.getDescrizione());
-			session.setAttribute("location", location);
+			/*request.setAttribute("nome", location.getName());
+			request.setAttribute("descrizione", location.getDescrizione());*/
+			
+			request.setAttribute("location", location);
 			RequestDispatcher rd = request.getRequestDispatcher("object/locationpage.jsp");
 			rd.forward(request, response);
 			return;
