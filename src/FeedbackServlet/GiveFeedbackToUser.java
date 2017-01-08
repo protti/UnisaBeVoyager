@@ -13,21 +13,19 @@ import javax.servlet.http.HttpSession;
 
 import FeedbackSubsystem.Feedback;
 import FeedbackSubsystem.FeedbackController;
-import LocationSubsystem.Location;
-import RouteSubsystem.Route;
 import UserSubsystem.RegisteredUser;
 
 /**
- * Servlet implementation class GiveFeedback
+ * Servlet implementation class GiveFeedbackToUser
  */
-@WebServlet("/GiveFeedback")
-public class GiveFeedback extends HttpServlet {
+@WebServlet("/GiveFeedbackToUser")
+public class GiveFeedbackToUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GiveFeedback() {
+    public GiveFeedbackToUser() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,6 +42,7 @@ public class GiveFeedback extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int id = Integer.parseInt(request.getParameter("id"));
 		
 		String message = request.getParameter("message");
 		HttpSession session = request.getSession();
@@ -53,23 +52,11 @@ public class GiveFeedback extends HttpServlet {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String date = sdf.format(timestamp);
 		
-		Route route = null;
-		Location location = null;
-		RegisteredUser shownUser = null;
-		Feedback fb = null; 
-		if((shownUser = (RegisteredUser) session.getAttribute("shownUser")) != null) {
-			fb = FeedbackController.createFeedback(user, shownUser, message, date); 
-		}
-		if((route = (Route) session.getAttribute("route")) != null) {
-			fb = FeedbackController.createFeedback(user, route, message, date);
-		}
-		if((location = (Location) session.getAttribute("location")) != null) {
-			fb = FeedbackController.createFeedback(user, location, message, date);
-		}
+		Feedback fb = FeedbackController.createFeedbackUser(user, id, message, date);
 		
-		if(fb == null) {
+		if (fb == null) {
 			response.sendRedirect("500page.jsp");
-			return;
 		}
 	}
+
 }
