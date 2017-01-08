@@ -39,6 +39,7 @@ public class ShowLocation extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
 		int locationID = Integer.parseInt(request.getParameter("id"));		
 		Location location = LocationController.getLocation(locationID) ;
 		

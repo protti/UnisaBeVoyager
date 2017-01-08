@@ -16,6 +16,7 @@
 <body>
 	<h4>Feedback</h4>
 	
+	
 	<form>
 		<textarea rows="10" cols="20" id="feedback"></textarea><br>
 		<input type="button" onclick="putFeedback(<%= idLocation%>)" value="Commenta">

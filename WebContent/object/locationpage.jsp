@@ -14,6 +14,7 @@ Descrizione: <%= location.getDescrizione() %>
 
 <a href="deleteLocation.jsp">Elimina Luogo</a>
 
+
 <%@ include file="../feedback/feedbackLocation.jsp" %>
 
 </body>

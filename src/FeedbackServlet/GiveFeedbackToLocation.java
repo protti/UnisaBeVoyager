@@ -36,7 +36,7 @@ public class GiveFeedbackToLocation extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-int id = Integer.parseInt(request.getParameter("id"));
+		int id = Integer.parseInt(request.getParameter("id"));
 		
 		String message = request.getParameter("message");
 		HttpSession session = request.getSession();
