@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<% Location location = (Location) request.getAttribute("route");%>
+<% Location location = (Location) request.getAttribute("location");%>
 <title><%= location.getName() %></title>
 </head>
 <body>
@@ -13,5 +13,8 @@ Nome: <%= location.getName() %>
 Descrizione: <%= location.getDescrizione() %>
 
 <a href="deleteLocation.jsp">Elimina Luogo</a>
+
+<%@ include file="../feedback/feedbackLocation.jsp" %>
+
 </body>
 </html>

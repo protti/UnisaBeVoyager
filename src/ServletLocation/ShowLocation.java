@@ -1,6 +1,7 @@
 package ServletLocation;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import FeedbackSubsystem.FeedbackController;
+import FeedbackSubsystem.FeedbackLocation;
 import LocationSubsystem.Location;
 import LocationSubsystem.LocationController;
 import LocationSubsystem.LocationManager;
@@ -44,10 +47,13 @@ public class ShowLocation extends HttpServlet {
 			return;
 		}
 		else {
+			List<FeedbackLocation> fbs = FeedbackController.searchFeedbackLocation(location.getId());
 			/*request.setAttribute("nome", location.getName());
 			request.setAttribute("descrizione", location.getDescrizione());*/
 			
 			request.setAttribute("location", location);
+			request.setAttribute("id", location.getId());
+			request.setAttribute("feedback", fbs);
 			RequestDispatcher rd = request.getRequestDispatcher("object/locationpage.jsp");
 			rd.forward(request, response);
 			return;

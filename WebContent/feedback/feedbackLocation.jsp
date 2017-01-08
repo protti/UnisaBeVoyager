@@ -16,13 +16,17 @@
 <body>
 	<h4>Feedback</h4>
 	
-	<textarea rows="10" cols="20" id="feedback"></textarea><br>
-	<button onclick="putFeedback(<%= user.getId()%>,<%= idLocation%>)">Commenta</button>
+	<form>
+		<textarea rows="10" cols="20" id="feedback"></textarea><br>
+		<input type="button" onclick="putFeedback(<%= idLocation%>)" value="Commenta">
+	</form>
+	
+	<div id="response"></div>
 	
 	<%if(feedbackLocation != null){ %>
 		<%if(feedbackLocation.size() > 0){ %>
 			<%for(FeedbackLocation fu: feedbackLocation){ %>
-				<a href="showProfile?id="<%= fu.getSender().getId() %>>
+				<a href="showProfile?id=<%= fu.getSender().getId() %>">
 				<%= fu.getSender().getUsername() %></a>
 				<p> <%= fu.getMessage() %></p>
 			<%} %>
@@ -34,7 +38,7 @@
 	<%} %>
 	
 	<script type="text/javascript">
-	function putFeedback(idSender,idReceiver) {
+	function putFeedback(idRecevier) {
 		  var xhttp;
 		  xhttp = new XMLHttpRequest();
 		  xhttp.onreadystatechange = function() {
@@ -43,7 +47,7 @@
 		    }
 		  };
 		  var feedback = $('#feedback').val();
-		  xhttp.open("POST", "#", true);
+		  xhttp.open("POST", "GiveFeedbackToLocation?id="+idRecevier+"&message="+feedback, true);
 		  xhttp.send();
 		}</script>
 </body>
