@@ -3,8 +3,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="CSS/style.css" rel="stylesheet" type="text/css">
-<link href="CSS/responsive.css" rel="stylesheet" type="text/css">
+<link href=<%=request.getContextPath().toString()%>/CSS/style.css rel="stylesheet" type="text/css">
+<link href=<%=request.getContextPath().toString()%>/CSS/responsive.css rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="page">
@@ -18,15 +18,15 @@
 	<li><form method="get" action="showProfile" style="text-decoration: none;">
 		<input id="submit" type="submit" value="Profilo">
 	</form></li>
-	<li><a href="create/createRoute.jsp">Crea Itinerari</a></li>
-	<li><a href="create/createTravel.jsp">Crea Viaggi</a></li>
+	<li><a href=<%=request.getContextPath().toString()%>/create/createRoute.jsp>Crea Itinerari</a></li>
+	<li><a href=<%=request.getContextPath().toString()%>/create/createTravel.jsp>Crea Viaggi</a></li>
 	<% if(user1.getAuthorization() == 1){%>
-	<li><a href="create/creaLuogo.jsp">Crea Luoghi</a></li>
+	<li><a href=<%=request.getContextPath().toString()%>/create/creaLuogo.jsp>Crea Luoghi</a></li>
 	<%} %>
-	<li><a href="research/search-route-location.jsp">Cerca Itinerari</a></li>
-	<li><a href=research/search-travel-location.jsp>Cerca Viaggi</a></li>
-	<li><a href=research/searchUser.html>Cerca Utente</a></li>
-	<li><form method="get" action=" logout" style="text-decoration: none;">
+	<li><a href=<%=request.getContextPath().toString()%>/research/search-route-location.jsp>Cerca Itinerari</a></li>
+	<li><a href=<%=request.getContextPath().toString()%>/research/search-travel-location.jsp>Cerca Viaggi</a></li>
+	<li><a href=<%=request.getContextPath().toString()%>/research/searchUser.jsp>Cerca Utente</a></li>
+	<li><form method="get" action=<%=request.getContextPath().toString()%>/Logout style="text-decoration: none;">
 		<input id="submit" type="submit" value="Logout">
 	</form></li>
 	</ul>

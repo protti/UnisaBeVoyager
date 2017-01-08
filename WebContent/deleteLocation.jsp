@@ -13,7 +13,7 @@
 
 <%Location location = (Location)session.getAttribute("location"); %>
 <body>
-<%@ include file="../navbar.jsp" %>
+<%@ include file="navbar.jsp" %>
 Vuoi davvero eliminare questo luogo?
 <form action="DeleteLocation" method="post">
 		<div>

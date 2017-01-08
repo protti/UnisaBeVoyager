@@ -10,7 +10,8 @@
 <title>Eliminazione </title>
 </head>
 <body>
-<%@ include file="../navbar.jsp" %>
+<%@ include file="navbar.jsp" %>
+
 Sei sicuro di voler eliminare il tuo account?
 
 <form action="deleteUser" method="post">
