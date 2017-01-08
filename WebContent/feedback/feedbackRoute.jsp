@@ -16,9 +16,12 @@
 <body>
 
 	<h4>Feedback</h4>
+	<form>
+		<textarea rows="10" cols="20" id="feedback"></textarea><br>
+		<input type="button" onclick="putFeedback(<%= idRoute%>)" value="Commenta">
+	</form>
 	
-	<textarea rows="10" cols="20" id="feedback"></textarea><br>
-	<button onclick="putFeedback(<%= user.getId()%>,<%= idRoute%>)">Commenta</button>
+	<div id="response"></div>
 	
 	<%if(feedbackRoute != null){ %>
 		<%if(feedbackRoute.size() > 0){ %>
@@ -35,7 +38,7 @@
 	<%} %>
 	
 	<script type="text/javascript">
-	function putFeedback(idSender,idReceiver) {
+	function putFeedback(idRecevier) {
 		  var xhttp;
 		  xhttp = new XMLHttpRequest();
 		  xhttp.onreadystatechange = function() {
@@ -44,7 +47,7 @@
 		    }
 		  };
 		  var feedback = $('#feedback').val();
-		  xhttp.open("POST", "#", true);
+		  xhttp.open("POST", "GiveFeedbackToRoute?message="+feedback+"&id="+idRecevier, true);
 		  xhttp.send();
 		}</script>
 		

@@ -23,5 +23,7 @@
 	
 		<a href=ShowLocation?id=<%=location.getId()%>><%=location.getName()%></a>
 	<%} %>
+	
+	<%@include file="../feedback/feedbackRoute.jsp"%>
 </body>
 </html>

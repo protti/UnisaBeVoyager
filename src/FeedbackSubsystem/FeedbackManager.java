@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Logger;
 
 import DBConnection.DBException;
 import DBConnection.DriverManagerConnection;
@@ -20,27 +21,32 @@ import UserSubsystem.UserManager;
 *Classe che gestisce le operazioni di feedback.
 */
 public class FeedbackManager {
+	
+	private static Logger logger = Logger.getLogger("global");
 	/**
 	*Metodo che gestisce il salvataggio di un feedback nel database.
 	*@param feedback
 	*/
 	public static void saveFeedbackToDB(Feedback feedback)
 		throws SQLException,DBException{
+		logger.info(feedback.getClass().getName());
 		Feedback newFeedback = null;
+		String table = feedback.getClass().getName().substring(17);
 		int result = 0;
 		Connection con = DriverManagerConnection.getConnection();
 		if(con != null && feedback != null){
+			logger.info(feedback.getClass().getName());
 			Statement st = con.createStatement();
-			result = st.executeUpdate("insert into " + feedback.getClass()
-				.getName() + "(senderID,recipientID,message,sendDate) "
+			result = st.executeUpdate("insert into " + table
+				+ "(senderID,recipientID,message,sendDate) "
 				+ "values(" + feedback.getSender().getId() + ","
 				+ "" + feedback.getFeedbackOwner() + ","
 				+ "'" + feedback.getMessage() + "',"
-				+ "" + feedback.getDate() + ")");
+				+ "'" + feedback.getDate() + "')");
 			
 			Statement st1 = con.createStatement();
 			ResultSet rs = st1.executeQuery("select max(id) as max_id "
-					+ "from " + feedback.getClass().getName() + " "
+					+ "from " + table + " "
 					+ "where sendDate = '" + feedback.getDate() + "' AND "
 					+ "message = '" + feedback.getMessage() + "' AND "
 					+ "senderID = " + feedback.getSender().getId() + "");
@@ -62,13 +68,13 @@ public class FeedbackManager {
 	*/
 	public static boolean checkFeedback(Feedback feedback)
 		throws SQLException{
-		
+		String table = feedback.getClass().getName().substring(17);
 		Connection con = DriverManagerConnection.getConnection();
 		if(con != null && feedback != null){
 			
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery("select * "
-					+ "from " + feedback.getClass().getName() + " "
+					+ "from " + table + " "
 					+ "where id = " + feedback.getId() + "");
 			DriverManagerConnection.releaseConnection(con);
 			return rs.next();
@@ -82,12 +88,12 @@ public class FeedbackManager {
 	*/
 	public static void deleteFeedback(Feedback feedback)
 		throws SQLException,DBException{
-		
+		String table = feedback.getClass().getName().substring(17);
 		int result = 0;
 		Connection con = DriverManagerConnection.getConnection();
 		if(con != null && feedback != null){
 			Statement st = con.createStatement();
-			result = st.executeUpdate("delete from " + feedback.getClass().getName() + " "
+			result = st.executeUpdate("delete from " + table + " "
 					+ "where id = " + feedback.getId() + "");
 			DriverManagerConnection.releaseConnection(con);
 		}
@@ -100,12 +106,12 @@ public class FeedbackManager {
 	*/
 	public static void updateFeedback(Feedback feedback)
 		throws SQLException,DBException{
-		
+		String table = feedback.getClass().getName().substring(17);
 		int result = 0;
 		Connection con = DriverManagerConnection.getConnection();
 		if(con != null && feedback != null){
 			Statement st = con.createStatement();
-			result = st.executeUpdate("update " + feedback.getClass().getName() + " "
+			result = st.executeUpdate("update " + table + " "
 					+ "set message = '" + feedback.getMessage() + "' "
 					+ "where id = " + feedback.getId() + "");
 			DriverManagerConnection.releaseConnection(con);
@@ -123,9 +129,11 @@ public class FeedbackManager {
 					+ "from FeedbackUser "
 					+ "where id = " + id + "");
 			DriverManagerConnection.releaseConnection(con);
-			RegisteredUser sender = UserManager.fetchUser(rs.getInt(2));
-			RegisteredUser recipient = UserManager.fetchUser(rs.getInt(3));
-			feedback = new FeedbackUser(rs.getInt(1),sender,rs.getString(4),rs.getString(5),recipient);
+			if(rs.next()){
+				RegisteredUser sender = UserManager.fetchUser(rs.getInt(2));
+				RegisteredUser recipient = UserManager.fetchUser(rs.getInt(3));
+				feedback = new FeedbackUser(rs.getInt(1),sender,rs.getString(4),rs.getString(5),recipient);
+			}
 		}
 		return feedback;
 	}
@@ -140,9 +148,11 @@ public class FeedbackManager {
 						+ "from FeedbackRoute "
 						+ "where id = " + id + "");
 				DriverManagerConnection.releaseConnection(con);
-				RegisteredUser sender = UserManager.fetchUser(rs.getInt(2));
-				Route recipient = RouteManager.fetchRoute(rs.getInt(3));
-				feedback = new FeedbackRoute(rs.getInt(1),sender,rs.getString(4),rs.getString(5),recipient);
+				if(rs.next()){
+					RegisteredUser sender = UserManager.fetchUser(rs.getInt(2));
+					Route recipient = RouteManager.fetchRoute(rs.getInt(3));
+					feedback = new FeedbackRoute(rs.getInt(1),sender,rs.getString(4),rs.getString(5),recipient);
+				}
 			}
 			return feedback;
 	}
@@ -158,9 +168,11 @@ public class FeedbackManager {
 						+ "from FeedbackLocation "
 						+ "where id = " + id + "");
 				DriverManagerConnection.releaseConnection(con);
-				RegisteredUser sender = UserManager.fetchUser(rs.getInt(2));
-				Location recipient = LocationManager.fetchLocation(rs.getInt(3));
-				feedback = new FeedbackLocation(rs.getInt(1),sender,rs.getString(4),rs.getString(5),recipient);
+				if(rs.next()){
+					RegisteredUser sender = UserManager.fetchUser(rs.getInt(2));
+					Location recipient = LocationManager.fetchLocation(rs.getInt(3));
+					feedback = new FeedbackLocation(rs.getInt(1),sender,rs.getString(4),rs.getString(5),recipient);
+				}
 			}
 			return feedback;
 	}

@@ -1,6 +1,7 @@
 package servletRoute;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import FeedbackSubsystem.FeedbackController;
+import FeedbackSubsystem.FeedbackRoute;
 import LocationSubsystem.Location;
 import LocationSubsystem.LocationController;
 import RouteSubsystem.Route;
@@ -37,7 +40,7 @@ public class ShowRoute extends HttpServlet {
 		int routeID = Integer.parseInt(request.getParameter("id"));
 		
 		Route route = RouteController.getRoute(routeID) ;
-		
+		List<FeedbackRoute> fbs = FeedbackController.searchFeedbackRoute(route.getId());
 		if(route == null) {
 			response.sendRedirect("500page.html");
 			return;
@@ -46,6 +49,8 @@ public class ShowRoute extends HttpServlet {
 			/*request.setAttribute("nome", route.getName());
 			request.setAttribute("descrizione", route.getDescription());
 			request.setAttribute("locationList", route.getLocations());*/
+			request.setAttribute("feedback", fbs);
+			request.setAttribute("id", route.getId());
 			request.setAttribute("route", route);
 			RequestDispatcher rd = request.getRequestDispatcher("object/routePage.jsp");
 			rd.forward(request, response);

@@ -30,9 +30,9 @@ CREATE TABLE `feedbacklocation` (
   `sendDate` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `senderID` (`senderID`),
-  KEY `locationID` (`recipientID`),
+  KEY `recipientID` (`recipientID`),
   CONSTRAINT `feedbacklocation_ibfk_1` FOREIGN KEY (`senderID`) REFERENCES `registereduser` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `feedbacklocation_ibfk_2` FOREIGN KEY (`recipientID`) REFERENCES `registereduser` (`id`) ON DELETE CASCADE
+  CONSTRAINT `feedbacklocation_ibfk_2` FOREIGN KEY (`recipientID`) REFERENCES `location` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -60,10 +60,10 @@ CREATE TABLE `feedbackroute` (
   `sendDate` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `senderID` (`senderID`),
-  KEY `routeID` (`recipientID`),
+  KEY `recipientID` (`recipientID`),
   CONSTRAINT `feedbackroute_ibfk_1` FOREIGN KEY (`senderID`) REFERENCES `registereduser` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `feedbackroute_ibfk_2` FOREIGN KEY (`recipientID`) REFERENCES `registereduser` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  CONSTRAINT `feedbackroute_ibfk_2` FOREIGN KEY (`recipientID`) REFERENCES `route` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,6 +72,7 @@ CREATE TABLE `feedbackroute` (
 
 LOCK TABLES `feedbackroute` WRITE;
 /*!40000 ALTER TABLE `feedbackroute` DISABLE KEYS */;
+INSERT INTO `feedbackroute` VALUES (1,1,2,'Milano � bellissima','2017-01-08');
 /*!40000 ALTER TABLE `feedbackroute` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -401,4 +402,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-08 19:18:09
+-- Dump completed on 2017-01-08 21:13:49
