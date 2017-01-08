@@ -2,6 +2,7 @@ package FeedbackSubsystem;
 
 import java.sql.SQLException;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import DBConnection.DBException;
 import LocationSubsystem.Location;
@@ -61,5 +62,37 @@ public class FeedbackController {
 	}	
 	
 	
+	public static List<FeedbackUser> searchFeedbackUser(int id){
+		
+		try {
+			List<FeedbackUser> feedbacks = FeedbackManager.searchFeedbackUser(id);
+			return feedbacks;
+		} catch (SQLException | DBException e) {
+			// TODO Auto-generated catch block
+			return null;
+		}
+	}
+	
+	public static List<FeedbackRoute> searchFeedbackRoute(int id){
+		
+		try {
+			List<FeedbackRoute> feedbacks = FeedbackManager.searchFeedbackRoute(id);
+			return feedbacks;
+		} catch (SQLException | DBException e) {
+			// TODO Auto-generated catch block
+			return null;
+		}
+	}
+	
+	public static List<FeedbackLocation> searchFeedbackLocation(int id){
+		
+		try {
+			List<FeedbackLocation> feedbacks = FeedbackManager.searchFeedbackLocation(id);
+			return feedbacks;
+		} catch (SQLException | DBException e) {
+			// TODO Auto-generated catch block
+			return null;
+		}
+	}
 	
 }
