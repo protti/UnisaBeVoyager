@@ -2,15 +2,22 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<link href="CSS/login.css" rel="stylesheet" type="text/css">
+<title>Accedi</title>
 </head>
 <body>
+<div class="welcome">
+<div id="log">
 <form method="post" action="Login">
 				<p>Accedi</p><br>
-				<span>Username </span><input type="text" class="focus" name="username"><br>
-				<span>Password </span><input type="password" class="focus" name="password"><br>
-				<input type="submit" class="submit" class="focus" value="Accedi!">	
+				<span class="email">Username </span><input class="email" type="text" class="focus" name="username"><br>
+				<span id="p">Password </span><input class="pass" type="password" class="focus" name="password"><br>
+				<input id="submit" type="submit" class="submit" class="focus" value="Accedi!">	
 </form>
+</div>
+<div id="reg">
 Oppure <a href="newuser.html">Registrati!</a>.
+</div>
+</div>
 </body>
 </html>
