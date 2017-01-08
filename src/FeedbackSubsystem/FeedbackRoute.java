@@ -12,12 +12,12 @@ public class FeedbackRoute extends Feedback {
 
 	private Route route;
 
-	public FeedbackRoute(int id, RegisteredUser sender, String message, GregorianCalendar date, Route route) {
+	public FeedbackRoute(int id, RegisteredUser sender, String message, String date, Route route) {
 		super(id, sender, message, date);
 		this.route = route;
 	}
 	
-	public FeedbackRoute(RegisteredUser sender, String message, GregorianCalendar date, Route route) {
+	public FeedbackRoute(RegisteredUser sender, String message, String date, Route route) {
 		super(sender, message, date);
 		this.route = route; 
 	}

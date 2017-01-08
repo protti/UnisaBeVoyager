@@ -15,16 +15,16 @@ public abstract class Feedback {
 	private int id;
 	private RegisteredUser sender;
 	private String message;
-	private GregorianCalendar date;
+	private String date;
 	
-	public Feedback(RegisteredUser sender, String message, GregorianCalendar date) {
+	public Feedback(RegisteredUser sender, String message, String date) {
 		super();
 		this.sender = sender;
 		this.message = message;
 		this.date = date;
 	}
 	
-	public Feedback(int id, RegisteredUser sender, String message, GregorianCalendar date) {
+	public Feedback(int id, RegisteredUser sender, String message, String date) {
 		super();
 		this.id = id;
 		this.sender = sender;
@@ -57,7 +57,7 @@ public abstract class Feedback {
 	*Metodo che restituisce la data del feedback.
 	*@return date
 	*/
-	public GregorianCalendar getDate() {
+	public String getDate() {
 		return date;
 	}	
 	

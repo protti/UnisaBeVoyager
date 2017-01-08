@@ -11,12 +11,12 @@ public class FeedbackUser extends Feedback {
 
 	private RegisteredUser userID;
 
-	public FeedbackUser(RegisteredUser sender, String message, GregorianCalendar date, RegisteredUser userID) {
+	public FeedbackUser(RegisteredUser sender, String message, String date, RegisteredUser userID) {
 		super(sender, message, date);
 		this.userID = userID;
 	}
 
-	public FeedbackUser(int id, RegisteredUser sender, String message, GregorianCalendar date, RegisteredUser userID) {
+	public FeedbackUser(int id, RegisteredUser sender, String message, String date, RegisteredUser userID) {
 		super(id, sender, message, date);
 		this.userID = userID;
 	}

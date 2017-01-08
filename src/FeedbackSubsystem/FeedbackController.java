@@ -11,7 +11,7 @@ import UserSubsystem.RegisteredUser;
 public class FeedbackController {
 
 	
-	static public Feedback createFeedback(RegisteredUser sender,RegisteredUser receiver, String message, GregorianCalendar date)
+	static public Feedback createFeedback(RegisteredUser sender,RegisteredUser receiver, String message, String date)
 	{	
 		FeedbackUser feedback = new FeedbackUser(sender, message, date,receiver);
 		try {
@@ -22,7 +22,7 @@ public class FeedbackController {
 		}
 		return feedback;
 	}
-	static public Feedback createFeedback(RegisteredUser sender,Route receiver, String message, GregorianCalendar date)
+	static public Feedback createFeedback(RegisteredUser sender,Route receiver, String message, String date)
 	{
 		
 		FeedbackRoute feedback = new FeedbackRoute(sender,message, date,receiver);
@@ -34,7 +34,7 @@ public class FeedbackController {
 		}
 		return feedback;
 	}
-	static public Feedback createFeedback(RegisteredUser sender,Location receiver, String message, GregorianCalendar date)
+	static public Feedback createFeedback(RegisteredUser sender,Location receiver, String message, String date)
 	{
 		
 		FeedbackLocation feedback = new FeedbackLocation(sender, message, date,receiver);
