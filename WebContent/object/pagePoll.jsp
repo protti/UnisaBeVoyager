@@ -1,4 +1,4 @@
-<%@page import="PollSubsystem.Poll"%>
+<%@page import="PollSubsystem.Poll,UserSubsystem.*,TravelSubsystem.*"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -16,8 +16,13 @@
 	<b>Voti positivi: </b><span><%= poll.getVpositive() %></span><br>
 	<b>Voti negativo: </b><span><%= poll.getVnegative() %></span><br><br>
 	
+	<%RegisteredUser user = (RegisteredUser)session.getAttribute("user"); %>
+	<%
+		
 	
 	
+	
+	if(TravelManager.checkUserPartecipant(user.getId(), poll.getIdTravel())){ %>
 	<h4>Vota</h4>
 	<form>
 		<input id="poll" type="hidden" name="pollID" value="<%= poll.getId()%>">
@@ -25,7 +30,7 @@
 		<span><b>NO </b></span><input name="vote" id="no" type="radio" value="-1"><br>
 		<input type="button" onclick="vota()" value="Vota">
 	</form>
-	
+	<%} %>
 	<div id="risposta"></div> 
 	
 	
