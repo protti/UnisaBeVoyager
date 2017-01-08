@@ -26,7 +26,7 @@
 	<%if(feedbackRoute != null){ %>
 		<%if(feedbackRoute.size() > 0){ %>
 			<%for(FeedbackRoute fu: feedbackRoute){ %>
-				<a href="showProfile?id="<%= fu.getSender().getId() %>>
+				<a href="showProfile?id=<%= fu.getSender().getId() %>">
 				<%= fu.getSender().getUsername() %></a>
 				<p> <%= fu.getMessage() %></p>
 			<%} %>

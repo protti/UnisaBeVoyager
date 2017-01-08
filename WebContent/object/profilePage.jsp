@@ -33,7 +33,7 @@ Età: <%= user.getAge() %>
 <input type="submit" class="submit" value="Logout!">
 </form>
 
-
+<%@ include file="../feedback/feedbackUser.jsp" %>
 
 
 
