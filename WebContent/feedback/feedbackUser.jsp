@@ -6,7 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <% RegisteredUser own = (RegisteredUser) session.getAttribute("user"); %>
-<% RegisteredUser user = (RegisteredUser) request.getAttribute("user"); %>
+<% Integer idUser = (int) request.getAttribute("id"); %>
 <% List<FeedbackUser> feedbackUser = (List<FeedbackUser>) request.getAttribute("feedbacks"); %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -18,7 +18,7 @@
 	<h4>Feedback</h4>
 	
 	<textarea rows="10" cols="20" id="feedback"></textarea><br>
-	<button onclick="putFeedback(<%= own.getId()%>,<%= user.getId()%>)">Commenta</button>
+	<button onclick="putFeedback(<%= own.getId()%>,<%= idUser%>)">Commenta</button>
 	
 	<%if(feedbackUser != null){ %>
 		<%if(feedbackUser.size() > 0){ %>
