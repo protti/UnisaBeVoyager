@@ -28,7 +28,7 @@ public class FeedbackManager {
 				+ "values(" + feedback.getSender().getId() + ","
 				+ "" + feedback.getFeedbackOwner() + ","
 				+ "'" + feedback.getMessage() + "',"
-				+ "" + feedback.getDate().getGregorianChange() + ")");
+				+ "" + feedback.getDate() + ")");
 			DriverManagerConnection.releaseConnection(con);
 		}
 		if(result != 1) throw new DBException();
