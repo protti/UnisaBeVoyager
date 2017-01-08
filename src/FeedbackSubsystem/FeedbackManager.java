@@ -4,10 +4,18 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import DBConnection.DBException;
 import DBConnection.DriverManagerConnection;
+import LocationSubsystem.Location;
+import LocationSubsystem.LocationManager;
+import RouteSubsystem.Route;
+import RouteSubsystem.RouteManager;
+import UserSubsystem.RegisteredUser;
+import UserSubsystem.UserManager;
 /**
 *Classe che gestisce le operazioni di feedback.
 */
@@ -89,5 +97,117 @@ public class FeedbackManager {
 			DriverManagerConnection.releaseConnection(con);
 		}
 		if(result != 1) throw new DBException();
+	}
+	
+	public static FeedbackUser fetchFeedbackUser(int id)
+		throws SQLException, DBException{
+		FeedbackUser feedback = null;
+		Connection con = DriverManagerConnection.getConnection();
+		if(con != null){
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery("select * "
+					+ "from FeedbackUser "
+					+ "where id = " + id + "");
+			DriverManagerConnection.releaseConnection(con);
+			RegisteredUser sender = UserManager.fetchUser(rs.getInt(2));
+			RegisteredUser recipient = UserManager.fetchUser(rs.getInt(3));
+			feedback = new FeedbackUser(rs.getInt(1),sender,rs.getString(4),rs.getString(5),recipient);
+		}
+		return feedback;
+	}
+	
+	public static FeedbackRoute fetchFeedbackRoute(int id)
+			throws SQLException, DBException{
+			FeedbackRoute feedback = null;
+			Connection con = DriverManagerConnection.getConnection();
+			if(con != null){
+				Statement st = con.createStatement();
+				ResultSet rs = st.executeQuery("select * "
+						+ "from FeedbackRoute "
+						+ "where id = " + id + "");
+				DriverManagerConnection.releaseConnection(con);
+				RegisteredUser sender = UserManager.fetchUser(rs.getInt(2));
+				Route recipient = RouteManager.fetchRoute(rs.getInt(3));
+				feedback = new FeedbackRoute(rs.getInt(1),sender,rs.getString(4),rs.getString(5),recipient);
+			}
+			return feedback;
+	}
+	
+	
+	public static FeedbackLocation fetchFeedbackLocation(int id)
+			throws SQLException, DBException{
+			FeedbackLocation feedback = null;
+			Connection con = DriverManagerConnection.getConnection();
+			if(con != null){
+				Statement st = con.createStatement();
+				ResultSet rs = st.executeQuery("select * "
+						+ "from FeedbackLocation "
+						+ "where id = " + id + "");
+				DriverManagerConnection.releaseConnection(con);
+				RegisteredUser sender = UserManager.fetchUser(rs.getInt(2));
+				Location recipient = LocationManager.fetchLocation(rs.getInt(3));
+				feedback = new FeedbackLocation(rs.getInt(1),sender,rs.getString(4),rs.getString(5),recipient);
+			}
+			return feedback;
+	}
+	
+	public static List<FeedbackUser> searchFeedbackUser(int id)
+		throws SQLException,DBException{
+		
+		List<FeedbackUser> feedbacks = new ArrayList<FeedbackUser>();
+		Connection con = DriverManagerConnection.getConnection();
+		if(con != null){
+			
+			Statement st = con.createStatement();
+			ResultSet rs = st.executeQuery("select id "
+					+ "from FeedbackUser "
+					+ "where recipientID = " + id + "");
+			
+			while(rs.next()){
+				FeedbackUser feedback = FeedbackManager.fetchFeedbackUser(rs.getInt(1));
+				feedbacks.add(feedback);
+			}
+		}
+		return feedbacks;
+	}
+	
+	public static List<FeedbackRoute> searchFeedbackRoute(int id)
+			throws SQLException,DBException{
+			
+			List<FeedbackRoute> feedbacks = new ArrayList<FeedbackRoute>();
+			Connection con = DriverManagerConnection.getConnection();
+			if(con != null){
+				
+				Statement st = con.createStatement();
+				ResultSet rs = st.executeQuery("select id "
+						+ "from FeedbackRoute "
+						+ "where recipientID = " + id + "");
+				
+				while(rs.next()){
+					FeedbackRoute feedback = FeedbackManager.fetchFeedbackRoute(rs.getInt(1));
+					feedbacks.add(feedback);
+				}
+			}
+			return feedbacks;
+	}
+	
+	public static List<FeedbackLocation> searchFeedbackLocation(int id)
+			throws SQLException,DBException{
+			
+			List<FeedbackLocation> feedbacks = new ArrayList<FeedbackLocation>();
+			Connection con = DriverManagerConnection.getConnection();
+			if(con != null){
+				
+				Statement st = con.createStatement();
+				ResultSet rs = st.executeQuery("select id "
+						+ "from FeedbackLocation "
+						+ "where recipientID = " + id + "");
+				
+				while(rs.next()){
+					FeedbackLocation feedback = FeedbackManager.fetchFeedbackLocation(rs.getInt(1));
+					feedbacks.add(feedback);
+				}
+			}
+			return feedbacks;
 	}
 }
