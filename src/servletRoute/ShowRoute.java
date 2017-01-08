@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import LocationSubsystem.Location;
 import LocationSubsystem.LocationController;
@@ -42,9 +43,10 @@ public class ShowRoute extends HttpServlet {
 			return;
 		}
 		else {
-			request.setAttribute("nome", route.getName());
+			/*request.setAttribute("nome", route.getName());
 			request.setAttribute("descrizione", route.getDescription());
-			request.setAttribute("locationList", route.getLocations());
+			request.setAttribute("locationList", route.getLocations());*/
+			request.setAttribute("route", route);
 			RequestDispatcher rd = request.getRequestDispatcher("object/routePage.jsp");
 			rd.forward(request, response);
 			return;
