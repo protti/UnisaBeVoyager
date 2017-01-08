@@ -6,51 +6,61 @@ import java.util.List;
 
 import DBConnection.DBException;
 import LocationSubsystem.Location;
+import LocationSubsystem.LocationManager;
 import RouteSubsystem.Route;
+import RouteSubsystem.RouteManager;
 import UserSubsystem.RegisteredUser;
+import UserSubsystem.UserManager;
 
 public class FeedbackController {
 
 	
-	static public Feedback createFeedback(RegisteredUser sender,RegisteredUser receiver, String message, String date)
-	{	
-		FeedbackUser feedback = new FeedbackUser(sender, message, date,receiver);
+	static public Feedback createFeedbackUser(RegisteredUser sender, int idUser, String message, String date) {	
 		try {
-			FeedbackManager.saveFeedbackToDB(feedback);
-		} catch (SQLException | DBException e) {
-			
+			RegisteredUser receiver = UserManager.fetchUser(idUser);
+			Feedback feedback = null;
+			if(receiver != null) {
+				feedback = new FeedbackUser(sender, message, date,receiver);
+				FeedbackManager.saveFeedbackToDB(feedback);
+			}
+			return feedback;
+		} catch (SQLException | DBException e1) {
+			e1.printStackTrace();
 			return null;
 		}
-		return feedback;
-	}
-	static public Feedback createFeedback(RegisteredUser sender,Route receiver, String message, String date)
-	{
-		
-		FeedbackRoute feedback = new FeedbackRoute(sender,message, date,receiver);
-		try {
-			FeedbackManager.saveFeedbackToDB(feedback);
-		} catch (SQLException | DBException e) {
-			
-			return null;
-		}
-		return feedback;
-	}
-	static public Feedback createFeedback(RegisteredUser sender,Location receiver, String message, String date)
-	{
-		
-		FeedbackLocation feedback = new FeedbackLocation(sender, message, date,receiver);
-		try {
-			FeedbackManager.saveFeedbackToDB(feedback);
-		} catch (SQLException | DBException e) {
-			
-			
-			return null;
-		}
-		return feedback;
 	}
 	
-	static public boolean deleteFeedback(Feedback feedback) 
-	{
+	static public Feedback createFeedbackRoute(RegisteredUser sender, int idRoute, String message, String date)	{
+		try {
+			Route receiver = RouteManager.fetchRoute(idRoute);
+			Feedback feedback = null;
+			if(receiver != null) {
+				feedback = new FeedbackRoute(sender, message, date,receiver);
+				FeedbackManager.saveFeedbackToDB(feedback);
+			}
+			return feedback;
+		} catch (SQLException | DBException e1) {
+			e1.printStackTrace();
+			return null;
+		}
+	}
+	
+	static public Feedback createFeedbackLocation(RegisteredUser sender, int idLocation, String message, String date) {
+		try {
+			Location receiver = LocationManager.fetchLocation(idLocation);
+			Feedback feedback = null;
+			if(receiver != null) {
+				feedback = new FeedbackLocation(sender, message, date,receiver);
+				FeedbackManager.saveFeedbackToDB(feedback);
+			}
+			return feedback;
+		} catch (SQLException | DBException e1) {
+			e1.printStackTrace();
+			return null;
+		}
+	}
+	
+	static public boolean deleteFeedback(Feedback feedback) {
 		try {
 			FeedbackManager.deleteFeedback(feedback);
 			
@@ -62,13 +72,12 @@ public class FeedbackController {
 	}	
 	
 	
-	public static List<FeedbackUser> searchFeedbackUser(int id){
-		
+	public static List<FeedbackUser> searchFeedbackUser(int id) {
 		try {
 			List<FeedbackUser> feedbacks = FeedbackManager.searchFeedbackUser(id);
 			return feedbacks;
 		} catch (SQLException | DBException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -79,7 +88,7 @@ public class FeedbackController {
 			List<FeedbackRoute> feedbacks = FeedbackManager.searchFeedbackRoute(id);
 			return feedbacks;
 		} catch (SQLException | DBException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -90,7 +99,7 @@ public class FeedbackController {
 			List<FeedbackLocation> feedbacks = FeedbackManager.searchFeedbackLocation(id);
 			return feedbacks;
 		} catch (SQLException | DBException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
 			return null;
 		}
 	}
