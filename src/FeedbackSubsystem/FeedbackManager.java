@@ -26,7 +26,7 @@ public class FeedbackManager {
 	*/
 	public static void saveFeedbackToDB(Feedback feedback)
 		throws SQLException,DBException{
-		
+		Feedback newFeedback = null;
 		int result = 0;
 		Connection con = DriverManagerConnection.getConnection();
 		if(con != null && feedback != null){
@@ -37,9 +37,23 @@ public class FeedbackManager {
 				+ "" + feedback.getFeedbackOwner() + ","
 				+ "'" + feedback.getMessage() + "',"
 				+ "" + feedback.getDate() + ")");
+			
+			Statement st1 = con.createStatement();
+			ResultSet rs = st1.executeQuery("select max(id) as max_id "
+					+ "from " + feedback.getClass().getName() + " "
+					+ "where sendDate = '" + feedback.getDate() + "' AND "
+					+ "message = '" + feedback.getMessage() + "' AND "
+					+ "senderID = " + feedback.getSender().getId() + "");
+			
 			DriverManagerConnection.releaseConnection(con);
+			
+			if(rs.next()){
+				feedback.setId(rs.getInt(1));
+			}
 		}
+						
 		if(result != 1) throw new DBException();
+		
 	}
 	/**
 	*Metodo booleano che vede se un feedback è all'interno del database.

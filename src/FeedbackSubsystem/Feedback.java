@@ -32,6 +32,9 @@ public abstract class Feedback {
 		this.date = date;
 	}
 	
+	public void setId(int id){
+		this.id = id;
+	}
 	/**
 	*Metodo che restituisce l'identificativo del feedback.
 	*@return id
