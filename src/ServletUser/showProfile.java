@@ -47,9 +47,12 @@ public class showProfile extends HttpServlet {
 			response.sendRedirect("500page.html");
 			return;
 		}		
+		int userID;
+		if(request.getParameter("id") != null)
+			userID = Integer.parseInt(request.getParameter("id"));
+		else
+			userID = temp.getId();
 		
-		int userID = Integer.parseInt(request.getParameter("id"));
-
 		if (temp.getId() != userID) {
 			user = UserController.getUser(userID);
 		} else {

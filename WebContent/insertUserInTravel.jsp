@@ -13,7 +13,7 @@
 <title>Aggiungi</title>
 </head>
 <body>
-
+<%@ include file="../navbar.jsp" %>
 	<%boolean isInTravel = false; %>
 	<%if(users != null){ %>
 		<%for(RegisteredUser u: users){ %>

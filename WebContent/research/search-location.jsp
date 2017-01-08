@@ -7,7 +7,7 @@
 <title>Cerca luoghi da visitare</title>
 </head>
 <body>
-
+<%@ include file="../navbar.jsp" %>
 <form method="get" action="../SearchLocation">
 				<p>Cerca un luogo da visitare:</p> <input type="text" class="focus" name="search"><br>
 				<input type="submit" class="submit" value="Cerca">	

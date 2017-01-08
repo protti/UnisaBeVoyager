@@ -15,6 +15,7 @@
 <title><%= travel.getNome() %></title>
 </head>
 <body>
+	<%@ include file="../navbar.jsp" %>
 	<h2><%= travel.getNome() %></h2>
 
 

@@ -9,9 +9,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <% Route route = (Route) request.getAttribute("route");%>
+
 <title><%=route.getName()%></title>
 </head>
 <body>
+	<%@ include file="../navbar.jsp" %>
 	<p>Nome: <%=route.getName()%></p>
 	<br>
 	<h4>Descrizione</h4>

@@ -11,7 +11,7 @@
 <title>Elimina Viaggio</title>
 </head>
 <body>
-
+<%@ include file="../navbar.jsp" %>
 	<h4>Vuoi cancellare questo viaggio?</h4>
 	<%if(user.getAuthorization() > 0){ %>
 	<form action="DeleteTravel" method="post">

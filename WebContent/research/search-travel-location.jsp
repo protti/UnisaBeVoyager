@@ -7,6 +7,7 @@
 <title>Cerca viaggi dal luogo</title>
 </head>
 <body>
+<%@ include file="../navbar.jsp" %>
 	<form action="../SearcTravelFromLocation" method="post">
 		<input type="text" name="search">
 		<input type="submit" value="Cerca">

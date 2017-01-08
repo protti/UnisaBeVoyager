@@ -9,6 +9,7 @@
 <title><%= location.getName() %></title>
 </head>
 <body>
+<%@ include file="../navbar.jsp" %>
 Nome: <%= location.getName() %>
 Descrizione: <%= location.getDescrizione() %>
 

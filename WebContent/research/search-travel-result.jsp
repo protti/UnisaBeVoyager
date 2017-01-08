@@ -10,7 +10,7 @@
 <title>Risultati</title>
 </head>
 <body>
-	
+	<%@ include file="../navbar.jsp" %>
 	<%if(travels.size() > 0){ %>
 		<%for(Travel travel: travels){ %>
 			<a href="ShowTravel?id=<%= travel.getId()%>"><%= travel.getNome() %></a>

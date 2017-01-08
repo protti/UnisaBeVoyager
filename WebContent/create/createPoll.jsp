@@ -12,6 +12,7 @@
 <title>Richiesta di inserimento</title>
 </head>
 <body>
+<%@ include file="../navbar.jsp" %>
 	<form action="../CreatePoll" method="post">
 		<input type="hidden" value="<%= travel.getId() %>" name="travelID">
 		<span>Data inizio visita </span><input type="text" name="startDate"><br>

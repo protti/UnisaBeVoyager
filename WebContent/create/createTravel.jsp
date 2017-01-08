@@ -9,6 +9,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
 </head>
 <body>
+<%@ include file="../navbar.jsp" %>
 	<form action="../createTravel" method="post">
 		<span>Nome </span><input type="text" class="focus" name="nome"><br>
 		<p>Descrizione</p><br><textarea rows="10" cols="20" name="descrizione"></textarea>

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<%@ include file="../navbar.jsp" %>
 
 <form method="get" action="../SearchRouteFromLocation">
 				<p>Cerca un'itinerario:</p> <input type="text" class="focus" name="search"><br>
