@@ -10,9 +10,20 @@ import java.util.GregorianCalendar;
 
 import DBConnection.DBException;
 import DBConnection.DriverManagerConnection;
-
+/**
+ * Classe che gestisce i sondaggi.
+ * @author Salvatore
+ *
+ */
 public class PollManager {
 
+	/**
+	 * Metodo che salva un sondaggio nel database.
+	 * @param poll
+	 * @param travelId
+	 * @throws SQLException
+	 * @throws DBException
+	 */
 	public static void savePollToDB(Poll poll, int travelId)
 		throws SQLException,DBException{
 		
@@ -34,7 +45,12 @@ public class PollManager {
 		
 		if(result != 1) throw new DBException();
 	}
-	
+	/**
+	 * Metodo che ricerca un sondaggio.
+	 * @param id
+	 * @return rs.next() se esiste, false altrimenti
+	 * @throws SQLException
+	 */
 	public static boolean checkPoll(int id)
 		throws SQLException{
 		
@@ -49,7 +65,12 @@ public class PollManager {
 		}
 		return false;
 	}
-	
+	/**
+	 * Metodo che elimina un sondaggio.
+	 * @param id
+	 * @throws SQLException
+	 * @throws DBException
+	 */
 	public static void deletePoll(int id)
 		throws SQLException,DBException{
 		
@@ -63,7 +84,12 @@ public class PollManager {
 		}
 		if(result != 1) throw new DBException();
 	}
-	
+	/**
+	 * Metodo che aggiorna un sondaggio.
+	 * @param poll
+	 * @throws SQLException
+	 * @throws DBException
+	 */
 	public static void updatePoll(Poll poll)
 		throws SQLException,DBException{
 		
@@ -83,7 +109,13 @@ public class PollManager {
 		
 		if(result != 1) throw new DBException();
 	}
-	
+	/**
+	 * Metodo che preleva un sondaggio.
+	 * @param id
+	 * @return poll
+	 * @throws SQLException
+	 * @throws DBException
+	 */
 	public static Poll fetchPoll(int id)
 		throws SQLException,DBException{
 		Poll poll = null;
@@ -108,7 +140,13 @@ public class PollManager {
 		if(poll == null) throw new DBException();
 		return poll;
 	}
-	
+	/**
+	 * Metodo che inserisce il sondaggio di un utente.
+	 * @param pollId
+	 * @param userId
+	 * @throws SQLException
+	 * @throws DBException
+	 */
 	public static void insertUserPoll(int pollId,int userId)
 		throws SQLException,DBException{
 		
@@ -135,8 +173,13 @@ public class PollManager {
 		if(result != 1) throw new DBException();
 	}
 	
-	
-	
+	/**
+	 * Metodo che ricerca il sondaggio di un utente.
+	 * @param pollId
+	 * @param userId
+	 * @return rs.next() se esiste, false altrimenti
+	 * @throws SQLException
+	 */
 	public static boolean checkUserPoll(int pollId,int userId)
 		throws SQLException{
 		
