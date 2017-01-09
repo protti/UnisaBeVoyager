@@ -10,12 +10,15 @@
 </head>
 <body>
 <%@ include file="../navbar.jsp" %>
-
+<div id="form">
 	<form>
-		<input id="campo" type="text">
-		<input type="button" onclick="searchUser()" value="Cerca">
+		<input id="campo" placeholder="Inserisci il soprannome dell'utente ricercato" type="text">
+		<input id="btn" type="button"  onclick="searchUser()" value="Cerca">
+		
+					
 	</form>
 	<div id="response"></div>
+	</div>
 	<script type="text/javascript">
 	function searchUser() {
 		  var xhttp;
