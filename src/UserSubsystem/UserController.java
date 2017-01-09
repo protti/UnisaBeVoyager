@@ -21,6 +21,11 @@ public class UserController {
 	 * 
 	 */
 	
+	/**
+	 * Metodo che restituisce un utente registrato.
+	 * @param id
+	 * @return user
+	 */
 		static public RegisteredUser getUser(int id)
 		{
 			RegisteredUser user;
@@ -36,6 +41,11 @@ public class UserController {
 			return user;
 		}
 	
+		/**
+		 * Metodo che cerca utente tramite username.
+		 * @param username
+		 * @return listUsers
+		 */
 		static public List<RegisteredUser> searchUser(String username)
 		{
 			List<RegisteredUser> listUsers;
@@ -48,7 +58,16 @@ public class UserController {
 			}
 			return listUsers;
 		}
-		
+		/**
+		 * Metodo che crea un utente.
+		 * @param email
+		 * @param username
+		 * @param password
+		 * @param nome
+		 * @param cognome
+		 * @param birthDate
+		 * @return user
+		 */
 		static public RegisteredUser createUser(String email, String username, String password, String nome, String cognome,
 				String birthDate)
 		{
@@ -76,7 +95,11 @@ public class UserController {
 		{
 			
 		}*/
-		
+		/**
+		 * Metodo che elimina un utente.
+		 * @param id
+		 * @return true eliminato, false altrimenti
+		 */
 		static public boolean deleteUser(int id)
 		{
 			try {
@@ -90,7 +113,11 @@ public class UserController {
 				return false;
 			}
 		}
-		
+		/**
+		 * Metodo che ricava l'eta' dalla data di nascita.
+		 * @param birthDate
+		 * @return age
+		 */
 		private static int computeAge(String birthDate) {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			Date dateOfBirth;
