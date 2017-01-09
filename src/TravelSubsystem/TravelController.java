@@ -14,7 +14,11 @@ import RouteSubsystem.Route;
 import RouteSubsystem.RouteManager;
 import UserSubsystem.RegisteredUser;
 import TravelSubsystem.TravelManager;
-
+/**
+ * Classe che effettua oerazioni sui viaggi.
+ * @author Salvatore
+ *
+ */
 public class TravelController {
 
 	
@@ -23,7 +27,7 @@ public class TravelController {
 	/**
 	*Metodo che controlla se un utente partecipa a quel viaggio.
 	*@param idUtente
-	*@return true se c'�, false se non c'�
+	*@return true se c'e', false se non c'e'
 	*
 	*/
 	public static boolean isUserInTravel(int idUtente, ArrayList<RegisteredUser> users) {
