@@ -7,26 +7,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Crea un viaggio</title>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+<link href=<%=request.getContextPath().toString()%>/CSS/create.css rel="stylesheet" type="text/css">
 </head>
 <body>
 <%@ include file="../navbar.jsp" %>
+<div id="form">
 	<form action="../createTravel" method="post">
-		<span>Nome </span><input type="text" class="focus" name="nome"><br>
-		<p>Descrizione</p><br><textarea rows="10" cols="20" name="descrizione"></textarea>
-		<span>Start Date </span><input type="text" class="focus" name="startDate"><br>
-		<span>End Date </span><input type="text" class="focus" name="endDate"><br>
+		<span>Nome </span><input id="campo" type="text" class="focus" name="nome"><br>
+		<span>Descrizione</span><textarea id="descrizione"  name="descrizione"></textarea><br>
+		<span>Start Date </span><input id="campo" type="text" class="focus" name="startDate"><br>
+		<span>End Date </span><input id="campo" type="text" class="focus" name="endDate"><br><br>
 		<span>Modificabile </span><input type="radio" class="focus" name="type"><br>
 		
-		<input type="submit" value="Crea">
+		<input id="btn" type="submit" value="Crea">
 	</form>
 	
 	<form>
 		<input id="nameLoc" type="text">
-		<input type="button" onclick="searchRoute()" value="Cerca">
+		<input  id="btn1" type="button" onclick="searchRoute()" value="Cerca">
 	</form>
 	
 	<div id="result"></div>
-	
+	</div>
 	<script type="text/javascript">
 	function searchRoute() {
 		  var xhttp;
