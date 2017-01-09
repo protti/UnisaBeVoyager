@@ -122,7 +122,14 @@ public class UserManager {
 		
 		return listUsers;
 	}
-	
+	/**
+	 * Metodo che restituisce un utente registrato.
+	 * @param username
+	 * @param password
+	 * @return user
+	 * @throws SQLException
+	 * @throws DBException
+	 */
 	public static RegisteredUser getUser(String username, String password)
 		throws SQLException,DBException{
 		
@@ -149,7 +156,13 @@ public class UserManager {
 		if(user == null) throw new DBException();
 		return user;
 	}
-	
+	/**
+	 * Metodo che resituisce l'utente in base all'email.
+	 * @param email
+	 * @return user
+	 * @throws SQLException
+	 * @throws DBException
+	 */
 	public static RegisteredUser getUserByEmail(String email)
 			throws SQLException,DBException{
 			
@@ -280,10 +293,13 @@ public class UserManager {
 		return false;
 	}
 	/**
-	*
-	*@param 
-	*@return
-	*/
+	 * Metodo che controlla se un utente ha visitato un luogo.
+	 * @param userId
+	 * @param locationId
+	 * @return rs.next() se ha visitato, false altrimenti
+	 * @throws SQLException
+	 * @throws DBException
+	 */
 	public static boolean checkUserVisit(int userId,
 			int locationId) throws SQLException, DBException{
 		
@@ -311,10 +327,13 @@ public class UserManager {
 		return false;
 	}
 	/**
-	*
-	*@param 
-	*@return
-	*/
+	 * Metodo che vede se un utente ha partecipato a tale viaggio.
+	 * @param userId
+	 * @param travelId
+	 * @return rs.next() se ha partecipato, false altrimenti
+	 * @throws SQLException
+	 * @throws DBException
+	 */
 		
 	public static boolean checkUserTravel(int userId,
 			int travelId) throws SQLException,DBException{
@@ -335,7 +354,13 @@ public class UserManager {
 		}
 		return false;
 	}
-	
+	/**
+	 * Metodo che vede se un utente ha partecipato ad un itinerario.
+	 * @param userId
+	 * @param routeId
+	 * @return rs.next() se si', false altrimenti
+	 * @throws SQLException
+	 */
 	public static boolean checkUserRoute(int userId, int routeId)
 		throws SQLException{
 		
@@ -356,7 +381,13 @@ public class UserManager {
 		}
 		return false;
 	}
-	
+	/**
+	 * Metodo che vede se un utente ha partecipato ad un viaggio con un altro utente.
+	 * @param userId1
+	 * @param userId2
+	 * @return rs.next() se si', false altrimenti
+	 * @throws SQLException
+	 */
 	public static boolean checkUserHasTraveledWith(int userId1,int userId2)
 			throws SQLException{
 			
