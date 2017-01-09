@@ -3,8 +3,21 @@ package PollSubsystem;
 import java.sql.SQLException;
 
 import DBConnection.DBException;
-
+/**
+ * Classe che effettua operazioni sui sondaggi.
+ * @author Salvatore
+ *
+ */
 public class PollController {
+	
+	/**
+	 * Metodo che crea un sondaggio.
+	 * @param description
+	 * @param startDate
+	 * @param endDate
+	 * @param travelId
+	 * @return poll
+	 */
 	public static Poll createPoll(String description, String startDate, String endDate, int travelId){
 
 		Poll poll = new Poll(description, startDate, endDate, travelId);
@@ -19,7 +32,12 @@ public class PollController {
 		}
 		return poll;
 	}
-	
+	/**
+	 * Metodo che controlla se un utente ha votato.
+	 * @param userId
+	 * @param pollId
+	 * @return true se si', false altrimenti
+	 */
 	public static boolean hasUserVoted(int userId, int pollId) {
 		try {
 			if(!PollManager.checkUserPoll(pollId, userId)){
@@ -32,6 +50,13 @@ public class PollController {
 		return true;
 	}
 
+	/**
+	 * Metodo che aggiorna il sondaggio.
+	 * @param pollId
+	 * @param voto
+	 * @param userId
+	 * @return true se ok, false altrimenti
+	 */
 	public static boolean updatePoll(int pollId, int voto, int userId){
 
 		try {
@@ -51,7 +76,11 @@ public class PollController {
 		}
 	}
 	
-	
+	/**
+	 * Metodo che restituisce un sondaggio.
+	 * @param id
+	 * @return poll
+	 */
 	public static Poll getPoll(int id){
 		
 		try {
