@@ -14,9 +14,18 @@ import DBConnection.DriverManagerConnection;
 import TravelSubsystem.TravelManager;
 import UserSubsystem.RegisteredUser;
 import UserSubsystem.UserManager;
-
+/**
+ * Classe che gestisce le notifiche.
+ * @author Salvatore
+ *
+ */
 public class NotificationManager {
-	
+	/**
+	 * Metodo che salva la notifica nel database.
+	 * @param notification
+	 * @throws SQLException
+	 * @throws DBException
+	 */
 	public static void saveNotificationToDB(Notification notification)
 		throws SQLException,DBException{
 		
@@ -35,7 +44,12 @@ public class NotificationManager {
 		
 		if(result != 1) throw new DBException();
 	}
-	
+	/**
+	 * Metodo che controlla se la notifica e' presente.
+	 * @param id
+	 * @return rs.next() se si', false altrimenti.
+	 * @throws SQLException
+	 */
 	public static boolean checkNotification(int id)
 		throws SQLException{
 		
@@ -51,6 +65,12 @@ public class NotificationManager {
 		return false;
 	}
 	
+	/**
+	 * Metodo che elimina una notifica.
+	 * @param id
+	 * @throws SQLException
+	 * @throws DBException
+	 */
 	public static void deleteNotification(int id)
 		throws SQLException,DBException{
 		
@@ -69,6 +89,13 @@ public class NotificationManager {
 /*
  * Era searchNotificationByID l'ho modificata in getNotification	
  */
+	/**
+	 * Metodo che restituisce la notifica.
+	 * @param id
+	 * @return notification
+	 * @throws SQLException
+	 * @throws DBException
+	 */
 	public static Notification getNotification(int id)
 		throws SQLException,DBException{
 		
@@ -96,6 +123,12 @@ public class NotificationManager {
 		return notification;
 	}
 	
+	/**
+	 * Metodo che aggiorna una notifica.
+	 * @param notification
+	 * @throws SQLException
+	 * @throws DBException
+	 */
 	public static void updateNotification(Notification notification)
 		throws SQLException,DBException{
 		
@@ -116,7 +149,14 @@ public class NotificationManager {
 	/*
 	 * Usa il travelID per recuperare i partecipanti e gli manda la notifica giusto?
 	 */
-	
+	/**
+	 * Metodo che notifica tutti i partecipanti.
+	 * @param travelId
+	 * @param senderId
+	 * @param message
+	 * @throws SQLException
+	 * @throws DBException
+	 */
 	public static void notifyAllPartecipants(int travelId,int senderId, 
 			String message) throws SQLException,DBException{
 		
@@ -140,6 +180,14 @@ public class NotificationManager {
 	}
 		
 
+	/**
+	 * Metodo che in via una notifica.
+	 * @param senderId
+	 * @param recipientId
+	 * @param message
+	 * @throws SQLException
+	 * @throws DBException
+	 */
 	public static void sendNotification(int senderId,int recipientId, 
 			String message) throws SQLException,DBException{
 		
@@ -151,6 +199,13 @@ public class NotificationManager {
 				message,false,date.toString());
 	}
 	
+	/**
+	 * Metodo che restituisce le notifiche di un utente.
+	 * @param userId
+	 * @return notifications
+	 * @throws SQLException
+	 * @throws DBException
+	 */
 	public static List<Notification> getUserNotifications(int userId)
 		throws SQLException,DBException{
 		
