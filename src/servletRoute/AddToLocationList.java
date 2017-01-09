@@ -1,6 +1,7 @@
 package servletRoute;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +51,10 @@ public class AddToLocationList extends HttpServlet {
 			currentList.add(location);
 			synchronized(session) {
 				session.setAttribute("currentList", currentList);
+				PrintWriter out = response.getWriter();
+				for(Location loc: currentList){
+					out.println("<a href=\"../ShowLocation?id=" + loc.getId() + "\">" + loc.getName() + "</a>");
+				}
 			}
 		}		
 	}

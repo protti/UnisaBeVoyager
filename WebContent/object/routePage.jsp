@@ -53,6 +53,11 @@
 	
 	<%@include file="../feedback/feedbackRoute.jsp"%>
 	
+	<br>
+	
+	<%if(u.getAuthorization() > 0){ %>
+		<a href="<%=request.getContextPath().toString()%>/deleteRoute.jsp?idr=<%=route.getId()%>">Elimina itinerario</a>
+	<%} %>
 	<script type="text/javascript">
 		function searchLocation(){
 			var xhttp;

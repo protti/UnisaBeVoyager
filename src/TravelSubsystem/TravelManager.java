@@ -38,7 +38,16 @@ public class TravelManager {
 		int result = 0;
 		Connection con = DriverManagerConnection.getConnection();
 		if(con != null && travel != null){
-			
+			Date date = new Date();
+			Calendar current = new GregorianCalendar();
+			current.setTime(date);
+			int mm = current.get(Calendar.MONTH) + 1;
+			String month = "" + mm;
+			if(month.length() == 1) month = "0" + month;
+			int dd = current.get(Calendar.DAY_OF_MONTH);
+			String day = "" + dd;
+			if(day.length() == 1) day = "0" + day;
+			String data = "" + current.get(Calendar.YEAR) + "-" + month + "-" + day;
 			Statement st = con.createStatement();
 			result = st.executeUpdate("insert into "
 					+ "Travel(startDate,endDate,routeID,"
@@ -57,6 +66,13 @@ public class TravelManager {
 					+ "where creatorID = " + travel.getCreatoreViaggio().getId() + " AND "
 					+ "name = '" + travel.getNome() + "'");
 			if(rs.next()) travel.setId(rs.getInt(1));
+			
+			Statement st2 = con.createStatement();
+			st2.executeUpdate("insert into UserTravelMatch "
+					+ "values(" + travel.getCreatoreViaggio().getId() + ","
+							+ "" + travel.getId() + ","
+							+ "'" + data + "')");
+			
 			DriverManagerConnection.releaseConnection(con);
 
 		}
