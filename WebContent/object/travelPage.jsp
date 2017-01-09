@@ -94,7 +94,7 @@
 	<h4>Itinerario</h4>
 
 	<%if(travel.getRoute() != null){ %>
-	<a href="ShowRoute?id=<%= travel.getRoute().getId()%>"><%= travel.getRoute().getName()%></a>
+	<a href="ShowTravelRoute?id=<%= travel.getRoute().getId()%>&idt=<%= travel.getId()%>"><%= travel.getRoute().getName()%></a>
 	<%} else{ %>
 	<b>Non ci sono itinerari</b>
 	<%} %>

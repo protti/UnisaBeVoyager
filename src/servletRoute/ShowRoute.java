@@ -17,6 +17,8 @@ import LocationSubsystem.Location;
 import LocationSubsystem.LocationController;
 import RouteSubsystem.Route;
 import RouteSubsystem.RouteController;
+import TravelSubsystem.Travel;
+import TravelSubsystem.TravelController;
 
 /**
  * Servlet implementation class ShowRoute
@@ -37,7 +39,7 @@ public class ShowRoute extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int routeID = Integer.parseInt(request.getParameter("id"));
+		Integer routeID = Integer.parseInt(request.getParameter("id"));
 		
 		Route route = RouteController.getRoute(routeID) ;
 		List<FeedbackRoute> fbs = FeedbackController.searchFeedbackRoute(route.getId());
@@ -46,9 +48,6 @@ public class ShowRoute extends HttpServlet {
 			return;
 		}
 		else {
-			/*request.setAttribute("nome", route.getName());
-			request.setAttribute("descrizione", route.getDescription());
-			request.setAttribute("locationList", route.getLocations());*/
 			request.setAttribute("feedback", fbs);
 			request.setAttribute("id", route.getId());
 			request.setAttribute("route", route);

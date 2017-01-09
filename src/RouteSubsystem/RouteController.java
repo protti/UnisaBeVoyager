@@ -142,5 +142,14 @@ public class RouteController {
 		
 	}
 
-
+	public static boolean updateRoute(Route route){
+		
+		try {
+			RouteManager.updateRoute(route);
+			return true;
+		} catch (SQLException | DBException e) {
+			// TODO Auto-generated catch block
+			return false;
+		}
+	}
 }
