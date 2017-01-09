@@ -48,8 +48,7 @@ public class CreateLocation extends HttpServlet {
 					response.sendRedirect("500page.html");
 				}
 				else{
-					request.setAttribute("nome", location.getName());
-					request.setAttribute("descrizione", location.getDescrizione());
+					request.setAttribute("location", location);
 					RequestDispatcher rd = request.getRequestDispatcher("object/locationpage.jsp");
 					rd.forward(request, response);
 				}

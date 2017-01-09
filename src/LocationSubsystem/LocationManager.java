@@ -25,10 +25,17 @@ public class LocationManager {
 		Connection con = DriverManagerConnection.getConnection();
 		if(con != null && location != null){
 			Statement st = con.createStatement();
-			result = st.executeUpdate("insert into Location "
-					+ "values(" + location.getId() + ","
+			result = st.executeUpdate("insert into Location(description,name) "
+					+ "values("
 					+ "'" + location.getDescrizione() + "',"
 					+ "'" + location.getName() + "')");
+			
+			Statement st1 = con.createStatement();
+			ResultSet rs = st1.executeQuery("select max(id) as max_id "
+					+ "from Location "
+					+ "where name = '" + location.getName() + "' AND "
+					+ "description = '" + location.getDescrizione() + "'");
+			if(rs.next()) location.setId(rs.getInt(1));
 			DriverManagerConnection.releaseConnection(con);
 		}
 		

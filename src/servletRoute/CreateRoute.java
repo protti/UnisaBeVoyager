@@ -62,9 +62,7 @@ public class CreateRoute extends HttpServlet {
 
 		synchronized(session){
 			session.removeAttribute("currentList");
-			request.setAttribute("nome",newRoute.getName());
-			request.setAttribute("descrizione", newRoute.getDescription());
-			request.setAttribute("locationList", newRoute.getLocations());
+			request.setAttribute("route",newRoute);
 			RequestDispatcher rd = request.getRequestDispatcher("object/routePage.jsp");
 			rd.forward(request, response);
 		}
