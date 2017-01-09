@@ -1,3 +1,4 @@
+<%@page import="RouteSubsystem.Route"%>
 <%@page import="java.util.List"%>
 <%@page import="FeedbackSubsystem.FeedbackRoute"%>
 <%@page import="UserSubsystem.RegisteredUser"%>
@@ -6,7 +7,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <% RegisteredUser user = (RegisteredUser) session.getAttribute("user"); %>
-<% int idRoute = (int) request.getAttribute("id"); %>
+<% Route r = (Route) request.getAttribute("route");%>
 <% List<FeedbackRoute> feedbackRoute = (List<FeedbackRoute>) request.getAttribute("feedback"); %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -18,23 +19,24 @@
 	<h4>Feedback</h4>
 	<form>
 		<textarea rows="10" cols="20" id="feedback"></textarea><br>
-		<input type="button" onclick="putFeedback(<%= idRoute%>)" value="Commenta">
+		<input type="button" onclick="putFeedback(<%= r.getId()%>)" value="Commenta">
 	</form>
 	
-	<div id="response"></div>
+	
 	
 	<%if(feedbackRoute != null){ %>
 		<%if(feedbackRoute.size() > 0){ %>
+			<div id="response"></div>
 			<%for(FeedbackRoute fu: feedbackRoute){ %>
 				<a href="showProfile?id=<%= fu.getSender().getId() %>">
 				<%= fu.getSender().getUsername() %></a>
 				<p> <%= fu.getMessage() %></p>
 			<%} %>
 		<%} else{ %>
-			<b>Non ci sono feedback relativi a questo utente</b>
+			<div id="response"><b>Non ci sono feedback relativi a questo itinerario</b></div>
 		<%} %>
 	<%} else{ %>
-		<b>Non ci sono feedback relativi a questo utente</b>
+		<div id="response"><b>Non ci sono feedback relativi a questo itinerario</b></div>
 	<%} %>
 	
 	<script type="text/javascript">

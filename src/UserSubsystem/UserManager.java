@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 import java.sql.Date;
 
 
@@ -16,6 +17,7 @@ import DBConnection.DriverManagerConnection;
 *Classe che gestisce le operazioni richeste da un utente.
 */
 public class UserManager {
+	private static Logger logger = Logger.getLogger("global");
 	/**
 	*Metodo che gestisce il salvataggio di un utente sul database del sistema.
 	*@param user
@@ -339,6 +341,7 @@ public class UserManager {
 		
 		Connection con = DriverManagerConnection.getConnection();
 		if(con != null){
+			
 			Statement st = con.createStatement();
 			ResultSet rs = st.executeQuery("select * "
 					+ "from UserTravelMatch "
@@ -346,6 +349,7 @@ public class UserManager {
 					+ "travelID IN (select id "
 					+ "from Travel "
 					+ "where routeID = " + routeId + ")");
+			
 			DriverManagerConnection.releaseConnection(con);
 			
 			return rs.next();

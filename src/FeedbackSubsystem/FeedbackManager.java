@@ -188,7 +188,7 @@ public class FeedbackManager {
 			ResultSet rs = st.executeQuery("select id "
 					+ "from FeedbackUser "
 					+ "where recipientID = " + id + "");
-			
+			DriverManagerConnection.releaseConnection(con);
 			while(rs.next()){
 				FeedbackUser feedback = FeedbackManager.fetchFeedbackUser(rs.getInt(1));
 				feedbacks.add(feedback);
@@ -208,7 +208,7 @@ public class FeedbackManager {
 				ResultSet rs = st.executeQuery("select id "
 						+ "from FeedbackRoute "
 						+ "where recipientID = " + id + "");
-				
+				DriverManagerConnection.releaseConnection(con);
 				while(rs.next()){
 					FeedbackRoute feedback = FeedbackManager.fetchFeedbackRoute(rs.getInt(1));
 					feedbacks.add(feedback);
@@ -228,7 +228,7 @@ public class FeedbackManager {
 				ResultSet rs = st.executeQuery("select id "
 						+ "from FeedbackLocation "
 						+ "where recipientID = " + id + "");
-				
+				DriverManagerConnection.releaseConnection(con);
 				while(rs.next()){
 					FeedbackLocation feedback = FeedbackManager.fetchFeedbackLocation(rs.getInt(1));
 					feedbacks.add(feedback);

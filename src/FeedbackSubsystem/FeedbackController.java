@@ -3,6 +3,7 @@ package FeedbackSubsystem;
 import java.sql.SQLException;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.logging.Logger;
 
 import DBConnection.DBException;
 import LocationSubsystem.Location;
@@ -14,7 +15,7 @@ import UserSubsystem.UserManager;
 
 public class FeedbackController {
 
-	
+	private static Logger logger = Logger.getLogger("global");
 	static public Feedback createFeedbackUser(RegisteredUser sender, int idUser, String message, String date) {	
 		try {
 			
@@ -43,7 +44,7 @@ public class FeedbackController {
 			if (b == false) {
 				return null;
 			}	
-			
+			logger.info("Sono in createFeedbackRoute");
 			Route receiver = RouteManager.fetchRoute(idRoute);
 			Feedback feedback = null;
 			if(receiver != null) {

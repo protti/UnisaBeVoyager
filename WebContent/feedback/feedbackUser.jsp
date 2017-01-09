@@ -1,3 +1,4 @@
+<%@page import="RouteSubsystem.Route"%>
 <%@page import="java.util.List"%>
 <%@page import="FeedbackSubsystem.FeedbackUser"%>
 <%@page import="UserSubsystem.RegisteredUser"%>
@@ -31,7 +32,7 @@
 				<p> <%= fu.getMessage() %></p>
 			<%} %>
 		<%} else{ %>
-			<b>Non ci sono feedback relativi a questo utente</b>
+			<b>Non sono presenti feedback relativi a questo utente</b>
 		<%} %>
 	<%} else{ %>
 		<b>Non ci sono feedback relativi a questo utente</b>
