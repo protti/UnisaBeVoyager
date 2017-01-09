@@ -11,7 +11,7 @@
 <body>
 <%@ include file="../navbar.jsp" %>
 
-<form method="get" action="../SearchRouteFromLocation">
+<form method="get" action="<%=request.getContextPath().toString()%>/SearchRouteFromLocation">
 				<p>Cerca un'itinerario:</p> <input type="text" id="campo" class="focus" name="search"><br>
 				<input type="submit" class="submit" value="Cerca">	
 </form>

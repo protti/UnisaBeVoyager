@@ -39,6 +39,7 @@ public class SearchRouteForTravel extends HttpServlet {
 		String name = request.getParameter("location");
 		if(name.equals("")) return;
 
+		
 		List<Route> routes = RouteController.searchRoute(name);
 		PrintWriter out = response.getWriter();
 		synchronized(session){

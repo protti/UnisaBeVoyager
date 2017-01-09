@@ -41,6 +41,7 @@ public class SearchLocation extends HttpServlet {
 			return;
 		}
 		
+		
 		List<Location> locations = null;
 		try {
 			locations = LocationManager.searchLocations(location);

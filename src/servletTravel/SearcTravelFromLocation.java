@@ -44,6 +44,7 @@ public class SearcTravelFromLocation extends HttpServlet {
 			return;
 		}
 		
+		
 		List<Travel> travels = TravelController.searchTravel(location);
 		
 		if (travels != null) {

@@ -58,6 +58,7 @@ public class SearchRouteFromLocation extends HttpServlet {
 			response.sendRedirect("500page.html");
 			return;
 		}
+		
 		if (routes != null) {
 			request.setAttribute("routes", routes);
 			RequestDispatcher rd = request.getRequestDispatcher("research/search-route-result.jsp");
