@@ -47,7 +47,12 @@ public class CreateRoute extends HttpServlet {
 		String routeDesc = request.getParameter("descrizione");
 		HttpSession session = request.getSession();
 		ArrayList<Location> currentList = (ArrayList<Location>) session.getAttribute("currentList");
-				
+		
+		if(routeName.equals("") || routeDesc.equals("")){
+			response.sendRedirect("create/createRoute.jsp");
+			return;
+		}
+		
 		if(currentList == null) {
 			response.sendRedirect("500page.html");
 			return;

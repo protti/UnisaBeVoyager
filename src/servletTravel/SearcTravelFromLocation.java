@@ -40,7 +40,7 @@ public class SearcTravelFromLocation extends HttpServlet {
 		String location = (String) request.getParameter("search");
 		
 		if(location.equals("")) {
-			response.sendRedirect("search-travel-location.jsp");
+			response.sendRedirect("research/search-travel-location.jsp");
 			return;
 		}
 		

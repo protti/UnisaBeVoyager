@@ -41,6 +41,12 @@ public class CreateLocation extends HttpServlet {
 		if(user.getAuthorization() > 0){
 			String name = request.getParameter("nome");
 			String description = request.getParameter("descrizione");
+			
+			if(name.equals("") || description.equals("")){
+				response.sendRedirect("create/creaLuogo.jsp");
+				return;
+			}
+			
 			synchronized(session){
 				Location location = LocationController.createLocation(name,description);
 				if(location == null){

@@ -103,6 +103,12 @@ public class createTravel extends HttpServlet {
 		String endDate = request.getParameter("endDate");
 		Boolean type = Boolean.parseBoolean(request.getParameter("type"));
 		
+		if(travelName.equals("") || travelDesc.equals("") || 
+				startDate.equals("") || endDate.equals("")){
+			response.sendRedirect("create/createTravel.jsp");
+			return;
+		}
+		
 		HttpSession session = request.getSession();
 		RegisteredUser user = (RegisteredUser) session.getAttribute("user");
 		Route selectedRoute = (Route) session.getAttribute("selectedRoute");

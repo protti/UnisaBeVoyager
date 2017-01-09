@@ -42,7 +42,7 @@ public class SearchRouteFromLocation extends HttpServlet {
 		String location = (String) request.getParameter("search");
 		
 		if(location.equals("")) {
-			response.sendRedirect("search-route-location.jsp");
+			response.sendRedirect("research/search-route-location.jsp");
 			return;
 		}
 		
