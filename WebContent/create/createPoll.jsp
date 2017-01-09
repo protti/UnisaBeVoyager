@@ -10,15 +10,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Richiesta di inserimento</title>
+<link href=<%=request.getContextPath().toString()%>/CSS/create.css rel="stylesheet" type="text/css">
 </head>
 <body>
 <%@ include file="../navbar.jsp" %>
 	<form action="../CreatePoll" method="post">
 		<input type="hidden" value="<%= travel.getId() %>" name="travelID">
-		<span>Data inizio visita </span><input type="text" name="startDate"><br>
-		<span>Data fine visita </span><input type="text" name="endDate"><br>
-		<b>Descrizione</b><br><textarea row="10" col="20" name="descrizione"></textarea><br>
-		<input type="submit" value="Crea richiesta">
+		<span>Data inizio visita </span><input id="campo" type="text" name="startDate"><br>
+		<span>Data fine visita </span><input id="campo" type="text" name="endDate"><br>
+		<span>Descrizione</span><textarea id="descrizione" name="descrizione"></textarea><br>
+		<input id="btn" type="submit" value="Crea richiesta">
 	</form> 
 </body>
 </html>
