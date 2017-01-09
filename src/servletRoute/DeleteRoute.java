@@ -1,6 +1,8 @@
 package servletRoute;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -50,6 +52,11 @@ public class DeleteRoute extends HttpServlet {
 			Boolean b = RouteController.deleteRoute(idRoute);
 			if(b != true){
 				response.sendRedirect("500page.html");
+			}
+			else{
+				RequestDispatcher rd = request.getRequestDispatcher("object/profilePage.jsp");
+				request.setAttribute("user", user);
+				rd.forward(request, response);
 			}
 		}
 		//Bisognerebbe aggiungere un redirect a qualcosa qui (possibilmente una homepage)

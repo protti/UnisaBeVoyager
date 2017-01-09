@@ -100,10 +100,9 @@ public class RouteManager {
 	public static void deleteRoute(int id)
 			throws SQLException,DBException{
 
-		
-		
 		int result = 0;
 		Connection con = DriverManagerConnection.getConnection();
+		logger.info("id=" + id);
 		if(con != null){
 			Statement st1 = con.createStatement();
 			st1.executeUpdate("delete from RouteLocationMatch "
@@ -114,7 +113,7 @@ public class RouteManager {
 					+ "where id = " + id + "");
 			DriverManagerConnection.releaseConnection(con);
 		}
-
+		logger.info("Sono dentro " + result);
 		if(result != 1) throw new DBException();
 	}
 	/**
