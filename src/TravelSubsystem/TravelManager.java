@@ -50,6 +50,13 @@ public class TravelManager {
 					+ "" + travel.getType() + ","
 					+ "'" + travel.getNome() + "')");
 			logger.info("Salvo");
+			
+			Statement st1 = con.createStatement();
+			ResultSet rs = st1.executeQuery("select max(id) as max_id "
+					+ "from Travel "
+					+ "where creatorID = " + travel.getCreatoreViaggio().getId() + " AND "
+					+ "name = '" + travel.getNome() + "'");
+			if(rs.next()) travel.setId(rs.getInt(1));
 			DriverManagerConnection.releaseConnection(con);
 
 		}
