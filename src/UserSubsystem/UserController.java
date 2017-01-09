@@ -9,7 +9,11 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import DBConnection.DBException;
-
+/**
+ * Classe che effettua operazioni sull'utente.
+ * @author Salvatore
+ *
+ */
 public class UserController {
 
 

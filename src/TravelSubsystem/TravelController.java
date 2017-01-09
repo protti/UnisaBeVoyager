@@ -15,7 +15,7 @@ import RouteSubsystem.RouteManager;
 import UserSubsystem.RegisteredUser;
 import TravelSubsystem.TravelManager;
 /**
- * Classe che effettua oerazioni sui viaggi.
+ * Classe che effettua operazioni sui viaggi.
  * @author Salvatore
  *
  */
