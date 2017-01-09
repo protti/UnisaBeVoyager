@@ -1,7 +1,7 @@
 package servletRoute;
 
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,24 +10,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import FeedbackSubsystem.FeedbackController;
-import FeedbackSubsystem.FeedbackRoute;
 import RouteSubsystem.Route;
 import RouteSubsystem.RouteController;
 import TravelSubsystem.Travel;
 import TravelSubsystem.TravelController;
 
 /**
- * Servlet implementation class ShowTravelRoute
+ * Servlet implementation class UpdateRoute
  */
-@WebServlet("/ShowTravelRoute")
-public class ShowTravelRoute extends HttpServlet {
+@WebServlet("/UpdateRoute")
+public class UpdateRoute extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShowTravelRoute() {
+    public UpdateRoute() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,26 +35,32 @@ public class ShowTravelRoute extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		Integer routeID = Integer.parseInt(request.getParameter("id"));
-		Integer travelID = Integer.parseInt(request.getParameter("idt"));
-		Travel travel = TravelController.getTravel(travelID);
-		Route route = RouteController.getRoute(routeID);
-		List<FeedbackRoute> fbs = FeedbackController.searchFeedbackRoute(route.getId());
-		if(route == null) {
-			response.sendRedirect("500page.html");
-			return;
+		int idRoute = Integer.parseInt(request.getParameter("idr"));
+		int idTravel = Integer.parseInt(request.getParameter("idt"));
+		String name = request.getParameter("nameRoute");
+		String description = request.getParameter("descRoute");
+		
+		Route route = RouteController.getRoute(idRoute);
+		Travel travel = TravelController.getTravel(idTravel);
+		
+		if(name.length() > 0){
+			route.setName(name);
 		}
-		else {
-			/*request.setAttribute("nome", route.getName());
-			request.setAttribute("descrizione", route.getDescription());
-			request.setAttribute("locationList", route.getLocations());*/
-			request.setAttribute("travel", travel);
-			request.setAttribute("feedback", fbs);
-			request.setAttribute("id", route.getId());
-			request.setAttribute("route", route);
+		
+		if(description.length() > 0){
+			route.setDescription(description);
+		}
+		
+		boolean b = RouteController.updateRoute(route);
+		
+		if(b == false){
+			response.sendRedirect("500page.html");
+		}
+		else{
 			RequestDispatcher rd = request.getRequestDispatcher("object/routePage.jsp");
+			request.setAttribute("route", route);
+			request.setAttribute("travel", travel);
 			rd.forward(request, response);
-			return;
 		}
 	}
 
