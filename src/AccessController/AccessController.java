@@ -5,11 +5,19 @@ import java.sql.SQLException;
 import DBConnection.DBException;
 import UserSubsystem.RegisteredUser;
 import UserSubsystem.UserManager;
-
+/**
+ * Classe che opera sugli accessi.
+ * @author Salvatore
+ *
+ */
 public class AccessController {
 
 
-
+	/**
+	 * Metodo che recupera la password di un utente.
+	 * @param email
+	 * @return user
+	 */
 	static public RegisteredUser recoveryPwd(String email)
 	{
 		try {
@@ -22,6 +30,12 @@ public class AccessController {
 		
 	}
 	
+	/**
+	 * Metodo che aggiorna la password.
+	 * @param email
+	 * @param password
+	 * @return true se ok, false altrimenti
+	 */
 	static public boolean updatePassword(String email,String password)
 	{
 		try {
@@ -48,6 +62,12 @@ public class AccessController {
 		return false;
 	}
 	
+	/**
+	 * Metodo che restituisce l'accesso dell'utente
+	 * @param username
+	 * @param password
+	 * @return user
+	 */
 	static public RegisteredUser logUser(String username,String password)	{
 		try {
 			RegisteredUser user = UserManager.getUser(username, password);
