@@ -4,13 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Cerca itierario per luogo</title>
+<link href=<%=request.getContextPath().toString()%>/CSS/ricerca.css rel="stylesheet" type="text/css">
+
 </head>
 <body>
 <%@ include file="../navbar.jsp" %>
 
 <form method="get" action="../SearchRouteFromLocation">
-				<p>Cerca un'itinerario:</p> <input type="text" class="focus" name="search"><br>
+				<p>Cerca un'itinerario:</p> <input type="text" id="campo" class="focus" name="search"><br>
 				<input type="submit" class="submit" value="Cerca">	
 </form>
 

@@ -2,14 +2,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Cerca</title>
+<link href=<%=request.getContextPath().toString()%>/CSS/ricerca.css rel="stylesheet" type="text/css">
+<title>Cerca Utente</title>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+
+
 </head>
 <body>
 <%@ include file="../navbar.jsp" %>
 
 	<form>
-		<input id="user" type="text">
+		<input id="campo" type="text">
 		<input type="button" onclick="searchUser()" value="Cerca">
 	</form>
 	<div id="response"></div>
@@ -22,7 +25,7 @@
 		      document.getElementById("response").innerHTML = xhttp.responseText;
 		    }
 		  };
-		  var username = $('#user').val();
+		  var username = $('#campo').val();
 		  xhttp.open("POST", "../searchUser?search="+username, true);
 		  xhttp.send();
 		}</script>
