@@ -12,10 +12,23 @@ import RouteSubsystem.Route;
 import RouteSubsystem.RouteManager;
 import UserSubsystem.RegisteredUser;
 import UserSubsystem.UserManager;
-
+/**
+ * Classe ch effettua operazioni sui feedback.
+ * @author Salvatore
+ *
+ */
 public class FeedbackController {
 
 	private static Logger logger = Logger.getLogger("global");
+	
+	/**
+	 * Metodo che crea un feedback utente.
+	 * @param sender
+	 * @param idUser
+	 * @param message
+	 * @param date
+	 * @return feedback
+	 */
 	static public Feedback createFeedbackUser(RegisteredUser sender, int idUser, String message, String date) {	
 		try {
 			
@@ -36,7 +49,14 @@ public class FeedbackController {
 			return null;
 		}
 	}
-	
+	/**
+	 * Metodo che crea un feedback itinerario.
+	 * @param sender
+	 * @param idRoute
+	 * @param message
+	 * @param date
+	 * @return feedback
+	 */
 	static public Feedback createFeedbackRoute(RegisteredUser sender, int idRoute, String message, String date)	{
 		try {
 			
@@ -57,7 +77,14 @@ public class FeedbackController {
 			return null;
 		}
 	}
-	
+	/**
+	 * Metodo che crea un feedback luogo.
+	 * @param sender
+	 * @param idLocation
+	 * @param message
+	 * @param date
+	 * @return feedback
+	 */
 	static public Feedback createFeedbackLocation(RegisteredUser sender, int idLocation, String message, String date) {
 		try {
 			
@@ -78,7 +105,11 @@ public class FeedbackController {
 			return null;
 		}
 	}
-	
+	/**
+	 * Metodo che elimina un feedback.
+	 * @param feedback
+	 * @return true se ok, false altrimenti
+	 */
 	static public boolean deleteFeedback(Feedback feedback) {
 		try {
 			FeedbackManager.deleteFeedback(feedback);
@@ -90,7 +121,11 @@ public class FeedbackController {
 		return true;
 	}	
 	
-	
+	/**
+	 * Metodo che ricerca feedback utente.
+	 * @param id
+	 * @return feedbacks
+	 */
 	public static List<FeedbackUser> searchFeedbackUser(int id) {
 		try {
 			List<FeedbackUser> feedbacks = FeedbackManager.searchFeedbackUser(id);
@@ -101,6 +136,11 @@ public class FeedbackController {
 		}
 	}
 	
+	/**
+	 * Metodo che ricerca feedback itinerario.
+	 * @param id
+	 * @return feedbacks
+	 */
 	public static List<FeedbackRoute> searchFeedbackRoute(int id){
 		
 		try {
@@ -112,6 +152,11 @@ public class FeedbackController {
 		}
 	}
 	
+	/**
+	 * Metodo che ricerca feedback luogo.
+	 * @param id
+	 * @return feedbacks
+	 */
 	public static List<FeedbackLocation> searchFeedbackLocation(int id){
 		
 		try {
