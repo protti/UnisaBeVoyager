@@ -119,6 +119,13 @@ public class FeedbackManager {
 		if(result != 1) throw new DBException();
 	}
 	
+	/**
+	 * Metodo che preleva il feedback utente.
+	 * @param id
+	 * @return feedback
+	 * @throws SQLException
+	 * @throws DBException
+	 */
 	public static FeedbackUser fetchFeedbackUser(int id)
 		throws SQLException, DBException{
 		FeedbackUser feedback = null;
@@ -137,7 +144,13 @@ public class FeedbackManager {
 		}
 		return feedback;
 	}
-	
+	/**
+	 * Metodo che preleva il feedback itinerario.
+	 * @param id
+	 * @return feedback
+	 * @throws SQLException
+	 * @throws DBException
+	 */
 	public static FeedbackRoute fetchFeedbackRoute(int id)
 			throws SQLException, DBException{
 			FeedbackRoute feedback = null;
@@ -157,7 +170,13 @@ public class FeedbackManager {
 			return feedback;
 	}
 	
-	
+	/**
+	 * Metodo che preleva il feedback luogo.
+	 * @param id
+	 * @return feedback
+	 * @throws SQLException
+	 * @throws DBException
+	 */
 	public static FeedbackLocation fetchFeedbackLocation(int id)
 			throws SQLException, DBException{
 			FeedbackLocation feedback = null;
@@ -176,7 +195,13 @@ public class FeedbackManager {
 			}
 			return feedback;
 	}
-	
+	/**
+	 * Metodo che ricerca feedback utente.
+	 * @param id
+	 * @return feedbacks
+	 * @throws SQLException
+	 * @throws DBException
+	 */
 	public static List<FeedbackUser> searchFeedbackUser(int id)
 		throws SQLException,DBException{
 		
@@ -196,7 +221,13 @@ public class FeedbackManager {
 		}
 		return feedbacks;
 	}
-	
+	/**
+	 * Metodo che ricerca feedback itinerario.
+	 * @param id
+	 * @return feedbacks
+	 * @throws SQLException
+	 * @throws DBException
+	 */
 	public static List<FeedbackRoute> searchFeedbackRoute(int id)
 			throws SQLException,DBException{
 			
@@ -217,6 +248,13 @@ public class FeedbackManager {
 			return feedbacks;
 	}
 	
+	/**
+	 * Metodo che ricerca feedback luogo.
+	 * @param id
+	 * @return feedbacks
+	 * @throws SQLException
+	 * @throws DBException
+	 */
 	public static List<FeedbackLocation> searchFeedbackLocation(int id)
 			throws SQLException,DBException{
 			
