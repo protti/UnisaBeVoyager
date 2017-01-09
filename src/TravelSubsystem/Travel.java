@@ -31,18 +31,34 @@ public class Travel {
 	private String endDate;
 	private boolean confirmed;
 	
+	/**
+	 * Metodo che dice se un viaggio e' confermato.
+	 * @return confirmed
+	 */
 	public boolean isConfirmed() {
 		return confirmed;
 	}
 	
+	/**
+	 * Metodo che setta la conferma di un viaggio.
+	 * @param confirmed
+	 */
 	public void setConfirmed(boolean confirmed) {
 		this.confirmed = confirmed;
 	}
 	
+	/**
+	 * Metodo che restituisce il nome.
+	 * @return nome
+	 */
 	public String getNome() {
 		return nome;
 	}
 
+	/**
+	 * Metodo che setta il nome.
+	 * @param nome
+	 */
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
