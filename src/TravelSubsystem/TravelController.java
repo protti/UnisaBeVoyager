@@ -21,7 +21,7 @@ public class TravelController {
 	
 	
 	/**
-	*Metodo che controlla se un utente � in quel viaggio.
+	*Metodo che controlla se un utente partecipa a quel viaggio.
 	*@param idUtente
 	*@return true se c'�, false se non c'�
 	*
@@ -42,7 +42,12 @@ public class TravelController {
 	 * context TravelController::addUserInTralve(user, travel) post
 	 * 	travel.partecipantiViaggio->includes(user)
 	 */
-	
+	/**
+	 * Metodo che aggiunge un utente al viaggio.
+	 * @param user
+	 * @param travel
+	 * @return return true se va a buon fine, false altrimenti
+	 */
 	public static boolean addUserInTravel(RegisteredUser user, Travel travel) {
 		
 		ArrayList<RegisteredUser> users = travel.getPartecipantiViaggio();
@@ -80,7 +85,11 @@ public class TravelController {
 	 * context TravelController::deleteTravel(idTravel) pre
 	 * 	
 	 */
-	
+	/**
+	 * Metodo che elimina un viaggio.
+	 * @param idTravel
+	 * @return true se ok, false altrimenti
+	 */
 	public static boolean deleteTravel(int idTravel) {
 		try {
 			TravelManager.deleteTravel(idTravel);
@@ -95,6 +104,16 @@ public class TravelController {
 	}
 	private static Logger logger = Logger.getLogger("global"); 
 
+	/**
+	 * Metodo che crea un viaggio.
+	 * @param nome
+	 * @param route
+	 * @param creatoreViaggio
+	 * @param startDate
+	 * @param endDate
+	 * @param type
+	 * @return travel
+	 */
 	public static Travel createTravel(String nome, Route route, RegisteredUser creatoreViaggio, String startDate,
 			String endDate, boolean type) {
 		logger.info("creo travel");
@@ -122,7 +141,11 @@ public class TravelController {
 	 * context TravelController::confirmTravel(travel) post:
 	 * 	travel.isConfirmed()
 	 */
-	
+	/**
+	 * Metodo che conferma un viaggio.
+	 * @param travel
+	 * @return true se ok, false altrimenti
+	 */
 	public static boolean confirmTravel(Travel travel) {
 		
 		travel.closeTravel();
@@ -139,7 +162,11 @@ public class TravelController {
 		
 		return true;
 	}
-	
+	/**
+	 * Metodo che ricerca un viaggio tramite luogo.
+	 * @param location
+	 * @return results
+	 */
 	public static List<Travel> searchTravel(String location) {
 		
 		List<Travel> results;
@@ -161,7 +188,11 @@ public class TravelController {
 		}
 	}
 
-
+	/**
+	 * Metodo che restituisce un viaggio.
+	 * @param id
+	 * @return result
+	 */
 	public static Travel getTravel(int id) {
 		Travel result = null;
 		try {
@@ -181,7 +212,13 @@ public class TravelController {
 		}
 	}
 	
-	
+	/**
+	 * Metodo che filtra i viaggi per data.
+	 * @param travels
+	 * @param start
+	 * @param end
+	 * @return filtered
+	 */
 	public static List<Travel> filterTravelByDates(List<Travel> travels, String start, String end) {
 		List<Travel> filtered = new ArrayList<Travel>();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
