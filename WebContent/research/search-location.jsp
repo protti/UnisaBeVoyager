@@ -9,10 +9,14 @@
 </head>
 <body>
 <%@ include file="../navbar.jsp" %>
+<div id="form">
+
 <form method="get" action="<%=request.getContextPath().toString()%>/SearchLocation">
-				<p>Cerca un luogo da visitare:</p> <input type="text" class="focus" id="campo" name="search"><br>
-				<input type="submit" class="submit" value="Cerca">	
+				<<input type="text" id="campo" placeholder="Inserisci un luogo da ricercare.." class="focus" name="search">
+				<input type="submit" id="btn" class="submit" value="Cerca">	
 </form>
 	<div id="response"></div>
+</div>
 </body>
+
 </html>
