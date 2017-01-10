@@ -185,11 +185,7 @@ public class TravelController {
 			return null;
 		}	
 		
-		if(!results.isEmpty()) {
 			return results;
-		} else {
-			return null;
-		}
 	}
 
 	/**

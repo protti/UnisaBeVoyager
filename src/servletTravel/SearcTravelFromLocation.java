@@ -48,8 +48,8 @@ public class SearcTravelFromLocation extends HttpServlet {
 		List<Travel> travels = TravelController.searchTravel(location);
 		
 		if (travels != null) {
-			request.setAttribute("travels", travels);
 			RequestDispatcher rd = request.getRequestDispatcher("research/search-travel-result.jsp");
+			request.setAttribute("travels", travels);
 			rd.forward(request, response);
 		}
 		else{
