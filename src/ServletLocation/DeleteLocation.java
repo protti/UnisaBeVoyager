@@ -3,6 +3,7 @@ package ServletLocation;
 import java.io.IOException;
 import java.util.logging.Logger;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -58,11 +59,13 @@ public class DeleteLocation extends HttpServlet {
 			}
 			else
 			{
-				page = "object/profilePage.jsp";
+				RequestDispatcher rd = request.getRequestDispatcher("object/profilePage.jsp");
+				request.setAttribute("user", user);
+				rd.forward(request, response);
 			}
 				
 			
-			response.sendRedirect(page);
+			
 			
 		}
 		

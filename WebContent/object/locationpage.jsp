@@ -13,7 +13,7 @@
 Nome: <%= location.getName() %>
 Descrizione: <%= location.getDescrizione() %>
 
-<a href="deleteLocation.jsp">Elimina Luogo</a>
+<a href="deleteLocation.jsp?idl=<%= location.getId()%>">Elimina Luogo</a>
 
 
 <%@ include file="../feedback/feedbackLocation.jsp" %>

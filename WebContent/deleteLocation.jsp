@@ -6,7 +6,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<%if(session.getAttribute("user") != null){ %>
+<%RegisteredUser user = (RegisteredUser) session.getAttribute("user");%>
+<%int idLocation = Integer.parseInt(request.getParameter("idl")); %>
+
 
 <title>Delete Location</title>
 </head>
@@ -14,14 +16,16 @@
 <%Location location = (Location)session.getAttribute("location"); %>
 <body>
 <%@ include file="navbar.jsp" %>
-Vuoi davvero eliminare questo luogo?
-<form action="DeleteLocation" method="post">
-		<div>
-			<input type="hidden" value="<%=location.getId()%>" name="id"/><br />
-			<input type="submit" value="Eliminami"/>
-		</div>
-	</form>
-
+<%if(session.getAttribute("user") != null){ %>
+	<% if(user.getAuthorization() > 0){ %>
+		Vuoi davvero eliminare questo luogo?
+		<form action="DeleteLocation" method="post">
+			<div>
+				<input type="hidden" value="<%=idLocation%>" name="id"/><br />
+				<input type="submit" value="Cancella"/>
+			</div>
+		</form>
+		<%} %>
 
 
 
