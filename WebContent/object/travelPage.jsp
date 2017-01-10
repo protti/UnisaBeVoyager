@@ -25,9 +25,6 @@
 	<a href="deleteTravel.jsp">Cancella questo viaggio</a>
 	<br>
 	<%} %>
-	<%if(admin.getId() != travel.getCreatoreViaggio().getId()){ %>
-		<a href="insertUserInTravel.jsp">Partecipa a questo viaggio</a><br>
-	<%} %>
 	
 	<%if(admin.getId() == travel.getCreatoreViaggio().getId() ||
 			TravelController.isUserInTravel(admin.getId(), travel.getPartecipantiViaggio())){ %>
@@ -87,7 +84,7 @@
 	
 	<form method="post" action="JoinTravel">
 				<input type="submit" class="submit" value="Partecipa viaggio!">	
-</form>	
+	</form>	
 
 	<%} %>
 
