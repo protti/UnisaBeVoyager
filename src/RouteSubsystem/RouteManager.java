@@ -347,6 +347,13 @@ public class RouteManager {
 		return routes;
 	}
 
+	/**
+	 * Metodo che vede se un utente ha partecipato ad un itinerario.
+	 * @param userId
+	 * @param routeId
+	 * @return rs.next() se k, false altrimenti
+	 * @throws SQLException
+	 */
 	public static boolean checkUserRoute(int userId, int routeId)
 		throws SQLException{
 		
