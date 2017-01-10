@@ -1,6 +1,7 @@
 package servletRoute;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import FeedbackSubsystem.FeedbackController;
+import FeedbackSubsystem.FeedbackUser;
 import RouteSubsystem.Route;
 import RouteSubsystem.RouteController;
 import UserSubsystem.RegisteredUser;
@@ -48,6 +51,7 @@ public class DeleteRoute extends HttpServlet {
 		}
 		
 		int idRoute = Integer.parseInt(request.getParameter("idRoute"));
+		List<FeedbackUser> fbs = FeedbackController.searchFeedbackUser(user.getId());
 		synchronized(session){
 			Boolean b = RouteController.deleteRoute(idRoute);
 			if(b != true){
@@ -55,6 +59,7 @@ public class DeleteRoute extends HttpServlet {
 			}
 			else{
 				RequestDispatcher rd = request.getRequestDispatcher("object/profilePage.jsp");
+				request.setAttribute("feedbacks", fbs);
 				request.setAttribute("user", user);
 				rd.forward(request, response);
 			}

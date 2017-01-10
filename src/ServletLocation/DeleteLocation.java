@@ -1,6 +1,7 @@
 package ServletLocation;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Logger;
 
 import javax.servlet.RequestDispatcher;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import FeedbackSubsystem.FeedbackController;
+import FeedbackSubsystem.FeedbackUser;
 import LocationSubsystem.Location;
 import LocationSubsystem.LocationController;
 import UserSubsystem.RegisteredUser;
@@ -52,6 +55,7 @@ public class DeleteLocation extends HttpServlet {
 		synchronized(session){
 			String page = null;
 			Boolean b = LocationController.deleteLocation(location);
+			List<FeedbackUser> fbs = FeedbackController.searchFeedbackUser(user.getId());
 			logger.info(""+b);
 			if(b != true){
 				
@@ -60,6 +64,7 @@ public class DeleteLocation extends HttpServlet {
 			else
 			{
 				RequestDispatcher rd = request.getRequestDispatcher("object/profilePage.jsp");
+				request.setAttribute("feedbacks", fbs);
 				request.setAttribute("user", user);
 				rd.forward(request, response);
 			}

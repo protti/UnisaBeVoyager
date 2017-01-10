@@ -2,6 +2,7 @@ package servletRoute;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import FeedbackSubsystem.FeedbackController;
+import FeedbackSubsystem.FeedbackRoute;
 import RouteSubsystem.Route;
 import RouteSubsystem.RouteController;
 import TravelSubsystem.Travel;
@@ -52,13 +55,14 @@ public class UpdateRoute extends HttpServlet {
 		}
 		
 		boolean b = RouteController.updateRoute(route);
-		
+		List<FeedbackRoute> fbs = FeedbackController.searchFeedbackRoute(route.getId());
 		if(b == false){
 			response.sendRedirect("500page.html");
 		}
 		else{
 			RequestDispatcher rd = request.getRequestDispatcher("object/routePage.jsp");
 			request.setAttribute("route", route);
+			request.setAttribute("feedback", fbs);
 			request.setAttribute("travel", travel);
 			rd.forward(request, response);
 		}
