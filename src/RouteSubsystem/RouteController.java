@@ -10,8 +10,20 @@ import LocationSubsystem.Location;
 import TravelSubsystem.TravelManager;
 import UserSubsystem.RegisteredUser;
 
+/**
+ * Classe che effettua operazioni sugli itinerari.
+ * @author Salvatore
+ *
+ */
 public class RouteController {
 	
+	/**
+	 * Meytodo che crea un itinerario.
+	 * @param locations
+	 * @param name
+	 * @param description
+	 * @return route
+	 */
 	public static Route createRoute(ArrayList<Location> locations, String name, String description) {
 		Route route = new Route(locations, description, name);
 		
@@ -29,6 +41,11 @@ public class RouteController {
 	* usando entrambi i metodi offerti dal manager, quello che cerca per id e quello che cerca per nome
 	*/
 	
+	/**
+	 * Metodo che ricerca un itinerario.
+	 * @param locationName
+	 * @return results
+	 */
 	public static List<Route> searchRoute(String locationName) {
 		List<Route> results; 
 		
@@ -49,6 +66,12 @@ public class RouteController {
 		}
 	}
 	
+	/**
+	 * Metodo che controlla se un luogo è in un itinerario.
+	 * @param idLocation
+	 * @param locations
+	 * @return true se ok, false altrimenti
+	 */
 	private static boolean isLocationInRoute(int idLocation, ArrayList<Location> locations) {
 		for (int i = 0; i < locations.size(); i++) {
 			if (idLocation == locations.get(i).getId()) {
@@ -83,6 +106,12 @@ public class RouteController {
 		
 	}
 
+	/**
+	 * Metodo che rimuove un luogo da un itinerario.
+	 * @param location
+	 * @param route
+	 * @return true se ok, false altrimenti
+	 */
 	public static boolean removeLocationFromRoute(Location location, Route route) {
 		
 		ArrayList<Location> locations = route.getLocations();
@@ -107,6 +136,11 @@ public class RouteController {
 		
 	}
 	
+	/**
+	 * Metodo che elimina un itinerario.
+	 * @param idRoute
+	 * @return true se ok, false altrimenti
+	 */
 	public static boolean deleteRoute(int idRoute) {
 		try {
 			RouteManager.deleteRoute(idRoute);
@@ -126,6 +160,11 @@ public class RouteController {
 	 * Era fetchRoute, l'ho cambiato in getRoute per essere coerente
 	 */
 	
+	/**
+	 * Metodo che restituisce un itinerario.
+	 * @param idRoute
+	 * @return route
+	 */
 	public static Route getRoute(int idRoute) {
 		Route route;
 		
@@ -142,6 +181,11 @@ public class RouteController {
 		
 	}
 
+	/**
+	 * Metodo che aggiorna un itinerario.
+	 * @param route
+	 * @return true se ok, false altrimenti
+	 */
 	public static boolean updateRoute(Route route){
 		
 		try {
