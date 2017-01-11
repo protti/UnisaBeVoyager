@@ -10,16 +10,21 @@
 </head>
 <body>
 	<jsp:include page="search-location.jsp" /> <br><br>
-	Risultati della ricerca:
+	<div>
 	
 	<%List<Location> locations = (List<Location>) request.getAttribute("locations"); %>
 	
 	<% if (locations != null && !locations.isEmpty()) { 
 		for(int i = 0; i < locations.size(); i++) { %>
 		<p>Nome: <%=locations.get(i).getName() %></p>
-		<a href=ShowLocation?id=<%=locations.get(i).getId()%>><%=locations.get(i).getName() %></a><br>
-		
-		<p>Descrizione: <%=locations.get(i).getDescrizione() %></p>
+		<a href=ShowLocation?id=<%=locations.get(i).getId()%>>
+		<div class="cont">
+		<img src=<%=request.getContextPath().toString()%>/CSS/image/luogo.jpg alt="Mia Immagine"> 
+		<span class="intern"><%=locations.get(i).getName() %></span><br>
+		<span class="intern"><%=locations.get(i).getDescrizione() %></span>
+		</div>
+		</a>
+		</div>
 		<br><br>
 	<%	} %>
 	<%} else {%>
