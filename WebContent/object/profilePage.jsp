@@ -9,14 +9,19 @@ RegisteredUser userOne = (RegisteredUser) session.getAttribute("user");
 RegisteredUser user = (RegisteredUser) request.getAttribute("user");
 %>
 <title><%= user.getNome() %> <%= user.getCognome() %></title>
+<link href=<%=request.getContextPath().toString()%>/CSS/page.css rel="stylesheet" type="text/css">
 </head>
 <body>
 <%@ include file="../navbar.jsp" %>
-Username: <%= user.getUsername() %>
-Nome: <%= user.getNome()%>
-Cognome: <%= user.getCognome() %>
-Età: <%= user.getAge() %>
+<div id="container">
 
+<img src=<%=request.getContextPath().toString()%>/CSS/image/user.jpg alt="Mia Immagine"> 
+		
+<span class="intern">Username: <%= user.getUsername() %></span><br><br>
+<span class="intern">Nome: <%= user.getNome()%></span><br><br>
+<span class="intern">Cognome: <%= user.getCognome() %></span><br><br>
+<span class="intern">Età: <%= user.getAge() %></span><br><br>
+</div>
 
 <%@ include file="../feedback/feedbackUser.jsp" %>
 

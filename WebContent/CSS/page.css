@@ -1,0 +1,22 @@
+@CHARSET "ISO-8859-1";
+
+
+#container{
+	margin-top: 10%;
+	font-family: serif;
+	font-size: 30px;
+	text-align: center;
+	margin-left: 10%;
+	margin-right: 25%;
+  float: left;
+}
+
+#container img{
+	height: 200px;
+	width: 200px;
+	float: left;
+}
+
+.intern{
+	color: #666666;
+}
