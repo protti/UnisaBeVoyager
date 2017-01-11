@@ -44,7 +44,7 @@ public class SearchUser extends HttpServlet {
 		
 		if(users.size() > 0){
 			for(RegisteredUser user: users){
-				out.println("<a href=\"../showProfile?id="+ user.getId()+"\">"+user.getNome()+"</a><br>");
+				out.println("<a class=clickDiv href=\"../showProfile?id="+ user.getId()+"\"><div class=cont><img src="+ request.getContextPath().toString()+"/CSS/image/user.jpg alt=Immagine> <span class=intern>"+user.getNome()+"</span></div></a><br>");
 			}
 		}
 		else{
