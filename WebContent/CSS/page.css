@@ -16,6 +16,21 @@
 	width: 200px;
 	float: left;
 }
+#containerViaggio{
+	margin-top: 10%;
+	font-family: serif;
+	font-size: 30px;
+	text-align: center;
+	margin-left: 10%;
+	margin-right: 25%;
+  float: left;
+}
+
+#containerViaggio img{
+	height: 200px;
+	width: 200px;
+	float: left;
+}
 
 .intern{
 	color: #666666;

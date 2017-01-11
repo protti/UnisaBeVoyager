@@ -9,6 +9,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href=<%=request.getContextPath().toString()%>/CSS/page.css rel="stylesheet" type="text/css">
 <% RegisteredUser u = (RegisteredUser) session.getAttribute("user");%>
 <% Route route = (Route) request.getAttribute("route");%>
 <% Travel travel = (Travel) request.getAttribute("travel"); %>
@@ -17,6 +18,11 @@
 </head>
 <body>
 	<%@ include file="../navbar.jsp" %>
+	<div id="containerViaggio">
+	
+	<img src=<%=request.getContextPath().toString()%>/CSS/image/itinerario.jpg alt="Mia Immagine"> 
+	
+	
 	<b>Nome: </b><span id="n"><%=route.getName()%></span>
 	
 	<br>
@@ -24,8 +30,8 @@
 	<p id="d"><%=route.getDescription()%></p>
 	
 	
-	<%if(travel != null){ %>
-		<%if(travel.getCreatoreViaggio().getId() == u.getId()){ %>
+	<% if(travel != null){ %>
+		<% if(travel.getCreatoreViaggio().getId() == u.getId()){ %>
 			<div id="update"><button onClick="modify(<%= route.getId()%>,<%= travel.getId()%>,'<%= route.getName()%>','<%= route.getDescription()%>')">Modifica</button></div>
 			
 		<%} %>
@@ -49,15 +55,21 @@
 			<div id="response"></div>
 		<%} %>
 	<%} %>
+	<br>
+	<br>
+	<br>
+		<%if(u.getAuthorization() > 0){ %>
+		<a href="<%=request.getContextPath().toString()%>/deleteRoute.jsp?idr=<%=route.getId()%>">Elimina itinerario</a>
+	<%} %>
 	
+	</div>
 	
 	<%@include file="../feedback/feedbackRoute.jsp"%>
 	
 	<br>
 	
-	<%if(u.getAuthorization() > 0){ %>
-		<a href="<%=request.getContextPath().toString()%>/deleteRoute.jsp?idr=<%=route.getId()%>">Elimina itinerario</a>
-	<%} %>
+
+	
 	<script type="text/javascript">
 		function searchLocation(){
 			var xhttp;
