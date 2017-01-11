@@ -11,18 +11,23 @@
 </head>
 <body>
 	<jsp:include page="search-route-location.jsp" /> <br></br>
-
-	Risultati della ricerca:
 	
 	<%List<Route> routes = (List<Route>) request.getAttribute("routes"); %>
 	
+	<div>
 	<% if (routes != null && !routes.isEmpty()) { 
 		for(int i = 0; i < routes.size(); i++) { %>
-		<p>Nome: <%=routes.get(i).getName() %></p>
-		<a href=ShowRoute?id=<%=routes.get(i).getId() %>><%=routes.get(i).getName() %></a><br>
 		
-		<p>Descrizione: <%=routes.get(i).getDescription() %></p>
+		<a class="clickDiv" href=ShowRoute?id=<%=routes.get(i).getId() %>>
+		<div class="cont">
+		<img src=<%=request.getContextPath().toString()%>/CSS/image/itinerario.jpg alt="Mia Immagine"> 
+		<span class="intern"><%=routes.get(i).getName() %></span><br><br>
+		<span class="intern"><%=routes.get(i).getDescription() %></span><br>
+		</div>
+		</a>
 		<br><br>
+		
+	</div>
 	<%	} %>
 	<%} else {%>
 		<p>Nessuno risultato trovato!</p>
