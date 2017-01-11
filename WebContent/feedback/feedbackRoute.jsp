@@ -18,7 +18,7 @@
 
 	<h4>Feedback</h4>
 	<form>
-		<textarea rows="10" cols="20" id="feedback"></textarea><br>
+		<textarea id="feedback"></textarea><br>
 		<input type="button" onclick="putFeedback(<%= r.getId()%>)" value="Commenta">
 	</form>
 	

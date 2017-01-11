@@ -19,7 +19,7 @@
 	
 	
 	<form>
-		<textarea rows="10" cols="20" id="feedback"></textarea><br>
+		<textarea id="feedback"></textarea><br>
 		<input type="button" onclick="putFeedback(<%= l.getId()%>)" value="Commenta">
 	</form>
 	

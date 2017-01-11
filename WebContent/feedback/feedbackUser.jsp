@@ -19,7 +19,7 @@
 	<h4>Feedback</h4>
 	<%if(own.getId() != u.getId()){ %>
 	<form>
-		<textarea rows="10" cols="20" id="feedback"></textarea><br>
+		<textarea id="feedback"></textarea><br>
 		<input type="button" onclick="putFeedback(<%= u.getId()%>)" value="Commenta">
 	</form>
 	<%} %>
