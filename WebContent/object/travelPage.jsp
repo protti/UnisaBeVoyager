@@ -11,18 +11,21 @@
 <%Travel travel = (Travel) request.getAttribute("travel"); %>
 <%session.setAttribute("travel", travel); %>
 <head>
+<link href=<%=request.getContextPath().toString()%>/CSS/page.css rel="stylesheet" type="text/css">
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title><%= travel.getNome() %></title>
 </head>
 <body>
 	<%@ include file="../navbar.jsp" %>
+	<img src=<%=request.getContextPath().toString()%>/CSS/image/iconatravel.jpg alt="Mia Immagine"> 
+	<div id="containerViaggio">	
 	<h2><%= travel.getNome() %></h2>
-
-
 	<%RegisteredUser admin = (RegisteredUser) session.getAttribute("user"); 
 	int flag = 0;%>
 	<%if(admin.getAuthorization() > 0){ %>
 	<a href="deleteTravel.jsp">Cancella questo viaggio</a>
+	<br>
 	<br>
 	<%} %>
 	
@@ -36,16 +39,12 @@
 		<input type="submit" value="Conferma Viaggio">
 	</form>
 	<%} %>
-
-	<h4>Caratteristiche</h4>
+	<br><br>
+	<span>Data di partenza: </span><%= travel.getStartDate()%>
 	<br>
-	<span>Data di partenza: </span>
-	<p><%= travel.getStartDate()%></p>
 	<br>
-	<span>Data di fine: </span>
-	<p><%= travel.getEndDate() %></p>
-	<br>
-
+	<span>Data di fine: </span><%= travel.getEndDate() %>
+	<br>	
 	<%if(travel.getType()){ %>
 	<b>E' possibile modificare l'itinerario</b>
 	<%} %>
@@ -53,11 +52,6 @@
 	<h4>Creatore Viaggio</h4>
 	<a href="showProfile?id=<%=travel.getCreatoreViaggio().getId()%>">
 		<%=travel.getCreatoreViaggio().getUsername() %></a>
-
-
-
-
-
 	<h4>Lista partecipanti viaggio</h4>
 	<%if(travel.getPartecipantiViaggio() != null){ %>
 	<%if(travel.getPartecipantiViaggio().size() > 0){ %>
@@ -65,7 +59,7 @@
 	<%for(RegisteredUser traveler: travelers){ %>
 	<a href="showProfile?id=<%= traveler.getId()%>"><%=traveler.getNome() %></a>
 	<br>
-
+	<br>
 	<%
 				if(traveler.getId() == admin.getId())
 					flag = 1;			
@@ -96,9 +90,6 @@
 	<b>Non ci sono itinerari</b>
 	<%} %>
 
-
-
-
 	<h4>Richieste inserimento luogo</h4>
 	<%List<Poll> polls = travel.getPollList(); %>
 	<%if(polls != null){ %>
@@ -110,6 +101,6 @@
 			<b>Non ci sono richieste</b>
 		<%} %>
 	<%} %>
-	
+	</div>
 </body>
 </html>
