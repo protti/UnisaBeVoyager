@@ -11,8 +11,13 @@
 </head>
 <body>
 <%@ include file="../navbar.jsp" %>
+
+<%if(request.getAttribute("dati_mancanti") != null){ %>
+		<b>Inserisci tutti i dati</b>
+	<%} %>
+
 <div id="form">
-	<form action="../createTravel" method="post">
+	<form action="<%= request.getContextPath() %>/createTravel" method="post">
 		<span>Nome </span><input id="campo" type="text" class="focus" name="nome"><br>
 		<span>Descrizione</span><textarea id="descrizione"  name="descrizione"></textarea><br>
 		<span>Start Date </span><input id="campo" type="text" class="focus" name="startDate"><br>
@@ -24,13 +29,16 @@
 	
 	<form>
 		<input id="nameLoc" type="text">
-		<input  id="btn1" type="button" onclick="searchRoute()" value="Cerca">
+		<input  id="btn1" type="button" onclick="searchRoute('<%= request.getContextPath()%>')" value="Cerca">
 	</form>
 	
 	<div id="result"></div>
 	</div>
+	
+	
+	
 	<script type="text/javascript">
-	function searchRoute() {
+	function searchRoute(path) {
 		  var xhttp;
 		  xhttp = new XMLHttpRequest();
 		  xhttp.onreadystatechange = function() {
@@ -39,13 +47,13 @@
 		    }
 		  };
 		  var name = $('#nameLoc').val();
-		  xhttp.open("POST", "../SearchRouteForTravel?location="+name, true);
+		  xhttp.open("POST", ""+path+"/SearchRouteForTravel?location="+name, true);
 		  xhttp.send();
 		}
 	</script>
 	
 	<script type="text/javascript">
-	function addToList(id) {
+	function addToList(path,id) {
 		  var xhttp;
 		  xhttp = new XMLHttpRequest();
 		  xhttp.onreadystatechange = function() {
@@ -53,7 +61,7 @@
 		      document.getElementById("result").innerHTML = xhttp.responseText;
 		    }
 		  };
-		  xhttp.open("POST", "../addRouteForNewTravel?id="+id, true);
+		  xhttp.open("POST", "" + path + "/addRouteForNewTravel?id="+id, true);
 		  xhttp.send();
 		}
 	</script>

@@ -12,6 +12,8 @@ public class FeedbackLocation extends Feedback {
 
 	private Location locationID;
 
+	public FeedbackLocation(){}
+	
 	public FeedbackLocation(int id, RegisteredUser sender, String message, String date, Location locationID) {
 		super(id, sender, message, date);
 		this.locationID = locationID;

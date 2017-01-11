@@ -41,6 +41,11 @@ public class GiveFeedbackToUser extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		
 		String message = request.getParameter("message");
+		if(message.equals("")){
+			PrintWriter out = response.getWriter();
+			out.println("Inserisci un feedback prima<br>");
+			return;
+		}
 		HttpSession session = request.getSession();
 		RegisteredUser user = (RegisteredUser) session.getAttribute("user");
 		
@@ -56,6 +61,15 @@ public class GiveFeedbackToUser extends HttpServlet {
 		}
 		
 		PrintWriter out = response.getWriter();
+		
+		
+		
+		if(fb.getId() == 0){
+			logger.info("Sono dentro");
+			out.println("<b>Non hai mai viaggiato con questo utente</b>");
+			return;
+		}
+		
 		out.println("<a href=\"showProfile?id=" + fb.getSender().getId() + "\">" + 
 				fb.getSender().getUsername() + "</a>" + 
 				"<p>" + fb.getMessage() + "</p>");

@@ -17,6 +17,10 @@ public abstract class Feedback {
 	private String message;
 	private String date;
 	
+	public Feedback(){
+		id = 0;
+	};
+	
 	public Feedback(RegisteredUser sender, String message, String date) {
 		super();
 		this.sender = sender;

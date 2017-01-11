@@ -42,6 +42,11 @@ logger.info("Sono dentro");
 		int id = Integer.parseInt(request.getParameter("id"));
 		
 		String message = request.getParameter("message");
+		if(message.equals("")){
+			PrintWriter out = response.getWriter();
+			out.println("Inserisci un feedback prima<br>");
+			return;
+		}
 		HttpSession session = request.getSession();
 		RegisteredUser user = (RegisteredUser) session.getAttribute("user");
 		
@@ -57,6 +62,12 @@ logger.info("Sono dentro");
 		}
 	
 		PrintWriter out = response.getWriter();
+		
+		if(fb.getId() == 0){
+			out.println("<b>Non hai mai preso parte a questo itinerario</b>");
+			return;
+		}
+		
 		out.println("<a href=\"showProfile?id=" + fb.getSender().getId() + "\">" + 
 				fb.getSender().getUsername() + "</a>" + 
 				"<p>" + fb.getMessage() + "</p>");

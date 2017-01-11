@@ -29,8 +29,6 @@ public class FeedbackManager {
 	*/
 	public static void saveFeedbackToDB(Feedback feedback)
 		throws SQLException,DBException{
-		logger.info(feedback.getClass().getName());
-		Feedback newFeedback = null;
 		String table = feedback.getClass().getName().substring(17);
 		int result = 0;
 		Connection con = DriverManagerConnection.getConnection();
@@ -52,8 +50,8 @@ public class FeedbackManager {
 					+ "senderID = " + feedback.getSender().getId() + "");
 			
 			DriverManagerConnection.releaseConnection(con);
-			
 			if(rs.next()){
+				
 				feedback.setId(rs.getInt(1));
 			}
 		}

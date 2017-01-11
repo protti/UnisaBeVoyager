@@ -34,7 +34,7 @@ public class FeedbackController {
 			
 			boolean b = UserManager.checkUserHasTraveledWith(sender.getId(), idUser);
 			if (b == false) {
-				return null;
+				return new FeedbackUser();
 			}	
 			
 			RegisteredUser receiver = UserManager.fetchUser(idUser);
@@ -44,9 +44,12 @@ public class FeedbackController {
 				FeedbackManager.saveFeedbackToDB(feedback);
 			}
 			return feedback;
-		} catch (SQLException | DBException e1) {
-			e1.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
 			return null;
+		} catch (DBException e){
+			e.printStackTrace();
+			return new FeedbackUser();
 		}
 	}
 	/**
@@ -62,7 +65,7 @@ public class FeedbackController {
 			
 			boolean b = UserManager.checkUserRoute(sender.getId(), idRoute);
 			if (b == false) {
-				return null;
+				return new FeedbackRoute();
 			}	
 			logger.info("Sono in createFeedbackRoute");
 			Route receiver = RouteManager.fetchRoute(idRoute);
@@ -72,9 +75,12 @@ public class FeedbackController {
 				FeedbackManager.saveFeedbackToDB(feedback);
 			}
 			return feedback;
-		} catch (SQLException | DBException e1) {
-			e1.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
 			return null;
+		} catch (DBException e){
+			e.printStackTrace();
+			return new FeedbackRoute();
 		}
 	}
 	/**
@@ -90,7 +96,7 @@ public class FeedbackController {
 			
 			boolean b = UserManager.checkUserVisit(sender.getId(), idLocation);
 			if (b == false) {
-				return null;
+				return new FeedbackLocation();
 			}	
 			
 			Location receiver = LocationManager.fetchLocation(idLocation);
@@ -100,9 +106,12 @@ public class FeedbackController {
 				FeedbackManager.saveFeedbackToDB(feedback);
 			}
 			return feedback;
-		} catch (SQLException | DBException e1) {
-			e1.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
 			return null;
+		} catch (DBException e){
+			e.printStackTrace();
+			return new FeedbackLocation();
 		}
 	}
 	/**

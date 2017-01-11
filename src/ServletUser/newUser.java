@@ -52,17 +52,23 @@ public class newUser extends HttpServlet {
 			String cognome = request.getParameter("surname");
 			String password = request.getParameter("secret");
 			String birthDate = request.getParameter("birth");
-			
 			String username = request.getParameter("username");
+			
+			if(email.equals("") || nome.equals("") || cognome.equals("") || password.equals("")
+					|| birthDate.equals("") || username.equals("")) {
+				
+				request.setAttribute("dati_mancanti", true);
+				RequestDispatcher rd = request.getRequestDispatcher("create/newUser.jsp");
+				rd.forward(request, response);
+			}
 			
 			RegisteredUser user = UserController.createUser(email, username, password, nome, cognome, birthDate);
 			
-			if(user == null)
-			{
-				response.sendRedirect("newuser.html");
+			if(user == null){
+				response.sendRedirect("create/newUser.jsp");
+				return;
 			}
-			else
-			{
+			else {
 				session.setAttribute("user", user);
 				/*request.setAttribute("nome", user.getNome());
 				request.setAttribute("cognome", user.getCognome());
@@ -74,10 +80,6 @@ public class newUser extends HttpServlet {
 			}
 			
 		}
-		
-		
-		
-		doGet(request, response);
 	}
 
 }

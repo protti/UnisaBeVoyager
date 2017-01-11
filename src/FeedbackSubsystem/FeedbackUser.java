@@ -11,6 +11,10 @@ public class FeedbackUser extends Feedback {
 
 	private RegisteredUser userID;
 
+	public FeedbackUser(){
+		super();
+	}
+	
 	public FeedbackUser(RegisteredUser sender, String message, String date, RegisteredUser userID) {
 		super(sender, message, date);
 		this.userID = userID;
