@@ -7,15 +7,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <% Location location = (Location) request.getAttribute("location");%>
 <title><%= location.getName() %></title>
+<link href=<%=request.getContextPath().toString()%>/CSS/page.css rel="stylesheet" type="text/css">
 </head>
 <body>
 <%@ include file="../navbar.jsp" %>
-Nome: <%= location.getName() %>
-Descrizione: <%= location.getDescrizione() %>
-
+<div id="containerViaggio">
+<img src=<%=request.getContextPath().toString()%>/CSS/image/luogo.jpg alt="Mia Immagine"> 	<br><br>
+<span class="intern"><%= location.getName() %></span><br><br>
+<span class="intern"><%= location.getDescrizione() %></span><br><br>
 <a href="deleteLocation.jsp?idl=<%= location.getId()%>">Elimina Luogo</a>
-
-
+</div>
 <%@ include file="../feedback/feedbackLocation.jsp" %>
 
 </body>
