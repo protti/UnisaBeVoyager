@@ -18,6 +18,7 @@ import TravelSubsystem.Travel;
 import TravelSubsystem.TravelController;
 import TravelSubsystem.TravelManager;
 
+
 /**
  * Servlet implementation class SearcTravelFromLocation
  */
