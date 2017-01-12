@@ -1,6 +1,7 @@
 package servletTravel;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +48,9 @@ public class addRouteForNewTravel extends HttpServlet {
 			HttpSession session = request.getSession();
 			synchronized(session) {
 				session.setAttribute("selectedRoute", route);
+				PrintWriter out = response.getWriter();
+				out.println("<a href=\"" + request.getContextPath() + "/ShowRoute?id="
+						+ "" + route.getId() + "\">" + route.getName() + "</a>");
 			}
 		}			
 	}

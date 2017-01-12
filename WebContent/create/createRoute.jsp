@@ -27,7 +27,7 @@
 		<input type="button" id="btn1" onclick="searchLoc()" value="Cerca">
 	</form>
 	
-	
+	<div id="list"></div>
 	<div id="response"></div>
 	</div>
 	<script type="text/javascript">
@@ -51,7 +51,7 @@
 		  xhttp = new XMLHttpRequest();
 		  xhttp.onreadystatechange = function() {
 		    if (xhttp.readyState == 4 && xhttp.status == 200) {
-		      document.getElementById("response").innerHTML = xhttp.responseText;
+		      document.getElementById("list").innerHTML = xhttp.responseText;
 		    }
 		  };
 		  xhttp.open("POST", "../AddToLocationList?id="+id, true);
