@@ -40,7 +40,9 @@ public class SearcTravelFromLocation extends HttpServlet {
 		String location = (String) request.getParameter("search");
 		
 		if(location.equals("")) {
-			response.sendRedirect("research/search-travel-location.jsp");
+			request.setAttribute("dati_mancanti", true);
+			RequestDispatcher rd = request.getRequestDispatcher("research/search-travel-result.jsp");
+			rd.forward(request, response);
 			return;
 		}
 		

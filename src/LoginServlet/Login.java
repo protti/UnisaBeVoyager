@@ -39,8 +39,18 @@ public class Login extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		RegisteredUser user = AccessController.logUser(username, password);
+		
+		if (username.equals("") || password.equals("")) {
+			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+			request.setAttribute("dati_mancanti", true);
+			rd.forward(request, response);
+			return;
+		}
+		
 		if (user == null) {
-			response.sendRedirect("login.html");	
+			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+			request.setAttribute("wrong", true);
+			rd.forward(request, response);
 			return;
 		}
 		List<FeedbackUser> fbs = FeedbackController.searchFeedbackUser(user.getId());

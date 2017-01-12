@@ -15,7 +15,8 @@
 	<%List<Route> routes = (List<Route>) request.getAttribute("routes"); %>
 	
 	<div>
-	<% if (routes != null && !routes.isEmpty()) { 
+	<%if(routes != null){ %>
+	<% if (!routes.isEmpty()) { 
 		for(int i = 0; i < routes.size(); i++) { %>
 		
 		<a class="clickDiv" href=ShowRoute?id=<%=routes.get(i).getId() %>>
@@ -26,11 +27,16 @@
 		</div>
 		</a>
 		<br><br>
-		
-	</div>
 	<%	} %>
 	<%} else {%>
 		<p>Nessuno risultato trovato!</p>
-	<%}%>
+	<%}%>	
+	<%} %>
+	</div>
+	
+	
+	<%if(request.getAttribute("dati_mancanti") != null){ %>
+		<b>Inserisci prima l'itinerario da ricercare</b>
+	<%} %>
 </body>
 </html>

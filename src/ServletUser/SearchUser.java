@@ -36,11 +36,14 @@ public class SearchUser extends HttpServlet {
 		// TODO Auto-generated method stub
 		String result = (String) request.getParameter("search");
 		
-		if(result.equals("")) return;
+		PrintWriter out = response.getWriter();
+		
+		if(result.equals("")){ 
+			out.println("Inserisci l'utente da cercare");
+			return;
+		}
 		
 		List<RegisteredUser> users = UserController.searchUser(result);
-		
-		PrintWriter out = response.getWriter();
 		
 		if(users.size() > 0){
 			for(RegisteredUser user: users){
