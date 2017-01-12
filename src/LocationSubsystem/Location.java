@@ -67,6 +67,13 @@ public class Location {
 		this.descrizione = descrizione;
 	}
 
-	
+	public boolean equals(Object anObject){
+		if(anObject == null) return false;
+		if(!(anObject instanceof Location)) return false;
+		Location obj = (Location) anObject;
+		return this.descrizione.equals(obj.descrizione) && 
+				this.name.equals(obj.name) &&
+				this.id == obj.id;
+	}
 	
 }

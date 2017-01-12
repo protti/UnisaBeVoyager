@@ -41,8 +41,14 @@
 	<h4>Luoghi</h4>
 	<%List<Location> locations = route.getLocations();%>
 	<%for(Location location:locations){ %>
-	
+		<div id="<%= location.getId()%>">
 		<a href="ShowLocation?id=<%=location.getId()%>"><%=location.getName()%></a>
+		<%if(travel != null){ %>
+			<%if(travel.getCreatoreViaggio().getId() == u.getId()){ %>
+				<button onclick="removeLoc(<%= location.getId()%>,<%= route.getId()%>)">Rimuovi luogo</button>
+			<%} %>
+		<%} %>
+		</div>
 	<%} %>
 	
 	<%if(travel != null){ %>
@@ -113,6 +119,21 @@
 			form = form + "</form>"
 			document.getElementById("update").innerHTML = form;
 		}
+	</script>
+	
+	<script type="text/javascript">
+	function removeLoc(idl,idr){
+		var xhttp;
+		xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+		  if (xhttp.readyState == 4 && xhttp.status == 200) {
+		    document.getElementById(""+idl).innerHTML = xhttp.responseText;
+		  }
+		};
+		var idr = $('#idr').val();
+		xhttp.open("POST", "removeLocationToRoute?idr="+idr+"&idl="+idl, true);
+		xhttp.send();	
+	}
 	</script>
 </body>
 </html>

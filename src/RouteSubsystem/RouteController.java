@@ -75,7 +75,7 @@ public class RouteController {
 	private static boolean isLocationInRoute(int idLocation, ArrayList<Location> locations) {
 		for (int i = 0; i < locations.size(); i++) {
 			if (idLocation == locations.get(i).getId()) {
-				return false;
+				return true;
 			}
 		}		
 		return false;

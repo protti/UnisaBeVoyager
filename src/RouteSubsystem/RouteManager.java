@@ -208,7 +208,7 @@ public class RouteManager {
 
 			List<Integer> listDB = new ArrayList<Integer>();
 			List<Location> listRoute = route.getLocations();
-
+			
 			if(listRoute != null){
 				while(rs.next()){
 					int id = rs.getInt(1);
@@ -221,7 +221,11 @@ public class RouteManager {
 						if(listDB.get(i) == location.getId()) type = true;
 					}
 					
-					if(!type) RouteManager.removeLocationByRoute(route.getId(), listDB.get(i));
+					if(!type){
+						RouteManager.removeLocationByRoute(route.getId(), listDB.get(i));
+						result = 1;
+						logger.info("Sono dentro");
+					}
 				}
 				
 				for(Location loc: listRoute){
@@ -229,8 +233,13 @@ public class RouteManager {
 					for(int i = 0; i < listDB.size(); i++){
 						if(listDB.get(i) == loc.getId()) type = true;
 					}
-					if(!type) RouteManager.addLocationToRoute(route.getId(), loc.getId());
+					if(!type){
+						RouteManager.addLocationToRoute(route.getId(), loc.getId());
+						result = 1;
+					}
 				}
+				
+				
 			}
 		}
 
