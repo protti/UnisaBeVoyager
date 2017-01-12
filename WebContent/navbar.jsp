@@ -15,7 +15,7 @@
 	%>
 	<div id="navigation">
 	<ul>
-	<li><form method="get" action="showProfile" style="text-decoration: none;">
+	<li><form method="get" action=<%=request.getContextPath().toString()%>/showProfile style="text-decoration: none;">
 		<input id="submit" type="submit" value="Profilo">
 	</form></li>
 	<li><a href=<%=request.getContextPath().toString()%>/create/createRoute.jsp>Crea Itinerari</a></li>
