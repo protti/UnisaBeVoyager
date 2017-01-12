@@ -22,8 +22,8 @@
 }
 #campo:hover{
 	  outline: none;
-	   border: solid 1px #707070;
-  box-shadow: 0 0 5px 1px #969696;
+	  border: solid 1px #3498db;
+  box-shadow: 0 0 5px 1px #3498db;
 }
 #nameLoc{
 	
@@ -61,8 +61,8 @@
 #descrizione:hover
 {
   outline: none;
-	   border: solid 1px #707070;
-  box-shadow: 0 0 5px 1px #969696;
+	  border: solid 1px #3498db;
+  box-shadow: 0 0 5px 1px #3498db;
 }
 #btn {
   background: #3498db;
