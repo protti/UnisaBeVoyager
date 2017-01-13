@@ -302,6 +302,7 @@ public class TravelManager {
 				}
 				
 				if(!type){
+					logger.info("I am in");
 					TravelManager.addUserToTravel(user.getId(), travel.getId());
 				}
 			}

@@ -34,10 +34,10 @@
 				<p> <%= fu.getMessage() %></p>
 			<%} %>
 		<%} else{ %>
-			<div id="response"><b>Non ci sono feedback relativi a questo utente</b></div>
+			<div id="response"><b>Non ci sono feedback relativi a questo luogo</b></div>
 		<%} %>
 	<%} else{ %>
-		<div id="response"><b>Non ci sono feedback relativi a questo utente</b></div>
+		<div id="response"><b>Non ci sono feedback relativi a questo luogo</b></div>
 	<%} %>
 	
 	<script type="text/javascript">
