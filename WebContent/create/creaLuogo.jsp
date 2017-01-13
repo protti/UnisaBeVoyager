@@ -5,16 +5,18 @@
 <head>
 <%if(session.getAttribute("user") != null){ %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<link href=<%=request.getContextPath().toString()%>/CSS/create.css rel="stylesheet" type="text/css">
+<title>Inserisci Luoghi</title>
 </head>
 <body>
 	<%@ include file="../navbar.jsp" %>
-	
+	<div id="form">
 	<form action="../CreateLocation" method="post">
-		<span>Nome </span><input type="text" class="focus" name="nome"><br>
-		<span>Descrizione </span><br><textarea cols="10" rows="5" class="focus" name="descrizione"></textarea><br>
-		<input type="submit" value="Crea">
+		<span>Nome </span><input type="text" id="campo" class="focus" name="nome"><br><br>
+		<span>Descrizione </span><textarea id="descrizione" class="focus" name="descrizione"></textarea><br>
+		<input type="submit" id="btn" value="Crea">
 	</form>
+	</div>
 <%} else{%>
 Non sei loggato
 <%}%>
