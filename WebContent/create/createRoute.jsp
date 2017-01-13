@@ -20,7 +20,7 @@
 	<div id="list"></div>
 	
 	<div id="form">
-	<form action="../CreateRoute" method="post">
+	<form action="<%= request.getContextPath() %>/CreateRoute" method="post">
 		<span>Nome </span><input type="text" id="campo" class="focus" name="name"><br>
 		<span>Descrizione </span><textarea id="descrizione" row="10" col="10" type="text" name="descrizione"></textarea><br>
 		<input type="submit" id="btn" value="Crea">
@@ -28,13 +28,17 @@
 	
 	<form>
 		<input type="text" id="nameLoc" name="name">
-		<input type="button" id="btn1" onclick="searchLoc()" value="Cerca">
+		<input type="button" id="btn1" onclick="searchLoc('<%= request.getContextPath() %>')" value="Cerca">
 	</form>
 	<div id="response"></div>
 	</div>
 	
+	<%if(request.getAttribute("dati_mancanti") != null){ %>
+		<b>Inserisci tutti i dati</b>
+	<%} %>
+	
 	<script type="text/javascript">
-	function searchLoc() {
+	function searchLoc(path) {
 		  var xhttp;
 		  xhttp = new XMLHttpRequest();
 		  xhttp.onreadystatechange = function() {
@@ -43,13 +47,13 @@
 		    }
 		  };
 		  var name = $('#nameLoc').val();
-		  xhttp.open("POST", "../SearchLocationForRoute?nameLocation="+name, true);
+		  xhttp.open("POST", "" + path + "/SearchLocationForRoute?nameLocation="+name, true);
 		  xhttp.send();
 		}
 	</script>
 	
 	<script type="text/javascript">
-	function addToList(id) {
+	function addToList(path,id) {
 		  var xhttp;
 		  xhttp = new XMLHttpRequest();
 		  xhttp.onreadystatechange = function() {
@@ -57,7 +61,7 @@
 		      document.getElementById("list").innerHTML = xhttp.responseText;
 		    }
 		  };
-		  xhttp.open("POST", "../AddToLocationList?id="+id, true);
+		  xhttp.open("POST", "" + path + "/AddToLocationList?id="+id, true);
 		  xhttp.send();
 		}
 	</script>
