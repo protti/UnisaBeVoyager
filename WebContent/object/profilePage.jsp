@@ -21,6 +21,10 @@ RegisteredUser user = (RegisteredUser) request.getAttribute("user");
 <span class="intern">Nome: <%= user.getNome()%></span><br><br>
 <span class="intern">Cognome: <%= user.getCognome() %></span><br><br>
 <span class="intern">Età: <%= user.getAge() %></span><br><br>
+
+<%if(userOne.getId() == user.getId()){ %>
+	<a href="<%= request.getContextPath()%>/eliminaUtente.jsp">Elimina account</a>
+<%} %>
 </div>
 
 <%@ include file="../feedback/feedbackUser.jsp" %>
