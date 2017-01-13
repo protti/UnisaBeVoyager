@@ -96,7 +96,7 @@
 	color: #666666;
 }
 .every{
-  margin-top: 2%;
+ 	margin-top: 2%;
 	font-family: sans-serif;
 	font-size: 25px;
  	text-align: center;
@@ -120,4 +120,23 @@
 	box-shadow: 0 0 5px 1px #3498db;
 }
 
+#eliminaRoute{
+	
+	margin-top: 2%;
+	font-family: sans-serif;
+	font-size: 25px;
+ 	text-align: center;
+	appearance: none;
+	box-shadow: none;
+	border-radius: none;
+	padding: 10px;
+	border: solid 1px #dcdcdc;
+	transition: box-shadow 0.3s, border 0.3s;
+	background-color: #E20613;
+	float: left;
+	text-decoration: none;
+	color: #ffffff;
+	width:98%;
+	
+}
 
