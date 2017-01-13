@@ -52,8 +52,12 @@ public class AddToLocationList extends HttpServlet {
 			synchronized(session) {
 				session.setAttribute("currentList", currentList);
 				PrintWriter out = response.getWriter();
+				out.println("Lista luoghi:");
 				for(Location loc: currentList){
-					out.println("<a href=\"../ShowLocation?id=" + loc.getId() + "\">" + loc.getName() + "</a>");
+					
+					
+					out.println("<a href="+  request.getContextPath().toString() +"/ShowLocation?id=" + loc.getId() + "><div class=every>" + loc.getName() + "</div></a><br>");
+					
 				}
 			}
 		}		

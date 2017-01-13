@@ -15,6 +15,10 @@
 </head>
 <body>
 <%@ include file="../navbar.jsp" %>
+	
+	
+	<div id="list"></div>
+	
 	<div id="form">
 	<form action="../CreateRoute" method="post">
 		<span>Nome </span><input type="text" id="campo" class="focus" name="name"><br>
@@ -26,10 +30,9 @@
 		<input type="text" id="nameLoc" name="name">
 		<input type="button" id="btn1" onclick="searchLoc()" value="Cerca">
 	</form>
-	
-	<div id="list"></div>
 	<div id="response"></div>
 	</div>
+	
 	<script type="text/javascript">
 	function searchLoc() {
 		  var xhttp;
