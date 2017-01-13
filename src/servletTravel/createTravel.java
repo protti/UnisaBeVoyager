@@ -110,6 +110,7 @@ public class createTravel extends HttpServlet {
 		if(travelName.equals("") || travelDesc.equals("") || 
 				startDate.equals("") || endDate.equals("") || 
 				selectedRoute == null){
+			session.removeAttribute("selectedRoute");
 			request.setAttribute("dati_mancanti", true);
 			RequestDispatcher rd = request.getRequestDispatcher("create/createTravel.jsp");
 			rd.forward(request, response);
