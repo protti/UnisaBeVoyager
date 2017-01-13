@@ -56,7 +56,7 @@ public class deleteUser extends HttpServlet {
 			}finally{
 				if(page == null)
 				{
-					page = "login.html";
+					page = "login.jsp";
 				}
 			}
 			
