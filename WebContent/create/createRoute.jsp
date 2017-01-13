@@ -10,8 +10,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href=<%=request.getContextPath().toString()%>/CSS/create.css rel="stylesheet" type="text/css">
-
-
 <title>Crea Itinerario</title>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
 </head>
