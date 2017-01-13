@@ -11,11 +11,13 @@
 <% List<FeedbackUser> feedbackUser = (List<FeedbackUser>) request.getAttribute("feedbacks"); %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 <title>Feedback utente</title>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+<link href=<%=request.getContextPath().toString()%>/CSS/feedback.css rel="stylesheet" type="text/css">
 </head>
 <body>
-
+	<div id="feed">
 	<h4>Feedback</h4>
 	<%if(own.getId() != u.getId()){ %>
 	<form>
@@ -27,9 +29,16 @@
 	<%if(feedbackUser != null){ %>
 		<%if(feedbackUser.size() > 0){ %>
 			<%for(FeedbackUser fu: feedbackUser){ %>
+				<div id="realFeed">
 				<a href="showProfile?id=<%= fu.getSender().getId() %>">
-				<%= fu.getSender().getUsername() %></a>
-				<p> <%= fu.getMessage() %></p>
+				<div id="nome">
+				<%= fu.getSender().getUsername() %>:	
+				</div>
+				</a>
+				<div id="descr">
+				 <%= fu.getMessage() %>
+				 </div><br>
+				</div>
 			<%} %>
 		<%} else{ %>
 			<b>Non sono presenti feedback relativi a questo utente</b>
@@ -37,7 +46,7 @@
 	<%} else{ %>
 		<b>Non ci sono feedback relativi a questo utente</b>
 	<%} %>
-	
+	</div>
 	<script type="text/javascript">
 	function putFeedback(idRecevier) {
 		  var xhttp;

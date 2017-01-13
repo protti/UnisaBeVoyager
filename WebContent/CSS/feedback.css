@@ -1,0 +1,27 @@
+@CHARSET "ISO-8859-1";
+
+
+
+#feed{
+	
+	float: left;
+	font-size: 22px;
+	margin-left: 15%;
+	margin-top: 5%;
+  border: solid 1px #dcdcdc;
+  width: 35%;
+	text-align: center;
+
+}
+#realFeed{
+	margin-top: 3%;
+}
+#nome{
+	
+	float: left;
+}
+
+#descr{
+	
+	float: left;
+}	
