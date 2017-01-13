@@ -20,14 +20,14 @@
 	<%@ include file="../navbar.jsp" %>
 	<div id="containerViaggio">
 	
-	<img src=<%=request.getContextPath().toString()%>/CSS/image/itinerario.jpg alt="Mia Immagine"> 
+	<img id="mappa" src=<%=request.getContextPath().toString()%>/CSS/image/itinerario.jpg alt="Mia Immagine"> 
 	
 	
 	<b>Nome: </b><span id="n"><%=route.getName()%></span>
 	
-	<br>
-	<h4>Descrizione</h4>
-	<p id="d"><%=route.getDescription()%></p>
+	<br><br><br>
+	<b>Descrizione</b>
+	<span id="d"><%=route.getDescription()%></span>
 	
 	
 	<% if(travel != null){ %>
@@ -38,19 +38,31 @@
 	<%} %>
 	
 	<br>
-	<h4>Luoghi</h4>
+	
 	<%List<Location> locations = route.getLocations();%>
+		<h4>Luoghi</h4>
+	<div id="luoghi">
+
 	<%for(Location location:locations){ %>
-		<div id="<%= location.getId()%>">
-		<a href="ShowLocation?id=<%=location.getId()%>"><%=location.getName()%></a>
+		
+		
+		<a href="ShowLocation?id=<%=location.getId()%>">
+		<div class="every">
+		<img src=<%=request.getContextPath().toString()%>/CSS/image/luogo.jpg alt="mia"> 
+		<%=location.getName()%>
+		</div>
+		</a>
+		<br><br>
 		<%if(travel != null){ %>
 			<%if(travel.getCreatoreViaggio().getId() == u.getId()){ %>
+				
 				<button onclick="removeLoc(<%= location.getId()%>,<%= route.getId()%>)">Rimuovi luogo</button>
 			<%} %>
 		<%} %>
-		</div>
+		
+		
 	<%} %>
-	
+	</div>
 	<%if(travel != null){ %>
 		<%if(travel.getCreatoreViaggio().getId() == u.getId()){ %>
 			<form>
@@ -63,16 +75,17 @@
 	<%} %>
 	<br>
 	<br>
-	<br>
-		<%if(u.getAuthorization() > 0){ %>
-		<a href="<%=request.getContextPath().toString()%>/deleteRoute.jsp?idr=<%=route.getId()%>">Elimina itinerario</a>
-	<%} %>
 	
 	</div>
 	
 	<%@include file="../feedback/feedbackRoute.jsp"%>
 	
 	<br>
+	
+	<br>
+		<%if(u.getAuthorization() > 0){ %>
+		<a href="<%=request.getContextPath().toString()%>/deleteRoute.jsp?idr=<%=route.getId()%>">Elimina itinerario</a>
+	<%} %>
 	
 
 	
