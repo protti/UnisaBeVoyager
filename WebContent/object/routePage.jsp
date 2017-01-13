@@ -81,10 +81,9 @@
 	<%@include file="../feedback/feedbackRoute.jsp"%>
 	
 	<br>
-	
 	<br>
 		<%if(u.getAuthorization() > 0){ %>
-		<a href="<%=request.getContextPath().toString()%>/deleteRoute.jsp?idr=<%=route.getId()%>">Elimina itinerario</a>
+		<a id="eliminaRoute" href="<%=request.getContextPath().toString()%>/deleteRoute.jsp?idr=<%=route.getId()%>">Elimina itinerario</a>
 	<%} %>
 	
 

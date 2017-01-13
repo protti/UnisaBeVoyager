@@ -5,12 +5,12 @@
 #feed{
 	float: left;
 	font-size: 22px;
-	margin-left: 15%;
+	margin-left: 33%;
 	margin-top: 5%;
-  border: solid 1px #dcdcdc;
-  width: 35%;
+  	border: solid 1px #dcdcdc;
+  	width: 35%;
 	text-align: center;
-
+	margin-bottom: 5%;
 }
 #realFeed{
 	margin-top: 3%;
@@ -24,3 +24,46 @@
 	
 	float: left;
 }	
+
+
+#btn {
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 6;
+  -moz-border-radius: 6;
+  border-radius: 6px;
+  font-family: Georgia;
+  color: #ffffff;
+  font-size: 23px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;  
+}
+
+#btn:hover {
+  background: #3cb0fd;
+  text-decoration: none;
+}
+
+#feedback
+{
+  margin-left: 1%;
+	margin-top: 1%; 
+  font-family: sans-serif;
+  font-size: 18px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+	padding: 1%;
+  border: solid 1px #dcdcdc;
+  transition: box-shadow 0.3s, border 0.3s;
+  width: 30%;
+}
+#feedback:hover{
+  outline: none;
+	  border: solid 1px #3498db;
+  box-shadow: 0 0 5px 1px #3498db;
+}
