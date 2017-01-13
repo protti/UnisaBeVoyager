@@ -13,25 +13,27 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Feedback luoghi</title>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+<link href=<%=request.getContextPath().toString()%>/CSS/feedback.css rel="stylesheet" type="text/css">
+
 </head>
 <body>
+	<div id="feedL">
 	<h4>Feedback</h4>
-	
-	
-	<form>
-		<textarea id="feedback"></textarea><br>
-		<input type="button" onclick="putFeedback(<%= l.getId()%>)" value="Commenta">
-	</form>
-	
 	<div id="response"></div>
 	
 	<%if(feedbackLocation != null){ %>
 		<%if(feedbackLocation.size() > 0){ %>
 			<%for(FeedbackLocation fu: feedbackLocation){ %>
-				<div id="response"></div>
+				<div id="realFeed">
 				<a href="showProfile?id=<%= fu.getSender().getId() %>">
-				<%= fu.getSender().getUsername() %></a>
-				<p> <%= fu.getMessage() %></p>
+				<div id="nome">
+				<%= fu.getSender().getUsername() %>:	
+				</div>
+				</a>
+				<div id="descr">
+				 <%= fu.getMessage() %>
+				 </div><br>
+				</div>
 			<%} %>
 		<%} else{ %>
 			<div id="response"><b>Non ci sono feedback relativi a questo luogo</b></div>
@@ -39,8 +41,19 @@
 	<%} else{ %>
 		<div id="response"><b>Non ci sono feedback relativi a questo luogo</b></div>
 	<%} %>
+	<br>
+		<br>
+		Dai anche tu il tuo feedback:
+		<br>
+		<br>
 	
-	<script type="text/javascript">
+	<form>
+		<textarea id="feedback"></textarea><br>
+		<input type="button" id="btn" onclick="putFeedback(<%= l.getId()%>)" value="Commenta">
+	</form>
+	
+	</div>
+		<script type="text/javascript">
 	function putFeedback(idRecevier) {
 		  var xhttp;
 		  xhttp = new XMLHttpRequest();

@@ -12,12 +12,12 @@
 <body>
 <%@ include file="../navbar.jsp" %>
 <div id="containerViaggio">
-<img src=<%=request.getContextPath().toString()%>/CSS/image/luogo.jpg alt="Mia Immagine"> 	<br><br>
+<img id="mappa" src=<%=request.getContextPath().toString()%>/CSS/image/luogo.jpg alt="Mia Immagine"> 	<br><br>
 <span class="intern"><%= location.getName() %></span><br><br>
 <span class="intern"><%= location.getDescrizione() %></span><br><br>
-<a href="deleteLocation.jsp?idl=<%= location.getId()%>">Elimina Luogo</a>
+
 </div>
 <%@ include file="../feedback/feedbackLocation.jsp" %>
-
+<a id="eliminaRoute" href="deleteLocation.jsp?idl=<%= location.getId()%>">Elimina Luogo</a>
 </body>
 </html>
