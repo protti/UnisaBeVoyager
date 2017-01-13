@@ -103,22 +103,19 @@ public class createTravel extends HttpServlet {
 		String endDate = request.getParameter("endDate");
 		Boolean type = Boolean.parseBoolean(request.getParameter("type"));
 		
+		HttpSession session = request.getSession();
+		RegisteredUser user = (RegisteredUser) session.getAttribute("user");
+		Route selectedRoute = (Route) session.getAttribute("selectedRoute");
+		
 		if(travelName.equals("") || travelDesc.equals("") || 
-				startDate.equals("") || endDate.equals("")){
+				startDate.equals("") || endDate.equals("") || 
+				selectedRoute == null){
 			request.setAttribute("dati_mancanti", true);
 			RequestDispatcher rd = request.getRequestDispatcher("create/createTravel.jsp");
 			rd.forward(request, response);
 			return;
 		}
 		
-		HttpSession session = request.getSession();
-		RegisteredUser user = (RegisteredUser) session.getAttribute("user");
-		Route selectedRoute = (Route) session.getAttribute("selectedRoute");
-				
-		if(selectedRoute == null) {
-			response.sendRedirect("500page.html");
-			return;
-		}
 
 		Travel newTravel = TravelController.createTravel(travelName, selectedRoute, user, startDate, endDate, type);
 		if (newTravel == null) {
