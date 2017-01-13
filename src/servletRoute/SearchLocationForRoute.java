@@ -43,9 +43,13 @@ public class SearchLocationForRoute extends HttpServlet {
 			if(locations != null){
 				if(locations.size() > 0){
 					for(Location location:locations){
+						
+						out.println("<div class=cont>");
+						out.println("<img src="+ request.getContextPath().toString()+"/CSS/image/luogo.jpg alt=Mia>"); 
 						out.println("<p>" + location.getName() + "</p> "
-								+ "<button onclick=\"addToList(" + location.getId() + ")\")>Aggiungi luogo"
+								+ "<button id=btn1 onclick=\"addToList(" + location.getId() + ")\")>Aggiungi luogo"
 										+ "</button>");
+						out.println("</div>");
 					}
 				}
 				else{
