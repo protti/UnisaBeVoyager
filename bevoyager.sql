@@ -33,7 +33,7 @@ CREATE TABLE `feedbacklocation` (
   KEY `recipientID` (`recipientID`),
   CONSTRAINT `feedbacklocation_ibfk_1` FOREIGN KEY (`senderID`) REFERENCES `registereduser` (`id`) ON DELETE CASCADE,
   CONSTRAINT `feedbacklocation_ibfk_2` FOREIGN KEY (`recipientID`) REFERENCES `location` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,7 +64,7 @@ CREATE TABLE `feedbackroute` (
   KEY `recipientID` (`recipientID`),
   CONSTRAINT `feedbackroute_ibfk_1` FOREIGN KEY (`senderID`) REFERENCES `registereduser` (`id`) ON DELETE CASCADE,
   CONSTRAINT `feedbackroute_ibfk_2` FOREIGN KEY (`recipientID`) REFERENCES `route` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -242,7 +242,7 @@ CREATE TABLE `registereduser` (
   `authorization` smallint(6) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -267,7 +267,7 @@ CREATE TABLE `route` (
   `description` varchar(255) NOT NULL,
   `name` char(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -276,7 +276,7 @@ CREATE TABLE `route` (
 
 LOCK TABLES `route` WRITE;
 /*!40000 ALTER TABLE `route` DISABLE KEYS */;
-INSERT INTO `route` VALUES (1,'Paesi di buona cultura','Gironzolando in Olanda'),(2,'Terun','Giro a milano'),(9,'Go to London','Everybody to Manchester'),(10,'Terun','Giro a milano'),(11,'Meta Catalogna','Todos a Barcellona'),(12,'Mitica paella','Barcellona stiamo arrivando'),(13,'Meta Catalogna','Todos a Barcellona'),(14,'Mitica paella','Barcellona stiamo arrivando'),(19,'Go to Milano','Milano milano'),(20,'Terun','Giro a milano'),(21,'Descrizione route 1','Route 1');
+INSERT INTO `route` VALUES (1,'Paesi di buona cultura','Gironzolando in Olanda'),(2,'Terun','Giro a milano'),(9,'Go to London','Everybody to Manchester'),(10,'Terun','Giro a milano'),(11,'Meta Catalogna','Todos a Barcellona'),(12,'Mitica paella','Barcellona stiamo arrivando'),(13,'Meta Catalogna','Todos a Barcellona'),(14,'Mitica paella','Barcellona stiamo arrivando'),(19,'Go to Milano','Milano milano'),(20,'Terun','Giro a milano'),(21,'Descrizione route 1','Route 1'),(99,'Descrizione Route 99','Route 99');
 /*!40000 ALTER TABLE `route` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -304,7 +304,7 @@ CREATE TABLE `routelocationmatch` (
 
 LOCK TABLES `routelocationmatch` WRITE;
 /*!40000 ALTER TABLE `routelocationmatch` DISABLE KEYS */;
-INSERT INTO `routelocationmatch` VALUES (2,2,'2017-01-06'),(2,10,'0000-00-00'),(2,19,'0000-00-00'),(2,20,'0000-00-00'),(10,9,'0000-00-00'),(12,12,'0000-00-00'),(12,14,'0000-00-00'),(16,21,'2017-01-17');
+INSERT INTO `routelocationmatch` VALUES (2,2,'2017-01-06'),(2,10,'0000-00-00'),(2,19,'0000-00-00'),(2,20,'0000-00-00'),(10,9,'0000-00-00'),(12,12,'0000-00-00'),(12,14,'0000-00-00'),(13,99,'2017-01-19'),(14,99,'2017-01-19'),(15,99,'2017-01-19'),(16,21,'2017-01-17');
 /*!40000 ALTER TABLE `routelocationmatch` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -391,7 +391,7 @@ CREATE TABLE `usertravelmatch` (
 
 LOCK TABLES `usertravelmatch` WRITE;
 /*!40000 ALTER TABLE `usertravelmatch` DISABLE KEYS */;
-INSERT INTO `usertravelmatch` VALUES (1,9,'2017-01-06'),(1,16,'2017-01-11'),(4,10,'2017-01-09'),(4,16,'2017-01-13'),(5,1,'2016-12-29'),(6,9,'2017-01-06'),(14,10,'2017-01-13');
+INSERT INTO `usertravelmatch` VALUES (1,9,'2017-01-06'),(1,16,'2017-01-11'),(4,9,'2017-01-06'),(4,10,'2017-01-09'),(4,16,'2017-01-13'),(5,1,'2016-12-29'),(6,9,'2017-01-06'),(14,10,'2017-01-13');
 /*!40000 ALTER TABLE `usertravelmatch` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -404,4 +404,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-17 18:32:59
+-- Dump completed on 2017-01-19 16:49:15
