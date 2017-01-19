@@ -22,7 +22,7 @@
 	<%if(own.getId() != u.getId()){ %>
 	<form>
 		<textarea id="feedback"></textarea><br>
-		<input type="button" onclick="putFeedback(<%= u.getId()%>)" value="Commenta">
+		<input type="button" id="btn" onclick="putFeedback(<%= u.getId()%>)" value="Commenta">
 	</form>
 	<%} %>
 	<div id="response"></div>
