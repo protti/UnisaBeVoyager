@@ -1,0 +1,19 @@
+@CHARSET "ISO-8859-1";
+body {
+	background-image: url(image/apposto.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+
+#container{
+	margin-top: 10%;
+	
+	font-family: serif;
+	font-size: 30px;
+	text-align: center;
+	margin-left: 35%;
+	margin-right: 25%;
+
+  float: left;
+}
