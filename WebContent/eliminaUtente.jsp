@@ -5,24 +5,26 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href=<%=request.getContextPath().toString()%>/CSS/page.css rel="stylesheet" type="text/css">
 <%if(session.getAttribute("user") != null){ %>
 <%RegisteredUser user =(RegisteredUser) session.getAttribute("user");%>
 <title>Eliminazione </title>
 </head>
 <body>
 <%@ include file="navbar.jsp" %>
-
+<div id="container">
 Sei sicuro di voler eliminare il tuo account?
 
 <form action="deleteUser" method="post">
-		<div>
+		<div id="container">
 			<input type="hidden" value="<%=user.getId()%>" name="id"/><br />
-			<input type="submit" value="Eliminami"/>
+			<input type="submit" id="btn" value="Eliminami"/>
 		</div>
 	</form>
 
-
+</div>
 <%} else {%>
 <%} %>
+
 </body>
 </html>
