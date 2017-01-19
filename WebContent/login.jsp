@@ -12,6 +12,7 @@
 <link href="CSS/login.css" rel="stylesheet" type="text/css">
 <title>Accedi</title>
 </head>
+
 <body>
 <div class="welcome">
 <div id="log">
