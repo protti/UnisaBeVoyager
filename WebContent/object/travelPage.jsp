@@ -77,7 +77,7 @@
 	%>
 	
 	<form method="post" action="JoinTravel">
-				<input type="submit" class="submit" value="Partecipa viaggio!">	
+				<input type="submit" id="btn" class="submit" value="Partecipa viaggio!">	
 	</form>	
 
 	<%} %>
