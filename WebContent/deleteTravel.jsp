@@ -7,16 +7,22 @@
 
 <% RegisteredUser user = (RegisteredUser) session.getAttribute("user"); %>
 <head>
+<link href=<%=request.getContextPath().toString()%>/CSS/page.css rel="stylesheet" type="text/css">
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Elimina Viaggio</title>
 </head>
 <body>
 <%@ include file="navbar.jsp" %>
+<div id="container">
 	<h4>Vuoi cancellare questo viaggio?</h4>
 	<%if(user.getAuthorization() > 0){ %>
+	<div id="container">
 	<form action="DeleteTravel" method="post">
-		<input type="submit" value="Cancella">
+		<input type="submit" id="btn" value="Cancella">
 	</form>
+	</div>
+	</div>
 	<%} else{ %>
 		<b>Accesso negato</b>
 	<%} %>
