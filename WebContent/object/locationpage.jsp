@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<%RegisteredUser u = (RegisteredUser) session.getAttribute("user"); %>
 <% Location location = (Location) request.getAttribute("location");%>
 <title><%= location.getName() %></title>
 <link href=<%=request.getContextPath().toString()%>/CSS/page.css rel="stylesheet" type="text/css">
@@ -18,6 +19,8 @@
 
 </div>
 <%@ include file="../feedback/feedbackLocation.jsp" %>
+<%if(u.getAuthorization() > 0){ %>
 <a id="eliminaRoute" href="deleteLocation.jsp?idl=<%= location.getId()%>">Elimina Luogo</a>
+<%} %>
 </body>
 </html>
