@@ -8,15 +8,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Elimina itinerario</title>
+<link href=<%=request.getContextPath().toString()%>/CSS/page.css rel="stylesheet" type="text/css">
+
 </head>
 <body>
 	<%@ include file="navbar.jsp" %>
+	<div id="container">
 	<h4>Vuoi cancellare questo itinerario?</h4>
 	<%if(user.getAuthorization() > 0){ %>
+	<div id="container">
 	<form action="DeleteRoute" method="post">
 		<input type="hidden" value="<%= idRoute %>" name="idRoute">
-		<input type="submit" value="Cancella">
+		<input type="submit" id="btn" value="Cancella">
 	</form>
+	</div>
+	</div>
 	<%} else{ %>
 		<b>Accesso negato</b>
 	<%} %>
